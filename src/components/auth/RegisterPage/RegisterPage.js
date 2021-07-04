@@ -7,7 +7,7 @@ function RegisterPage() {
 		<div>
 			Register Page
 			<div>
-				<Link to="/Login">Ya tengo cuenta</Link>
+				<Link to="/Login">I already have an account</Link>
 			</div>
 
 		</div>

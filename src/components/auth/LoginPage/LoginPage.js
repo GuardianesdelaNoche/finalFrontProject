@@ -9,7 +9,7 @@ function LoginPage () {
             <Link to="/events">Events</Link>
             </div>
             <div>
-            <Link to="/admin">User Panel</Link>
+            <Link to="/member">User Panel</Link>
             </div>
         </div>
     )

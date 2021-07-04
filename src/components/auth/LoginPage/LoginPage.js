@@ -2,7 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import LoginForm from './LoginForm';
 
+
+
 function LoginPage () {
+    const handleSubmit = (credentials)=>{
+        //TO-DO añadir Redux actions
+        console.log(credentials)
+    } 
     return (
         <div>
             <div>
@@ -12,7 +18,7 @@ function LoginPage () {
                 <Link to="/member">User Panel</Link>
             </div>
             <div>
-                <LoginForm/>
+                <LoginForm onSubmit={handleSubmit} />
             </div>
 
             <div>

@@ -1,9 +1,3 @@
-
-/**
- * Format auth state
- *  auth: boolean 
- */
-
  import { types } from "../types/types";
 
  const initialState = false;

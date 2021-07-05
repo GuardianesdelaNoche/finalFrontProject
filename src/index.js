@@ -3,20 +3,23 @@ import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';
 
 import Root from './components/root';
-// import './index.css';
-// import App from './App';
-// import { store } from './app/store';
-// import { Provider } from 'react-redux';
+import { configureClient } from "./api/client";
+import { configureStore } from './store/store';
 // import * as serviceWorker from './serviceWorker';
 
+/** TODO */
+const accessToken = null; 
+configureClient({ accessToken });
 const history = createBrowserHistory();
+const store = configureStore({
+  preloadedState: { auth: !!accessToken  },
+  history
+});
+
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Provider store={store}> */}
-      {/* <App /> */}
-    {/* </Provider> */}
-    <Root history={history}/>
+    <Root store={store} history={history}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

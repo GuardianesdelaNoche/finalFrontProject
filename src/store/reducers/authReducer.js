@@ -7,8 +7,6 @@
      switch (action.type) {
          case types.authLoginSuccess:
              return true
-         case types.authLogoutSuccess:
-             return false
          default:
              return state;
      }

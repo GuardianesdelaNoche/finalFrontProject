@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';
 
+import storage from "./utils/storage";
 import Root from './components/root';
 import { configureClient } from "./api/client";
 import { configureStore } from './store/store';
 // import * as serviceWorker from './serviceWorker';
 
-/** TODO */
-const accessToken = null; 
+
+const accessToken = storage.get("auth");
 configureClient({ accessToken });
 const history = createBrowserHistory();
 const store = configureStore({

@@ -51,6 +51,13 @@ function App() {
           </a>
         </span>
       </header>
+      <body>
+        <h3>
+          Fancy display heading
+          <small class="text-muted">With faded secondary text</small>
+        </h3>
+
+      </body>
     </div>
   );
 }

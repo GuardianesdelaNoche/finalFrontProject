@@ -11,7 +11,6 @@ import English from './lang/en.json';
 
 // get default language selected by user in navigator
 const locale = navigator.language;
-console.log(locale.search('kk'));
 
 let lang;
 

@@ -6,7 +6,21 @@ import Root from './components/root';
 import { configureClient } from "./api/client";
 import { configureStore } from './store/store';
 
-import './index.css';
+import { IntlProvider } from 'react-intl';
+import Spanish from './lang/es.json';
+import English from './lang/en.json';
+
+
+const locale = navigator.language;
+let lang;
+
+if(locale.search('es') >= 0) {
+  lang = Spanish;
+} else {
+  lang = English;
+}
+
+//import './index.css';
 
 const accessToken = storage.get("auth");
 configureClient({ accessToken });
@@ -19,7 +33,9 @@ const store = configureStore({
 
 const render = () => {
   ReactDOM.render(
-    <Root store={store} history={history} />,
+    <IntlProvider locale={locale} messages={lang} >
+      <Root store={store} history={history} />
+    </IntlProvider>,
     document.getElementById('root'),
   );
 };

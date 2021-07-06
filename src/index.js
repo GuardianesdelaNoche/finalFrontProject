@@ -1,12 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { Provider } from 'react-redux';
+import * as serviceWorker from './serviceWorker';
+import { IntlProvider } from 'react-intl';
+import Spanish from './lang/es.json';
+import English from './lang/en.json';
+
+// get default language selected by user in navigator
 import { createBrowserHistory } from 'history';
 
 import storage from "./utils/storage";
 import Root from './components/root';
 import { configureClient } from "./api/client";
 import { configureStore } from './store/store';
-// import * as serviceWorker from './serviceWorker';
+
+const locale = navigator.language;
+let lang;
+
+if(locale.search('es') >= 0) {
+  lang = Spanish;
+} else {
+  lang = English;
+}
 
 
 const accessToken = storage.get("auth");
@@ -21,6 +38,11 @@ const store = configureStore({
 ReactDOM.render(
   <React.StrictMode>
     <Root store={store} history={history}/>
+    <Provider store={store}>
+      <IntlProvider locale={locale} messages={lang}>
+        <App />
+      </IntlProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

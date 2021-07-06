@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
+       
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -51,13 +54,7 @@ function App() {
           </a>
         </span>
       </header>
-      <body>
-        <h3>
-          Fancy display heading
-          <small class="text-muted">With faded secondary text</small>
-        </h3>
-
-      </body>
+     
     </div>
   );
 }

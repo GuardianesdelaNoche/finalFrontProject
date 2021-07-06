@@ -13,9 +13,6 @@ function App() {
           defaultMessage="Our app name"
         />
 
-   
-
-
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
 

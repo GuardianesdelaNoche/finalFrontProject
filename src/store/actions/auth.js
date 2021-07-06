@@ -14,3 +14,19 @@ export const authLoginError = error => ({
 });
 
 
+export const loginAction = credentials => {
+    return async function (dispatch, getState, { api, history }) {
+        dispatch(authLoginRequest());
+        try {
+            // TODO - Add Endpoint to Login
+            //await api.auth.login(credentials);
+            dispatch(authLoginSuccess());
+            // Redirect
+            const { from } = history.location.state || { from: { pathname: '/' } };
+            history.replace(from);
+        } catch (error) {
+            dispatch(authLoginError(error));
+        }
+    };
+};
+

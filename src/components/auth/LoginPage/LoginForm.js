@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
 import useForm from '../../../hooks/useForm';
 import './login.css'
@@ -21,7 +20,6 @@ function LoginForm({onSubmit}) {
 	 
 	return (
 		<form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
-			
 
 				<div className="form-container">
 					<label className="form-label">Email</label>
@@ -30,7 +28,7 @@ function LoginForm({onSubmit}) {
 					className="form-control"
 					placeholder="name@example.com"
 					value={email}
-						onChange={handleChange}
+					onChange={handleChange}
 					/>
 				</div>
 		
@@ -46,23 +44,21 @@ function LoginForm({onSubmit}) {
 						onChange={handleChange}
 					/>
 				</div>
-			
-	
-			<div class="checkbox">
-			<input
-				type="checkbox"
-				name="remember"
-				className="checkbox"
-				checked={remember}
-				onChange={handleChange}
-				/> Remember me
+
+				<div className="checkbox mb-3">
+				<input
+					type="checkbox"
+					name="remember"
+					className="checkbox"
+					checked={remember}
+					onChange={handleChange}
+					/> Remember me
 			</div>
 
 			<button
 				className="btn btn-primary"
 			 type="submit">Login</button>
-			
-			
+
 		</form>
 	)
 }

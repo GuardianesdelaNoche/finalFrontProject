@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import LoginForm from './LoginForm';
-
+import './login.css'
 
 
 function LoginPage () {
@@ -10,25 +10,20 @@ function LoginPage () {
         console.log(credentials)
     } 
     return (
-        <div>
-            <div>
-                <Link to="/events">Events</Link>
-            </div>
-            <div>
-                <Link to="/member">User Panel</Link>
-            </div>
-            <div>
+        <body>
+            <main class="form-signin">
+           
+                <h1 className="h title-signin">Welcome to Start</h1>
+               
+                  
+                
                 <LoginForm onSubmit={handleSubmit} />
-            </div>
-
-            <div>
-                Don't have an account yet?<Link to="/register">Register</Link>
-            </div>
-
-            <div>
-                <Link to="/remember">Forgot your password?</Link>
-            </div>
-        </div>
+                <Link to="/remember" className="form-label">Forgot your password?</Link>
+                <p className="text-muted">New here?
+                    <Link to="/register"> Create Account</Link></p>
+            </main>           
+    
+        </body>
     )
 }
 

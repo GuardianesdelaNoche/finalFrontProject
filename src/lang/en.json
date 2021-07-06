@@ -1,5 +1,6 @@
 {
     "app.header" : "Our app name",
     "app.content": "Our content app",
-    "app.channel.plug": "App to join people to enjoy amazing activities"
+    "app.channel.plug": "App to join people to enjoy amazing activities",
+    "register": "Register"
 }

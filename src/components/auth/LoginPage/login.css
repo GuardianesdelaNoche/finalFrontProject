@@ -1,4 +1,10 @@
 @import url('../../../index.css');
+
+/* body{
+   display: flex;
+  justify-content: center;
+} */
+
 .main-content {
   height: 100%;
 }

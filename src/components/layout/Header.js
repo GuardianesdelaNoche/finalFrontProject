@@ -10,22 +10,18 @@ function Header() {
 		<header>
 			<Navbar bg="light" variant="light" fixed="top">
 				<Container>
-					<Navbar.Brand href="#home">AppName</Navbar.Brand>
+					<Navbar.Brand href="/">AppName</Navbar.Brand>
 					<Nav className="me-auto">
-						<NavLink
-							to="/events"
-							activeClassName="selected"
-							isActive={isExact}
-						>
-							Events 
-						</NavLink>
+						
 						<NavLink
 							to="/events/new"
-							activeClassName="selected"
+							className="me-2"
 							isActive={isExact}
 						>
-							 New Events 
+							 New Event
 						</NavLink>
+						<button className="btn btn-light me-2">Register</button>
+						<button className="btn btn-primary ">Login</button>
 					</Nav>
 				</Container>
 			</Navbar>

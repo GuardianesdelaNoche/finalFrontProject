@@ -2,12 +2,16 @@ import T from 'prop-types';
 
 import Header from './Header';
 import Footer from './Footer';
-import { Container} from 'react-bootstrap';
+
 function Layout({ children }) {
 	return (
 		<>
 			<Header />
-			<Container>{children}</Container>
+			<div className="container main">
+				<div className="content">
+					{children}
+				</div>
+			</div>
 			<Footer />
 		</>
 	);

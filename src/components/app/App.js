@@ -1,12 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { LoginPage, RegisterPage, PrivateRoute, RememberPass } from '../auth';
-=======
-import { Switch, Route, Redirect } from "react-router-dom";
-import { LoginPage, PrivateRoute } from '../auth';
-import RegisterPage from '../auth/RegisterPage';
->>>>>>> develop
 
 import { EventsPage } from '../events';
 import { MemberPage } from '../members';

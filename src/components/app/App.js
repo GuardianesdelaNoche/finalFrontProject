@@ -12,7 +12,7 @@ function App() {
     <Switch>
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/remember" component={RememberPass} />
+      <Route exact path="/forgotthepassword" component={RememberPass} />
       <PrivateRoute exact path="/member" component={MemberPage} />
       <Route exact path="/404">
         <NotFoundPage />

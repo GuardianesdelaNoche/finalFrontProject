@@ -1,0 +1,6 @@
+@import url('../../index.css');
+
+.bg-light {
+    background-color: #ffff !important;
+    padding: 15px;
+}

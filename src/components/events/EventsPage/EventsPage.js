@@ -1,12 +1,16 @@
 import React from 'react';
 import { Card, Button, Carousel } from 'react-bootstrap';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Layout from '../../layout';
 
 
 function EventsPage() {
 
   return (
     <div>
+      <Layout>
+        
 <Carousel fade>
   <Carousel.Item>
     <img
@@ -46,8 +50,6 @@ function EventsPage() {
 </Carousel>
 
 
-
-
       <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src="../../../assests/img/imagen.jpg" />
         <Card.Body>
@@ -59,7 +61,7 @@ function EventsPage() {
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>
-      Events Page
+      </Layout>
     </div>
   );
 }

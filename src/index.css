@@ -34,6 +34,12 @@ a, a:hover {
    
 
 }
+.content {
+    padding: 0 0 40px 0;
+}
+.text-muted {
+    color: #a1a5b7!important;
+}
 
 .btn.btn-primary {
     color: #fff;

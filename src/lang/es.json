@@ -1,5 +1,13 @@
 {
     "app.header" : "Nombre de la app",
     "app.content": "Contenido de la app",
-    "app.channel.plug": "Encuentra y disfruta de las mejores actividades"
+    "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
+    "login.title": "Bienvenido a ....",
+    "login.remember": "¿Olvidó su contraseña?",
+    "login.newAcount": "¿Eres nuevo aquí?",
+    "login.createAcount": "Crear una cuenta",
+    "login.formLabel.email": "Email",
+    "login.formLabel.pass": "Contraseña",
+    "login.formLabel.remember": "Recuérdame",
+    "login.form.button": "Entrar"
 }

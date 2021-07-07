@@ -1,5 +1,13 @@
 {
     "app.header" : "Our app name",
     "app.content": "Our content app",
-    "app.channel.plug": "App to join people to enjoy amazing activities"
+    "app.channel.plug": "App to join people to enjoy amazing activities",
+    "login.title": "Welcome to Start",
+    "login.remember":"Forgot your password",
+    "login.newAcount": "New here?",
+    "login.createAcount":"Create Account",
+    "login.formLabel.email":"Email",
+    "login.formLabel.pass":"Password",
+    "login.formLabel.remember":"Remember me",
+    "login.form.button":"Login"
 }

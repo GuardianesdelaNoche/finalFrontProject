@@ -1,0 +1,17 @@
+.imageNPA {
+    height: 200px;
+    width: 300px;
+
+ }
+ 
+ .noProductAvailable {
+     margin-top:20px;
+     text-align: center;
+     font-weight: bold;
+ }
+ 
+ .containerNPA{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }

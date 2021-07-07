@@ -1,0 +1,19 @@
+.formField-label {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+
+.css-yk16xz-control{
+  width: 100%;
+}
+
+.formField-input {
+  
+  columns: auto
+}
+
+.formField-label span:first-letter {
+  text-transform: capitalize;
+}
+

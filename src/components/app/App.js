@@ -1,6 +1,12 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { LoginPage, RegisterPage, PrivateRoute, RememberPass } from '../auth';
+=======
+import { Switch, Route, Redirect } from "react-router-dom";
+import { LoginPage, PrivateRoute } from '../auth';
+import RegisterPage from '../auth/RegisterPage';
+>>>>>>> develop
 
 import { EventsPage } from '../events';
 import { MemberPage } from '../members';
@@ -8,6 +14,7 @@ import NotFoundPage from './NotFoundPage';
 
 function App() {
   return (
+    
     <Switch>
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
@@ -17,12 +24,17 @@ function App() {
         <NotFoundPage />
       </Route>
       <Route exact path="/events" component={EventsPage} />
+      <Route exact path="/register">
+        <RegisterPage />
+      </Route>
       <Route exact path="/">
         <Redirect to="/events" />
       </Route>
      
       <Redirect to="/404" />
     </Switch>
+    
+    
   );
 }
 

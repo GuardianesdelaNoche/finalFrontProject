@@ -60,3 +60,11 @@
     border-radius: .25rem;
     
 }
+
+.form-label.text-primary {
+    color: #20d489 !important;
+}
+
+.form-label.text-primary:hover {
+    color: #20d489 !important;
+}

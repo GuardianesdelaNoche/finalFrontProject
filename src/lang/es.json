@@ -2,5 +2,11 @@
     "app.header" : "Nombre de la app",
     "app.content": "Contenido de la app",
     "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
-    "register.title": "Registro"
+    "register.title": "Registro",
+    "register.formLabel.username":"Nombre",
+    "register.formLabel.nickname":"Apodo",
+    "register.formLabel.email":"Email",
+    "register.formLabel.pass":"Contraseña",
+    "register.formLabel.role":"Tipo usuario",
+    "register.form.button":"Registrar"
 }

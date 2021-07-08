@@ -29,11 +29,7 @@
     text-align: left;
 }
 
-.form-label{
-  font-weight: 600!important;
-  font-size: 1.00rem!important;
-    margin-bottom: .5rem;
-}
+
 .form-signin .checkbox {
     margin-top: -5px;
     font-weight: 400;
@@ -52,5 +48,5 @@
     background-clip: padding-box;
     border: 1px solid #F5F8FA!important;
     border-radius: .25rem;
-    
+    padding: 0!important;    
 }

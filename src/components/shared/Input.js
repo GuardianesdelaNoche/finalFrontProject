@@ -24,8 +24,7 @@ function Input({ className, label, autoFocus, isRequired,  ...props }) {
         className
       )}
     >
-      <div className="formField-input">      
-        <span>{label}:</span>
+      <div className="formField-input">             
         <input
           className="css-yk16xz-control"
           autoComplete="off"
@@ -42,8 +41,7 @@ function Input({ className, label, autoFocus, isRequired,  ...props }) {
 }
 
 Input.propTypes = {
-  className: pT.string,
-  label: pT.string.isRequired,
+  className: pT.string,  
   autoFocus: pT.bool,
   
 }

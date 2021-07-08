@@ -6,6 +6,9 @@
 
 .css-yk16xz-control{
   width: 100%;
+  border: none;
+  background-color: #F5F8FA ;
+  height: calc(1.5em + .75rem + 2px);
 }
 
 .formField-input {
@@ -17,3 +20,8 @@
   text-transform: capitalize;
 }
 
+.form-label{
+  font-weight: 600!important;
+  font-size: 1.00rem!important;
+    margin-bottom: .5rem;
+}

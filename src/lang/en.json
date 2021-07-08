@@ -9,5 +9,8 @@
     "login.formLabel.email":"Email",
     "login.formLabel.pass":"Password",
     "login.formLabel.remember":"Remember me",
-    "login.form.button":"Login"
+    "login.form.button":"Login",
+    "navbar.item.menu":"New Events",
+    "button.register.menu":"Register",
+    "button.login.menu":"Login"
 }

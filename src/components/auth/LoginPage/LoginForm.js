@@ -2,6 +2,7 @@ import React from 'react';
 
 import useForm from '../../../hooks/useForm';
 import { FormattedMessage } from 'react-intl';
+import Button from '../../shared/Button';
 import './login.css'
 
 function LoginForm({onSubmit}) {
@@ -71,14 +72,12 @@ function LoginForm({onSubmit}) {
 					/>
 			</div>
 
-			<button
-				className="btn btn-primary"
-			 type="submit">
+			<Button variant="primary">
 				<FormattedMessage
 					id="login.form.button"
 					defaultMessage="Login"
 				/>
-			</button>
+			</Button>
 
 		</form>
 	)

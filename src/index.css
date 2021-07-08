@@ -1,5 +1,5 @@
 /* Commons */
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
 html,
 body {
   height: 100%;
@@ -10,6 +10,8 @@ body {
   padding-bottom: 60px;
   background-color: #FBF9F6 !important;
   color: #181c32!important;
+  font-family: Poppins,Helvetica,"sans-serif" !important;
+  font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,11 +36,16 @@ a, a:hover {
 /* ----Text */
 .text-description {
     color: #a1a5b7!important;
-    font-size: 1.075rem!important;
+    font-size: 1.020rem!important;
 }
 
 .text-dark {
     color: #181c32!important;
+}
+
+.text-hover-primary:hover, .text-hover-primary:hover i {
+    transition: color .2s ease,background-color .2s ease;
+    color: #20d489!important;
 }
 /* ----Fonts */
 .fs-3 {
@@ -84,34 +91,6 @@ a, a:hover {
     max-width: 1140px;
     padding: 60px 0px;
 }
-
-
-/* Buttons */
-.btn.btn-primary {
-    color: #fff;
-    border-color: #20d489;
-    background-color: #20d489;
-    
-}
-
-.btn.btn-primary:hover {
- color: #fff;
-    border-color: #19b674;
-    background-color: #19b674;
-
-}
-
-.btn.btn-light {
-    color: #7e8299;
-    border-color: #f5f8fa;
-    background-color: #f5f8fa;
-
-}
-.btn.btn-light:hover{
-    color: #7e8299;
- 
-}
-
 
 
 

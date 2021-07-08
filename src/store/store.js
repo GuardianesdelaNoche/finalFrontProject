@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { authReducer } from './reducers/authReducer';
 import { uiReducer } from './reducers/uiReducer';
 
-// import * as api from '../api';
+import * as api from '../api';
 
 
 const reducers = combineReducers({
@@ -14,6 +14,6 @@ const reducers = combineReducers({
 
 
 export const configureStore = ({ preloadedState, history }) => {
-    const middlewares = [thunk.withExtraArgument({ history })];
+    const middlewares = [thunk.withExtraArgument({ api, history })];
     return createStore(reducers, preloadedState, composeWithDevTools(applyMiddleware(...middlewares)))
 };

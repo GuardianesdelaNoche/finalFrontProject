@@ -1,3 +1,4 @@
+/* Commons */
 
 html,
 body {
@@ -19,8 +20,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-    color: #20d489 !important;
-    font-weight: 600!important;
+    color: #20d489;
     text-decoration: none;
     background-color: transparent;
     cursor: pointer;
@@ -30,20 +30,63 @@ a, a:hover {
     transition: color .2s ease,background-color .2s ease;
     text-decoration: none !important;
    
-
+}
+/* ----Text */
+.text-description {
+    color: #a1a5b7!important;
+    font-size: 1.075rem!important;
 }
 
+.text-dark {
+    color: #181c32!important;
+}
+/* ----Fonts */
+.fs-3 {
+    font-size: 1.35rem!important;
+}
+
+.fw-bolder {
+    font-weight: 600!important;
+}
+
+/* ----Espaces */
+.me-2 {
+    margin-right: .5rem!important;
+}
+
+.pt-12 {
+    padding-top: 3rem!important;
+}
+
+
+/* Navbar */
+.navbar-brand{
+    font-weight: 700;
+}
+
+/* Menu */
+.menu-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    padding: .65rem 1rem;
+    transition: none;
+    outline: 0!important;
+    color: #7e8299;
+}
+.menu-item:hover{
+    color: #20d489;
+}
+
+/* Main */
 .container.main {
     max-width: 1140px;
     padding: 60px 0px;
 }
 
-.text-muted {
-    color: #a1a5b7!important;
-}
-.me-2 {
-    margin-right: .5rem!important;
-}
+
+/* Buttons */
 .btn.btn-primary {
     color: #fff;
     border-color: #20d489;
@@ -58,7 +101,6 @@ a, a:hover {
 
 }
 
-
 .btn.btn-light {
     color: #7e8299;
     border-color: #f5f8fa;
@@ -71,6 +113,8 @@ a, a:hover {
 }
 
 
+
+
 .card.card-stretch {
     height: calc(100% - var(--bs-gutter-y));
     border: 0px solid rgba(0,0,0,.125);
@@ -78,8 +122,10 @@ a, a:hover {
 .card {
     box-shadow: 0 0 20px 0 rgb(76 87 125 / 2%);
     border: 0;
-
 }
+
+
+/* Homepage */
 
 .card>.card-header {
     display: -webkit-flex;
@@ -97,6 +143,7 @@ a, a:hover {
 .card>.card-body, .card>.card-footer {
     padding: 2rem 2.25rem;
 }
-.pt-12 {
-    padding-top: 3rem!important;
-}
+
+
+
+

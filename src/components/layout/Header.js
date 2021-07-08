@@ -10,12 +10,12 @@ function Header() {
 		<header>
 			<Navbar bg="light" variant="light" fixed="top">
 				<Container>
-					<Navbar.Brand href="/">AppName</Navbar.Brand>
+					<Navbar.Brand href="/">4EVENTS</Navbar.Brand>
 					<Nav className="me-auto">
 						
 						<NavLink
 							to="/events/new"
-							className="me-2"
+							className="menu-item"
 							isActive={isExact}
 						>
 							 New Event

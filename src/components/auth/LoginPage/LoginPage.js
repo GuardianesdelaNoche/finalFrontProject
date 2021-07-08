@@ -42,7 +42,7 @@ function LoginPage () {
                         </p>
                     </Alert>
                 )}
-                <Link to="/remember" className="form-label">
+                <Link to="/remember" className="form-label text-primary">
                     <FormattedMessage
                         id="login.remember"
                         defaultMessage="Forgot your password?"
@@ -53,7 +53,7 @@ function LoginPage () {
                         id="login.newAcount"
                         defaultMessage="New here? "
                     />
-                <Link to="/register"> 
+                    <Link to="/register" className="form-label text-primary">
                         <FormattedMessage
                             id="login.createAcount"
                             defaultMessage="Create Account"

@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction } from '../../../store/actions/ui';
+import { setRegister } from '../../../api/register';
 import { getUi } from '../../../store/selectors/ui'; 
 
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './RegisterForm';
-
+import './register.css';
 
 function RegisterPage () {
 
@@ -14,11 +15,12 @@ function RegisterPage () {
 
     const { loading, error } = useSelector(getUi);
 
-    const handleSubmit = (credentials)=>{
-       // dispatch(loginRegister(credentials))
+    const handleSubmit = (registerData)=>{
+        
+        setRegister(registerData);
     }
     const handleResetError = ()=>{
-       // dispatch(resetErrorAction())
+        dispatch(resetErrorAction())
     }
     return (
         <div className="main-content">

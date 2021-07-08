@@ -19,7 +19,8 @@ function RegisterForm ({onSubmit}) {
 		nickname:'',
 	});
 
-    const { username, email, role, password, nickname } = registerData;   
+
+    const { username, email, password, nickname } = registerData;   
     
 
     return (
@@ -52,6 +53,7 @@ function RegisterForm ({onSubmit}) {
 					</label>
 					<Input
 						type="text"
+                        name="nickname"
 						label="nickname"                   
                         required
 						placeholder="nickname"
@@ -69,6 +71,7 @@ function RegisterForm ({onSubmit}) {
 					</label>
                     <Input              
                         label="email"
+                        name="email"
                         className="form-control"                    
                         required
                         placeholder="name@example.com"
@@ -88,6 +91,7 @@ function RegisterForm ({onSubmit}) {
 					<Input
 						type="password"
 						label="password"
+                        name="password"
                         required
 						placeholder="********"
 						className="form-control"
@@ -96,25 +100,13 @@ function RegisterForm ({onSubmit}) {
 					/>
 				</div>
 
-                {/* <div className="form-container">
-				
-					<Input
-						type="hidden"
-						label="role"
-                        autoFocus="false"
-                        isRequired="false"
-						placeholder=""
-						className="form-control"
-						value={password}
-						onChange={handleChange}
-					/>
-				</div> */}
+            
 
 	
 
 			<button
 				className="btn btn-primary"
-			 type="submit">
+			    type="submit">
 				<FormattedMessage
 					id="register.form.button"
 					defaultMessage="Register"

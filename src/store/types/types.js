@@ -4,9 +4,9 @@ export const types = {
     authLoginError: 'AUTH Login Error',
 
     uiResetError: 'UI Reset Error',
-
-    registerRequest: 'REGISTER Request',
-    registerSuccess: 'REGISTER Success',
-    registerError: 'REGISTER Error'    
+    uiSetLoading: 'UI Set Loading',
+    uiSetError: 'UI Set Error',
+    uiResetLoading: 'UI Reset Loading',
+     
 
 }

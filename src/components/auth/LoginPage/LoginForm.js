@@ -3,7 +3,10 @@ import React from 'react';
 import useForm from '../../../hooks/useForm';
 import { FormattedMessage } from 'react-intl';
 import Button from '../../shared/Button';
+import {Checkbox, Input, ButtonMenu, NotFound, } from '../../shared/index'
 import './login.css'
+import { Children } from 'react';
+
 
 function LoginForm({onSubmit}) {
 
@@ -53,24 +56,18 @@ function LoginForm({onSubmit}) {
 						name="password"
 						placeholder="********"
 						className="form-control"
-						value={password}
-						onChange={handleChange}
+						
 					/>
+				
 				</div>
 
-				<div className="checkbox mb-3">
-				<input
-					type="checkbox"
-					name="remember"
-					className="checkbox"
-					checked={remember}
-					onChange={handleChange}
-					/> 
+				<Checkbox onChange={handleChange} >
 					<FormattedMessage
-						id="login.formLabel.remember"
-						defaultMessage="Remember me"
+					id="login.formLabel.remember"
+					defaultMessage="Remember me"
 					/>
-			</div>
+				</Checkbox>		
+		
 
 			<Button variant="primary">
 				<FormattedMessage
@@ -79,6 +76,16 @@ function LoginForm({onSubmit}) {
 				/>
 			</Button>
 
+			
+			<div className="form-container">
+				<label className="form-label">
+					<FormattedMessage
+						id="login.formLabel.pass"
+						defaultMessage="Password"
+					/>
+				</label>
+				<Input placeholder="*********" />
+			</div>
 		</form>
 	)
 }

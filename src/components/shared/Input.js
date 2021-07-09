@@ -5,7 +5,7 @@ import pT from 'prop-types';
 import './Input.css';
 
 
-function Input({ className, label, autoFocus, isRequired,  ...props }) {
+function Input({ className, autoFocus, isRequired,placeholder, ...props }) {
   const inputRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -13,7 +13,6 @@ function Input({ className, label, autoFocus, isRequired,  ...props }) {
       inputRef.current.focus()
     }
     
-
   }, [autoFocus])
 
   return (
@@ -24,19 +23,16 @@ function Input({ className, label, autoFocus, isRequired,  ...props }) {
         className
       )}
     >
-      <div className="formField-input">      
-        <span>{label}:</span>
         <input
-          className="css-yk16xz-control"
+          type="password"
+          name="password"
           autoComplete="off"
+          placeholder={placeholder}
+          className="form-control"
           ref={inputRef}
-          required = {isRequired? 'required': ''}
+          required={isRequired ? 'required' : ''}
           {...props}
-          
-          
-        ></input>
-      
-      </div>
+        />
     </div>
   );
 }

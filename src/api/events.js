@@ -8,7 +8,5 @@ const mapEvent = ({ photo, ...event }) => ({
 });
 
 export const getEvents = () => {
-   const events = client.get(`${eventsPath}`);
-   console.log(events);
-  return client.get(`${eventsPath}`).then(eve => {return eve.map(mapEvent)});
+  return client.get(`${eventsPath}`).then(eve => eve);
 };

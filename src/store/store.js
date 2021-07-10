@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { authReducer } from './reducers/authReducer';
 import { uiReducer } from './reducers/uiReducer';
 
-// import * as api from '../api';
+//import * as api from '../api';
 
 
 const reducers = combineReducers({

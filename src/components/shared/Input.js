@@ -39,7 +39,7 @@ function Input({ className, autoFocus, isRequired,placeholder, ...props }) {
 
 Input.propTypes = {
   className: pT.string,
-  label: pT.string.isRequired,
+  label: pT.string,
   autoFocus: pT.bool,
   
 }

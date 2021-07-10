@@ -3,29 +3,28 @@ import React from 'react';
 import useForm from '../../../hooks/useForm';
 import { FormattedMessage } from 'react-intl';
 import Button from '../../shared/Button';
-import {Checkbox, Input, ButtonMenu, NotFound, } from '../../shared/index'
+import {Checkbox} from '../../shared/index'
 import './login.css'
-import { Children } from 'react';
+
 
 
 function LoginForm({onSubmit}) {
 
 	const {
-		formValue: credentials, 
+		formValue: credentials,
 		handleChange,
-		handleSubmit,
+		handleSubmit
 	} = useForm({
-		email:'',
-		password:'',
-		remember:false,
-	})
-
+		email: '',
+		password: '',
+		remember: false,
+	});
 	const { email, password, remember } = credentials;
-
 	 
 	return (
 		<form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 
+	
 				<div className="form-container">
 					<label className="form-label">
 						<FormattedMessage
@@ -56,19 +55,23 @@ function LoginForm({onSubmit}) {
 						name="password"
 						placeholder="********"
 						className="form-control"
-						
+						value={password}
+					onChange={handleChange}
 					/>
-				
+
 				</div>
 
-				<Checkbox onChange={handleChange} >
-					<FormattedMessage
-					id="login.formLabel.remember"
-					defaultMessage="Remember me"
-					/>
-				</Checkbox>		
-		
-
+			<div className="form-check form-check-custom form-check-solid">
+				<input
+					type="checkbox"
+					name="remember"
+					checked={remember}
+					className='form-check-input'
+					onChange={handleChange}
+				/> Remember me
+				</div>
+				
+	
 			<Button variant="primary">
 				<FormattedMessage
 					id="login.form.button"
@@ -78,13 +81,13 @@ function LoginForm({onSubmit}) {
 
 			
 			<div className="form-container">
-				<label className="form-label">
+				{/* <label className="form-label">
 					<FormattedMessage
 						id="login.formLabel.pass"
 						defaultMessage="Password"
 					/>
 				</label>
-				<Input placeholder="*********" />
+				<Input placeholder="*********"  /> */}
 			</div>
 		</form>
 	)

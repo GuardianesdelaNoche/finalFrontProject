@@ -1,4 +1,5 @@
 import { types } from "../types/types";
+import {login} from '../../api/login'
 
 export const authLoginRequest = () => ({
 type: types.authLoginRequest
@@ -19,8 +20,9 @@ export const loginAction = credentials => {
         dispatch(authLoginRequest());
         try {
             // TODO - Add Endpoint to Login
-            //await api.auth.login(credentials);
-            dispatch(authLoginSuccess());
+            const logged = await login(credentials);
+            dispatch(authLoginSuccess(logged));
+
             // Redirect
             const { from } = history.location.state || { from: { pathname: '/' } };
             history.replace(from);

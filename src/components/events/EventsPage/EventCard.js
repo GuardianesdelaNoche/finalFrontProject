@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { BsFillCalendarFill, BsFillClockFill, BsCalendar, BsClock } from 'react-icons/bs';
 import { CollapseText } from "../../shared/CollapseText";
 var moment = require("moment");
 
@@ -20,21 +21,21 @@ function EventCard(event) {
         </Card.Title>
         <div className="d-flex flex-row justify-content-between">
           <Card.Subtitle className="mb-2 text-muted">
-            {moment(new Date(event.date)).format("DD-MM-YYYY")}
+          <BsCalendar /> {moment(new Date(event.date)).format("DD-MM-YYYY")}
           </Card.Subtitle>
           <Card.Subtitle className="mb-2 text-muted">
-            {event.duration} h
+           <BsClock /> {event.duration} h
           </Card.Subtitle>
         </div>
         <Card.Text>{event.description}</Card.Text>
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <CollapseText>{event.description}</CollapseText>
-        </div>
+        </div> */}
         <Card.Text>
-          Plazas disponibles: {event.max_places - event._id_assistants.length}
+          Plazas disponibles: <span className='float-right'>{event.max_places - event._id_assistants.length}</span>
           <br></br>
           Actividad:{" "}
-          {event.indoor ? <span>Cubierta</span> : <span>Aire libre</span>}
+          <span className='float-right'>{event.indoor ? 'Cubierta' : 'Aire libre'}</span>
         </Card.Text>
         <Card.Text>{event.tags.map((tag) => `#${tag}`)}</Card.Text>
       </Card.Body>

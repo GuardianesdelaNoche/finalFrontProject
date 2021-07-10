@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CollapseText } from "../../shared/CollapseText";
+var moment = require("moment");
 
 function EventCard(event) {
   return (
@@ -19,7 +20,7 @@ function EventCard(event) {
         </Card.Title>
         <div className="d-flex flex-row justify-content-between">
           <Card.Subtitle className="mb-2 text-muted">
-            {event.date}
+            {moment(new Date(event.date)).format("DD-MM-YYYY")}
           </Card.Subtitle>
           <Card.Subtitle className="mb-2 text-muted">
             {event.duration} h

@@ -15,6 +15,7 @@ export const uiReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: null };
     case types.authLoginError:
     case types.uiSetError:
+      console.log("error", action.payload)
       return { ...state, loading: false, error: action.payload };
     case types.uiResetError:
       return { ...state, error: null };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetErrorAction } from '../../../store/actions/ui';
+import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { setRegister } from '../../../api/register';
 import { getUi } from '../../../store/selectors/ui'; 
 
@@ -16,8 +16,19 @@ function RegisterPage () {
     const { loading, error } = useSelector(getUi);
 
     const handleSubmit = (registerData)=>{
-        
-        setRegister(registerData);
+        try {
+            console.log("haciendo llamada");
+            dispatch(setLoadingAction);
+            setRegister(registerData)
+                    
+        } catch (error) {
+            console.log("se ha producido un error");
+            dispatch(setErrorAction(error));
+        } finally 
+        {
+            dispatch(resetLoadingAction);
+        }
+
     }
     const handleResetError = ()=>{
         dispatch(resetErrorAction())

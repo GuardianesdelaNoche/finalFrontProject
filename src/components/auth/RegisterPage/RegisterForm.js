@@ -19,10 +19,8 @@ function RegisterForm ({onSubmit}) {
 		nickname:'',
 	});
 
-
     const { username, email, password, nickname } = registerData;   
     
-
     return (
 		<form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 
@@ -100,17 +98,13 @@ function RegisterForm ({onSubmit}) {
 					/>
 				</div>
 
-            
-
-	
-
 			<button
 				className="btn btn-primary"
 			    type="submit">
-				<FormattedMessage
-					id="register.form.button"
-					defaultMessage="Register"
-				/>
+                    <FormattedMessage
+                        id="register.form.button"
+                        defaultMessage="Register"
+                    />
 			</button>
         </div>
 		</form>

@@ -32,60 +32,41 @@ function EventCard(event) {
             className="float-right"
             variant="secondary"
             onClick={handleAddEventFavs}
-            onClick={() => console.log("press button true")}
-            // active={false}
+            active={false} //depends fav events list user
           >
             <RiBookmark3Line />
           </Button>
         ) : (
-          // <Button className="float-right" variant="secondary" onClick={handleAddEventFavs} disabled={!isLogged}>
-          //   <RiBookmark3Line />
-          // </Button>
-          // <OverlayTrigger
-          //   overlay={
-          //     <Tooltip id="button-fav">
-          //       <FormattedMessage
-          //         id="eventCard.overlay.registerLogin"
-          //         defaultMessage="Register or Login"
-          //       />
-          //     </Tooltip>
-          //   }
-          // >
-            <div className="Container">
-              <span className="float-right">
-                <OverlayTrigger
-                  overlay={
-                    <Tooltip id="button-fav">
-                      <FormattedMessage
-                        id="eventCard.overlay.registerLogin"
-                        defaultMessage="Register or Login"
-                      />
-                    </Tooltip>
-                  }
+          <div className="Container">
+            <span className="float-right">
+              <OverlayTrigger
+                overlay={
+                  <Tooltip id="button-fav">
+                    <FormattedMessage
+                      id="eventCard.overlay.registerLogin"
+                      defaultMessage="Register or Login"
+                    />
+                  </Tooltip>
+                }
+              >
+                <Button
+                  className="ribbon"
+                  // active={false}
+                  variant="secondary"
                 >
-                  <Button
-                    className="ribbon"
-                    // disabled
-                    // style={{ pointerEvents: "none" }}
-                    variant="secondary"
-                    onClick={() => console.log("press button false")}
-                  >
-                    <RiBookmark3Line />
-                  </Button>
-                </OverlayTrigger>
-                <Link key={event._id} to={`/event/${event._id}`}>
-                  <Card.Img variant="top" src={event.photo} />
-                </Link>
-              </span>
-            </div>
-          // </OverlayTrigger>
+                  <RiBookmark3Line />
+                </Button>
+              </OverlayTrigger>
+              <Link key={event._id} to={`/event/${event._id}`}>
+                <Card.Img variant="top" src={event.photo} />
+              </Link>
+            </span>
+          </div>
         )}
       </div>
       <Link key={event._id} to={`/event/${event._id}`}>
         <Card.Body>
-          {/* <Link key={event._id} to={`/event/${event._id}`}> */}
           <Card.Title>{event.title}</Card.Title>
-          {/* </Link> */}
           <Card.Title style={{ display: "flex", justifyContent: "flex-end" }}>
             {event.price} €
           </Card.Title>

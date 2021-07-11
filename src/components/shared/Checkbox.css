@@ -1,8 +1,19 @@
-.rowCheckbox {
-  
-    columns: auto
-  }
-.labelCheckbox {
-    margin-left: 10px;
+
+.form-check {
+    padding-left: 0;
+    margin: 0;
+    min-height: 1.5rem;
+    padding: 0px 20px 30px;
+    text-align: left;
 }
-  
+.form-check-input{
+    border: 0;
+}
+.form-check.form-check-solid .form-check-input:checked {
+    background-color: #20d489 !important;
+}
+
+.form-check-input[type=checkbox] {
+    background-size: 60% 60%;
+}
+

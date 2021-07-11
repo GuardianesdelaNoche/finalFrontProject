@@ -50,20 +50,26 @@ function EventCard(event) {
             </Tooltip>
           }
         >
-          <span className="float-right">
-            <Button
-              disabled
-              style={{ pointerEvents: "none" }}
-              variant="secondary"
-            >
-              <RiBookmark3Line />
-            </Button>
-          </span>
+          <div className="Container">
+              <span className="float-right">
+                <Button
+                  className="ribbon"
+                  disabled
+                  style={{ pointerEvents: "none" }}
+                  variant="secondary"
+                >
+                  <RiBookmark3Line />
+                </Button>
+                
+                  <Card.Img variant="top" src={event.photo} />
+             
+              </span>
+           </div>
         </OverlayTrigger>
       )}
-      <Link key={event._id} to={`/event/${event._id}`}>
-        <Card.Img variant="top" src={event.photo} />
-      </Link>
+        
+          
+        
       </div>
       <Card.Body>
         <Link key={event._id} to={`/event/${event._id}`}>

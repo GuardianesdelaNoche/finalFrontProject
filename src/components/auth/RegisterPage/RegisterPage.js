@@ -20,19 +20,16 @@ function RegisterPage ({history}) {
         try {
             handleResetError();
             dispatch(setLoadingAction());
-            const register = await setRegister(registerData);
+            await setRegister(registerData);
             dispatch(resetLoadingAction);
             history.push("/login");
 
-            console.log("pasa despues consuluta", register);        
         } catch (error) {  
-            
             dispatch(setErrorAction(error.errors));
         } finally 
         {
             dispatch(resetLoadingAction);
         }
-
     }
     const handleResetError = ()=>{
         dispatch(resetErrorAction())
@@ -56,8 +53,7 @@ function RegisterPage ({history}) {
                         <p className="mb-0">
                             {error[0].msg}
                         </p>
-                    </Alert>
-            
+                    </Alert>           
                     
                 }
              

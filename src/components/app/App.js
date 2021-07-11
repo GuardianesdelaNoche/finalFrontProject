@@ -18,7 +18,7 @@ function App() {
       </Route>
       <Route exact path="/events" component={EventsPage} />
       <Route exact path="/register">
-        <RegisterPage />
+        {routeProps => <RegisterPage {...routeProps} />}
       </Route>
       <Route exact path="/">
         <Redirect to="/events" />

@@ -9,20 +9,23 @@ import { FormattedMessage } from 'react-intl';
 import RegisterForm from './RegisterForm';
 import './register.css';
 
-function RegisterPage () {
+function RegisterPage ({history}) {
 
     const dispatch = useDispatch();
 
     const { loading, error } = useSelector(getUi);
 
-    const handleSubmit = (registerData)=>{
+    const handleSubmit = async (registerData)=>{
         try {
-            console.log("haciendo llamada");
-            dispatch(setLoadingAction);
-            setRegister(registerData)
-                    
+            handleResetError();
+            dispatch(setLoadingAction());
+            const register = await setRegister(registerData);
+            dispatch(resetLoadingAction);
+            history.push("/login");
+
+            console.log("pasa despues consuluta", register);        
         } catch (error) {
-            console.log("se ha producido un error");
+            console.log(error);
             dispatch(setErrorAction(error));
         } finally 
         {
@@ -48,7 +51,7 @@ function RegisterPage () {
                 {error && (	
                     <Alert onClick={handleResetError} variant="danger">
                         <p className="mb-0">
-                            {error.message}
+                            {error}
                         </p>
                     </Alert>
                 )}

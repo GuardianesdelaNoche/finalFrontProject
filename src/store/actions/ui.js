@@ -12,7 +12,7 @@ export const setLoadingAction = () => {
   };
 };
 
-export const setErrorAction = () => {
+export const setErrorAction = error => {
   return {
     type: types.uiSetError
   };

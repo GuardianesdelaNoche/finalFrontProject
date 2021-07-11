@@ -5,6 +5,7 @@ import storage from "./utils/storage";
 import Root from './components/root';
 import { configureClient } from "./api/client";
 import { configureStore } from './store/store';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { IntlProvider } from 'react-intl';
 import Spanish from './lang/es.json';

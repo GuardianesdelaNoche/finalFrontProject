@@ -8,10 +8,10 @@ const setAuthorizationHeader = token => {
 };
 
 const setCorsHeader = () => {
-    client.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
+    client.defaults.headers.common['access-control-allow-origin'] = "*";
     client.defaults.headers.common['Access-Control-Allow-Headers'] = "Origin, X-Requested-With, Content-Type, Accept";
     client.defaults.headers.common['Content-Type'] = "application/json";    
-    client.defaults.mode = 'no-cors';
+    
 
 }
 

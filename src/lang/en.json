@@ -7,5 +7,6 @@
     "register.formLabel.nickname":"Nickname",
     "register.formLabel.email":"Email",
     "register.formLabel.pass":"Password",
-    "register.formLabel.role":"Role"
+    "register.formLabel.role":"Role", 
+    "register.form.button":"Register"
 }

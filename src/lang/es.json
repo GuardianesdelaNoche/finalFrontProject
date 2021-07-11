@@ -9,5 +9,10 @@
     "login.formLabel.email": "Email",
     "login.formLabel.pass": "Contraseña",
     "login.formLabel.remember": "Recuérdame",
-    "login.form.button": "Entrar"
+    "login.form.button": "Entrar",
+    "eventCard.overlay.registerLogin": "Regístrate o Login",
+    "eventCard.availableSeats": "Plazas disponibles",
+    "eventCard.activity": "Actividad",
+    "eventCard.outdoor": "Aire libre",
+    "eventCard.indoor": "Interior"
 }

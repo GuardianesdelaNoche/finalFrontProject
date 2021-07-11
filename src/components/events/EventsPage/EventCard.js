@@ -27,109 +27,121 @@ function EventCard(event) {
   return (
     <Card className="card-stretch">
       <div>
-      {isLogged ? (
-        <Button
-          className="float-right"
-          variant="secondary"
-          onClick={handleAddEventFavs}
-          active={false}
-        >
-          <RiBookmark3Line />
-        </Button>
-      ) : (
-        // <Button className="float-right" variant="secondary" onClick={handleAddEventFavs} disabled={!isLogged}>
-        //   <RiBookmark3Line />
-        // </Button>
-        <OverlayTrigger
-          overlay={
-            <Tooltip id="button-fav">
-              <FormattedMessage
-                id="eventCard.overlay.registerLogin"
-                defaultMessage="Register or Login"
-              />
-            </Tooltip>
-          }
-        >
-          <div className="Container">
+        {isLogged ? (
+          <Button
+            className="float-right"
+            variant="secondary"
+            onClick={handleAddEventFavs}
+            onClick={() => console.log("press button true")}
+            // active={false}
+          >
+            <RiBookmark3Line />
+          </Button>
+        ) : (
+          // <Button className="float-right" variant="secondary" onClick={handleAddEventFavs} disabled={!isLogged}>
+          //   <RiBookmark3Line />
+          // </Button>
+          // <OverlayTrigger
+          //   overlay={
+          //     <Tooltip id="button-fav">
+          //       <FormattedMessage
+          //         id="eventCard.overlay.registerLogin"
+          //         defaultMessage="Register or Login"
+          //       />
+          //     </Tooltip>
+          //   }
+          // >
+            <div className="Container">
               <span className="float-right">
-                <Button
-                  className="ribbon"
-                  disabled
-                  style={{ pointerEvents: "none" }}
-                  variant="secondary"
+                <OverlayTrigger
+                  overlay={
+                    <Tooltip id="button-fav">
+                      <FormattedMessage
+                        id="eventCard.overlay.registerLogin"
+                        defaultMessage="Register or Login"
+                      />
+                    </Tooltip>
+                  }
                 >
-                  <RiBookmark3Line />
-                </Button>
-                
+                  <Button
+                    className="ribbon"
+                    // disabled
+                    // style={{ pointerEvents: "none" }}
+                    variant="secondary"
+                    onClick={() => console.log("press button false")}
+                  >
+                    <RiBookmark3Line />
+                  </Button>
+                </OverlayTrigger>
+                <Link key={event._id} to={`/event/${event._id}`}>
                   <Card.Img variant="top" src={event.photo} />
-             
+                </Link>
               </span>
-           </div>
-        </OverlayTrigger>
-      )}
-        
-          
-        
+            </div>
+          // </OverlayTrigger>
+        )}
       </div>
-      <Card.Body>
-        <Link key={event._id} to={`/event/${event._id}`}>
+      <Link key={event._id} to={`/event/${event._id}`}>
+        <Card.Body>
+          {/* <Link key={event._id} to={`/event/${event._id}`}> */}
           <Card.Title>{event.title}</Card.Title>
-        </Link>
-        <Card.Title style={{ display: "flex", justifyContent: "flex-end" }}>
-          {event.price} €
-        </Card.Title>
-        <div className="d-flex flex-row justify-content-between">
-          <Card.Subtitle className="mb-2 text-muted">
-            <BsCalendar /> {moment(new Date(event.date)).format("DD-MM-YYYY")}
-          </Card.Subtitle>
-          <Card.Subtitle className="mb-2 text-muted">
-            <BsClock /> {event.duration} h
-          </Card.Subtitle>
-        </div>
-        <Card.Text>{event.description}</Card.Text>
-        {/* <div className="mb-3">
+          {/* </Link> */}
+          <Card.Title style={{ display: "flex", justifyContent: "flex-end" }}>
+            {event.price} €
+          </Card.Title>
+          <div className="d-flex flex-row justify-content-between">
+            <Card.Subtitle className="mb-2 text-muted">
+              <BsCalendar /> {moment(new Date(event.date)).format("DD-MM-YYYY")}
+            </Card.Subtitle>
+            <Card.Subtitle className="mb-2 text-muted">
+              <BsClock /> {event.duration} h
+            </Card.Subtitle>
+          </div>
+          <Card.Text>{event.description}</Card.Text>
+          {/* <div className="mb-3">
           <CollapseText>{event.description}</CollapseText>
         </div> */}
-        <Card.Body className="d-flex flex-column justify-content-between">
-          <div>
-            <FormattedMessage
-              id="eventCard.availableSeats"
-              defaultMessage="Available seats"
-            />
-            <span className="float-right">
-              {event.max_places - event._id_assistants.length}
-            </span>
-          </div>
-          <div>
-            <FormattedMessage
-              id="eventCard.activity"
-              defaultMessage="Activity"
-            />
-            <span className="float-right">
-              {event.indoor ? (
-                <div>
-                  <FormattedMessage
-                    id="eventCard.indoor"
-                    defaultMessage="Indoor"
-                  />
-                  <RiHome4Line />
-                </div>
-              ) : (
-                <div>
-                  <FormattedMessage
-                    id="eventCard.outdoor"
-                    defaultMessage="Outdoor"
-                  />
-                  <TiTree />
-                </div>
-              )}
-            </span>
+          <Card.Body className="d-flex flex-column justify-content-between">
+            <div>
+              <FormattedMessage
+                id="eventCard.availableSeats"
+                defaultMessage="Available seats"
+              />
+              <span className="float-right">
+                {event.max_places - event._id_assistants.length}
+              </span>
+            </div>
+            <div>
+              <FormattedMessage
+                id="eventCard.activity"
+                defaultMessage="Activity"
+              />
+              <span className="float-right">
+                {event.indoor ? (
+                  <div>
+                    <FormattedMessage
+                      id="eventCard.indoor"
+                      defaultMessage="Indoor"
+                    />
+                    <RiHome4Line />
+                  </div>
+                ) : (
+                  <div>
+                    <FormattedMessage
+                      id="eventCard.outdoor"
+                      defaultMessage="Outdoor"
+                    />
+                    <TiTree />
+                  </div>
+                )}
+              </span>
+            </div>
+          </Card.Body>
+          <div className="d-inline-flex flex-row justify-content-between">
+            <Card.Text>{event.tags.map((tag) => `#${tag}`)}</Card.Text>
           </div>
         </Card.Body>
-        <div className="d-inline-flex flex-row justify-content-between">
-          <Card.Text>{event.tags.map((tag) => `#${tag}`)}</Card.Text>
-        </div>
-      </Card.Body>
+      </Link>
     </Card>
   );
 }

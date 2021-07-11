@@ -15,6 +15,7 @@ function RegisterPage ({history}) {
 
     const { loading, error } = useSelector(getUi);
 
+
     const handleSubmit = async (registerData)=>{
         try {
             handleResetError();
@@ -24,9 +25,9 @@ function RegisterPage ({history}) {
             history.push("/login");
 
             console.log("pasa despues consuluta", register);        
-        } catch (error) {
-            console.log(error);
-            dispatch(setErrorAction(error));
+        } catch (error) {  
+            
+            dispatch(setErrorAction(error.errors));
         } finally 
         {
             dispatch(resetLoadingAction);
@@ -36,6 +37,8 @@ function RegisterPage ({history}) {
     const handleResetError = ()=>{
         dispatch(resetErrorAction())
     }
+
+  
     return (
         <div className="main-content">
             <main className="form-signin">
@@ -48,13 +51,15 @@ function RegisterPage ({history}) {
                 {loading && <Spinner animation="border" />}
                 <RegisterForm onSubmit={handleSubmit} />
 
-                {error && (	
+                {error && 
                     <Alert onClick={handleResetError} variant="danger">
                         <p className="mb-0">
-                            {error}
+                            {error[0].msg}
                         </p>
                     </Alert>
-                )}
+            
+                    
+                }
              
             </main>           
         </div>

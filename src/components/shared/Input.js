@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import pT from 'prop-types';
-import { GroupInput, InputC, ValidationIcon, Label } from './elements/formElements';
+import { GroupInput, InputC, ValidationIcon, Label,  ErrorLegend } from './elements/formElements';
 
 import './Input.css';
 
-function Input({ className, label, autoFocus, isRequired, icon,  ...props }) {
+function Input({ className, label, autoFocus, isRequired, icon, id, legend,   ...props }) {
   const inputRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -23,16 +23,18 @@ function Input({ className, label, autoFocus, isRequired, icon,  ...props }) {
       )}
     >
       <GroupInput>   
-      <Label className="form-label">
+      <Label htmlFor={id} >
 						{label}
 					</Label>          
         <InputC          
           autoComplete="off"
+          id={id}
           ref={inputRef}
           required = {isRequired? 'required': ''}
           {...props} 
         ></InputC>
         <ValidationIcon icon={icon}/>      
+        <ErrorLegend>{legend}</ErrorLegend>
       </GroupInput>
     </div>
   );
@@ -41,7 +43,10 @@ function Input({ className, label, autoFocus, isRequired, icon,  ...props }) {
 Input.propTypes = {
   className: pT.string,  
   autoFocus: pT.bool,
-  icon: pT.string.isRequired
+  icon: pT.string.isRequired,
+  legend:pT.string.isRequired,
+
+  id: pT.string.isRequired
   
 }
 

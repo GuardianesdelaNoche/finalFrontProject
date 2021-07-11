@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/Input';
 import Checkbox from '../../shared/Checkbox';
 import useForm from '../../hooks/useForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Form, Label,  ErrorLegend} from '../../shared/elements/formElements';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { ContentBottomCentent, Form } from '../../shared/elements/formElements';
+import { faCheckCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import './RegisterPage.css';
 
@@ -22,96 +23,76 @@ function RegisterForm ({onSubmit}) {
 		password:'',
 		nickname:'',
 	});
+	const intl = useIntl();
 
     const { username, email, password, nickname } = registerData;   
-	const usrFormmatedMessage = () => { return (<FormattedMessage
-			id="register.formLabel.username"
-			defaultMessage="sername"
-		/>);};
 
-	const nicknameFormmatedMessage = () => <FormattedMessage
-			id="register.formLabel.nickname"
-			defaultMessage="Nickname"
-	/>;
-    
-	console.log("texto222", usrFormmatedMessage);
     return (
 		<Form  className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-container">
-                <div className="form-container">
-					
+                
 					<Input
 						type="text"
-						label= {usrFormmatedMessage}
+						label= {intl.formatMessage({ id: 'register.formLabel.username'})}
 						name="username"
+						id="username"
 						placeholder="username"
-						className="form-control"
 						value={username}
 						onChange={handleChange}
 						icon={faCheckCircle}
+						legend={"mensaje description error"}
                         required
 					/>
-					<ErrorLegend>Lorem ipsum dolot sit amet</ErrorLegend>
-				</div>    
-                <div className="form-container">
-					{/* <Label className="form-label">
-						<FormattedMessage
-							id="register.formLabel.nickname"
-							defaultMessage="Nickname"
-						/>
-					</Label> */}
+					
+				
+                
 					<Input
 						type="text"
                         name="nickname"
-						label={nicknameFormmatedMessage}                   
+						id="nickname"
+						label={intl.formatMessage({ id: 'register.formLabel.nickname'})}                   
                         required
 						placeholder="nickname"
 						value={nickname}
+						icon={faCheckCircle}
+						legend={"mensaje"}
 						onChange={handleChange}
 					/>
-					<ErrorLegend>Lorem ipsum dolot sit amet</ErrorLegend>
-				</div>
-                <div className="form-container">
-					<Label className="form-label">
-						<FormattedMessage
-							id="register.formLabel.email"
-							defaultMessage="Email"
-						/>
-					</Label>
-                    <Input              
-                        label="email"
-                        name="email"
-                        className="form-control"                    
-                        required
-                        placeholder="name@example.com"
-                        value={email}
-                        onChange={handleChange}
-					/>
-					<ErrorLegend>Lorem ipsum dolot sit amet</ErrorLegend>
-
-				</div>
-		
-				<div className="form-container">
-					<Label className="form-label">
-						<FormattedMessage
-							id="register.formLabel.pass"
-							defaultMessage="Password"
-						/>
-					</Label>
+					
 					<Input
-						type="password"
-						label="password"
-                        name="password"
+						type="text"
+                        name="email"
+						id="email"
+						label={intl.formatMessage({ id: 'register.formLabel.email'})}                   
                         required
-						placeholder="********"
-						className="form-control"
-						value={password}
+						placeholder="xxxx@xxxx.com"
+						value={email}
+						icon={faCheckCircle}
+						legend={"mensaje"}
 						onChange={handleChange}
 					/>
-					<ErrorLegend>Lorem ipsum dolot sit amet</ErrorLegend>
-				</div>
+                
+				<Input
+						type="password"
+                        name="password"
+						id="password"
+						label={intl.formatMessage({ id: 'register.formLabel.pass'})}                   
+                        required
+						placeholder="******"
+						value={password}
+						icon={faCheckCircle}
+						legend={"mensaje password"}
+						onChange={handleChange}
+					/>
+				
+			<div>
+				<p>
+					<FontAwesomeIcon icon={faExclamationTriangle}/>
+					<b>Error:</b> Por favor rellena el formulario correctamente.
+				</p>
+			</div>
 
-
+			<ContentBottomCentent>
 
 			<button
 				className="btn btn-primary"
@@ -121,6 +102,8 @@ function RegisterForm ({onSubmit}) {
                         defaultMessage="Register"
                     />
 			</button>
+			<p>Formulario enviado correctamente!!</p>
+			</ContentBottomCentent>
         </div>
 		</Form>
 	) 

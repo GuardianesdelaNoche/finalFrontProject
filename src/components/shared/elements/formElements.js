@@ -22,6 +22,7 @@ const Label = styled.label`
     font-weight: 700;
     min-height:40px;
     cursor:pointer;
+    margin-bottom:-12px;
 `;
 
 
@@ -34,13 +35,14 @@ const GroupInput = styled.div`
 
 const InputC = styled.input`
     width: 100%;
-    background: #fff
-    border-radius: 3px;
+    background: #fff;    
     height: 45px;
     line-height:45px;
     padding:0 40px 0 10px;
     transition: .3s ease all;
     border: 3px solid transparent;
+    background:#E0E0E0;
+    border-radius:5px;
 
     &:focus {
         border:3px solid ${colors.edge};
@@ -60,10 +62,38 @@ const ErrorLegend = styled.p`
 const ValidationIcon = styled(FontAwesomeIcon)`
     position:absolute;
     right: 10px;
-    bottom: 14px;
+    bottom: 33px;
     z-index: 100;
     font-size: 16px;
     // opacity:0;
 `;
 
-export {Form, Label, GroupInput, InputC, ErrorLegend, ValidationIcon};
+const ContentBottomCentent = styled.div`
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    aling-items:center;
+
+`;
+
+const Button = styled.button `
+    height: 45px;
+    line-height: 45px;
+    width: 30%;
+    background: primary;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor:pointer;
+    transition: .1s ease all;
+`;
+
+export {Form,
+        Label,
+        GroupInput,
+        InputC,
+        ErrorLegend,
+        ValidationIcon,
+        ContentBottomCentent,
+        Button};

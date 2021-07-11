@@ -32,13 +32,11 @@ export const CollapseText = ({children}) => {
   return (
     <>
       <div
+        className="text-truncate"
         onMouseOver={() => setOpen(!open)}
         aria-controls="children-collapse-text"
         aria-expanded={open}
         style={{
-          overflow: "hidden",
-          whiteSpace: "nowrap",
-          textOverflow: "ellipsis",
           display: !open ? 'block' : 'none'
         }}
 

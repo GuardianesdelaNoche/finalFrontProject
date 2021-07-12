@@ -1,0 +1,1 @@
+export const getNumItemsPage = (state) => state.pagination.numItemsPage;

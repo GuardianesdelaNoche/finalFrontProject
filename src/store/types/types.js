@@ -7,7 +7,7 @@ export const types = {
 
     eventsLoadedRequest: 'EVENTS Loaded Request',
     eventsLoadedSuccess: 'EVENTS Loaded Success',
-    eventsLoadedError: 'EVENTS Loaded Error'
+    eventsLoadedError: 'EVENTS Loaded Error',
     
-
+    paginationSetNumItemsPage: 'PAGINATION Set Num Items Page'
 }

@@ -9,6 +9,7 @@
     "register.formLabel.pass":"Password",
     "register.formLabel.role":"Role",
     "register.form.button":"Register",
+    "register.validate.username":"Username must have at list 6 caracters",
     "login.title": "Welcome to Start",
     "login.remember":"Forgot your password",
     "login.newAcount": "New here?",

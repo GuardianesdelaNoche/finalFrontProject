@@ -3,12 +3,12 @@ import axios from 'axios';
 const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
 
 const setAuthorizationHeader = token => {
-    client.defaults.headers.common['x-access-token'] = token;
+    client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
 const removeAuthorizationHeader = () => {
     delete client.defaults.headers.common['x-access-token'];
-}; 
+};
 
 client.interceptors.response.use(
   response => response.data,

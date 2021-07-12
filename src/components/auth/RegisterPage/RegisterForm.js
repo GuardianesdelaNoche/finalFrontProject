@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
-import Input from '../../shared/Input';
-import Checkbox from '../../shared/Checkbox';
+import Input from '../../shared/components/Input';
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -17,11 +16,11 @@ function RegisterForm ({onSubmit}) {
 		handleChange,
 		handleSubmit,
 	} = useForm({
-        username:'',
-		email:'',
+        username:"",
+		email:"",
         role:1,
-		password:'',
-		nickname:'',
+		password:"",
+		nickname:"",
 	});
 	const intl = useIntl();
 
@@ -40,7 +39,7 @@ function RegisterForm ({onSubmit}) {
 						value={username}
 						onChange={handleChange}
 						icon={faCheckCircle}
-						legend={"mensaje description error"}
+						errorLegend={intl.formatMessage({ id: 'register.formLabel.usernregister.errorMessage.username'})}
                         required
 					/>
 					
@@ -55,7 +54,7 @@ function RegisterForm ({onSubmit}) {
 						placeholder="nickname"
 						value={nickname}
 						icon={faCheckCircle}
-						legend={"mensaje"}
+						errorLegend={"mensaje"}
 						onChange={handleChange}
 					/>
 					
@@ -68,7 +67,7 @@ function RegisterForm ({onSubmit}) {
 						placeholder="xxxx@xxxx.com"
 						value={email}
 						icon={faCheckCircle}
-						legend={"mensaje"}
+						errorLegend={"mensaje"}
 						onChange={handleChange}
 					/>
                 
@@ -81,7 +80,7 @@ function RegisterForm ({onSubmit}) {
 						placeholder="******"
 						value={password}
 						icon={faCheckCircle}
-						legend={"mensaje password"}
+						errorLegend={"mensaje password"}
 						onChange={handleChange}
 					/>
 				

@@ -43,6 +43,7 @@ const InputC = styled.input`
     border: 3px solid transparent;
     background:#E0E0E0;
     border-radius:5px;
+    margin-bottom:10px;
 
     &:focus {
         border:3px solid ${colors.edge};
@@ -56,7 +57,7 @@ const ErrorLegend = styled.p`
     font-size: 12px;
     margin-bottom: 0;
     color: ${colors.error};
-    /*display: none;*/
+    display: none;
 `;
 
 const ValidationIcon = styled(FontAwesomeIcon)`
@@ -65,7 +66,7 @@ const ValidationIcon = styled(FontAwesomeIcon)`
     bottom: 33px;
     z-index: 100;
     font-size: 16px;
-    // opacity:0;
+    opacity:0;
 `;
 
 const ContentBottomCentent = styled.div`
@@ -86,6 +87,7 @@ const Button = styled.button `
     border-radius: 3px;
     cursor:pointer;
     transition: .1s ease all;
+    margin-top:10px;
 
     &:hover {
         box-shadow: 3px 0px 30px rgba(163,163,163,1);
@@ -96,17 +98,21 @@ const Button = styled.button `
 const SuccessMessage = styled.p`
     font-size: 14px;
     color: ${colors.success};
-    //display: none
+    display: none
 `;
 
 const ErrorMessage = styled.div`
     height: 45px;
     line-height: 45px;
-    background: ${colors.error}
+    background: #F66060;
     padding: 0px 15px;
     border-radius: 3px;
     p {
         margin:0;
+    }
+
+    b {
+        margin-left:10px;
     }
 `;
 

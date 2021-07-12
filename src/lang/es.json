@@ -1,7 +1,6 @@
 {
     "app.header" : "Nombre de la app",
-    "app.content": "Contenido de la app",
-    "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
+    "app.content": "Contenido de la app",    
     "register.title": "Registro",
     "register.formLabel.username":"Nombre",
     "register.formLabel.nickname":"Apodo",
@@ -9,6 +8,7 @@
     "register.formLabel.pass":"Contraseña",
     "register.formLabel.role":"Tipo usuario",
     "register.form.button":"Registrar",
+    "register.validate.username":"El usuario debe tener al menos 8 caracteres",
     "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
     "login.title": "Bienvenido a ....",
     "login.remember": "¿Olvidó su contraseña?",

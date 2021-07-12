@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import pT from 'prop-types';
-import { GroupInput, InputC, ValidationIcon, Label,  ErrorLegend } from './elements/formElements';
+import { GroupInput, InputC, ValidationIcon, Label,  ErrorLegend } from '../elements/formElements';
 
 import './Input.css';
 
-function Input({ className, label, autoFocus, isRequired, icon, id, legend,   ...props }) {
+function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,   ...props }) {
   const inputRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -34,7 +34,7 @@ function Input({ className, label, autoFocus, isRequired, icon, id, legend,   ..
           {...props} 
         ></InputC>
         <ValidationIcon icon={icon}/>      
-        <ErrorLegend>{legend}</ErrorLegend>
+        <ErrorLegend>{errorLegend}</ErrorLegend>
       </GroupInput>
     </div>
   );

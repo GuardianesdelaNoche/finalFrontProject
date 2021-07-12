@@ -7,6 +7,17 @@
     "register.formLabel.nickname":"Nickname",
     "register.formLabel.email":"Email",
     "register.formLabel.pass":"Password",
-    "register.formLabel.role":"Role", 
-    "register.form.button":"Register"
+    "register.formLabel.role":"Role",
+    "register.form.button":"Register",
+    "login.title": "Welcome to Start",
+    "login.remember":"Forgot your password",
+    "login.newAcount": "New here?",
+    "login.createAcount":"Create Account",
+    "login.formLabel.email":"Email",
+    "login.formLabel.pass":"Password",
+    "login.formLabel.remember":"Remember me",
+    "login.form.button":"Login",
+    "navbar.item.menu":"New Events",
+    "button.register.menu":"Register",
+    "button.login.menu":"Login"
 }

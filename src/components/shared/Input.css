@@ -4,24 +4,23 @@
   transition: all 0.2s;
 }
 
-.css-yk16xz-control{
-  width: 100%;
-  border: none;
-  background-color: #F5F8FA ;
-  height: calc(1.5em + .75rem + 2px);
-}
+.form-control{
+    color: #5e6278 !important;
+    background-color: #F5F8FA !important;
+    background-clip: padding-box;
+    border: 1px solid #F5F8FA!important;
+    border-radius: .25rem;
 
-.formField-input {
-  
-  columns: auto
+}
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #20d489;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #20d48930!important;
 }
 
 .formField-label span:first-letter {
   text-transform: capitalize;
 }
 
-.form-label{
-  font-weight: 600!important;
-  font-size: 1.00rem!important;
-    margin-bottom: .5rem;
-}

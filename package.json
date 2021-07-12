@@ -14,7 +14,8 @@
     "bootstrap": "^4.6.0",
     "classnames": "^2.3.1",
     "connected-react-router": "^6.9.1",
-    "cors": "^2.8.5",
+    "install": "^0.13.0",
+    "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
@@ -50,6 +51,5 @@
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.9"
-  },
-  "proxy": "http://4events.net:3000/api/v1/user/login/"
+  }
 }

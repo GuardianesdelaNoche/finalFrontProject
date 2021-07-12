@@ -77,8 +77,7 @@ const ContentBottomCentent = styled.div`
 `;
 
 const Button = styled.button `
-    height: 45px;
-    line-height: 45px;
+    height: 45px;  
     width: 30%;
     background: primary;
     color: #fff;
@@ -87,6 +86,28 @@ const Button = styled.button `
     border-radius: 3px;
     cursor:pointer;
     transition: .1s ease all;
+
+    &:hover {
+        box-shadow: 3px 0px 30px rgba(163,163,163,1);
+    }
+`;
+
+
+const SuccessMessage = styled.p`
+    font-size: 14px;
+    color: ${colors.success};
+    //display: none
+`;
+
+const ErrorMessage = styled.div`
+    height: 45px;
+    line-height: 45px;
+    background: ${colors.error}
+    padding: 0px 15px;
+    border-radius: 3px;
+    p {
+        margin:0;
+    }
 `;
 
 export {Form,
@@ -96,4 +117,6 @@ export {Form,
         ErrorLegend,
         ValidationIcon,
         ContentBottomCentent,
-        Button};
+        Button,
+        ErrorMessage,
+        SuccessMessage};

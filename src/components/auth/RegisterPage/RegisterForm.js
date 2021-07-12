@@ -6,7 +6,7 @@ import Checkbox from '../../shared/Checkbox';
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { ContentBottomCentent, Form } from '../../shared/elements/formElements';
+import { Form,ContentBottomCentent, ErrorMessage, SuccessMessage } from '../../shared/elements/formElements';
 import { faCheckCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import './RegisterPage.css';
@@ -85,12 +85,12 @@ function RegisterForm ({onSubmit}) {
 						onChange={handleChange}
 					/>
 				
-			<div>
+			<ErrorMessage>
 				<p>
 					<FontAwesomeIcon icon={faExclamationTriangle}/>
 					<b>Error:</b> Por favor rellena el formulario correctamente.
 				</p>
-			</div>
+			</ErrorMessage>
 
 			<ContentBottomCentent>
 
@@ -102,7 +102,7 @@ function RegisterForm ({onSubmit}) {
                         defaultMessage="Register"
                     />
 			</button>
-			<p>Formulario enviado correctamente!!</p>
+			<SuccessMessage>Formulario enviado correctamente!!</SuccessMessage>
 			</ContentBottomCentent>
         </div>
 		</Form>

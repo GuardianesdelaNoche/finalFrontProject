@@ -92,6 +92,10 @@ a, a:hover {
     padding: 60px 0px;
 }
 
+/* Alert */
+.alertLogin{
+    margin: -15px 20px 30px;
+}
 
 
 .card.card-stretch {

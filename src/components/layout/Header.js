@@ -12,7 +12,9 @@ function Header() {
 		<header>
 			<Navbar bg="light" variant="light" fixed="top">
 				<Container>
-					<Navbar.Brand href="/">4EVENTS</Navbar.Brand>
+					<Navbar.Brand href="/">
+						<img src="https://4events.net/src/assests/img/logo.jpg" width="150" alt="logo" />
+					</Navbar.Brand>
 					<Nav className="me-auto">
 						<NavLink
 							to="/events/new"

@@ -103,7 +103,16 @@ a, a:hover {
     border: 0;
 }
 
-
+.Container{
+    position: relative;
+}
+.ribbon{
+    position: absolute;
+}
+.float-right {
+    display: flex;
+    justify-content: flex-end;
+}
 /* Homepage */
 
 .card>.card-header {

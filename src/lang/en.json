@@ -12,5 +12,10 @@
     "login.form.button":"Login",
     "navbar.item.menu":"New Events",
     "button.register.menu":"Register",
-    "button.login.menu":"Login"
+    "button.login.menu":"Login",
+    "eventCard.overlay.registerLogin": "Register or Login",
+    "eventCard.availableSeats": "Available seats",
+    "eventCard.activity":"Activity",
+    "eventCard.outdoor": "Outdoor",
+    "eventCard.indoor": "Indoor"
 }

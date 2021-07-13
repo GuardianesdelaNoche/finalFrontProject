@@ -5,14 +5,13 @@ import pT from 'prop-types';
 import './Input.css';
 
 
-function Input({ className, label, autoFocus, isRequired,  ...props }) {
+function Input({ className, autoFocus, isRequired,placeholder, ...props }) {
   const inputRef = React.useRef(null);
 
   React.useEffect(() => {
     if(autoFocus) {
       inputRef.current.focus()
     }
-    
 
   }, [autoFocus])
 
@@ -24,24 +23,24 @@ function Input({ className, label, autoFocus, isRequired,  ...props }) {
         className
       )}
     >
-      <div className="formField-input">             
+      <div className="formField-input">
         <input
-          className="css-yk16xz-control"
+          type="password"
+          name="password"
           autoComplete="off"
+          placeholder={placeholder}
+          className="form-control"
           ref={inputRef}
-          required = {isRequired? 'required': ''}
+          required={isRequired ? 'required' : ''}
           {...props}
-          
-          
-        ></input>
-      
-      </div>
+        />
     </div>
   );
 }
 
 Input.propTypes = {
-  className: pT.string,  
+  className: pT.string,
+  label: pT.string,
   autoFocus: pT.bool,
   
 }

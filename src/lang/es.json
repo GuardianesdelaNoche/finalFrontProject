@@ -8,5 +8,16 @@
     "register.formLabel.email":"Email",
     "register.formLabel.pass":"Contraseña",
     "register.formLabel.role":"Tipo usuario",
-    "register.form.button":"Registrar"
+    "register.form.button":"Registrar",
+    "login.title": "Bienvenido a ....",
+    "login.remember": "¿Olvidó su contraseña?",
+    "login.newAcount": "¿Eres nuevo aquí?",
+    "login.createAcount": "Crear una cuenta",
+    "login.formLabel.email": "Email",
+    "login.formLabel.pass": "Contraseña",
+    "login.formLabel.remember": "Recuérdame",
+    "login.form.button": "Entrar",
+    "navbar.item.menu": "Crear Evento",
+    "button.register.menu": "Regístrate",
+    "button.login.menu": "Entrar"
 }

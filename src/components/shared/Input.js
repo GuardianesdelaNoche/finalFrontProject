@@ -12,7 +12,7 @@ function Input({ className, autoFocus, isRequired,placeholder, ...props }) {
     if(autoFocus) {
       inputRef.current.focus()
     }
-    
+
   }, [autoFocus])
 
   return (
@@ -23,6 +23,7 @@ function Input({ className, autoFocus, isRequired,placeholder, ...props }) {
         className
       )}
     >
+      <div className="formField-input">
         <input
           type="password"
           name="password"

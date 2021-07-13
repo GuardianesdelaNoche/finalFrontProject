@@ -8,11 +8,14 @@ const initialState = {
 export const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.authLoginRequest:
+    case types.uiSetLoading:
       return { ...state, loading: true, error: null };
     case types.authLoginSuccess:
+    case types.uiResetLoading:
       return { ...state, loading: false, error: null };
     case types.authLoginError:
-      return { ...state, loading: false, error: action.payload };
+    case types.uiSetError:
+      return { ...state, loading: false, error: action.data};
     case types.uiResetError:
       return { ...state, error: null };
     default:

@@ -39,7 +39,7 @@ function RegisterForm ({onSubmit}) {
 						value={username.value}
 						onChange={handleChange}
 						icon={faCheckCircle}
-						errorLegend={intl.formatMessage({ id: 'register.formLabel.usernregister.errorMessage.username'})}
+						errorLegend={intl.formatMessage({ id: 'register.validate.username'})}
                         required
 					/>
 					

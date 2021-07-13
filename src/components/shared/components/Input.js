@@ -43,8 +43,8 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
 Input.propTypes = {
   className: pT.string,  
   autoFocus: pT.bool,
-  icon: pT.string.isRequired,
-  legend:pT.string.isRequired,
+  icon: pT.object.isRequired,
+  errorLegend:pT.string.isRequired,
 
   id: pT.string.isRequired
   

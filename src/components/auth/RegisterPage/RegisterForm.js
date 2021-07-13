@@ -16,11 +16,11 @@ function RegisterForm ({onSubmit}) {
 		handleChange,
 		handleSubmit,
 	} = useForm({
-        username:"",
-		email:"",
-        role:1,
-		password:"",
-		nickname:"",
+        username:{value:"", valid: null},
+		email:{value:"", valid: null},
+        role:{value:1, valid: null},
+		password:{value:"", valid: null},
+		nickname:{value:"", valid: null},
 	});
 	const intl = useIntl();
 
@@ -36,7 +36,7 @@ function RegisterForm ({onSubmit}) {
 						name="username"
 						id="username"
 						placeholder="username"
-						value={username}
+						value={username.value}
 						onChange={handleChange}
 						icon={faCheckCircle}
 						errorLegend={intl.formatMessage({ id: 'register.formLabel.usernregister.errorMessage.username'})}
@@ -52,7 +52,7 @@ function RegisterForm ({onSubmit}) {
 						label={intl.formatMessage({ id: 'register.formLabel.nickname'})}                   
                         required
 						placeholder="nickname"
-						value={nickname}
+						value={nickname.value}
 						icon={faCheckCircle}
 						errorLegend={"mensaje"}
 						onChange={handleChange}
@@ -65,7 +65,7 @@ function RegisterForm ({onSubmit}) {
 						label={intl.formatMessage({ id: 'register.formLabel.email'})}                   
                         required
 						placeholder="xxxx@xxxx.com"
-						value={email}
+						value={email.value}
 						icon={faCheckCircle}
 						errorLegend={"mensaje"}
 						onChange={handleChange}
@@ -78,7 +78,7 @@ function RegisterForm ({onSubmit}) {
 						label={intl.formatMessage({ id: 'register.formLabel.pass'})}                   
                         required
 						placeholder="******"
-						value={password}
+						value={password.value}
 						icon={faCheckCircle}
 						errorLegend={"mensaje password"}
 						onChange={handleChange}

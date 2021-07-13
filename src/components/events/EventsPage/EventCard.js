@@ -27,23 +27,6 @@ function EventCard(event) {
   return (
     <Card className="card-stretch">
       <div>
-        {/* {isLogged ? (
-          <div className="Container">
-            <span className="d-flex flex-row-reverse">
-              <Button
-                // className="float-right"
-                variant="secondary"
-                onClick={handleAddEventFavs}
-                active={false} //depends fav events list user
-              >
-                <RiBookmark3Line />
-              </Button>
-              <Link key={event._id} to={`/event/${event._id}`}>
-                <Card.Img variant="top" src={event.photo}/>
-              </Link>
-            </span>
-          </div>
-        ) : ( */}
         <div className="Container">
           <span className="float-right">
             <OverlayTrigger
@@ -88,7 +71,6 @@ function EventCard(event) {
             </Link>
           </span>
         </div>
-        {/* )} */}
       </div>
       <Link key={event._id} to={`/event/${event._id}`}>
         <Card.Body>

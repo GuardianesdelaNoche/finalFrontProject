@@ -4,8 +4,10 @@ export const types = {
     authLoginError: 'AUTH Login Error',
     authLogout: 'AUTH Logout',
 
-    uiResetError: 'UI Reset Error'
-
-    
+    uiResetError: 'UI Reset Error',
+    uiSetLoading: 'UI Set Loading',
+    uiSetError: 'UI Set Error',
+    uiResetLoading: 'UI Reset Loading',
+     
 
 }

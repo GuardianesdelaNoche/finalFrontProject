@@ -5,3 +5,22 @@ export const resetErrorAction = () => {
       type: types.uiResetError
     };
   };
+
+export const setLoadingAction = () => {
+  return {
+    type: types.uiSetLoading
+  };
+};
+
+export const setErrorAction = error => {
+  return {
+    type: types.uiSetError,
+    data: error
+  };
+};
+
+export const resetLoadingAction = () => {
+  return {
+    type: types.uiResetLoading
+  };
+};

@@ -5,7 +5,7 @@
     background-clip: padding-box;
     border: 1px solid #F5F8FA!important;
     border-radius: .25rem;
-    
+
 }
 .form-control:focus {
     color: #495057;
@@ -15,4 +15,7 @@
     box-shadow: 0 0 0 0.2rem #20d48930!important;
 }
 
+.formField-label span:first-letter {
+  text-transform: capitalize;
+}
 

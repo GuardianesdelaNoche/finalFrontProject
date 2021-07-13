@@ -12,7 +12,7 @@ function Input({ className, type, name, autoFocus, isRequired,placeholder, ...pr
     if(autoFocus) {
       inputRef.current.focus()
     }
-    
+
   }, [autoFocus])
 
   return (
@@ -23,6 +23,7 @@ function Input({ className, type, name, autoFocus, isRequired,placeholder, ...pr
         className
       )}
     >
+      <div className="formField-input">
         <input
           type={type}
           name={name}

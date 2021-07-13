@@ -1,4 +1,4 @@
-import client, { configureClient } from './client';
+import client, { configureClient, resetClient } from './client';
 import storage from '../utils/storage';
 
 const version = 'v1';
@@ -17,4 +17,8 @@ export const login = ({ remember, ...credentials }) => {
 				storage.set('auth', accessToken);
 			}
 		});
+};
+
+export const logout = () => {
+	return Promise.resolve().then(resetClient).then(storage.clear);
 };

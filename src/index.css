@@ -107,6 +107,10 @@ a, a:hover {
     border: 0;
 }
 
+.Modal-Boder.modal-header{
+  border-bottom: none;
+}
+
 
 /* Homepage */
 

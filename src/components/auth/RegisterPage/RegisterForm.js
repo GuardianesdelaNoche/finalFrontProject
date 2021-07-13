@@ -84,12 +84,12 @@ function RegisterForm ({onSubmit}) {
 						onChange={handleChange}
 					/>
 				
-			<ErrorMessage>
+			{false && <ErrorMessage>
 				<p>
 					<FontAwesomeIcon icon={faExclamationTriangle}/>
 					<b>Error:</b> Por favor rellena el formulario correctamente.
 				</p>
-			</ErrorMessage>
+			</ErrorMessage>}
 
 			<ContentBottomCentent>
 

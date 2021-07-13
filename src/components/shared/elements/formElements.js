@@ -107,6 +107,7 @@ const ErrorMessage = styled.div`
     background: #F66060;
     padding: 0px 15px;
     border-radius: 3px;
+    font-size:11px;
     p {
         margin:0;
     }

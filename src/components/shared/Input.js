@@ -16,13 +16,7 @@ function Input({ className, type, name, autoFocus, isRequired,placeholder, ...pr
   }, [autoFocus])
 
   return (
-    <div
-      className={classNames(
-        'formField',
-        { 'formField--focused': false },
-        className
-      )}
-    >
+    <div className={classNames('formField',{ 'formField--focused': false },className)}>
       <div className="formField-input">
         <input
           type={type}
@@ -35,8 +29,9 @@ function Input({ className, type, name, autoFocus, isRequired,placeholder, ...pr
           {...props}
         />
     </div>
-  );
-}
+    </div>
+  )};
+
 
 Input.propTypes = {
   className: pT.string,

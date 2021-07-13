@@ -27,11 +27,11 @@ function EventCard(event) {
   return (
     <Card className="card-stretch">
       <div>
-        {isLogged ? (
+        {/* {isLogged ? (
           <div className="Container">
-            <span className="float-left">
+            <span className="d-flex flex-row-reverse">
               <Button
-                className="float-right"
+                // className="float-right"
                 variant="secondary"
                 onClick={handleAddEventFavs}
                 active={false} //depends fav events list user
@@ -43,33 +43,52 @@ function EventCard(event) {
               </Link>
             </span>
           </div>
-        ) : (
-          <div className="Container">
-            <span className="float-right">
-              <OverlayTrigger
-                overlay={
-                  <Tooltip id="button-fav">
+        ) : ( */}
+        <div className="Container">
+          <span className="float-right">
+            <OverlayTrigger
+              overlay={
+                <Tooltip id="button-fav">
+                  {isLogged ? (
                     <FormattedMessage
-                      id="eventCard.overlay.registerLogin"
-                      defaultMessage="Register or Login"
+                    id="eventCard.overlay.fav"
+                    defaultMessage="Register or Login"
                     />
-                  </Tooltip>
-                }
-              >
-                <Button
+                    ) : (
+                      <FormattedMessage
+                      id="eventCard.overlay.registerLogin"
+                        defaultMessage="Favourite"
+                    />
+                  )}
+                </Tooltip>
+              }
+            >
+              {isLogged ? (<Button
+                className="ribbon"
+                  // className="float-right"
+                  variant="secondary"
+                  onClick={handleAddEventFavs}
+                  active={false} //depends fav events list user
+                >
+                  <RiBookmark3Line />
+                </Button>
+               
+              ) : (
+                 <Button
                   className="ribbon"
                   // active={false}
                   variant="secondary"
                 >
                   <RiBookmark3Line />
                 </Button>
-              </OverlayTrigger>
-              <Link key={event._id} to={`/event/${event._id}`}>
-                <Card.Img variant="top" src={event.photo} />
-              </Link>
-            </span>
-          </div>
-        )}
+              )}
+            </OverlayTrigger>
+            <Link key={event._id} to={`/event/${event._id}`}>
+              <Card.Img variant="top" src={event.photo} />
+            </Link>
+          </span>
+        </div>
+        {/* )} */}
       </div>
       <Link key={event._id} to={`/event/${event._id}`}>
         <Card.Body>

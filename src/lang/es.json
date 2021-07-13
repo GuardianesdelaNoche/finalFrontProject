@@ -17,5 +17,6 @@
     "eventCard.availableSeats": "Plazas disponibles",
     "eventCard.activity": "Actividad",
     "eventCard.outdoor": "Aire libre",
-    "eventCard.indoor": "Interior"
+    "eventCard.indoor": "Interior",
+    "eventCard.overlay.fav": "Favorito"
 }

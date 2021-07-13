@@ -17,5 +17,6 @@
     "eventCard.availableSeats": "Available seats",
     "eventCard.activity":"Activity",
     "eventCard.outdoor": "Outdoor",
-    "eventCard.indoor": "Indoor"
+    "eventCard.indoor": "Indoor",
+    "eventCard.overlay.fav": "Favourite"
 }

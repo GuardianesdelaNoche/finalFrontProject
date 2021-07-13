@@ -28,14 +28,21 @@ function EventCard(event) {
     <Card className="card-stretch">
       <div>
         {isLogged ? (
-          <Button
-            className="float-right"
-            variant="secondary"
-            onClick={handleAddEventFavs}
-            active={false} //depends fav events list user
-          >
-            <RiBookmark3Line />
-          </Button>
+          <div className="Container">
+            <span className="float-left">
+              <Button
+                className="float-right"
+                variant="secondary"
+                onClick={handleAddEventFavs}
+                active={false} //depends fav events list user
+              >
+                <RiBookmark3Line />
+              </Button>
+              <Link key={event._id} to={`/event/${event._id}`}>
+                <Card.Img variant="top" src={event.photo}/>
+              </Link>
+            </span>
+          </div>
         ) : (
           <div className="Container">
             <span className="float-right">

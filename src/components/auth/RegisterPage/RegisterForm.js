@@ -13,7 +13,7 @@ import './RegisterPage.css';
 function RegisterForm ({onSubmit}) {
     const {
 		formValue: registerData, 
-		handleChange,
+		handleChange,	
 		handleSubmit,
 	} = useForm({
         username:"",
@@ -23,12 +23,34 @@ function RegisterForm ({onSubmit}) {
 		password2:"",
 		nickname:"",
 	});
+	const [isFormValid , changeIsFormValid] = useState(null);
 	
 	const intl = useIntl();
 
 
     const { username, email, password, password2,  nickname } = registerData;   
 
+	const isValidValue = (expression, value) =>{
+		if(expression.test(value)) {
+			return true;
+		}else
+		{ 
+			return false;
+		}
+	}
+	const checkFormData = (e) => {
+		e.preventDefault();
+		if ( isValidValue(expressions.username, username[0])
+		&& isValidValue(expressions.nikname, nickname[0]) 
+		&& isValidValue(expressions.email, email[0])
+		&& isValidValue(expressions.password, password[0])
+		&& password[0] === password2[0]	) {
+			onSubmit(registerData);	
+		} else {
+			changeIsFormValid(false);
+		}
+	
+	}
 
 	
 
@@ -40,8 +62,10 @@ function RegisterForm ({onSubmit}) {
 
 	}
 
+	
+
     return (
-		<Form  className="form-signin" onSubmit={handleSubmit(onSubmit)}>
+		<Form  className="form-signin" onSubmit={checkFormData}>
 			<div className="form-container">
                 
 				<Input
@@ -109,7 +133,7 @@ function RegisterForm ({onSubmit}) {
 					required
 				/>
 				
-			{false && <ErrorMessage>
+			{isFormValid === false && <ErrorMessage>
 				<p>
 					<FontAwesomeIcon icon={faExclamationTriangle}/>
 					<b>Error:</b> Por favor rellena el formulario correctamente.

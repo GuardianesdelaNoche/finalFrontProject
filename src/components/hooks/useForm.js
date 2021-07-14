@@ -10,12 +10,13 @@ function useForm(initialState){
 			[target.name]: [target.value]
 		})
 	}
-	const handleSubmit = onSubmit => (e) =>{
-		e.preventDefault();
+	const handleSubmit = onSubmit => (e) =>{	
 		onSubmit(formValue);
 	}
 
-	return { formValue, setFormValue, handleChange, handleSubmit };
+
+
+	return { formValue, setFormValue, handleChange, handleSubmit};
 }
 
 export default useForm;

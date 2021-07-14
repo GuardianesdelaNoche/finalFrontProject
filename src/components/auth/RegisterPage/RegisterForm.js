@@ -26,6 +26,10 @@ function RegisterForm ({onSubmit}) {
 
     const { username, email, password, nickname } = registerData;   
 
+	const expressions = {
+		username: /^[a-zA-Z0-9_-]{4,18}$/
+	}
+
     return (
 		<Form  className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-container">
@@ -40,6 +44,7 @@ function RegisterForm ({onSubmit}) {
 						onChange={handleChange}
 						icon={faCheckCircle}
 						errorLegend={intl.formatMessage({ id: 'register.validate.username'})}
+						regularExpression={expressions.username}
                         required
 					/>
 					

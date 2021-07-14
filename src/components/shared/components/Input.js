@@ -5,7 +5,7 @@ import { GroupInput, InputC, ValidationIcon, Label,  ErrorLegend } from '../elem
 
 import './Input.css';
 
-function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,   ...props }) {
+function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend, regularExpression, value,  ...props }) {
   const inputRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -13,6 +13,21 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
       inputRef.current.focus()
     }
   }, [autoFocus])
+  let isValid = false;
+  const validation = () => {
+      if(regularExpression) {
+        console.log(value);
+        console.log(regularExpression);
+        if(regularExpression.test(value)) {
+          isValid = true;
+          
+        }else
+        {
+          isValid = false;
+        }
+        console.log("es valido", isValid);
+      }
+  }
 
   return (
     <div
@@ -30,6 +45,11 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
           autoComplete="off"
           id={id}
           ref={inputRef}
+          onKeyUp={validation}
+          onBlur={validation}
+          isValid
+          value={value}
+          
           required = {isRequired? 'required': ''}
           {...props} 
         ></InputC>

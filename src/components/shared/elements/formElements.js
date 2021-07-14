@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -51,6 +51,12 @@ const InputC = styled.input`
         box-shadow: 3px 0px 30px rgba(163,163,163,0.4);
 
     }
+
+    
+
+     ${props => !props.isValid && css `
+         border: 3px solid ${colors.error};
+         `} 
 `;
 
 const ErrorLegend = styled.p`

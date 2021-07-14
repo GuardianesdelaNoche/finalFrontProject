@@ -6,7 +6,7 @@ import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Form,ContentBottomCentent, ErrorMessage, SuccessMessage } from '../../shared/elements/formElements';
-import { faCheckCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import './RegisterPage.css';
 
@@ -16,78 +16,92 @@ function RegisterForm ({onSubmit}) {
 		handleChange,
 		handleSubmit,
 	} = useForm({
-        username:{value:"", valid: null},
-		email:{value:"", valid: null},
-        role:{value:1, valid: null},
-		password:{value:"", valid: null},
-		nickname:{value:"", valid: null},
+        username:"",
+		email:"",
+        role:1,
+		password:"",	
+		nickname:"",
 	});
 	const intl = useIntl();
 
-    const { username, email, password, nickname } = registerData;   
+    const { username, email, password, password2,  nickname } = registerData;   
 
 	const expressions = {
-		username: /^[a-zA-Z0-9_-]{4,18}$/
+		username: /^[a-zA-Z0-9_-]{4,18}$/,
+		nikname: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+		email:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]+$/,
+		password: /^.{8,18}$/,
+
 	}
 
     return (
 		<Form  className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-container">
                 
-					<Input
-						type="text"
-						label= {intl.formatMessage({ id: 'register.formLabel.username'})}
-						name="username"
-						id="username"
-						placeholder="username"
-						value={username.value}
-						onChange={handleChange}
-						icon={faCheckCircle}
-						errorLegend={intl.formatMessage({ id: 'register.validate.username'})}
-						regularExpression={expressions.username}
-                        required
-					/>
-					
-				
-                
-					<Input
-						type="text"
-                        name="nickname"
-						id="nickname"
-						label={intl.formatMessage({ id: 'register.formLabel.nickname'})}                   
-                        required
-						placeholder="nickname"
-						value={nickname.value}
-						icon={faCheckCircle}
-						errorLegend={"mensaje"}
-						onChange={handleChange}
-					/>
-					
-					<Input
-						type="text"
-                        name="email"
-						id="email"
-						label={intl.formatMessage({ id: 'register.formLabel.email'})}                   
-                        required
-						placeholder="xxxx@xxxx.com"
-						value={email.value}
-						icon={faCheckCircle}
-						errorLegend={"mensaje"}
-						onChange={handleChange}
-					/>
+				<Input
+					type="text"
+					label= {intl.formatMessage({ id: 'register.formLabel.username'})}
+					name="username"
+					id="username"
+					placeholder="username"
+					value={username}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'register.validate.username'})}
+					regularExpression={expressions.username}
+					required
+				/>
                 
 				<Input
-						type="password"
-                        name="password"
-						id="password"
-						label={intl.formatMessage({ id: 'register.formLabel.pass'})}                   
-                        required
-						placeholder="******"
-						value={password.value}
-						icon={faCheckCircle}
-						errorLegend={"mensaje password"}
-						onChange={handleChange}
-					/>
+					type="text"
+					label={intl.formatMessage({ id: 'register.formLabel.nickname'})}                   
+					name="nickname"
+					id="nickname"
+					placeholder="nickname"
+					value={nickname}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'register.validate.nickname'})}
+					regularExpression={expressions.nikname}
+					required
+				/>
+					
+				<Input
+					type="text"
+					label={intl.formatMessage({ id: 'register.formLabel.email'})}                   
+					name="email"
+					id="email"
+					placeholder="xxxx@xxxx.com"
+					value={email}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'register.validate.email'})}
+					regularExpression={expressions.email}
+					required
+				/>
+			
+				<Input
+					type="password"
+					label={intl.formatMessage({ id: 'register.formLabel.pass'})}                   
+					name="password"
+					id="password"
+					placeholder="******"
+					value={password}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'register.validate.username'})}
+					regularExpression={expressions.password}
+					required
+				/>
+
+				<Input
+					type="password"
+					label={intl.formatMessage({ id: 'register.formLabel.repeatpass'})}                   
+					name="password2"
+					id="password2"
+					placeholder="******"
+					value={password2}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'register.validate.repeatpass'})}
+					valueToCheck={password}
+					required
+				/>
 				
 			{false && <ErrorMessage>
 				<p>

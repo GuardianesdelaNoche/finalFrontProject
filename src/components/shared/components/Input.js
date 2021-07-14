@@ -2,31 +2,39 @@ import React from 'react';
 import classNames from 'classnames';
 import pT from 'prop-types';
 import { GroupInput, InputC, ValidationIcon, Label,  ErrorLegend } from '../elements/formElements';
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './Input.css';
 
-function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend, regularExpression, value,  ...props }) {
+function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend, regularExpression, value, valueToCheck,  ...props }) {
   const inputRef = React.useRef(null);
+  const [isValid, setIsValid] = React.useState('null');
 
   React.useEffect(() => {
     if(autoFocus) {
       inputRef.current.focus()
     }
   }, [autoFocus])
-  let isValid = false;
+  
   const validation = () => {
-      if(regularExpression) {
-        console.log(value);
-        console.log(regularExpression);
-        if(regularExpression.test(value)) {
-          isValid = true;
-          
+      if(regularExpression) {        
+        if(regularExpression.test(value)) {          
+          setIsValid('true');          
         }else
         {
-          isValid = false;
-        }
-        console.log("es valido", isValid);
+          setIsValid('false');
+        }        
       }
+      if(valueToCheck) {
+        if(value.length > 0){
+          if(value === valueToCheck) {
+            setIsValid('true');
+          }else
+          {
+            setIsValid('false');
+          }
+        }
+      }     
   }
 
   return (
@@ -38,7 +46,7 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
       )}
     >
       <GroupInput>   
-      <Label htmlFor={id} >
+      <Label htmlFor={id}  isValueValid={isValid}>
 						{label}
 					</Label>          
         <InputC          
@@ -46,15 +54,16 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
           id={id}
           ref={inputRef}
           onKeyUp={validation}
-          onBlur={validation}
-          isValid
+          onBlur={validation}          
           value={value}
-          
+          isValueValid= {isValid}          
           required = {isRequired? 'required': ''}
           {...props} 
         ></InputC>
-        <ValidationIcon icon={icon}/>      
-        <ErrorLegend>{errorLegend}</ErrorLegend>
+        <ValidationIcon 
+            icon={isValid === 'true' ?faCheckCircle : faTimesCircle} 
+            isValueValid={isValid}/>      
+        <ErrorLegend isValueValid={isValid}>{errorLegend}</ErrorLegend>
       </GroupInput>
     </div>
   );
@@ -63,7 +72,6 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
 Input.propTypes = {
   className: pT.string,  
   autoFocus: pT.bool,
-  icon: pT.object.isRequired,
   errorLegend:pT.string.isRequired,
 
   id: pT.string.isRequired

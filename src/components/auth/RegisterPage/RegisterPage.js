@@ -17,12 +17,9 @@ function RegisterPage () {
 
     const handleSubmit = (registerData)=>{
         try {
-            console.log("haciendo llamada");
             dispatch(setLoadingAction);
             setRegister(registerData)
-                    
         } catch (error) {
-            console.log("se ha producido un error");
             dispatch(setErrorAction(error));
         } finally 
         {

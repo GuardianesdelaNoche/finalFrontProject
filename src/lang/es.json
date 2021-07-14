@@ -10,6 +10,7 @@
     "register.form.button":"Registrar",
     "register.validate.username":"El usuario debe tener al menos 8 caracteres",
     "register.validate.repeatpass":"Las contraseñas no coinciden",
+    "register.formLabel.repeatpass":"Repite contraseña",
     "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
     "login.title": "Bienvenido a ....",
     "login.remember": "¿Olvidó su contraseña?",

@@ -16,6 +16,8 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
     }
   }, [autoFocus])
   
+
+
   const validation = () => {
       if(regularExpression) {        
         if(regularExpression.test(value)) {          
@@ -26,8 +28,8 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
         }        
       }
       if(valueToCheck) {
-        if(value.length > 0){
-          if(value === valueToCheck) {
+        if(value){
+          if(value[0] === valueToCheck[0]) {
             setIsValid('true');
           }else
           {

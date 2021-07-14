@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
@@ -20,11 +20,17 @@ function RegisterForm ({onSubmit}) {
 		email:"",
         role:1,
 		password:"",	
+		password2:"",
 		nickname:"",
 	});
+	
 	const intl = useIntl();
 
+
     const { username, email, password, password2,  nickname } = registerData;   
+
+
+	
 
 	const expressions = {
 		username: /^[a-zA-Z0-9_-]{4,18}$/,

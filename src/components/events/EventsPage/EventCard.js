@@ -130,7 +130,7 @@ function EventCard(event) {
             </div>
           </Card.Body>
           <div className="d-inline-flex flex-row justify-content-between">
-            <Card.Text>{event.tags.map((tag) => `#${tag}`)}</Card.Text>
+            <Card.Text className="text-muted">{event.tags.map((tag) => `#${tag}`)}</Card.Text>
           </div>
         </Card.Body>
       </Link>

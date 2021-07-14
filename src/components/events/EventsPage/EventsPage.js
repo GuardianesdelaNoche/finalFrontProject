@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '../../layout';
-import { Alert} from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import Spinner from '../../shared/Spinner';
 import EventsCardsList from './EventsCardsList';
 import EventsCardsEmptyList from './EventsCardsEmptyList';
@@ -11,6 +11,7 @@ import { eventsLoadAction } from '../../../store/actions/events';
 import { getEvents } from '../../../store/selectors/events';
 import { resetErrorAction } from '../../../store/actions/ui';
 import { PaginationNavStyle } from '../../shared/PaginationNavStyle';
+import { Paginator } from '../../shared/paginator/Paginator';
 
 
 // const events = require('./data.json').events;
@@ -34,17 +35,24 @@ function EventsPage() {
   return (
     <div>
       <Layout>
-      <PaginationNavStyle />
       {loading && <Spinner animation="border" />}
       {error && (	
-                    <Alert onClick={handleResetError} variant="danger">
+        <Alert onClick={handleResetError} variant="danger">
                         <p className="mb-0">
                             {error.message}
                         </p>
                     </Alert>
                 )}
-      { !loading && !error && (events.length > 0) && <EventsCardsList events={events}></EventsCardsList> }
-      { !loading && !error && (events.length === 0) &&<EventsCardsEmptyList eventsCount={0}></EventsCardsEmptyList> } 
+      { !loading && !error && (events.length > 0) && 
+      <div className="container">
+        <PaginationNavStyle />
+        <EventsCardsList events={events}></EventsCardsList> 
+        <Paginator></Paginator>
+        </div> }
+      { !loading && !error && (events.length === 0) &&
+      <div className="container">
+      <EventsCardsEmptyList eventsCount={0}></EventsCardsEmptyList> 
+      </div> }
       </Layout>
     </div>
   );

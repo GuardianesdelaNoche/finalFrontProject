@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./EventCard.css";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BsCalendar, BsClock } from "react-icons/bs";
@@ -34,20 +35,21 @@ function EventCard(event) {
                 <Tooltip id="button-fav">
                   {isLogged ? (
                     <FormattedMessage
-                    id="eventCard.overlay.fav"
-                    defaultMessage="Register or Login"
+                      id="eventCard.overlay.fav"
+                      defaultMessage="Register or Login"
                     />
-                    ) : (
-                      <FormattedMessage
+                  ) : (
+                    <FormattedMessage
                       id="eventCard.overlay.registerLogin"
-                        defaultMessage="Favourite"
+                      defaultMessage="Favourite"
                     />
                   )}
                 </Tooltip>
               }
             >
-              {isLogged ? (<Button
-                className="ribbon"
+              {isLogged ? (
+                <Button
+                  className="ribbon"
                   // className="float-right"
                   variant="secondary"
                   onClick={handleAddEventFavs}
@@ -55,9 +57,8 @@ function EventCard(event) {
                 >
                   <RiBookmark3Line />
                 </Button>
-               
               ) : (
-                 <Button
+                <Button
                   className="ribbon"
                   // active={false}
                   variant="secondary"
@@ -86,7 +87,9 @@ function EventCard(event) {
               <BsClock /> {event.duration} h
             </Card.Subtitle>
           </div>
-          <Card.Text>{event.description}</Card.Text>
+          <Card.Text className="line-clamp-custom">
+            {event.description}
+          </Card.Text>
           {/* <div className="mb-3">
           <CollapseText>{event.description}</CollapseText>
         </div> */}

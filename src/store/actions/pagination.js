@@ -9,3 +9,8 @@ export const paginationSetTotalPages = (totalPages) => ({
     type: types.paginationSetTotalPages,
     payload: totalPages
 });
+
+export const paginationSetCurrentPage = (currentPage) => ({
+    type: types.paginationSetCurrentPage,
+    payload: currentPage
+});

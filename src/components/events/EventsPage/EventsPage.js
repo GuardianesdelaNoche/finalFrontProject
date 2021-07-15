@@ -12,9 +12,12 @@ import { getEvents } from '../../../store/selectors/events';
 import { resetErrorAction } from '../../../store/actions/ui';
 import { PaginationNavStyle } from '../../shared/PaginationNavStyle';
 import { Paginator } from '../../shared/paginator/Paginator';
+import Pagination from 'rc-pagination';
+import '../../shared/paginator/paginator.css';
 
 import { getEventsTotal } from "../../../store/selectors/events";
 import { getCurrentPage, getLimit, getTotalPages } from '../../../store/selectors/pagination';
+import { paginationSetCurrentPage } from '../../../store/actions/pagination';
 
 function EventsPage() {
   const dispatch = useDispatch();
@@ -23,8 +26,8 @@ function EventsPage() {
 
   // vars modify events results
   const currentPage = useSelector(getCurrentPage);
-  const totalPages = useSelector(getTotalPages);
   const limit = useSelector(getLimit);
+  const totalEvents = useSelector(getEventsTotal);
 
   const handleResetError = ()=>{
     dispatch(resetErrorAction())
@@ -32,9 +35,16 @@ function EventsPage() {
 
   React.useEffect(() => {
     dispatch( eventsLoadAction(currentPage, limit) );
-  }, [dispatch, currentPage, totalPages, limit]);
+  }, [dispatch, currentPage, limit]);
 
 
+  const handleSetCurrentPage = (current, pageSize) => {
+    dispatch( paginationSetCurrentPage( current ));
+  };
+
+  console.log(currentPage)
+  console.log(limit)
+  console.log(totalEvents)
   return (
     <div>
       <Layout>
@@ -51,6 +61,10 @@ function EventsPage() {
         <PaginationNavStyle />
         <EventsCardsList events={events}></EventsCardsList> 
         {/* <Paginator getTotalItems={getEventsTotal}></Paginator> */}
+        <div className="p-3 pb-4 d-flex justify-content-center"> 
+        <Pagination total={totalEvents} pageSize={limit} current={currentPage} showLessItems={true} onChange={handleSetCurrentPage} />
+
+        </div>
         </div> }
       { !loading && !error && (events.length === 0) &&
       <div className="container">

@@ -14,6 +14,11 @@ export const paginationReducer = ( state = initialState, action ) => {
                 ...state, 
                 limit: action.payload
             }
+        case types.paginationSetCurrentPage:
+            return {
+                ...state,
+                currentPage: action.payload
+            }
         default:
             return state;
     }

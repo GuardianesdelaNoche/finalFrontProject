@@ -29,7 +29,7 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
       }
       if(valueToCheck) {
         if(value){
-          if(value[0] === valueToCheck[0]) {
+          if(value === valueToCheck) {
             setIsValid('true');
           }else
           {
@@ -63,8 +63,8 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
           {...props} 
         ></InputC>
         <ValidationIcon 
-            icon={isValid === 'true' ?faCheckCircle : faTimesCircle} 
-            isValueValid={isValid}/>      
+            icon={isValid === 'true' ? faCheckCircle : faTimesCircle} 
+            isValueValid={isValid}>  </ValidationIcon>    
         <ErrorLegend isValueValid={isValid}>{errorLegend}</ErrorLegend>
       </GroupInput>
     </div>

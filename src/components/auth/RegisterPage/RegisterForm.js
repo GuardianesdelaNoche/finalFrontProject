@@ -5,8 +5,8 @@ import Input from '../../shared/components/Input';
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Form,ContentBottomCentent, ErrorMessage, SuccessMessage } from '../../shared/elements/formElements';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { Form,ContentBottomCenter, ErrorMessage, SuccessMessage, Button } from '../../shared/elements/formElements';
+import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-icons';
 
 import './RegisterPage.css';
 
@@ -14,7 +14,6 @@ function RegisterForm ({onSubmit}) {
     const {
 		formValue: registerData, 
 		handleChange,	
-		handleSubmit,
 	} = useForm({
         username:"",
 		email:"",
@@ -23,7 +22,8 @@ function RegisterForm ({onSubmit}) {
 		password2:"",
 		nickname:"",
 	});
-	const [isFormValid , changeIsFormValid] = useState(null);
+	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
+	const [formSent, changeFormSent] = useState(false);
 	
 	const intl = useIntl();
 
@@ -40,29 +40,30 @@ function RegisterForm ({onSubmit}) {
 	}
 	const checkFormData = (e) => {
 		e.preventDefault();
-		if ( isValidValue(expressions.username, username[0])
-		&& isValidValue(expressions.nikname, nickname[0]) 
-		&& isValidValue(expressions.email, email[0])
-		&& isValidValue(expressions.password, password[0])
-		&& password[0] === password2[0]	) {
-			onSubmit(registerData);	
+		if ( isValidValue(expressions.username, username)
+		&& isValidValue(expressions.nikname, nickname) 
+		&& isValidValue(expressions.email, email)
+		&& isValidValue(expressions.password, password)
+		&& password === password2	) {
+			try {
+				onSubmit(registerData);	
+				changeFormSent(true);
+				changeIsFormValid({...isFormValid, status:true});
+			} catch (error) {
+				changeIsFormValid({...isFormValid, status:false});
+			}
+			
 		} else {
-			changeIsFormValid(false);
-		}
-	
+			changeIsFormValid({...isFormValid, status:false});
+		}	
 	}
-
-	
 
 	const expressions = {
-		username: /^[a-zA-Z0-9_-]{4,18}$/,
-		nikname: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+		username: /^[a-zA-Z0-9_-]{6,18}$/,
+		nikname: /^[a-zA-ZÀ-ÿ0-9\s]{1,18}$/,
 		email:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]+$/,
-		password: /^.{8,18}$/,
-
+		password: /^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})\S{8,}$/,
 	}
-
-	
 
     return (
 		<Form  className="form-signin" onSubmit={checkFormData}>
@@ -115,7 +116,7 @@ function RegisterForm ({onSubmit}) {
 					placeholder="******"
 					value={password}
 					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'register.validate.username'})}
+					errorLegend={intl.formatMessage({ id: 'register.validate.pass'})}
 					regularExpression={expressions.password}
 					required
 				/>
@@ -133,25 +134,31 @@ function RegisterForm ({onSubmit}) {
 					required
 				/>
 				
-			{isFormValid === false && <ErrorMessage>
+			{isFormValid.status === false && <ErrorMessage>
 				<p>
 					<FontAwesomeIcon icon={faExclamationTriangle}/>
-					<b>Error:</b> Por favor rellena el formulario correctamente.
+					<b>Error:</b> {intl.formatMessage({ id: 'register.validate.errormessage'})}
 				</p>
 			</ErrorMessage>}
 
-			<ContentBottomCentent>
+			{isFormValid.status === true && <SuccessMessage>
+				<p>
+					<FontAwesomeIcon icon={faComment}/>
+					<b></b>{intl.formatMessage({ id: 'register.validate.successmessage'})}
+				</p>
+			</SuccessMessage>}
 
-			<button
-				className="btn btn-primary"
+			<ContentBottomCenter>
+
+			<Button			
 			    type="submit">
                     <FormattedMessage
                         id="register.form.button"
                         defaultMessage="Register"
                     />
-			</button>
-			<SuccessMessage>Formulario enviado correctamente!!</SuccessMessage>
-			</ContentBottomCentent>
+			</Button>
+		
+			</ContentBottomCenter>
         </div>
 		</Form>
 	) 

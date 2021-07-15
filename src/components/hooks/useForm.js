@@ -7,7 +7,7 @@ function useForm(initialState){
 	const handleChange = ({ target })=>{
 		setFormValue({
 			...formValue,
-			[target.name]: [target.value]
+			[target.name]: target.value
 		})
 	}
 	const handleSubmit = onSubmit => (e) =>{	

@@ -3,11 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import { ButtonGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getNumItemsPage } from "../../store/selectors/pagination";
-import { setNumItemsPage } from "../../store/actions/pagination";
+import { getLimit } from "../../store/selectors/pagination";
+import { paginationSetLimit } from "../../store/actions/pagination";
 
 const ButtonItems = ({ variant = "primary", val, onClick }) => {
-    const active = useSelector(getNumItemsPage);
+    const active = useSelector(getLimit);
   return (
     <Button
       key={val}
@@ -26,7 +26,7 @@ export const PaginationNavStyle = ({ values = defaultValues }) => {
   const dispatch = useDispatch();
 
   const onClick = (val) => (ev) => {
-      dispatch( setNumItemsPage( val ) )
+      dispatch( paginationSetLimit( val ) )
   };
 
 

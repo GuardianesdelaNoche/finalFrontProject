@@ -15,3 +15,9 @@ const mapEvent = ({ photo, ...event }) => {
 export const getEvents = () => {
   return client.get(`${eventsPath}`).then(eve => eve);
 };
+
+export const getEventsPage = (currentPage, limit) => {
+  const request = `${eventsPath}?skip=${(currentPage-1)*limit}&limit=${limit}`;
+  // return client.get(`${eventsPath}`).then(eve => eve);
+  return client.get(`${request}`).then(eve => eve);
+};

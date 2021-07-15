@@ -13,24 +13,27 @@ import { resetErrorAction } from '../../../store/actions/ui';
 import { PaginationNavStyle } from '../../shared/PaginationNavStyle';
 import { Paginator } from '../../shared/paginator/Paginator';
 
-
-// const events = require('./data.json').events;
-// const nodata = [];
-
+import { getEventsTotal } from "../../../store/selectors/events";
+import { getCurrentPage, getLimit, getTotalPages } from '../../../store/selectors/pagination';
 
 function EventsPage() {
   const dispatch = useDispatch();
   const { loading, error } = useSelector(getUi);
   const events = useSelector(getEvents);
 
+  // vars modify events results
+  const currentPage = useSelector(getCurrentPage);
+  const totalPages = useSelector(getTotalPages);
+  const limit = useSelector(getLimit);
+
   const handleResetError = ()=>{
     dispatch(resetErrorAction())
 }
 
   React.useEffect(() => {
-    dispatch( eventsLoadAction() );
-    
-  }, [dispatch]);
+    dispatch( eventsLoadAction(currentPage, limit) );
+  }, [dispatch, currentPage, totalPages, limit]);
+
 
   return (
     <div>
@@ -47,7 +50,7 @@ function EventsPage() {
       <div className="container">
         <PaginationNavStyle />
         <EventsCardsList events={events}></EventsCardsList> 
-        <Paginator></Paginator>
+        {/* <Paginator getTotalItems={getEventsTotal}></Paginator> */}
         </div> }
       { !loading && !error && (events.length === 0) &&
       <div className="container">

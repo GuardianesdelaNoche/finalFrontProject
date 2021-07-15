@@ -1,16 +1,18 @@
 import { types } from "../types/types";
 
 const initialState = {
-    numItemsPage: "10"
+    limit: "10",
+    currentPage: "1",
+    totalPages: null
 };
 
 export const paginationReducer = ( state = initialState, action ) => {
 
     switch (action.type) {
-        case types.paginationSetNumItemsPage:
+        case types.paginationSetLimit:
             return {
                 ...state, 
-                numItemsPage: action.payload
+                limit: action.payload
             }
         default:
             return state;

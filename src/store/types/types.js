@@ -9,5 +9,5 @@ export const types = {
     eventsLoadedSuccess: 'EVENTS Loaded Success',
     eventsLoadedError: 'EVENTS Loaded Error',
     
-    paginationSetNumItemsPage: 'PAGINATION Set Num Items Page'
+    paginationSetLimit: 'PAGINATION Set Limit'
 }

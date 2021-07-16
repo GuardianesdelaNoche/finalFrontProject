@@ -8,6 +8,11 @@ export const types = {
     uiSetLoading: 'UI Set Loading',
     uiSetError: 'UI Set Error',
     uiResetLoading: 'UI Reset Loading',
+
+    eventDetailsRequest: 'EVENT Details Request',
+    eventDetailsSuccess: 'EVENT Details Success',
+    eventDetailsError: 'EVENT Details Error'
+
      
 
 }

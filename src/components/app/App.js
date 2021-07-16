@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { LoginPage, RegisterPage, PrivateRoute, RememberPass } from '../auth';
 
 import { EventsPage } from '../events';
-import EventDetail from '../events/EventDetail/EventDetail';
+import DetailsPage from '../events/EventDetail/DetailsPage';
 import { MemberPage } from '../members';
 import NotFoundPage from './NotFoundPage';
 
@@ -19,7 +19,7 @@ function App() {
         <NotFoundPage />
       </Route>
       <Route exact path="/events" component={EventsPage} />
-      <Route exact path="/events/details" component={EventDetail} />
+      <Route exact path="/events/:eventId" component={DetailsPage} />
       <Route exact path="/register">
         {routeProps => <RegisterPage {...routeProps} />}
       </Route>

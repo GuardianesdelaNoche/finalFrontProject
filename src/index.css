@@ -123,7 +123,12 @@ a, a:hover {
   border-bottom: none;
 }
 
-
+/* Button */
+.btn.btn-light-danger {
+    color: #f1416c;
+    border-color: #ffeff3;
+    background-color: #ffeff3;
+}
 /* Homepage */
 
 .card {
@@ -166,6 +171,7 @@ a, a:hover {
     border-top: 0;
     background-color: white;
 }
+
 
 .separator {
     display: block;
@@ -214,4 +220,21 @@ a, a:hover {
     background-size: cover;
     border-radius: .65rem;
     padding: 0.5rem;
+}
+
+.icons-footer{
+    justify-content: flex-end;
+ 
+}
+
+.icons-footer i{
+        line-height: 1;
+    font-size: 1rem;
+    color: #a1a5b7;
+}
+
+
+.icons-footer i:hover, i:active{
+    transition: color .2s ease,background-color .2s ease;
+    color: #20d489!important;
 }

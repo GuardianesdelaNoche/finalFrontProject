@@ -3,11 +3,14 @@ import React from 'react';
 import useForm from '../../../hooks/useForm';
 import { FormattedMessage } from 'react-intl';
 
-import Button from '../../shared/Button';
+
 import { Input, Checkbok} from '../../shared/index'
+
 
 import './login.css'
 
+const validEmail = ({ email }) => email;
+const validPassword = ({ password }) => password;
 
 
 function LoginForm({onSubmit}) {
@@ -15,7 +18,8 @@ function LoginForm({onSubmit}) {
 	const {
 		formValue: credentials,
 		handleChange,
-		handleSubmit
+		handleSubmit,
+		validate
 	} = useForm({
 		email: '',
 		password: '',
@@ -25,7 +29,7 @@ function LoginForm({onSubmit}) {
 
 	
 	return (
-		<form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
+		<Form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 
 				<div className="form-container">
 					<label className="form-label">
@@ -70,15 +74,20 @@ function LoginForm({onSubmit}) {
 					checked={remember}
 				/>
 
-			<Button variant="primary">
+		{/* 	<Button variant="primary" disabled={!validate(validEmail, validPassword)}>
 				<FormattedMessage
 					id="login.form.button"
 					defaultMessage="Login"
 				/>
-			</Button>
+			</Button> */}
 
 
-		</form>
+			<button
+				className="loginForm-submit"
+				disabled={!validate(validEmail, validPassword)}>Login</button>
+
+
+		</Form>
 	)
 }
 

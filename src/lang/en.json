@@ -31,6 +31,9 @@
     "rememberPass.title": "Can not you login?",
     "rememberPass.recoverMessage": "We will send you a recover link to ",
     "rememberPass.form.button": "Send",
-    "rememberPass.form.placeholderEmail":"Set email"
+    "rememberPass.form.placeholderEmail":"Set email",
+    "recoverPass.form.button": "Update",
+    "recoverPass.title": "New Password"
+
 
 }

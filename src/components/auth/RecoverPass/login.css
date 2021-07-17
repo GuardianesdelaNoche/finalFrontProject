@@ -1,4 +1,10 @@
 @import url('../../../index.css');
+
+/* body{
+   display: flex;
+  justify-content: center;
+} */
+
 .main-content {
   height: 100%;
 }
@@ -29,24 +35,16 @@
     text-align: left;
 }
 
-
-.form-signin .checkbox {
-    margin-top: -5px;
-    font-weight: 400;
-    font-size: 0.9rem;
-    text-align: left;
-    margin-bottom: 1.5rem;
-
+.form-label{
+  font-weight: 600!important;
+  font-size: 1.00rem!important;
+    margin-bottom: .5rem;
 }
 
-.form-signin .form-floating:focus-within {
-  z-index: 2;
+.form-label.text-primary {
+    color: #20d489 !important;
 }
-.form-control{
-    color: #5e6278 !important;
-    background-color: #F5F8FA !important;
-    background-clip: padding-box;
-    border: 1px solid #F5F8FA!important;
-    border-radius: .25rem;
-    padding: 0!important;    
+
+.form-label.text-primary:hover {
+    color: #20d489 !important;
 }

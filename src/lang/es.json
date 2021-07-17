@@ -31,6 +31,7 @@
     "rememberPass.title":"¿No puedes iniciar sesión?",
     "rememberPass.recoverMessage": "Enviaremos un enlace de recuperación a ",
     "rememberPass.form.button": "Enviar",
-    "rememberPass.form.placeholderEmail":"Introducir correo"
-
+    "rememberPass.form.placeholderEmail":"Introducir correo",
+    "recoverPass.form.button": "Actualizar",
+    "recoverPass.title": "Nueva Contraseña"
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import useForm from '../../../hooks/useForm';
 import { FormattedMessage } from 'react-intl';
-
+import {Form} from '../../../components/shared/elements/formElements'
 
 import { Input, Checkbok} from '../../shared/index'
 
@@ -31,7 +31,7 @@ function LoginForm({onSubmit}) {
 	return (
 		<Form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 
-				<div className="form-container">
+				{/* <div className="form-container">
 					<label className="form-label">
 						<FormattedMessage
 							id="login.formLabel.email"
@@ -64,7 +64,7 @@ function LoginForm({onSubmit}) {
 					value={password} 
 					onChange={handleChange}
 				/>
-				</div>
+				</div> */}
 			
 				<Checkbok
 					type="checkbox"

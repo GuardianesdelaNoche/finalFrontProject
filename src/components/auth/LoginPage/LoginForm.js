@@ -1,10 +1,11 @@
 import React from 'react';
 
 import useForm from '../../../hooks/useForm';
+
 import { FormattedMessage } from 'react-intl';
 
 import Button from '../../shared/Button';
-import { Input, Checkbok} from '../../shared/index'
+import { Input, Checkbok} from '../../shared/index';
 
 import './login.css'
 
@@ -27,7 +28,7 @@ function LoginForm({onSubmit}) {
 	return (
 		<form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 
-				<div className="form-container">
+			<div className="form-container">
 					<label className="form-label">
 						<FormattedMessage
 							id="login.formLabel.email"
@@ -35,7 +36,7 @@ function LoginForm({onSubmit}) {
 						/>
 					</label>
 
-					<Input 
+						<Input 
 						type={'email'} 
 						name={'email'} 
 						required={'required'} 
@@ -45,7 +46,7 @@ function LoginForm({onSubmit}) {
 					/>
 				</div>
 		
-				<div className="form-container">
+			 		<div className="form-container">
 					<label className="form-label">
 						<FormattedMessage
 							id="login.formLabel.pass"
@@ -76,7 +77,7 @@ function LoginForm({onSubmit}) {
 					defaultMessage="Login"
 				/>
 			</Button>
-
+		
 
 		</form>
 	)

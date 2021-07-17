@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetErrorAction } from '../../../store/actions/ui';
-import { loginAction } from '../../../store/actions/auth';
+import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { getUi } from '../../../store/selectors/ui'; 
 import { Alert } from 'react-bootstrap';
 import  Spinner  from '../../shared/Spinner';
 import { FormattedMessage } from 'react-intl';
 import RememberPassForm from './RememberPassForm';
+import { setRememberPass } from '../../../api/rememberPass';
 import './RememberPass.css'
 
 
@@ -17,8 +17,18 @@ function RememberPassPage () {
 
     const { loading, error } = useSelector(getUi);
 
-    const handleSubmit = (credentials)=>{
-        dispatch(loginAction(credentials))
+
+    const handleSubmit = (rememberPassData)=>{
+        try {
+            dispatch(setLoadingAction);
+            setRememberPass(rememberPassData)
+        } catch (error) {
+            dispatch(setErrorAction(error));
+        } finally 
+        {
+            dispatch(resetLoadingAction);
+        }
+
     }
     const handleResetError = ()=>{
         dispatch(resetErrorAction())

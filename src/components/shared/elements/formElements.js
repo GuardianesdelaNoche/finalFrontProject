@@ -71,6 +71,7 @@ const ErrorLegend = styled.p`
     `} 
 `;
 
+
 const ValidationIcon = styled(FontAwesomeIcon)`
     position:absolute;
     right: 10px;

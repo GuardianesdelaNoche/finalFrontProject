@@ -10,7 +10,6 @@ import RememberPassForm from './RecoverPassForm';
 import './RecoverPass.css'
 
 
-
 function RecoverPassPage () {
 
     const dispatch = useDispatch();

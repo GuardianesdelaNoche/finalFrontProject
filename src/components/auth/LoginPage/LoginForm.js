@@ -8,14 +8,16 @@ import { Input, Checkbok} from '../../shared/index'
 
 import './login.css'
 
-
+const validEmail = ({ email }) => email;
+const validPassword = ({ password }) => password;
 
 function LoginForm({onSubmit}) {
 
 	const {
 		formValue: credentials,
 		handleChange,
-		handleSubmit
+		handleSubmit,
+		validate
 	} = useForm({
 		email: '',
 		password: '',
@@ -70,12 +72,16 @@ function LoginForm({onSubmit}) {
 					checked={remember}
 				/>
 
-			<Button variant="primary">
+			{/* <Button variant="primary">
 				<FormattedMessage
 					id="login.form.button"
 					defaultMessage="Login"
 				/>
-			</Button>
+			</Button> */}
+			<button
+				className="loginForm-submit"
+				disabled={!validate(validEmail, validPassword)}>Login</button>
+
 
 
 		</form>

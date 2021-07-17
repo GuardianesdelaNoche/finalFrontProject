@@ -1,10 +1,10 @@
 import client from './client';
 
 const version = 'v1';
-const baseURL = `/api/${version}`
+const baseURL = `/api/${version}/users`
 
 export const setRememberPass = (registerData) => {
-    const url = `${baseURL}/forgotthepassword`;
+    const url = `${baseURL}/recoverpass`;
     return client.post(url, registerData);
         
 }

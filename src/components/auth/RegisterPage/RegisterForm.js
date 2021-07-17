@@ -51,8 +51,7 @@ function RegisterForm ({onSubmit}) {
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {
 				changeIsFormValid({...isFormValid, status:false});
-			}
-			
+			}			
 		} else {
 			changeIsFormValid({...isFormValid, status:false});
 		}	

@@ -18,10 +18,10 @@ function RememberPassPage () {
     const { loading, error } = useSelector(getUi);
 
 
-    const handleSubmit = (rememberPassData)=>{
+    const handleSubmit = async (rememberPassData)=>{
         try {
             dispatch(setLoadingAction);
-            setRememberPass(rememberPassData)
+            await setRememberPass(rememberPassData)
         } catch (error) {
             dispatch(setErrorAction(error));
         } finally 

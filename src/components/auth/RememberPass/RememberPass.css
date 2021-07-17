@@ -1,0 +1,52 @@
+@import url('../../../index.css');
+.main-content {
+  height: 100%;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #FBF9F6 !important;
+  color: #181c32!important;
+}
+
+.title-signin {
+    padding: 20px 20px 10px;
+}
+.form-signin { 
+    width: 100%;
+    max-width: 800px;
+    padding: 20px 15px;
+    margin: auto;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+.form-container{
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+
+.form-signin .checkbox {
+    margin-top: -5px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-align: left;
+    margin-bottom: 1.5rem;
+
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-control{
+    color: #5e6278 !important;
+    background-color: #F5F8FA !important;
+    background-clip: padding-box;
+    border: 1px solid #F5F8FA!important;
+    border-radius: .25rem;
+    padding: 0!important;    
+}

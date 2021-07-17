@@ -1,7 +1,6 @@
 {
     "app.header" : "Nombre de la app",
-    "app.content": "Contenido de la app",
-    "app.content": "Contenido de la app",
+    "app.content": "Contenido de la app",    
     "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
     "register.title": "Registro",
     "register.formLabel.username":"Nombre",
@@ -17,8 +16,7 @@
     "register.validate.nickname": "El apodo no es correcto",
     "register.validate.email": "El formato de email no es correcto",
     "register.validate.successmessage": "Formulario enviado correctamente!!",
-    "register.validate.errormessage": "Comprueba los datos, hay algo incorrecto",
-    "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
+    "register.validate.errormessage": "Comprueba los datos, hay algo incorrecto",    
     "login.title": "Bienvenido a ....",
     "login.remember": "¿Olvidó su contraseña?",
     "login.newAcount": "¿Eres nuevo aquí?",
@@ -29,5 +27,10 @@
     "login.form.button": "Entrar",
     "navbar.item.menu": "Crear Evento",
     "button.register.menu": "Regístrate",
-    "button.login.menu": "Entrar"
+    "button.login.menu": "Entrar",
+    "rememberPass.title":"¿No puedes iniciar sesión?",
+    "rememberPass.recoverMessage": "Enviaremos un enlace de recuperación a ",
+    "rememberPass.form.button": "Enviar",
+    "rememberPass.form.placeholderEmail":"Introducir correo"
+
 }

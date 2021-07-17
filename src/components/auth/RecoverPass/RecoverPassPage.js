@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction } from '../../../store/actions/ui';
 import { loginAction } from '../../../store/actions/auth';
@@ -7,15 +7,22 @@ import { Alert } from 'react-bootstrap';
 import  Spinner  from '../../shared/Spinner';
 import { FormattedMessage } from 'react-intl';
 import RememberPassForm from './RecoverPassForm';
-import './RecoverPass.css'
+import { useJwt } from 'react-jwt';
+import './RecoverPass.css';
 
 
-function RecoverPassPage () {
+function RecoverPassPage ({match}) {
 
     const dispatch = useDispatch();
 
     const { loading, error } = useSelector(getUi);
-
+    const token = match.params.token;
+    const { decodedToken, isExpired } = useJwt(token);
+        
+        if(isExpired) {
+            console.log("el token ha expirado");
+        }
+    
     const handleSubmit = (credentials)=>{
         dispatch(loginAction(credentials))
     }

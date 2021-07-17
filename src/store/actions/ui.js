@@ -14,7 +14,8 @@ export const setLoadingAction = () => {
 
 export const setErrorAction = error => {
   return {
-    type: types.uiSetError
+    type: types.uiSetError,
+    data: error
   };
 };
 

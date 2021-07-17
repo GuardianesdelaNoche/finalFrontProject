@@ -2,8 +2,10 @@ import { NavLink, Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import Button from '../shared/Button';
-
+import AuthButton from '../auth/AuthButton/AuthButton';
 import './Header.css';
+
+
 
 const isExact = match => match?.isExact;
 
@@ -35,14 +37,8 @@ function Header() {
 							</Link> 
 						</Button>
 						
-						<Button variant="primary">
-							<Link to="/login">
-								<FormattedMessage
-									id="button.login.menu"
-									defaultMessage="Login"
-								/>
-							</Link>
-						</Button>
+						
+						<AuthButton />
 					</Nav>
 				</Container>
 			</Navbar>

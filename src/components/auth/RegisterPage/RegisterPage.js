@@ -9,33 +9,27 @@ import { FormattedMessage } from 'react-intl';
 import RegisterForm from './RegisterForm';
 import './register.css';
 
-function RegisterPage ({history}) {
+function RegisterPage () {
 
     const dispatch = useDispatch();
 
     const { loading, error } = useSelector(getUi);
 
-
-    const handleSubmit = async (registerData)=>{
+    const handleSubmit = (registerData)=>{
         try {
-            handleResetError();
-            dispatch(setLoadingAction());
-            await setRegister(registerData);
-            dispatch(resetLoadingAction);
-            history.push("/login");
-
-        } catch (error) {  
-            dispatch(setErrorAction(error.errors));
+            dispatch(setLoadingAction);
+            setRegister(registerData)
+        } catch (error) {
+            dispatch(setErrorAction(error));
         } finally 
         {
             dispatch(resetLoadingAction);
         }
+
     }
     const handleResetError = ()=>{
         dispatch(resetErrorAction())
     }
-
-  
     return (
         <div className="main-content">
             <main className="form-signin">
@@ -48,14 +42,13 @@ function RegisterPage ({history}) {
                 {loading && <Spinner animation="border" />}
                 <RegisterForm onSubmit={handleSubmit} />
 
-                {error && 
+                {error && (	
                     <Alert onClick={handleResetError} variant="danger">
                         <p className="mb-0">
-                            {error[0].msg}
+                            {error.message}
                         </p>
-                    </Alert>           
-                    
-                }
+                    </Alert>
+                )}
              
             </main>           
         </div>

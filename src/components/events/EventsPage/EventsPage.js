@@ -17,7 +17,8 @@ import '../../shared/paginator/paginator.css';
 
 import { getEventsTotal } from "../../../store/selectors/events";
 import { getCurrentPage, getLimit, getTotalPages } from '../../../store/selectors/pagination';
-import { paginationSetCurrentPage } from '../../../store/actions/pagination';
+import { paginationSetCurrentPage, paginationUpdateCurrentPage } from '../../../store/actions/pagination';
+import { useHistory, useParams } from 'react-router-dom';
 
 function EventsPage() {
   const dispatch = useDispatch();
@@ -29,16 +30,36 @@ function EventsPage() {
   const limit = useSelector(getLimit);
   const totalEvents = useSelector(getEventsTotal);
 
+  // const { page } = useParams(); //test pag-h
+  // console.log('page',page);
+
   const handleResetError = ()=>{
     dispatch(resetErrorAction())
 }
 
+  const history = useHistory();
   React.useEffect(() => {
-    dispatch( eventsLoadAction(currentPage, limit) );
-  }, [dispatch, currentPage, limit]);
+    // console.log('in useEffect page value', page)
+    // if(page){ //test pag-h
+    //   console.log('get param page ', page)
+    //   console.log(history.location)
+    //   dispatch( paginationSetCurrentPage( page ) )//test pag-h
+    // }
+
+    dispatch( eventsLoadAction(currentPage, limit) ); 
+
+    // dispatch( eventsLoadAction(currentPage, limit) ); 
+  // }, [dispatch, currentPage, limit]);
+}, [dispatch, currentPage, limit]);
+
 
 
   const handleSetCurrentPage = (current, pageSize) => {
+    // const beforePage = page || "1";
+    // console.log('before page', beforePage);
+    // console.log('press page ', current);
+    // dispatch( paginationUpdateCurrentPage( beforePage, current ) )
+    
     dispatch( paginationSetCurrentPage( current ));
   };
 

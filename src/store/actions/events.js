@@ -17,7 +17,7 @@ export const eventsLoadedError = error => ({
     payload: error
 });
 
-export const eventsLoadAction = (currentPage, limit) => {
+export const eventsLoadAction = (page, limit) => {
     return async function (dispatch, getState, { api }) {
       dispatch(eventsLoadedRequest());
           // try{
@@ -28,7 +28,9 @@ export const eventsLoadAction = (currentPage, limit) => {
           // }
 
           try{
-            const events = await api.events.getEventsPage(currentPage, limit);
+            console.log(page, limit)
+            const events = await api.events.getEventsPage(page, limit);
+            console.log(events)
             dispatch(eventsLoadedSuccess(events));
             // set new total 
           }catch(error) {

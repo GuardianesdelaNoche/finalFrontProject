@@ -10,7 +10,23 @@ export const paginationSetTotalPages = (totalPages) => ({
     payload: totalPages
 });
 
-export const paginationSetCurrentPage = (currentPage) => ({
+export const paginationSetCurrentPage = (current) => ({
     type: types.paginationSetCurrentPage,
-    payload: currentPage
+    payload: current
 });
+
+
+export const paginationUpdateCurrentPage = (beforePage, current) => {
+    return function (dispatch, getState, { history }) {
+        history.push(`/events/page/${beforePage}`);
+        console.log(history.location.state)
+        dispatch( paginationSetCurrentPage( current ) )
+    }
+}
+
+export const paginationRedirect = (path) => {
+    return function(dispatch, getState, {history}) {
+        console.log('pag', path)
+        history.push(path);
+    }
+}

@@ -9,6 +9,7 @@ import { eventsReducer } from './reducers/eventsReducer';
 import { paginationReducer } from './reducers/paginationReducer';
 
 
+
 const reducers = combineReducers({
     auth: authReducer,
     ui: uiReducer,

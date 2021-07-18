@@ -3,12 +3,17 @@ export const types = {
     authLoginSuccess: 'AUTH Login Success',
     authLoginError: 'AUTH Login Error',
 
-    uiResetError: 'UI Reset Error',
-
     eventsLoadedRequest: 'EVENTS Loaded Request',
     eventsLoadedSuccess: 'EVENTS Loaded Success',
     eventsLoadedError: 'EVENTS Loaded Error',
     
     paginationSetLimit: 'PAGINATION Set Limit',
-    paginationSetCurrentPage: 'PAGINATION Set Current Page'
+    paginationSetCurrentPage: 'PAGINATION Set Current Page',
+
+    uiResetError: 'UI Reset Error',
+    uiSetLoading: 'UI Set Loading',
+    uiSetError: 'UI Set Error',
+    uiResetLoading: 'UI Reset Loading',
+
+
 }

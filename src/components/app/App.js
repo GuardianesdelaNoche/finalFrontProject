@@ -16,7 +16,7 @@ function App() {
       <PrivateRoute exact path="/member" component={MemberPage} />
       <Route exact path="/events" component={EventsPage} />
       <Route exact path="/register">
-        <RegisterPage />
+        {routeProps => <RegisterPage {...routeProps} />}
       </Route>
       <Route exact path="/404">
         <NotFoundPage />

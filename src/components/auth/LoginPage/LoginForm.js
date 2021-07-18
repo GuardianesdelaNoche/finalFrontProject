@@ -2,29 +2,33 @@ import React from 'react';
 
 import useForm from '../../../hooks/useForm';
 import { FormattedMessage } from 'react-intl';
+
 import Button from '../../shared/Button';
-import {Checkbox} from '../../shared/index'
+import { Input, Checkbok} from '../../shared/index'
+
 import './login.css'
 
-
+const validEmail = ({ email }) => email;
+const validPassword = ({ password }) => password;
 
 function LoginForm({onSubmit}) {
 
 	const {
 		formValue: credentials,
 		handleChange,
-		handleSubmit
+		handleSubmit,
+		validate
 	} = useForm({
 		email: '',
 		password: '',
 		remember: false,
 	});
 	const { email, password, remember } = credentials;
-	 
+
+	
 	return (
 		<form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 
-	
 				<div className="form-container">
 					<label className="form-label">
 						<FormattedMessage
@@ -33,14 +37,14 @@ function LoginForm({onSubmit}) {
 						/>
 					</label>
 
-					<input 
-					name="email"
-					className="form-control"
-					placeholder="name@example.com"
-					value={email}
-					onChange={handleChange}
+					<Input 
+						type={'email'} 
+						name={'email'} 
+						required={'required'} 
+						placeholder={'name@username.com'} 
+						value={email} 
+						onChange={handleChange}
 					/>
-
 				</div>
 		
 				<div className="form-container">
@@ -50,45 +54,36 @@ function LoginForm({onSubmit}) {
 							defaultMessage="Password"
 						/>
 					</label>
-					<input
-						type="password"
-						name="password"
-						placeholder="********"
-						className="form-control"
-						value={password}
+				<Input 
+					type={'password'} 
+					name={'password'} 
+					required={'required'} 
+					placeholder={'********'} 
+					value={password} 
 					onChange={handleChange}
-					/>
-
+				/>
 				</div>
-
-			<div className="form-check form-check-custom form-check-solid">
-				<input
+			
+				<Checkbok
 					type="checkbox"
 					name="remember"
-					checked={remember}
-					className='form-check-input'
+					label={'Remember me'}
 					onChange={handleChange}
-				/> Remember me
-				</div>
-				
-	
-			<Button variant="primary">
+					checked={remember}
+				/>
+
+			{/* <Button variant="primary">
 				<FormattedMessage
 					id="login.form.button"
 					defaultMessage="Login"
 				/>
-			</Button>
+			</Button> */}
+			<button
+				className="loginForm-submit"
+				disabled={!validate(validEmail, validPassword)}>Login</button>
 
-			
-			<div className="form-container">
-				{/* <label className="form-label">
-					<FormattedMessage
-						id="login.formLabel.pass"
-						defaultMessage="Password"
-					/>
-				</label>
-				<Input placeholder="*********"  /> */}
-			</div>
+
+
 		</form>
 	)
 }

@@ -10,7 +10,7 @@ const setAuthorizationHeader = token => {
 
 const removeAuthorizationHeader = () => {
     delete client.defaults.headers.common['x-access-token'];
-}; 
+};
 
 client.interceptors.response.use(
   response => response.data,

@@ -1,5 +1,5 @@
 import { types } from "../types/types";
-import {login} from '../../api/login'
+import {login, logout} from '../../api/login'
 
 export const authLoginRequest = () => ({
 type: types.authLoginRequest
@@ -14,12 +14,17 @@ export const authLoginError = error => ({
     payload: error
 });
 
+export const authLogout = () => {
+    return {
+        type: types.authLogout,
+    };
+}
 
 export const loginAction = credentials => {
     return async function (dispatch, getState, { api, history }) {
         dispatch(authLoginRequest());
         try {
-            // TODO - Add Endpoint to Login
+           
             const logged = await login(credentials);
             dispatch(authLoginSuccess(logged));
 
@@ -32,3 +37,11 @@ export const loginAction = credentials => {
     };
 };
 
+
+export const logoutAction = () => {
+    return async function (dispatch, _getState, { api }) {
+        //await api.auth.logout();
+        await logout();
+        dispatch(authLogout());
+    };
+};

@@ -4,14 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const colors = {
     edge: "#20d489",
     error: "#bb2929",
-    success: "#b8ecbc"
+    success: "#20d489",
+    focus: "rgba(32,212,137,.18823529411764706)"
 }
 
 const Form = styled.form`
     display: grid;
     grid-template-columns: 1fr; 
-    gap: 20px;
+    gap: 0px;
 `;
+
+
 
 const Label = styled.label`
     display: block;
@@ -43,8 +46,8 @@ const InputC = styled.input`
     margin-bottom:10px;
 
     &:focus {
-        border:2px solid ${colors.edge};
         outline:none;       
+        box-shadow: 0 0 0 .2rem ${colors.focus}; 
     }
      
     ${props => props.isValueValid === 'true'  && css `
@@ -95,6 +98,7 @@ const ValidationIcon = styled(FontAwesomeIcon)`
 const ContentBottomCenter = styled.div `
     display:flex;
     justify-content:center;
+
 `;
 
 const Button = styled.button `
@@ -116,12 +120,14 @@ const Button = styled.button `
 `;
 
 const SuccessMessage = styled.p`
-    height: 45px;
-    line-height: 45px;
-    background: #b8ecbc;
-    padding: 0px 15px;
-    border-radius: 3px;
-    font-size:11px;
+    color: #0d5537;
+    background-color: #d2f6e7;
+    padding: 20px;
+    font-size: 15px;
+    border: 1px solid #bcf2dc;
+    border-radius: .65rem;
+    margin-top: 1.5rem!important;
+    margin-bottom: 2.5rem!important;
     p {
         margin:0;
     }
@@ -133,12 +139,14 @@ const SuccessMessage = styled.p`
 `;
 
 const ErrorMessage = styled.div`
-    height: 45px;
-    line-height: 45px;
-    background: #F66060;
-    padding: 0px 15px;
-    border-radius: 3px;
-    font-size:11px;
+    background-color: #fcd9e2;
+    padding: 20px;
+    border: 1px solid #fbc6d3;
+    border-radius: .65rem;
+    margin-top: 1.5rem!important;
+    margin-bottom: 2.5rem!important;
+    color: #912741;
+    
     p {
         margin:0;
     }

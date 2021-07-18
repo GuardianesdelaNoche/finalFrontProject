@@ -16,6 +16,8 @@
     "register.validate.email": "Email format is not correct",
     "register.validate.successmessage": "Form sent corretly!!",
     "register.validate.errormessage": "Check the form, there is something wrong!!",
+    "register.account.message": "Already have an account?",
+    "register.account.link":"Login",
     "login.title": "Welcome to Start",
     "login.remember":"Forgot your password",
     "login.newAcount": "New here?",

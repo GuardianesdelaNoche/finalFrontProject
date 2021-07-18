@@ -14,17 +14,16 @@ function App() {
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/forgotthepassword" component={RememberPass} />
       <PrivateRoute exact path="/member" component={MemberPage} />
-      <Route exact path="/404">
-        <NotFoundPage />
-      </Route>
       <Route exact path="/events" component={EventsPage} />
       <Route exact path="/register">
         {routeProps => <RegisterPage {...routeProps} />}
       </Route>
+      <Route exact path="/404">
+        <NotFoundPage />
+      </Route>
       <Route exact path="/">
         <Redirect to="/events" />
       </Route>
-     
       <Redirect to="/404" />
     </Switch>
     

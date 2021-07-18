@@ -31,5 +31,11 @@
     "login.form.button": "Entrar",
     "navbar.item.menu": "Crear Evento",
     "button.register.menu": "Regístrate",
-    "button.login.menu": "Entrar"
+    "button.login.menu": "Entrar",
+    "eventCard.overlay.registerLogin": "Regístrate o Login",
+    "eventCard.availableSeats": "Plazas disponibles",
+    "eventCard.activity": "Actividad",
+    "eventCard.outdoor": "Aire libre",
+    "eventCard.indoor": "Interior",
+    "eventCard.overlay.fav": "Favorito"
 }

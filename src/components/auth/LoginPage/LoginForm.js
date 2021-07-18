@@ -12,7 +12,6 @@ import './login.css'
 const validEmail = ({ email }) => email;
 const validPassword = ({ password }) => password;
 
-
 function LoginForm({onSubmit}) {
 
 	const {

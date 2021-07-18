@@ -54,7 +54,7 @@ function LoginPage () {
                         id="login.newAcount"
                         defaultMessage="New here? "
                     />
-                    <Link to="/register" className="form-label text-primary">
+                    <Link to="/register" className="form-label text-primary ml-2">
                         <FormattedMessage
                             id="login.createAcount"
                             defaultMessage="Create Account"

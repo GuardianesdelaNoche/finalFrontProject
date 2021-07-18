@@ -68,7 +68,6 @@ function RegisterForm ({onSubmit}) {
     return (
 		<Form  className="form-signin" onSubmit={checkFormData}>
 			<div className="form-container">
-                
 				<Input
 					type="text"
 					label= {intl.formatMessage({ id: 'register.formLabel.username'})}
@@ -81,7 +80,7 @@ function RegisterForm ({onSubmit}) {
 					regularExpression={expressions.username}
 					required
 				/>
-                
+     
 				<Input
 					type="text"
 					label={intl.formatMessage({ id: 'register.formLabel.nickname'})}                   
@@ -94,7 +93,7 @@ function RegisterForm ({onSubmit}) {
 					regularExpression={expressions.nikname}
 					required
 				/>
-					
+			
 				<Input
 					type="text"
 					label={intl.formatMessage({ id: 'register.formLabel.email'})}                   
@@ -120,7 +119,7 @@ function RegisterForm ({onSubmit}) {
 					regularExpression={expressions.password}
 					required
 				/>
-
+			
 				<Input
 					type="password"
 					label={intl.formatMessage({ id: 'register.formLabel.repeatpass'})}                   

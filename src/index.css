@@ -60,10 +60,13 @@ a, a:hover {
 .me-2 {
     margin-right: .5rem!important;
 }
-
+.ml-2 {
+    margin-left: .2rem!important;
+}
 .pt-12 {
     padding-top: 3rem!important;
 }
+
 
 
 /* Navbar */
@@ -133,4 +136,15 @@ a, a:hover {
 
 
 
+.formField{
+    margin-bottom: 15px;
+}
 
+.form-check{
+    padding-left: 0.2rem !important;
+    padding: 0px 0px 0px !important;
+}
+
+button:disabled {
+    opacity: 0.3
+}

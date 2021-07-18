@@ -29,7 +29,7 @@ function LoginForm({onSubmit}) {
 	const intl = useIntl();
 	
 	return (
-		<form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
+		<Form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-container">
 				<Input
 					type="email"
@@ -41,7 +41,7 @@ function LoginForm({onSubmit}) {
 					onChange={handleChange}
 					required
 				/>
-
+			
 				<Input
 					type="password"
 					label={intl.formatMessage({ id: 'login.formLabel.pass' })}
@@ -52,7 +52,7 @@ function LoginForm({onSubmit}) {
 					onChange={handleChange}
 					required
 				/>
-
+			
 				<Checkbok
 					type="checkbox"
 					name="remember"
@@ -64,24 +64,19 @@ function LoginForm({onSubmit}) {
 			</div>
 
 
-			{/* <button
-				className="loginForm-submit"
-				disabled={!validate(validEmail, validPassword)}>Login</button>
-			*/}
-
 			<ContentBottomCenter>
-
 				<Button
-					type="submit">
+					type="submit"
+					disabled={!validate(validEmail, validPassword)}
+					>
 					<FormattedMessage
 						id="login.form.button"
 						defaultMessage="Login"
 					/>
 				</Button>
-
 			</ContentBottomCenter> 
 
-		</form>
+		</Form>
 	)
 }
 

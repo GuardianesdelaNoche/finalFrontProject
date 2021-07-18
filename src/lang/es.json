@@ -18,6 +18,8 @@
     "register.validate.email": "El formato de email no es correcto",
     "register.validate.successmessage": "Formulario enviado correctamente!!",
     "register.validate.errormessage": "Comprueba los datos, hay algo incorrecto",
+    "register.account.message": "¿Ya tienes una cuenta?",
+    "register.account.link": "Entrar",
     "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
     "login.title": "Bienvenido a ....",
     "login.remember": "¿Olvidó su contraseña?",

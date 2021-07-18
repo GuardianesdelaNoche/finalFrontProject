@@ -19,10 +19,10 @@ var moment = require("moment");
 function EventCard(event) {
   // const state = useSelector(getIsEventFav(event._id));
   const isLogged = useSelector(getIsLogged);
-  const dispatch = useDispatch();
+
 
   const handleAddEventFavs = () => {
-    console.log("add/remove fav -> redux & api");
+    // console.log("add/remove fav -> redux & api");
   };
 
   return (

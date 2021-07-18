@@ -120,14 +120,12 @@ const Button = styled.button `
 `;
 
 const SuccessMessage = styled.p`
-    height: 45px;
-    line-height: 45px;
     color: #0d5537;
     background-color: #d2f6e7;
-    padding: 0px 20px;
+    padding: 20px;
+    font-size: 15px;
     border: 1px solid #bcf2dc;
     border-radius: .65rem;
-    font-size:11px;
     margin-top: 1.5rem!important;
     margin-bottom: 2.5rem!important;
     p {
@@ -141,12 +139,8 @@ const SuccessMessage = styled.p`
 `;
 
 const ErrorMessage = styled.div`
-    height: 45px;
-    line-height: 45px;
-    padding: 0px 20px;
-    font-size:11px;
     background-color: #fcd9e2;
-    padding: 0px 20px;
+    padding: 20px;
     border: 1px solid #fbc6d3;
     border-radius: .65rem;
     margin-top: 1.5rem!important;

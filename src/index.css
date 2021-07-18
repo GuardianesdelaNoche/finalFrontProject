@@ -95,11 +95,6 @@ a, a:hover {
     padding: 60px 0px;
 }
 
-/* Alert */
-.alertLogin{
-    margin: -15px 20px 30px;
-}
-
 
 .card.card-stretch {
     height: calc(100% - var(--bs-gutter-y));
@@ -157,4 +152,14 @@ a, a:hover {
 
 button:disabled {
     opacity: 0.3
+}
+
+/* Alert */
+
+.alert-danger.alertLogin{
+    background-color: #fcd9e2;
+    padding: 10px;
+    border: 1px solid #fbc6d3;
+    border-radius: .65rem;
+    color: #912741;
 }

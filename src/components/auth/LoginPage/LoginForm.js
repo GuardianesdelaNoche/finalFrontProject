@@ -1,9 +1,12 @@
 import React from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { resetErrorAction } from '../../../store/actions/ui';
 import useForm from '../../../hooks/useForm';
+import { getUi } from '../../../store/selectors/ui';
+
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Form, ContentBottomCenter, Button} from '../../../components/shared/elements/formElements'
-
+import { Alert } from 'react-bootstrap';
 import { Checkbok } from '../../shared/index'
 import Input from '../../shared/components/Input';
 
@@ -13,6 +16,10 @@ const validEmail = ({ email }) => email;
 const validPassword = ({ password }) => password;
 
 function LoginForm({onSubmit}) {
+
+	const dispatch = useDispatch();
+
+	const { error } = useSelector(getUi);
 
 	const {
 		formValue: credentials,
@@ -24,9 +31,17 @@ function LoginForm({onSubmit}) {
 		password: '',
 		remember: false,
 	});
+
+
 	const { email, password, remember } = credentials;
 	const intl = useIntl();
 	
+
+	const handleResetError = () => {
+		dispatch(resetErrorAction())
+	}
+
+
 	return (
 		<Form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-container">
@@ -62,6 +77,14 @@ function LoginForm({onSubmit}) {
 
 			</div>
 
+
+			{error && (
+				<Alert className="alertLogin" onClick={handleResetError} variant="danger">
+					<p className="mb-0">
+						{error.message}
+					</p>
+				</Alert>
+			)}
 
 			<ContentBottomCenter>
 				<Button

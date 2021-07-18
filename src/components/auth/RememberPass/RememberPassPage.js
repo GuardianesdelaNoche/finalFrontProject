@@ -7,11 +7,13 @@ import  Spinner  from '../../shared/Spinner';
 import { FormattedMessage } from 'react-intl';
 import RememberPassForm from './RememberPassForm';
 import { setRememberPass } from '../../../api/rememberPass';
+import { useIntl } from 'react-intl';
 import './RememberPass.css'
 
 
 
-function RememberPassPage () {
+function RememberPassPage ({tokenExpired}) {
+    const intl = useIntl();
 
     const dispatch = useDispatch();
 
@@ -57,7 +59,16 @@ function RememberPassPage () {
                             {error.message}
                         </p>
                     </Alert>
-                )}                 
+                )}  
+
+                   {tokenExpired && (	
+                    <Alert className="alertLogin" onClick={handleResetError} variant="danger">
+                        <p className="mb-0">
+                            {intl.formatMessage({ id: 'rememberPass.page.tokenexpired'})}
+                        </p>
+                    </Alert>
+                )}     
+
             </main>           
         </div>
     )

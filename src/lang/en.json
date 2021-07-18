@@ -14,7 +14,7 @@
     "register.validate.pass":"Min. length 8, one uppercase and lowercase caracter",
     "register.validate.nickname": "Nickname is not valid",
     "register.validate.email": "Email format is not correct",
-    "register.validate.successmessage": "Form sent corretly!!",
+    "register.validate.successmessage": "Your data has been sent!!",
     "register.validate.errormessage": "Check the form, there is something wrong!!",
     "login.title": "Welcome to Start",
     "login.remember":"Forgot your password",
@@ -33,7 +33,9 @@
     "rememberPass.form.button": "Send",
     "rememberPass.form.placeholderEmail":"Set email",
     "recoverPass.form.button": "Update",
-    "recoverPass.title": "New Password"
+    "recoverPass.title": "New Password",
+    "rememberPass.validate.successmessage":"You will recibe a email with a link in order to change your password",
+    "rememberPass.page.tokenexpired": "Token has expired. Send us your email and you will recive a new one"
 
 
 }

@@ -65,7 +65,7 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
         
         <ValidationIcon 
             icon={isValueValid === 'true' ? faCheckCircle : faTimesCircle} 
-            isValueValid= {isValueValid} 
+            isvaluevalid= {isValueValid} 
             >  </ValidationIcon>    
         <ErrorLegend isValueValid={isValueValid}>{errorLegend}</ErrorLegend>
       </GroupInput>

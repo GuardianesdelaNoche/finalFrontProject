@@ -80,13 +80,13 @@ const ValidationIcon = styled(FontAwesomeIcon)`
     font-size: 16px;
     opacity:0;
 
-    ${props => props.isValueValid === 'false'  && css `
+    ${props => props.isvaluevalid === 'false'  && css `
         opacity:1;
         bottom:42px;
         color: ${colors.error}
     `} 
 
-    ${props => props.isValueValid === 'true'  && css `
+    ${props => props.isvaluevalid === 'true'  && css `
         opacity:1;
         bottom:25px;
         color: ${colors.success}

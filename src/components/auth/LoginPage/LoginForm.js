@@ -36,14 +36,7 @@ function LoginForm({onSubmit}) {
 						/>
 					</label>
 
-						<Input 
-						type={'email'} 
-						name={'email'} 
-						required={'required'} 
-						placeholder={'name@username.com'} 
-						value={email} 
-						onChange={handleChange}
-					/>
+				
 				</div>
 		
 			 		<div className="form-container">

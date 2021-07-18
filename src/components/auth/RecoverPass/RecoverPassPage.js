@@ -1,30 +1,41 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetErrorAction } from '../../../store/actions/ui';
-import { loginAction } from '../../../store/actions/auth';
+import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { getUi } from '../../../store/selectors/ui'; 
 import { Alert } from 'react-bootstrap';
 import  Spinner  from '../../shared/Spinner';
 import { FormattedMessage } from 'react-intl';
 import RememberPassForm from './RecoverPassForm';
 import { useJwt } from 'react-jwt';
+import { setRecover } from '../../../api/recoverPass';
 import './RecoverPass.css';
 
 
-function RecoverPassPage ({match}) {
+function RecoverPassPage ({match, history}) {
 
     const dispatch = useDispatch();
 
     const { loading, error } = useSelector(getUi);
     const token = match.params.token;
-    const { decodedToken, isExpired } = useJwt(token);
+    const { isExpired } = useJwt(token);
         
-        if(isExpired) {
-            console.log("el token ha expirado");
+    if(isExpired) {         
+        
+        history.push("/rememberPassword/tokenExpired")
+
+    }
+
+    const handleSubmit = async (recoverData)=>{
+        try {
+            dispatch(setLoadingAction);
+            await setRecover(recoverData);
+            history.push('/login');
+        } catch (error) {
+            dispatch(setErrorAction(error));
+        } finally 
+        {
+            dispatch(resetLoadingAction);
         }
-    
-    const handleSubmit = (credentials)=>{
-        dispatch(loginAction(credentials))
     }
     const handleResetError = ()=>{
         dispatch(resetErrorAction())

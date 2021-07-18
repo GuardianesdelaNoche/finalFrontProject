@@ -16,8 +16,7 @@ function RememberPassForm ({onSubmit}) {
 		email:"",        
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
-	const [formSent, changeFormSent] = useState(false);
-	
+		
 	const intl = useIntl();
 
 
@@ -36,7 +35,7 @@ function RememberPassForm ({onSubmit}) {
 		if ( isValidValue(expressions.email, email)) {
 			try {
 				onSubmit(rememberPassData);	
-				changeFormSent(true);
+		
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {
 				changeIsFormValid({...isFormValid, status:false});
@@ -81,7 +80,7 @@ function RememberPassForm ({onSubmit}) {
 			{isFormValid.status === true && <SuccessMessage>
 				<p>
 					<FontAwesomeIcon icon={faComment}/>
-					<b></b>{intl.formatMessage({ id: 'register.validate.successmessage'})}
+					<b></b>{intl.formatMessage({ id: 'rememberPass.validate.successmessage'})}
 				</p>
 			</SuccessMessage>}
 

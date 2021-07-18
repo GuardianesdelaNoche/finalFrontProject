@@ -15,7 +15,7 @@
     "register.formLabel.repeatpass":"Repite contraseña",
     "register.validate.nickname": "El apodo no es correcto",
     "register.validate.email": "El formato de email no es correcto",
-    "register.validate.successmessage": "Formulario enviado correctamente!!",
+    "register.validate.successmessage": "Tus datos han sido enviados!!",
     "register.validate.errormessage": "Comprueba los datos, hay algo incorrecto",    
     "login.title": "Bienvenido a ....",
     "login.remember": "¿Olvidó su contraseña?",
@@ -33,5 +33,7 @@
     "rememberPass.form.button": "Enviar",
     "rememberPass.form.placeholderEmail":"Introducir correo",
     "recoverPass.form.button": "Actualizar",
-    "recoverPass.title": "Nueva Contraseña"
+    "recoverPass.title": "Nueva Contraseña",
+    "rememberPass.validate.successmessage":"Recibirás un email con un link para poder cambiar la contraseña",
+    "rememberPass.page.tokenexpired": "El token ha expirado. Solicite otro enviando su email"
 }

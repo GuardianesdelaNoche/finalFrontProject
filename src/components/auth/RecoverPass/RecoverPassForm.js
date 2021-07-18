@@ -17,7 +17,6 @@ function RecoverPassForm ({onSubmit}) {
 		password2:"",
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
-	const [formSent, changeFormSent] = useState(false);
 	
 	const intl = useIntl();
 
@@ -38,7 +37,6 @@ function RecoverPassForm ({onSubmit}) {
 		&& password === password2) {
 			try {
 				onSubmit(recoverPassData);	
-				changeFormSent(true);
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {
 				changeIsFormValid({...isFormValid, status:false});

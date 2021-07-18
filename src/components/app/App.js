@@ -13,6 +13,10 @@ function App() {
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/rememberPassword" component={RememberPassPage} />
+      <Route exact path="/rememberPassword/tokenExpired">
+        <RememberPassPage tokenExpired />
+      </Route> 
+
       <Route exact path="/forgotthepassword/:token">
         { routeProps => <RecoverPassPage { ...routeProps} />}
       </Route>       

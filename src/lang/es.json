@@ -37,5 +37,7 @@
     "eventCard.activity": "Actividad",
     "eventCard.outdoor": "Aire libre",
     "eventCard.indoor": "Interior",
-    "eventCard.overlay.fav": "Favorito"
+    "eventCard.overlay.fav": "Favorito",
+    "updatemember.form.button": "Cambiar",
+    "updatemember.title": "Cambiar mis datos"
 }

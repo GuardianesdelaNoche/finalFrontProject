@@ -8,20 +8,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Form,ContentBottomCenter, ErrorMessage, SuccessMessage, Button } from '../../shared/elements/formElements';
 import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-icons';
 
-
-//import '../LoginPage/login.css'
-
-function UpdateMemberForm ({onSubmit}) {
+function UpdateMemberForm ({onSubmit, data}) {
     const {
 		formValue: registerData, 
 		handleChange,	
 	} = useForm({
-        username:"",
-		email:"",
+        username: data.username,
+		email:data.email,
         role:1,
-		password:"",	
-		password2:"",
-		nickname:"",
+		nickname:data.nickname,
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
 	const [formSent, changeFormSent] = useState(false);
@@ -29,7 +24,7 @@ function UpdateMemberForm ({onSubmit}) {
 	const intl = useIntl();
 
 
-    const { username, email, password, password2,  nickname } = registerData;   
+    const { username, email,  nickname } = registerData;   
 
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {
@@ -44,8 +39,7 @@ function UpdateMemberForm ({onSubmit}) {
 		if ( isValidValue(expressions.username, username)
 		&& isValidValue(expressions.nikname, nickname) 
 		&& isValidValue(expressions.email, email)
-		&& isValidValue(expressions.password, password)
-		&& password === password2	) {
+			) {
 			try {
 				onSubmit(registerData);	
 				changeFormSent(true);
@@ -63,7 +57,7 @@ function UpdateMemberForm ({onSubmit}) {
 		username: /^[a-zA-Z0-9_-]{6,18}$/,
 		nikname: /^[a-zA-ZÀ-ÿ0-9\s]{1,18}$/,
 		email:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]+$/,
-		password: /^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})\S{8,}$/,
+		
 	}
 
     return (
@@ -108,31 +102,7 @@ function UpdateMemberForm ({onSubmit}) {
 					required
 				/>
 			
-				<Input
-					type="password"
-					label={intl.formatMessage({ id: 'register.formLabel.pass'})}                   
-					name="password"
-					id="password"
-					placeholder="******"
-					value={password}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'register.validate.pass'})}
-					regularExpression={expressions.password}
-					required
-				/>
-			
-				<Input
-					type="password"
-					label={intl.formatMessage({ id: 'register.formLabel.repeatpass'})}                   
-					name="password2"
-					id="password2"
-					placeholder="******"
-					value={password2}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'register.validate.repeatpass'})}
-					valueToCheck={password}
-					required
-				/>
+				
 				
 			{isFormValid.status === false && <ErrorMessage>
 				<p>
@@ -153,8 +123,8 @@ function UpdateMemberForm ({onSubmit}) {
 			<Button		
 			    type="submit">
                     <FormattedMessage
-                        id="register.form.button"
-                        defaultMessage="Register"
+                        id="updatemember.form.button"
+                        defaultMessage="Update"
                     />
 			</Button>
 		

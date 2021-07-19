@@ -36,8 +36,8 @@ function UpdateMemberPage () {
             <main className="form-signin">
                 <h1 className="h1 title-signin">
                     <FormattedMessage
-                        id="register.title"
-                        defaultMessage="Register"
+                        id="updatemember.title"
+                        defaultMessage="Change my data"
                     />
                 </h1>
                 {loading && <Spinner animation="border" />}

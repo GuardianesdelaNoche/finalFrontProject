@@ -1,6 +1,11 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { LoginPage, RegisterPage, PrivateRoute, RememberPassPage, RecoverPassPage } from '../auth';
+import { LoginPage,
+   RegisterPage,
+   PrivateRoute,
+   RememberPassPage,
+   RecoverPassPage
+} from '../auth';
 
 import { EventsPage } from '../events';
 import { MemberPage, UpdateMemberPage } from '../members';

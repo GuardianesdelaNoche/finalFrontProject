@@ -19,6 +19,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: .5rem;
     font-weight: 600 !important;
     line-height: 1.2;
+<<<<<<< Updated upstream
 }
 
 a {
@@ -176,4 +177,112 @@ button:disabled {
     color: #912741;
 }
 
+=======
+}
+
+a {
+    color: #20d489;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+a, a:hover {
+    transition: color .2s ease,background-color .2s ease;
+    text-decoration: none !important;
+   
+}
+/* ----Text */
+.text-description {
+    color: #a1a5b7!important;
+    font-size: 1.020rem!important;
+}
+
+.text-dark {
+    color: #181c32!important;
+}
+
+.text-hover-primary:hover, .text-hover-primary:hover i {
+    transition: color .2s ease,background-color .2s ease;
+    color: #20d489!important;
+}
+/* ----Fonts */
+.fs-3 {
+    font-size: 1.35rem!important;
+}
+
+.fw-bolder {
+    font-weight: 600!important;
+}
+
+/* ----Espaces */
+.me-2 {
+    margin-right: .5rem!important;
+}
+
+.pt-12 {
+    padding-top: 3rem!important;
+}
+
+
+/* Navbar */
+.navbar-brand{
+    font-weight: 700;
+}
+
+/* Menu */
+.menu-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    padding: .65rem 1rem;
+    transition: none;
+    outline: 0!important;
+    color: #7e8299;
+}
+.menu-item:hover{
+    color: #20d489;
+}
+
+/* Main */
+.container.main {
+    max-width: 1140px;
+    padding: 60px 0px;
+}
+
+
+
+.card.card-stretch {
+    height: calc(100% - var(--bs-gutter-y));
+    border: 0px solid rgba(0,0,0,.125);
+}
+.card {
+    box-shadow: 0 0 20px 0 rgb(76 87 125 / 2%);
+    border: 0;
+}
+
+
+/* Homepage */
+
+.card>.card-header {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    min-height: 70px;
+    padding: 0 2.25rem;
+    background-color: transparent;
+}
+.card>.card-body, .card>.card-footer {
+    padding: 2rem 2.25rem;
+}
+
+
+
+>>>>>>> Stashed changes
 

@@ -4,10 +4,18 @@ import thunk from 'redux-thunk';
 import { authReducer } from './reducers/authReducer';
 import { uiReducer } from './reducers/uiReducer';
 
+<<<<<<< Updated upstream
 import * as api from '../api';
 import { eventsReducer } from './reducers/eventsReducer';
 import { paginationReducer } from './reducers/paginationReducer';
 
+=======
+<<<<<<< HEAD
+ import * as api from '../api';
+=======
+//import * as api from '../api';
+>>>>>>> develop
+>>>>>>> Stashed changes
 
 
 const reducers = combineReducers({

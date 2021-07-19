@@ -20,6 +20,7 @@
     "register.validate.errormessage": "Comprueba los datos, hay algo incorrecto",
     "register.account.message": "¿Ya tienes una cuenta?",
     "register.account.link": "Entrar",
+    "register.errorMessage.username":"El usuario debe tener al menos 8 caracteres",
     "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
     "login.title": "Bienvenido a ....",
     "login.remember": "¿Olvidó su contraseña?",
@@ -37,6 +38,8 @@
     "eventCard.activity": "Actividad",
     "eventCard.outdoor": "Aire libre",
     "eventCard.indoor": "Interior",
+    "eventCard.overlay.fav": "Favorito",
+    "button.login.menu": "Entrar",
     "eventCard.overlay.fav": "Favorito",
     "updatemember.title":"Cambiar mis datos",
     "updatemember.button":"Cambiar"

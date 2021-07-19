@@ -30,6 +30,7 @@ function App() {
       <Route exact path="/">
         <Redirect to="/events" />
       </Route>
+     
       <Redirect to="/404" />
     </Switch>
     

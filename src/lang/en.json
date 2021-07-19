@@ -18,6 +18,7 @@
     "register.validate.errormessage": "Check the form, there is something wrong!!",
     "register.account.message": "Already have an account?",
     "register.account.link":"Login",
+    "register.errorMessage.username":"User must have at list 8 caracters",
     "login.title": "Welcome to Start",
     "login.remember":"Forgot your password",
     "login.newAcount": "New here?",
@@ -34,6 +35,8 @@
     "eventCard.activity":"Activity",
     "eventCard.outdoor": "Outdoor",
     "eventCard.indoor": "Indoor",
+    "eventCard.overlay.fav": "Favourite",
+    "button.login.menu":"Login",
     "eventCard.overlay.fav": "Favourite",
     "updatemember.title":"Update my data",
     "updatemember.button":"Update"

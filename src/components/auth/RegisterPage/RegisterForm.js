@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
+<<<<<<< Updated upstream
+=======
+import Checkbox from '../../shared/Checkbox';
+>>>>>>> Stashed changes
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -19,8 +23,12 @@ function RegisterForm ({onSubmit}) {
         username:"",
 		email:"",
         role:1,
+<<<<<<< Updated upstream
 		password:"",	
 		password2:"",
+=======
+		password:"",
+>>>>>>> Stashed changes
 		nickname:"",
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
@@ -69,6 +77,51 @@ function RegisterForm ({onSubmit}) {
     return (
 		<Form  className="form-signin" onSubmit={checkFormData}>
 			<div className="form-container">
+<<<<<<< Updated upstream
+=======
+                
+					<Input
+						type="text"
+						label= {intl.formatMessage({ id: 'register.formLabel.username'})}
+						name="username"
+						id="username"
+						placeholder="username"
+						value={username}
+						onChange={handleChange}
+						icon={faCheckCircle}
+						legend={intl.formatMessage({ id: 'register.formLabel.usernregister.errorMessage.username'})}
+                        required
+					/>
+					
+				
+                
+					<Input
+						type="text"
+                        name="nickname"
+						id="nickname"
+						label={intl.formatMessage({ id: 'register.formLabel.nickname'})}                   
+                        required
+						placeholder="nickname"
+						value={nickname}
+						icon={faCheckCircle}
+						legend={"mensaje"}
+						onChange={handleChange}
+					/>
+					
+					<Input
+						type="text"
+                        name="email"
+						id="email"
+						label={intl.formatMessage({ id: 'register.formLabel.email'})}                   
+                        required
+						placeholder="xxxx@xxxx.com"
+						value={email}
+						icon={faCheckCircle}
+						legend={"mensaje"}
+						onChange={handleChange}
+					/>
+                
+>>>>>>> Stashed changes
 				<Input
 					type="text"
 					label= {intl.formatMessage({ id: 'register.formLabel.username'})}

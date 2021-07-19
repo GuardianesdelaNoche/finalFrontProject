@@ -1,10 +1,10 @@
 import client from './client';
 
 const version = 'v1';
-const baseURL = `/api/${version}/user`
+const baseURL = `/api/${version}/users`
 
 export const setRecover = (recoverData) => {
-    const url = `${baseURL}/recover`;
-    return client.post(url, recoverData);
+    const url = `${baseURL}`;
+    return client.put(url, recoverData);
         
 }

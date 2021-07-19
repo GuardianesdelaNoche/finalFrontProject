@@ -50,7 +50,7 @@ function RecoverPassPage ({match, history}) {
                     />
                 </h1>                
               {loading && <Spinner animation="border" />} 
-                <RememberPassForm onSubmit={handleSubmit} />
+                <RememberPassForm onSubmit={handleSubmit} token={token} />
 
                 {error && (	
                     <Alert className="alertLogin" onClick={handleResetError} variant="danger">

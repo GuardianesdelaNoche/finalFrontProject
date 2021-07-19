@@ -28,7 +28,6 @@
     "login.form.button":"Login",
     "navbar.item.menu":"New Events",
     "button.register.menu":"Register",
-    "button.login.menu":"Login",
     "remember.title":"Remember Password",
     "rememberPass.title": "Can not you login?",
     "rememberPass.recoverMessage": "We will send you a recover link to ",

@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction } from '../../../store/actions/ui';
 import useForm from '../../../hooks/useForm';
 import { getUi } from '../../../store/selectors/ui';
-
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Form, ContentBottomCenter, Button} from '../../../components/shared/elements/formElements'
 import { Alert } from 'react-bootstrap';
 
-import { Input, Checkbok} from '../../shared/index';
+import { Input, Checkbok } from '../../shared/index';
 
 import './login.css'
 
@@ -32,15 +31,12 @@ function LoginForm({onSubmit}) {
 		remember: false,
 	});
 
-
 	const { email, password, remember } = credentials;
 	const intl = useIntl();
-
 
 	const handleResetError = () => {
 		dispatch(resetErrorAction())
 	}
-
 
 	return (
 		<Form className="form-signin" onSubmit={handleSubmit(onSubmit)}>
@@ -74,7 +70,6 @@ function LoginForm({onSubmit}) {
 					onChange={handleChange}
 					checked={remember}
 				/>
-
 			</div>
 
 

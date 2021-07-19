@@ -35,7 +35,7 @@ function LoginPage () {
                 <LoginForm onSubmit={handleSubmit} />
 
                
-                <Link to="/remember" className="form-label text-primary">
+                <Link to="/rememberPassword" className="form-label text-primary">
                     <FormattedMessage
                         id="login.remember"
                         defaultMessage="Forgot your password?"

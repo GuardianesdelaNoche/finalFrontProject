@@ -8,12 +8,13 @@ import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-ic
 
 import './RecoverPass.css';
 
-function RecoverPassForm ({onSubmit}) {
+function RecoverPassForm ({onSubmit, token}) {
     const {
 		formValue: recoverPassData, 
 		handleChange,	
 	} = useForm({        
-		password:"",        
+		password:"",    
+		token: token,   
 		password2:"",
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});

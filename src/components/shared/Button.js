@@ -26,7 +26,7 @@ const Button = styled.button `
     min-height: 40px;
     min-width: 72px;
     outline-style: none;
-    opacity: ${props => (props.disabled ? 'none': 'auto')};    
+    opacity: ${props => (props.disabled ? 0.5 : 1)};
     text-decoration: none;
     transition: background-color 0.2s;
 
@@ -42,7 +42,8 @@ const Button = styled.button `
             : '#e2e6ea'
         }
     }
-
+     
+  
     a {
         color:${ props =>
         props.variant === 'primary'
@@ -50,6 +51,12 @@ const Button = styled.button `
         : '#7e8299'
         }
     }
+
+   
+}
+
+
+    
 
 
 `;

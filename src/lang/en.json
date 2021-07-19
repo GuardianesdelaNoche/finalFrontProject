@@ -16,6 +16,8 @@
     "register.validate.email": "Email format is not correct",
     "register.validate.successmessage": "Your data has been sent!!",
     "register.validate.errormessage": "Check the form, there is something wrong!!",
+    "register.account.message": "Already have an account?",
+    "register.account.link":"Login",
     "login.title": "Welcome to Start",
     "login.remember":"Forgot your password",
     "login.newAcount": "New here?",
@@ -35,7 +37,12 @@
     "recoverPass.form.button": "Update",
     "recoverPass.title": "New Password",
     "rememberPass.validate.successmessage":"You will recibe a email with a link in order to change your password",
-    "rememberPass.page.tokenexpired": "Token has expired. Send us your email and you will recive a new one"
-
-
+    "rememberPass.page.tokenexpired": "Token has expired. Send us your email and you will recive a new one",
+    "button.login.menu":"Login",
+    "eventCard.overlay.registerLogin": "Register or Login",
+    "eventCard.availableSeats": "Available seats",
+    "eventCard.activity":"Activity",
+    "eventCard.outdoor": "Outdoor",
+    "eventCard.indoor": "Indoor",
+    "eventCard.overlay.fav": "Favourite"
 }

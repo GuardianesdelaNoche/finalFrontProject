@@ -1,6 +1,7 @@
 {
     "app.header" : "Nombre de la app",
-    "app.content": "Contenido de la app",    
+    "app.content": "Contenido de la app",
+    "app.content": "Contenido de la app",
     "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
     "register.title": "Registro",
     "register.formLabel.username":"Nombre",
@@ -15,8 +16,11 @@
     "register.formLabel.repeatpass":"Repite contraseña",
     "register.validate.nickname": "El apodo no es correcto",
     "register.validate.email": "El formato de email no es correcto",
+    "register.account.message": "¿Ya tienes una cuenta?",
+    "register.account.link": "Entrar",
+    "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
     "register.validate.successmessage": "Tus datos han sido enviados!!",
-    "register.validate.errormessage": "Comprueba los datos, hay algo incorrecto",    
+    "register.validate.errormessage": "Comprueba los datos, hay algo incorrecto",
     "login.title": "Bienvenido a ....",
     "login.remember": "¿Olvidó su contraseña?",
     "login.newAcount": "¿Eres nuevo aquí?",
@@ -35,5 +39,12 @@
     "recoverPass.form.button": "Actualizar",
     "recoverPass.title": "Nueva Contraseña",
     "rememberPass.validate.successmessage":"Recibirás un email con un link para poder cambiar la contraseña",
-    "rememberPass.page.tokenexpired": "El token ha expirado. Solicite otro enviando su email"
+    "rememberPass.page.tokenexpired": "El token ha expirado. Solicite otro enviando su email",
+    "button.login.menu": "Entrar",
+    "eventCard.overlay.registerLogin": "Regístrate o Login",
+    "eventCard.availableSeats": "Plazas disponibles",
+    "eventCard.activity": "Actividad",
+    "eventCard.outdoor": "Aire libre",
+    "eventCard.indoor": "Interior",
+    "eventCard.overlay.fav": "Favorito"
 }

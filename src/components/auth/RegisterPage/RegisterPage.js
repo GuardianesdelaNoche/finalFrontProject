@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { setRegister } from '../../../api/register';
 import { getUi } from '../../../store/selectors/ui'; 
-
+import { Link } from 'react-router-dom';
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './RegisterForm';
@@ -49,6 +49,20 @@ function RegisterPage () {
                         </p>
                     </Alert>
                 )}
+
+                <p className="text-muted">
+                  
+                    <FormattedMessage
+                        id="register.account.message"
+                        defaultMessage="Already have an account?"
+                    />
+                    <Link to="/login" className="form-label text-primary ml-2">
+                        <FormattedMessage
+                            id="register.account.link"
+                            defaultMessage="Entrar"
+                        />
+            
+                    </Link></p>
              
             </main>           
         </div>

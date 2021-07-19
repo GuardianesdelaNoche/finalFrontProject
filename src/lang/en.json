@@ -34,5 +34,7 @@
     "eventCard.activity":"Activity",
     "eventCard.outdoor": "Outdoor",
     "eventCard.indoor": "Indoor",
-    "eventCard.overlay.fav": "Favourite"
+    "eventCard.overlay.fav": "Favourite",
+    "updatemember.title":"Update my data",
+    "updatemember.button":"Update"
 }

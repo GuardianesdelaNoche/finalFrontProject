@@ -8,7 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Form,ContentBottomCenter, ErrorMessage, SuccessMessage, Button } from '../../shared/elements/formElements';
 import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-icons';
 
-import './RegisterPage.css';
+
+import '../LoginPage/login.css'
 
 function RegisterForm ({onSubmit}) {
     const {
@@ -149,7 +150,7 @@ function RegisterForm ({onSubmit}) {
 
 			<ContentBottomCenter>
 
-			<Button			
+			<Button		
 			    type="submit">
                     <FormattedMessage
                         id="register.form.button"

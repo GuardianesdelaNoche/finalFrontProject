@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './RegisterForm';
-import './register.css';
+
+import '../LoginPage/login.css'
 
 function RegisterPage () {
 

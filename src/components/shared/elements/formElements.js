@@ -103,7 +103,7 @@ const ContentBottomCenter = styled.div `
 
 const Button = styled.button `
     height: 45px;  
-    width: 30%;
+    width: auto;
     background: #20d489 !important;
     color: #fff;
     border: none;

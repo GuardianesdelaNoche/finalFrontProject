@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLimit } from "../../store/selectors/pagination";
 import { paginationSetLimit } from "../../store/actions/pagination";
 
-const ButtonItems = ({ variant = "primary", val, onClick }) => {
+const ButtonItems = ({ variant = "primary", val, onClick, limit }) => {
     const active = useSelector(getLimit);
   return (
     <Button
       key={val}
       variant={variant}
-      active={active === val}
+      active={limit == val}
       onClick={onClick(val)}
     >
       Ver {val}
@@ -22,19 +22,19 @@ const ButtonItems = ({ variant = "primary", val, onClick }) => {
 
 const defaultValues = ["10", "20", "50"];
 
-export const PaginationNavStyle = ({ values = defaultValues }) => {
+export const PaginationNavStyle = ({ values = defaultValues , onClick, limit}) => {
   const dispatch = useDispatch();
 
-  const onClick = (val) => (ev) => {
-      dispatch( paginationSetLimit( val ) )
-  };
+  // const onClick = (val) => (ev) => {
+  //     dispatch( paginationSetLimit( val ) )
+  // };
 
 
   return (
     <div className="p-3 pb-4 d-flex justify-content-end">
       {values.length > 0 && (
         <ButtonGroup>
-          {values.map((val) => ButtonItems({ val, onClick }))}
+          {values.map((val) => ButtonItems({ val, onClick, limit }))}
         </ButtonGroup>
       )}
     </div>

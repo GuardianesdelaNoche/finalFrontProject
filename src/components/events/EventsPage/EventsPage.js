@@ -17,8 +17,8 @@ import '../../shared/paginator/paginator.css';
 
 import { getEventsTotal } from "../../../store/selectors/events";
 import { getCurrentPage, getLimit, getTotalPages } from '../../../store/selectors/pagination';
-import { paginationSetCurrentPage, paginationUpdateCurrentPage } from '../../../store/actions/pagination';
-import { useHistory, useParams } from 'react-router-dom';
+import { paginationRedirect, paginationSetCurrentPage, paginationUpdateCurrentPage } from '../../../store/actions/pagination';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 
 function EventsPage() {
   const dispatch = useDispatch();
@@ -38,6 +38,12 @@ function EventsPage() {
 }
 
   const history = useHistory();
+  const location = useLocation();
+  const { page: pageTest,  limit: limitTest } = useParams(); 
+  const queryPath = new URLSearchParams(location.search);
+  const pageQuery =  queryPath.get("page");
+  const limitQuery = queryPath.get("limit");
+
   React.useEffect(() => {
     // console.log('in useEffect page value', page)
     // if(page){ //test pag-h
@@ -46,11 +52,16 @@ function EventsPage() {
     //   dispatch( paginationSetCurrentPage( page ) )//test pag-h
     // }
 
-    dispatch( eventsLoadAction(currentPage, limit) ); 
+    // dispatch( eventsLoadAction(currentPage, limit) ); //bueno
+
+    // dispatch( eventsLoadAction(pageTest, limit) ); //test
+    dispatch( eventsLoadAction( pageQuery, limitQuery ) )
 
     // dispatch( eventsLoadAction(currentPage, limit) ); 
   // }, [dispatch, currentPage, limit]);
-}, [dispatch, currentPage, limit]);
+// }, [dispatch, currentPage, limit]); //bueno
+}, [dispatch, pageQuery, limitQuery]); //bueno
+
 
 
 
@@ -60,12 +71,28 @@ function EventsPage() {
     // console.log('press page ', current);
     // dispatch( paginationUpdateCurrentPage( beforePage, current ) )
     
-    dispatch( paginationSetCurrentPage( current ));
+    //  dispatch( paginationSetCurrentPage( current ));//( bueno)
+    const path = `/events?page=${current}&limit=${limitQuery}`;
+    console.log('onClick change page -> path', path)
+     dispatch( paginationRedirect( path ) )
   };
+  const onClick = (val) => (ev) => {
+    const path = `/events?page=${pageQuery}&limit=${val}`;
+    console.log('onClick limit -> path', path)
+    dispatch( paginationRedirect( path ) )
+};
 
   console.log(currentPage)
   console.log(limit)
   console.log(totalEvents)
+  console.log('location',location);
+  console.log('location search', location.search)
+
+  console.log('page limit psearchpath', `${pageQuery} ${limitQuery}`)
+  console.log('history', history)
+  console.log('param page', pageTest);
+  console.log('param limit', limitTest);
+
   return (
     <div>
       <Layout>
@@ -79,11 +106,11 @@ function EventsPage() {
                 )}
       { !loading && !error && (events.length > 0) && 
       <div className="container">
-        <PaginationNavStyle />
+        <PaginationNavStyle onClick={onClick} limit={limitQuery}/>
         <EventsCardsList events={events}></EventsCardsList> 
         {/* <Paginator getTotalItems={getEventsTotal}></Paginator> */}
         <div className="p-3 pb-4 d-flex justify-content-center"> 
-        <Pagination total={totalEvents} pageSize={limit} current={currentPage} showLessItems={true} onChange={handleSetCurrentPage} />
+        <Pagination total={totalEvents} pageSize={limitQuery} current={pageQuery} showLessItems={true} onChange={handleSetCurrentPage} />
 
         </div>
         </div> }

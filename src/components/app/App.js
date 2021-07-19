@@ -17,15 +17,15 @@ function App() {
       <Route exact path="/events" component={EventsPage} >
           {/* <Redirect to="/events/page/1/limit/10" /> */}
         </Route>
-      {/* <Route exact path="/events/page/:page/limit/:limit" component={EventsPage} /> */}
+      <Route exact path="/">
+        <Redirect to="/events/page/1/limit/10" />
+      </Route>
+      <Route path="/events/page/:page/limit/:limit" component={EventsPage} />
       <Route exact path="/register">
         <RegisterPage />
       </Route>
       <Route exact path="/404">
         <NotFoundPage />
-      </Route>
-      <Route exact path="/">
-        <Redirect to="/events" />
       </Route>
       <Redirect to="/404" />
     </Switch>

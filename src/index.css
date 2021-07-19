@@ -95,20 +95,13 @@ button:disabled {
     justify-content: space-between;
 }
 /* Menu */
-.menu-item {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    padding: .65rem 1rem;
-    transition: none;
-    outline: 0!important;
-    color: #7e8299;
-}
-.menu-item:hover{
-    color: #20d489;
+.navbar-light .navbar-nav .nav-link {
+    color: #7e8299 !important;
 }
 
+.navbar-light .navbar-nav .nav-link:hover {
+     color: #20d489 !important;
+}
 /* Main */
 .container.main {
     max-width: 1140px;
@@ -185,9 +178,18 @@ button:disabled {
     color: #912741;
 }
 .btn-icon.btn.btn-icon.btn-sm.icon{
-          background-color: #f6f1fc!important;
-           
-    }
+    justify-content: center;
+    background-color: #f5f8fa!important;
+}
+
+
+
+.bg-light {
+    background-color: 245,248,250;
+}
+
+
+
 
 /* Responsive */
 

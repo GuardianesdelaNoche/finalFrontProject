@@ -65,11 +65,11 @@ const ErrorLegend = styled.p`
     color: ${colors.error};
     display:none;
 
-    ${props => props.isValueValid === 'true'  && css `
+    ${props => props.isvaludvalid === 'true'  && css `
        display:none;
     `} 
 
-    ${props => props.isValueValid === 'false'  && css `
+    ${props => props.isvaludvalid === 'false'  && css `
         display:block;
     `} 
 `;

@@ -8,7 +8,7 @@ import './Input.css';
 
 function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend, regularExpression, value, valueToCheck,  ...props }) {
   const inputRef = React.useRef(null);
-  const [isValid, setIsValid] = React.useState('null');
+  const [isValueValid, setIsValid] = React.useState('null');
 
   React.useEffect(() => {
     if(autoFocus) {
@@ -48,7 +48,7 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
       )}
     >
       <GroupInput>   
-      <Label htmlFor={id}  isValueValid={isValid}>
+      <Label htmlFor={id}  isValueValid={isValueValid}>
 						{label}
 					</Label>          
         <InputC          
@@ -58,14 +58,16 @@ function Input({ className, label, autoFocus, isRequired, icon, id, errorLegend,
           onKeyUp={validation}
           onBlur={validation}          
           value={value}
-          isValueValid= {isValid}          
+          isValueValid= {isValueValid}          
           required = {isRequired? 'required': ''}
           {...props} 
         ></InputC>
+        
         <ValidationIcon 
-            icon={isValid === 'true' ? faCheckCircle : faTimesCircle} 
-            isValueValid={isValid}>  </ValidationIcon>    
-        <ErrorLegend isValueValid={isValid}>{errorLegend}</ErrorLegend>
+            icon={isValueValid === 'true' ? faCheckCircle : faTimesCircle} 
+            isvaluevalid= {isValueValid} 
+            /> 
+        <ErrorLegend isValueValid={isValueValid}>{errorLegend}</ErrorLegend>
       </GroupInput>
     </div>
   );

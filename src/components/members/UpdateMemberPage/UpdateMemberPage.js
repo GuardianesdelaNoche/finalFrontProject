@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { setRegister } from '../../../api/register';
@@ -7,15 +7,37 @@ import { Link } from 'react-router-dom';
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './UpdateMemberForm';
+import jwt_decode from 'jwt-decode';
 
 //import '../LoginPage/login.css'
 
-function UpdateMemberPage () {
+function UpdateMemberPage ({match}) {
 
     const dispatch = useDispatch();
+    const [memberData, setMemberData] = useState({});
+    
+   
 
     const { loading, error } = useSelector(getUi);
 
+    useEffect (()=> {
+        async function executeGetMemberData (){
+
+            try {
+                
+                const token = jwt_decode(match.params.token);
+                console.log(token);
+                dispatch(setLoadingAction);
+                //const member = await getMemberDataById();
+                //setMemberData(member);
+            } catch (error) {
+                dispatch(setErrorAction(error));
+            } finally {
+                dispatch(resetLoadingAction);
+            }
+        }
+        executeGetMemberData();
+    });
     const handleSubmit = (registerData)=>{
         try {
             dispatch(setLoadingAction);
@@ -41,7 +63,7 @@ function UpdateMemberPage () {
                     />
                 </h1>
                 {loading && <Spinner animation="border" />}
-                <RegisterForm onSubmit={handleSubmit} />
+                <RegisterForm onSubmit={handleSubmit} data={memberData} />
 
                 {error && (	
                     <Alert onClick={handleResetError} variant="danger">

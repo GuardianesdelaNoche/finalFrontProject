@@ -13,9 +13,9 @@ function App() {
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/forgotthepassword" component={RememberPass} />
-      <Route exact path="/changeMyData">
+      <PrivateRoute exact path="/changeMyData">
         {routeProps => <UpdateMemberPage {...routeProps} />}
-      </Route>
+      </PrivateRoute>
       <PrivateRoute exact path="/member" component={MemberPage} />
       <Route exact path="/events" component={EventsPage} />
       <Route exact path="/register">

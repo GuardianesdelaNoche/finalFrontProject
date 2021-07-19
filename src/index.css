@@ -1,5 +1,8 @@
 /* Commons */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
+
+
+
 html,
 body {
   height: 100%;
@@ -84,7 +87,13 @@ button:disabled {
 .navbar-brand{
     font-weight: 700;
 }
+.navbar-right{
+    float: right;
+}
 
+.menu{
+    justify-content: space-between;
+}
 /* Menu */
 .menu-item {
     cursor: pointer;
@@ -175,5 +184,35 @@ button:disabled {
     border-radius: .65rem;
     color: #912741;
 }
+.btn-icon.btn.btn-icon.btn-sm.icon{
+          background-color: #f6f1fc!important;
+           
+    }
 
+/* Responsive */
 
+@media(max-width:768px){
+    .navbar-btn{
+        width: 100% !important;
+        margin: 0.5rem 0rem;
+
+    }
+    .signed{
+            background-color: rgba(245,248,250,.5)!important;
+            padding: 2.5rem!important;
+            text-align: center;
+            border-radius: .85rem!important;
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+    }
+
+    
+
+    
+  
+}
+
+@media(max-width: 1200px){
+  
+}

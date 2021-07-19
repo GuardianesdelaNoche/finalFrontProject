@@ -42,8 +42,12 @@ const Button = styled.button `
             : '#e2e6ea'
         }
     }
+<<<<<<< Updated upstream
      
   
+=======
+
+>>>>>>> Stashed changes
     a {
         color:${ props =>
         props.variant === 'primary'
@@ -52,12 +56,15 @@ const Button = styled.button `
         }
     }
 
+<<<<<<< Updated upstream
    
 }
 
 
     
 
+=======
+>>>>>>> Stashed changes
 
 `;
 

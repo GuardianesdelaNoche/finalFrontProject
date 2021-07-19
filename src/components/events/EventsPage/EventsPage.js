@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "../../layout";
@@ -17,12 +18,21 @@ import "../../shared/paginator/paginator.css";
 import { getEventsTotal } from "../../../store/selectors/events";
 import { getCurrentPage, getLimit } from "../../../store/selectors/pagination";
 import { paginationSetCurrentPage } from "../../../store/actions/pagination";
+=======
+import React from 'react';
+import { Card } from 'react-bootstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Layout from '../../layout';
+import { CardColumns } from 'react-bootstrap';
+>>>>>>> Stashed changes
 
 function EventsPage() {
   const dispatch = useDispatch();
   const { loading, error } = useSelector(getUi);
   const events = useSelector(getEvents);
 
+<<<<<<< Updated upstream
   // vars modify events results
   const currentPage = useSelector(getCurrentPage);
   const limit = useSelector(getLimit);
@@ -69,6 +79,45 @@ function EventsPage() {
             <EventsCardsEmptyList eventsCount={0}></EventsCardsEmptyList>
           </div>
         )}
+=======
+  return (
+    <div>
+      <Layout>
+        <CardColumns>
+          <Card className="card-stretch">
+            <Card.Body>
+              <Card.Title className="text-dark text-hover-primary fs-3 fw-bolder">Card title that wraps to a new line</Card.Title>
+              <Card.Text className="text-description">
+                This is a longer card with supporting text below as a natural lead-in to
+                additional content. This content is a little bit longer.
+              </Card.Text>
+
+           
+            </Card.Body>
+          </Card>
+
+          <Card className="card-stretch">
+            <Card.Body>
+              <Card.Title className="text-dark text-hover-primary fs-3 fw-bolder">Card title that wraps to a new line</Card.Title>
+              <Card.Text className="text-description">
+                This is a longer card with supporting text below as a natural lead-in to
+                additional content. This content is a little bit longer.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+
+          <Card className="card-stretch">
+            <Card.Body>
+              <Card.Title className="text-dark text-hover-primary fs-3 fw-bolder">Card title that wraps to a new line</Card.Title>
+              <Card.Text className="text-description">
+                This is a longer card with supporting text below as a natural lead-in to
+                additional content. This content is a little bit longer.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </CardColumns>
+      
+>>>>>>> Stashed changes
       </Layout>
     </div>
   );

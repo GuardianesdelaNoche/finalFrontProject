@@ -9,6 +9,7 @@
     "register.formLabel.pass":"Password",
     "register.formLabel.role":"Role",
     "register.form.button":"Register",
+<<<<<<< Updated upstream
     "register.validate.username":"Username must have at list 6 caracters",
     "register.validate.repeatpass":"Password does not match",
     "register.validate.pass":"Min. length 8, one uppercase and lowercase caracter",
@@ -18,6 +19,10 @@
     "register.validate.errormessage": "Check the form, there is something wrong!!",
     "register.account.message": "Already have an account?",
     "register.account.link":"Login",
+=======
+    "register.errorMessage.username":"User must have at list 8 caracters",
+       
+>>>>>>> Stashed changes
     "login.title": "Welcome to Start",
     "login.remember":"Forgot your password",
     "login.newAcount": "New here?",
@@ -28,6 +33,7 @@
     "login.form.button":"Login",
     "navbar.item.menu":"New Events",
     "button.register.menu":"Register",
+<<<<<<< Updated upstream
     "button.login.menu":"Login",
     "eventCard.overlay.registerLogin": "Register or Login",
     "eventCard.availableSeats": "Available seats",
@@ -35,4 +41,7 @@
     "eventCard.outdoor": "Outdoor",
     "eventCard.indoor": "Indoor",
     "eventCard.overlay.fav": "Favourite"
+=======
+    "button.login.menu":"Login"
+>>>>>>> Stashed changes
 }

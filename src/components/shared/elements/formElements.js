@@ -2,10 +2,16 @@ import styled, {css} from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const colors = {
+<<<<<<< Updated upstream
     edge: "#20d489",
     error: "#bb2929",
     success: "#20d489",
     focus: "rgba(32,212,137,.18823529411764706)"
+=======
+    edge: "#0075FF",
+    error: "#F66060",
+    success: "#1ed12d"
+>>>>>>> Stashed changes
 }
 
 const Form = styled.form`
@@ -22,6 +28,11 @@ const Label = styled.label`
     min-height:40px;
     cursor:pointer;
     margin-bottom:-12px;
+<<<<<<< Updated upstream
+=======
+    margin-top:10px;
+`;
+>>>>>>> Stashed changes
 
     ${props => props.isValueValid === 'false'  && css `
         color: ${colors.error} ;
@@ -63,6 +74,7 @@ const ErrorLegend = styled.p`
     font-size: 12px;
     margin-bottom: 0;
     color: ${colors.error};
+<<<<<<< Updated upstream
     display:none;
 
     ${props => props.isValueValid === 'true'  && css `
@@ -72,6 +84,9 @@ const ErrorLegend = styled.p`
     ${props => props.isValueValid === 'false'  && css `
         display:block;
     `} 
+=======
+    display: none;
+>>>>>>> Stashed changes
 `;
 
 const ValidationIcon = styled(FontAwesomeIcon)`
@@ -81,6 +96,7 @@ const ValidationIcon = styled(FontAwesomeIcon)`
     z-index: 100;
     font-size: 16px;
     opacity:0;
+<<<<<<< Updated upstream
 
     ${props => props.isValueValid === 'false'  && css `
         opacity:1;
@@ -93,6 +109,8 @@ const ValidationIcon = styled(FontAwesomeIcon)`
         bottom:25px;
         color: ${colors.success}
     `} 
+=======
+>>>>>>> Stashed changes
 `;
 
 const ContentBottomCenter = styled.div `
@@ -110,7 +128,11 @@ const Button = styled.button `
     border-radius: 3px;
     cursor:pointer;
     transition: .1s ease all;
+<<<<<<< Updated upstream
     margin-top:10px;
+=======
+    
+>>>>>>> Stashed changes
 
     &:hover {
         background: #19b674 !important;
@@ -120,6 +142,7 @@ const Button = styled.button `
 `;
 
 const SuccessMessage = styled.p`
+<<<<<<< Updated upstream
     color: #0d5537;
     background-color: #d2f6e7;
     padding: 20px;
@@ -153,6 +176,25 @@ const ErrorMessage = styled.div`
 
     b {
         margin-left:10px;
+=======
+    font-size: 14px;
+    color: ${colors.success};
+    display: none
+`;
+
+const ErrorMessage = styled.div`
+    height: 45px;
+    line-height: 45px;
+    background: ${colors.error};
+    padding: 0px 15px;
+    border-radius: 3px;
+
+    p {
+        margin:0;
+    }
+    b {
+        margin-left: 10px
+>>>>>>> Stashed changes
     }
 `;
 

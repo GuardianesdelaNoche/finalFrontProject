@@ -10,6 +10,7 @@
     "register.formLabel.pass":"Contraseña",
     "register.formLabel.role":"Tipo usuario",
     "register.form.button":"Registrar",
+<<<<<<< Updated upstream
     "register.validate.username":"El usuario debe tener al menos 8 caracteres",
     "register.validate.repeatpass":"Las contraseñas no coinciden",
     "register.validate.pass":"Longitud min. 8 con una mayúscula y una minúscula",
@@ -20,6 +21,9 @@
     "register.validate.errormessage": "Comprueba los datos, hay algo incorrecto",
     "register.account.message": "¿Ya tienes una cuenta?",
     "register.account.link": "Entrar",
+=======
+    "register.errorMessage.username":"El usuario debe tener al menos 8 caracteres"
+>>>>>>> Stashed changes
     "app.channel.plug": "Encuentra y disfruta de las mejores actividades",
     "login.title": "Bienvenido a ....",
     "login.remember": "¿Olvidó su contraseña?",
@@ -31,6 +35,7 @@
     "login.form.button": "Entrar",
     "navbar.item.menu": "Crear Evento",
     "button.register.menu": "Regístrate",
+<<<<<<< Updated upstream
     "button.login.menu": "Entrar",
     "eventCard.overlay.registerLogin": "Regístrate o Login",
     "eventCard.availableSeats": "Plazas disponibles",
@@ -38,4 +43,7 @@
     "eventCard.outdoor": "Aire libre",
     "eventCard.indoor": "Interior",
     "eventCard.overlay.fav": "Favorito"
+=======
+    "button.login.menu": "Entrar"
+>>>>>>> Stashed changes
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8c10a4b1-c73a-42aa-835d-1a9edd0cf923" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/LoginPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/LoginPage/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/LoginPage/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/LoginPage/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/RegisterPage/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/RegisterPage/RegisterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/events/EventsPage/EventsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/events/EventsPage/EventsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Checkbox.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Checkbox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Checkbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Input.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Input.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Input.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/elements/formElements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/elements/formElements.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lang/es.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/lang/es.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+REACT_APP_API_BASE_URL=https://services.4events.net/
+=======
+REACT_APP_API_BASE_URL=https://services.4events.net
+>>>>>>> develop

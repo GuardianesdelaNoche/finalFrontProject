@@ -1,34 +1,55 @@
-import React, {useState} from 'react';
-
-import {Offcanvas} from 'react-bootstrap/Offcanvas'
-import OffcanvasHeader from 'react-bootstrap/OffcanvasHeader'
-
-import './Sidebar.css';
-
-
-
-function Sidebar() {
-	const [show, setShow] = useState(false);
-
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
-
+import React from 'react';
+import {
+	CDBSidebar,
+	CDBSidebarContent,
+	CDBSidebarFooter,
+	CDBSidebarHeader,
+	CDBSidebarMenu,
+	CDBSidebarMenuItem,
+} from 'cdbreact';
+import { NavLink } from 'react-router-dom';
+import "./Sidebar.css";
+const Sidebar = () => {
 	return (
-		<>
-			<button variant="primary" onClick={handleShow}>
-				Launch
-			</button>
+		<div
+			style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}
+		>
+			<CDBSidebar textColor="#5e6278" backgroundColor="#ffffff">
+				<CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+					<a
+						href="/"
+						className="text-decoration-none"
+						style={{ color: '#5e6278' }}
+					>
+						<img src="http://isagomez.com/wp-content/uploads/2021/07/logo4eventsPNG.png" width="110px"/>
+					</a>
+				</CDBSidebarHeader>
 
-			<Offcanvas show={show} onHide={handleClose}>
-				<Offcanvas.Header closeButton>
-					<Offcanvas.Title>Offcanvas</Offcanvas.Title>
-				</Offcanvas.Header>
-				<Offcanvas.Body>
-					Some text as placeholder. In real life you can have the elements you
-					have chosen. Like, text, images, lists, etc.
-				</Offcanvas.Body>
-			</Offcanvas>
-		</>
+				<CDBSidebarContent className="sidebar-content">
+					<CDBSidebarMenu>
+						<NavLink exact to="/" activeClassName="activeClicked active">
+							<CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
+						</NavLink>
+						<NavLink exact to="/user" activeClassName="activeClicked active">
+							<CDBSidebarMenuItem icon="user">Mis Datos</CDBSidebarMenuItem>
+						</NavLink>
+						<NavLink exact to="/tables" activeClassName="activeClicked active">
+							<CDBSidebarMenuItem icon="calendar">Mis Eventos</CDBSidebarMenuItem>
+						</NavLink>
+						<NavLink exact to="/profile" activeClassName="activeClicked active">
+							<CDBSidebarMenuItem icon="heart">Mis Favoritos</CDBSidebarMenuItem>
+						</NavLink>
+						<NavLink exact to="/analytics" activeClassName="activeClicked active">
+							<CDBSidebarMenuItem icon="edit">
+								Mis Suscritos
+							</CDBSidebarMenuItem>
+						</NavLink>
+					
+					</CDBSidebarMenu>
+				</CDBSidebarContent>
+			</CDBSidebar>
+		</div>
 	);
-}
+};
+
 export default Sidebar;

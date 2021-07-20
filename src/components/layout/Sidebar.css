@@ -1,2 +1,15 @@
 @import url('../../index.css');
 
+
+
+.epFZql .activeClicked.active>li {
+    background: transparent;
+    color: #20d489;
+}
+
+.avatar{
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3rem;
+}

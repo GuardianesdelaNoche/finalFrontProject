@@ -1,20 +1,26 @@
 import T from 'prop-types';
 
 import Sidebar from './Sidebar';
-import Header from './Header';
+import HeaderUser from './HeaderUser';
 import Footer from './Footer';
 
 function UserLayout({ children }) {
 	return (
-		<>
-			<Header/>
-			<div className="container main">
-				<div className="content">
-					{children}
-					<Sidebar />
-				</div>
-			</div>
-			<Footer/>	
+		<>		
+		  <div class="d-flex" id="wrapper">
+				<Sidebar />
+					<div class="container-fluid">
+						<div className="container main">
+						<HeaderUser />
+							<div class="container">
+							{children}
+							</div>
+						</div>
+					<Footer />
+					</div>
+					
+				
+		 </div>
 		</>
 	);
 }

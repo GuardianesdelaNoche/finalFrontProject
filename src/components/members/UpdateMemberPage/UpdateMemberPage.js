@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import RegisterForm from './UpdateMemberForm';
 import jwt_decode from 'jwt-decode';
 import storage from '../../../utils/storage';
-import { getMemberDataById } from '../../../api/members';
+import { getMemberDataById, setMemberData } from '../../../api/members';
 
 //import '../LoginPage/login.css'
 
@@ -17,6 +17,7 @@ function UpdateMemberPage ({match}) {
 
     const dispatch = useDispatch();
     const [memberData, setMemberData] = useState({});
+    const token = storage.get('auth');
     
    
 
@@ -26,10 +27,8 @@ function UpdateMemberPage ({match}) {
         async function executeGetMemberData (){
 
             try {                             
-                const token = storage.get('auth');
-                const memberId = jwt_decode(token['token'])["_id"];
                 dispatch(setLoadingAction);
-                const member = await getMemberDataById({'token': token['token']});
+                const member = await getMemberDataById(token['token']);
                 setMemberData(member);
             } catch (error) {
                 dispatch(setErrorAction(error));
@@ -42,7 +41,7 @@ function UpdateMemberPage ({match}) {
     const handleSubmit = (registerData)=>{
         try {
             dispatch(setLoadingAction);
-            setRegister(registerData)
+            setMemberData(token['token'], registerData)
         } catch (error) {
             dispatch(setErrorAction(error));
         } finally 

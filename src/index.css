@@ -81,7 +81,9 @@ button:disabled {
 .pt-12 {
     padding-top: 3rem!important;
 }
-
+.mh-50px {
+    max-height: 50px!important;
+}
 
 /* Navbar */
 .navbar-brand{

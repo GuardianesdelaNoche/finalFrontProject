@@ -8,6 +8,8 @@ import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './UpdateMemberForm';
 import jwt_decode from 'jwt-decode';
+import storage from '../../../utils/storage';
+import { getMemberDataById } from '../../../api/members';
 
 //import '../LoginPage/login.css'
 
@@ -23,13 +25,12 @@ function UpdateMemberPage ({match}) {
     useEffect (()=> {
         async function executeGetMemberData (){
 
-            try {
-                
-                const token = jwt_decode(match.params.token);
-                console.log(token);
+            try {                             
+                const token = storage.get('auth');
+                const memberId = jwt_decode(token['token'])["_id"];
                 dispatch(setLoadingAction);
-                //const member = await getMemberDataById();
-                //setMemberData(member);
+                const member = await getMemberDataById({'token': token['token']});
+                setMemberData(member);
             } catch (error) {
                 dispatch(setErrorAction(error));
             } finally {
@@ -37,7 +38,7 @@ function UpdateMemberPage ({match}) {
             }
         }
         executeGetMemberData();
-    });
+    }, []);
     const handleSubmit = (registerData)=>{
         try {
             dispatch(setLoadingAction);

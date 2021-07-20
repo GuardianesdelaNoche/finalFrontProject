@@ -10,7 +10,7 @@ import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-ic
 
 function UpdateMemberForm ({onSubmit, data}) {
     const {
-		formValue: registerData, 
+		formValue: memberData, 
 		handleChange,	
 	} = useForm({
         username: data.username,
@@ -24,7 +24,7 @@ function UpdateMemberForm ({onSubmit, data}) {
 	const intl = useIntl();
 
 
-    const { username, email,  nickname } = registerData;   
+    const { username, email,  nickname } = memberData;   
 
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {
@@ -41,7 +41,7 @@ function UpdateMemberForm ({onSubmit, data}) {
 		&& isValidValue(expressions.email, email)
 			) {
 			try {
-				onSubmit(registerData);	
+				onSubmit(memberData);	
 				changeFormSent(true);
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {

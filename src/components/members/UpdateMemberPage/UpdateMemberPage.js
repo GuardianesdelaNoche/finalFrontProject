@@ -28,8 +28,8 @@ function UpdateMemberPage ({match}) {
 
             try {                             
                 dispatch(setLoadingAction);
-                const member = await getMemberDataById(token['token']);
-                setMemberData(member);
+                const member = await getMemberDataById(token.token);
+                setMemberData(member.result);
             } catch (error) {
                 dispatch(setErrorAction(error));
             } finally {
@@ -41,7 +41,7 @@ function UpdateMemberPage ({match}) {
     const handleSubmit = (registerData)=>{
         try {
             dispatch(setLoadingAction);
-            setMemberData(token['token'], registerData)
+            setMemberData(token.token, registerData)
         } catch (error) {
             dispatch(setErrorAction(error));
         } finally 

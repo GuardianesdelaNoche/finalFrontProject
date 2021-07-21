@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
-import { Navbar, Container, Nav, NavDropdown, Image } from 'react-bootstrap';
+import { Navbar,  Nav, NavItem, NavDropdown  } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 
 import { connect } from 'react-redux';
@@ -21,15 +21,20 @@ function HeaderUser({ isLogged }) {
 						<div className="d-flex align-items-center">
 
 						{isLogged === true ?
-					
-							<Nav className="avatar">
-								<a className="me-2">Mark</a>
-								
-								<Image src="http://isagomez.com/wp-content/uploads/2021/07/avatar.svg" roundedCircle />
+						
 
+		
 
-								
-							</Nav>
+						<NavDropdown 
+						title={
+								<span><img src="http://isagomez.com/wp-content/uploads/2021/07/avatar.svg" width="40px"></img> Mark</span>
+						} 
+						id="nav-dropdown">
+							<NavDropdown.Item eventKey="4.1">My Profile</NavDropdown.Item>
+							<NavDropdown.Divider />
+							<NavDropdown.Item eventKey="4.4"><AuthButton className="navbar-btn" /></NavDropdown.Item>
+						</NavDropdown>
+
 							:
 							<Button variant="secundary" className="navbar-btn me-2">
 								<Link to="/register">
@@ -40,7 +45,7 @@ function HeaderUser({ isLogged }) {
 								</Link>
 							</Button>
 						}
-						<AuthButton className="navbar-btn" />
+						
 					
 						</div>
 					</div>

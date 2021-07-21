@@ -6,14 +6,13 @@ function UserDashboard() {
 	return (
 		<div>
 			<UserLayout>
-				<div class="row g-0 g-xl-5 g-xxl-8">
-					<div class="col-xl-4">
+				<div className="row g-0 g-xl-5 g-xxl-8">
+					<div className="col-xl-4">
 						<Card>
 							<Card.Body>
 								<Card.Title></Card.Title>
-								<Card.Title style={{ display: "flex", justifyContent: "flex-end" }}>
 								
-								</Card.Title>
+								
 								<div className="d-flex flex-row justify-content-between">
 									<Card.Subtitle className="mb-2 text-muted">
 										
@@ -27,13 +26,11 @@ function UserDashboard() {
    					 	</Card>
 					</div>
 
-					<div class="col-xl-8">
+					<div className="col-xl-8">
 						<Card>
 							<Card.Body>
 								<Card.Title></Card.Title>
-								<Card.Title style={{ display: "flex", justifyContent: "flex-end" }}>
-
-								</Card.Title>
+							
 								<div className="d-flex flex-row justify-content-between">
 									<Card.Subtitle className="mb-2 text-muted">
 

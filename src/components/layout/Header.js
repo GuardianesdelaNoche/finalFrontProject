@@ -1,4 +1,4 @@
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 
@@ -16,7 +16,7 @@ function Header({ isLogged }) {
 
 			<Navbar collapseOnSelect expand="lg" bg="light white" variant="light" fixed="top" >
 				<Container>
-					<Navbar.Brand href="#home" className="logo py-2 pb-7"><img alt="4EVENTS" src="http://isagomez.com/wp-content/uploads/2021/07/logo4eventsPNG.png" className="mh-50px"></img></Navbar.Brand>
+					<Navbar.Brand href="#home" className="logo py-2 pb-7"><img alt="4EVENTS" src="http://isagomez.com/wp-content/uploads/2021/07/logo4eventsPNG.png" atl="logo" className="mh-50px"></img></Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
 						<Nav className="me-auto">
@@ -30,23 +30,34 @@ function Header({ isLogged }) {
 						
 						<Nav >
 							{isLogged === true  ?
-							<Navbar.Text className="signed">
-									<a className=" me-2" href="#login">Mark</a>
-								<div class="btn btn-icon btn btn-icon btn-sm icon me-2">
-									<i class="fas fa-user"></i>
-								</div>
-							</Navbar.Text>
+								<NavDropdown
+									title={
+										<span><img src="http://isagomez.com/wp-content/uploads/2021/07/avatar.svg" alt="avatar" width="40px"></img> Mark</span>
+									}
+									id="nav-dropdown">
+									<NavDropdown.Item eventKey="4.1">
+										<Link to="/user">My Profile</Link>
+									</NavDropdown.Item>
+
+									<NavDropdown.Divider />
+									<NavDropdown.Item eventKey="4.4"><AuthButton className="navbar-btn" /></NavDropdown.Item>
+								</NavDropdown>
 							 : 
-							<Button variant="secundary" className="navbar-btn me-2">
-								<Link to="/register">
-									<FormattedMessage
-										id="button.register.menu"
-										defaultMessage="Register"
-									/>
-								</Link>
-							</Button>
+							 <div>
+									<Button variant="secundary" className="navbar-btn me-2">
+										<Link to="/register">
+										<FormattedMessage
+											id="button.register.menu"
+											defaultMessage="Register"
+										/>
+									</Link>
+								</Button>
+								
+									<AuthButton className="navbar-btn" />
+								
+							</div>
 							}
-							<AuthButton className="navbar-btn" />
+							
 						</Nav>
 					</Navbar.Collapse>
 				</Container>

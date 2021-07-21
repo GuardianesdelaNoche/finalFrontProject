@@ -2,13 +2,15 @@ import React from 'react';
 import {
 	CDBSidebar,
 	CDBSidebarContent,
-	CDBSidebarFooter,
 	CDBSidebarHeader,
 	CDBSidebarMenu,
 	CDBSidebarMenuItem,
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
+
 import "./Sidebar.css";
+
+
 const Sidebar = () => {
 	return (
 		<div
@@ -21,15 +23,13 @@ const Sidebar = () => {
 						className="text-decoration-none"
 						style={{ color: '#5e6278' }}
 					>
-						<img src="http://isagomez.com/wp-content/uploads/2021/07/logo4eventsPNG.png" width="110px"/>
+						<img src="http://isagomez.com/wp-content/uploads/2021/07/logo4eventsPNG.png" alt="logo" width="110px"/>
 					</a>
 				</CDBSidebarHeader>
 
 				<CDBSidebarContent className="sidebar-content">
 					<CDBSidebarMenu>
-						<NavLink exact to="/" activeClassName="activeClicked active">
-							<CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
-						</NavLink>
+				
 						<NavLink exact to="/user" activeClassName="activeClicked active">
 							<CDBSidebarMenuItem icon="user">Mis Datos</CDBSidebarMenuItem>
 						</NavLink>

@@ -7,12 +7,12 @@ import Footer from './Footer';
 function UserLayout({ children }) {
 	return (
 		<>		
-		  <div class="d-flex" id="wrapper">
+		  <div className="d-flex" id="wrapper">
 				<Sidebar />
-					<div class="container-fluid">
+					<div className="container-fluid">
 						<div className="container main">
 						<HeaderUser />
-							<div class="container">
+							<div className="container">
 							{children}
 							</div>
 						</div>

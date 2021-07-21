@@ -2,7 +2,7 @@ import React from 'react';
 
 
 function useForm(initialState){
-	const [formValue, setFormValue] = React.useState(initialState);
+	const [formValue, setFormValue] = React.useState({...initialState});
 
 	const handleChange = ({ target })=>{
 		setFormValue({

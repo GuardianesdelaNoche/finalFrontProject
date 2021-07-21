@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
@@ -9,15 +9,18 @@ import { Form,ContentBottomCenter, ErrorMessage, SuccessMessage, Button } from '
 import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-icons';
 
 function UpdateMemberForm ({onSubmit, data}) {
+	
     const {
 		formValue: memberData, 
 		handleChange,	
 	} = useForm({
-        username: data.username,
+        username:data.username,
 		email:data.email,
         role:1,
 		nickname:data.nickname,
 	});
+
+
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
 	const [formSent, changeFormSent] = useState(false);
 	
@@ -25,6 +28,13 @@ function UpdateMemberForm ({onSubmit, data}) {
 
 
     const { username, email,  nickname } = memberData;   
+	// useEffect (()=> {
+       
+	
+
+		
+    // }, [data]);
+
 
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {

@@ -4,6 +4,7 @@ import { LoginPage, RegisterPage, PrivateRoute, RememberPassPage, RecoverPassPag
 
 import { EventsPage } from '../events';
 import { MemberPage } from '../members';
+import UserDashboard from '../user/dashboard/Userdashboard';
 import NotFoundPage from './NotFoundPage';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       </Route>
       <PrivateRoute exact path="/member" component={MemberPage} />
       <Route exact path="/events" component={EventsPage} />
+      <Route exact path="/user" component={UserDashboard} />
       <Route exact path="/register">
         {routeProps => <RegisterPage {...routeProps} />}
       </Route>

@@ -1,13 +1,19 @@
 /* Commons */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
+
+
+
 html,
 body {
   height: 100%;
 }
 
 body {
+/*Testing User Panel   
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 60px; */
+
+
   background-color: #FBF9F6 !important;
   color: #181c32!important;
   font-family: Poppins,Helvetica,"sans-serif" !important;
@@ -84,22 +90,21 @@ button:disabled {
 .navbar-brand{
     font-weight: 700;
 }
+.navbar-right{
+    float: right;
+}
 
+.menu{
+    justify-content: space-between;
+}
 /* Menu */
-.menu-item {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    padding: .65rem 1rem;
-    transition: none;
-    outline: 0!important;
-    color: #7e8299;
-}
-.menu-item:hover{
-    color: #20d489;
+.navbar-light .navbar-nav .nav-link {
+    color: #7e8299 !important;
 }
 
+.navbar-light .navbar-nav .nav-link:hover {
+     color: #20d489 !important;
+}
 /* Main */
 .container.main {
     max-width: 1140px;
@@ -134,6 +139,18 @@ button:disabled {
 
 
 /* Card - Homepage */
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid rgba(0, 0, 0, 0.125)!important;
+    border-radius: 0.65rem !important;
+}
 
 .card>.card-header {
     display: -webkit-flex;
@@ -175,5 +192,46 @@ button:disabled {
     border-radius: .65rem;
     color: #912741;
 }
+.btn-icon.btn.btn-icon.btn-sm.icon{
+    justify-content: center;
+    background-color: #f5f8fa!important;
+}
 
 
+
+.bg-light {
+    background-color: 245,248,250;
+}
+
+
+.dropdown-item button{
+    width: 100%;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+    .navbar-btn{
+        width: 100% !important;
+        margin: 0.5rem 0rem;
+
+    }
+    .signed{
+            background-color: rgba(245,248,250,.5)!important;
+            padding: 2.5rem!important;
+            text-align: center;
+            border-radius: .85rem!important;
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+    }
+
+    
+
+    
+  
+}
+
+@media(max-width: 1200px){
+  
+}

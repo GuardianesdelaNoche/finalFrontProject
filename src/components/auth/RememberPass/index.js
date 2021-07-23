@@ -1,1 +1,1 @@
-export { default } from './RememberPass';
+export { default } from './RememberPassPage';

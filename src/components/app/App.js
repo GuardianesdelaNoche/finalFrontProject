@@ -1,11 +1,13 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { LoginPage, RegisterPage, PrivateRoute, RememberPass } from '../auth';
+import { LoginPage, RegisterPage, PrivateRoute } from '../auth';
 
 import { EventsPage } from '../events';
 import { MemberPage, UpdateMemberPage } from '../members';
 import UserDashboard from '../user/dashboard/Userdashboard';
 import NotFoundPage from './NotFoundPage';
+import { RememberPassPage, RecoverPassPage } from '../auth';
+
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
     <Switch>
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/forgotthepassword" component={RememberPass} />
+      <Route exact path="/forgotthepassword" component={RememberPassPage} />
       <PrivateRoute exact path="/changeMyData">
         {routeProps => <UpdateMemberPage {...routeProps} />}
       </PrivateRoute>

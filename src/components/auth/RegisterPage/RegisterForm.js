@@ -24,7 +24,7 @@ function RegisterForm ({onSubmit}) {
 		nickname:"",
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
-	const [formSent, changeFormSent] = useState(false);
+
 	
 	const intl = useIntl();
 
@@ -48,7 +48,6 @@ function RegisterForm ({onSubmit}) {
 		&& password === password2	) {
 			try {
 				onSubmit(registerData);	
-				changeFormSent(true);
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {
 				changeIsFormValid({...isFormValid, status:false});

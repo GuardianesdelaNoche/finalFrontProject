@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
 import useForm from '../../hooks/useForm';
@@ -7,34 +8,43 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Form,ContentBottomCenter, ErrorMessage, SuccessMessage, Button } from '../../shared/elements/formElements';
 import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-icons';
+import { getMemberDataById } from '../../../api/members';
 
-function UpdateMemberForm ({onSubmit, data}) {
-	
+function UpdateMemberForm ({onSubmit,  token}) {
+	const dispatch = useDispatch();
     const {
 		formValue: memberData, 
 		handleChange,	
+		handleSetValue,
 	} = useForm({
-        username:data.username,
-		email:data.email,
+        username:"",
+		email:"",
         role:1,
-		nickname:data.nickname,
+		nickname:"",
 	});
+	
+
+	useEffect (() => {
+		async function executeGetMemberData (){
+            try {                             
+                dispatch(setLoadingAction);
+                const member = await getMemberDataById(token.token);
+                handleSetValue(member.result);
+            } catch (error) {
+                dispatch(setErrorAction(error));
+            } finally {
+                dispatch(resetLoadingAction);
+            }
+        }
+        executeGetMemberData();
+	}, [dispatch, handleSetValue, token.token])
 
 
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
-	const [formSent, changeFormSent] = useState(false);
 	
 	const intl = useIntl();
 
-
     const { username, email,  nickname } = memberData;   
-	// useEffect (()=> {
-       
-	
-
-		
-    // }, [data]);
-
 
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {
@@ -52,7 +62,6 @@ function UpdateMemberForm ({onSubmit, data}) {
 			) {
 			try {
 				onSubmit(memberData);	
-				changeFormSent(true);
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {
 				changeIsFormValid({...isFormValid, status:false});

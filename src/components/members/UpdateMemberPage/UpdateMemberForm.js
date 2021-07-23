@@ -37,7 +37,7 @@ function UpdateMemberForm ({onSubmit,  token}) {
             }
         }
         executeGetMemberData();
-	}, [dispatch, handleSetValue, token.token])
+	}, [])
 
 
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});

@@ -15,5 +15,5 @@ export const getMemberDataById = (token) => {
 export const setMemberData = (token, memberData) => {
     configureClient(token);
     const url = `${baseURL}`;
-    return client.put(url);
+    return client.put(url, memberData);
 } 

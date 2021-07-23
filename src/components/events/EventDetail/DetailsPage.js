@@ -9,13 +9,17 @@ import { eventDetailsActions } from '../../../store/actions/events';
 import { getEventDetail} from '../../../store/selectors/events'; 
 import { getUi } from '../../../store/selectors/ui';
 
-function DetailsPage() {
+function DetailsPage({ events }) {
 	const dispatch = useDispatch();
 	const { eventId } = useParams();
 
-
 	const { error } = useSelector(getUi);
 	const event = useSelector(state => getEventDetail(state, eventId))
+
+
+	React.useEffect(() => {
+		dispatch(eventDetailsActions(eventId))
+	}, [dispatch, eventId]);
 
 	const handleDelete = () => {
 		console.log('Hola Mundo')
@@ -32,7 +36,8 @@ function DetailsPage() {
 	return (
 		<div>
 			<Layout>
-				{event && <EventDetail {...event} onDelete={handleDelete}/>}
+				
+				{event && <EventDetail {...event} key={event._id}/>}
 			</Layout>
 		</div>
 	)

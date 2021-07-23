@@ -1,0 +1,108 @@
+{
+    "events": [
+      {
+        "_id": "1",
+        "title": "yoga",
+        "description": "tiempo para todos" ,
+        "price": 50,
+        "max_places": 20,
+        "date": "07-07-2021",
+        "duration": 1,
+        "photo": null,
+        "indoor": false,
+        "tags": ["yoga", "meditación"],
+        "_id_assistants": []
+      },
+      {
+        "_id": "2",
+        "title": "yoga",
+        "description": "tiempo para todos" ,
+        "price": 50,
+        "max_places": 20,
+        "date": "07-07-2021",
+        "duration": 1,
+        "photo": null,
+        "indoor": false,
+        "tags": ["yoga", "meditación"],
+        "_id_assistants": []
+      },
+      {
+        "_id": "3",
+        "title": "yoga",
+        "description": "tiempo para todos" ,
+        "price": 50,
+        "max_places": 20,
+        "date": "07-07-2021",
+        "duration": 1,
+        "photo": null,
+        "indoor": false,
+        "tags": ["yoga", "meditación"],
+        "_id_assistants": []
+      },
+      {
+        "_id": "4",
+        "title": "yoga",
+        "description": "tiempo para todos" ,
+        "price": 50,
+        "max_places": 20,
+        "date": "07-07-2021",
+        "duration": 1,
+        "photo": null,
+        "indoor": false,
+        "tags": ["yoga", "meditación"],
+        "_id_assistants": []
+      },
+      {
+        "_id": "5",
+        "title": "yoga",
+        "description": "tiempo para todos" ,
+        "price": 50,
+        "max_places": 20,
+        "date": "07-07-2021",
+        "duration": 1,
+        "photo": null,
+        "indoor": false,
+        "tags": ["yoga", "meditación"],
+        "_id_assistants": []
+      },
+      {
+        "_id": "6",
+        "title": "yoga",
+        "description": "tiempo para todos" ,
+        "price": 50,
+        "max_places": 20,
+        "date": "07-07-2021",
+        "duration": 1,
+        "photo": null,
+        "indoor": false,
+        "tags": ["yoga", "meditación"],
+        "_id_assistants": []
+      },
+      {
+        "_id": "7",
+        "title": "yoga",
+        "description": "tiempo para todos" ,
+        "price": 50,
+        "max_places": 20,
+        "date": "07-07-2021",
+        "duration": 1,
+        "photo": null,
+        "indoor": false,
+        "tags": ["yoga", "meditación"],
+        "_id_assistants": []
+      },
+      {
+        "_id": "8",
+        "title": "yoga",
+        "description": "tiempo para todos" ,
+        "price": 50,
+        "max_places": 20,
+        "date": "07-07-2021",
+        "duration": 1,
+        "photo": null,
+        "indoor": false,
+        "tags": ["yoga", "meditación"],
+        "_id_assistants": []
+      }
+    ]
+  }

@@ -1,0 +1,26 @@
+.formField-label {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+
+.form-control{
+    color: #5e6278 !important;
+    background-color: #F5F8FA !important;
+    background-clip: padding-box;
+    border: 1px solid #F5F8FA!important;
+    border-radius: .25rem;
+
+}
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #20d489;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #20d48930!important;
+}
+
+.formField-label span:first-letter {
+  text-transform: capitalize;
+}
+

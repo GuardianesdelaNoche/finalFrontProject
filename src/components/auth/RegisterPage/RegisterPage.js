@@ -3,39 +3,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { setRegister } from '../../../api/register';
 import { getUi } from '../../../store/selectors/ui'; 
-
+import { Link } from 'react-router-dom';
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './RegisterForm';
-import './register.css';
 
-function RegisterPage ({history}) {
+import '../LoginPage/login.css'
+
+function RegisterPage () {
 
     const dispatch = useDispatch();
 
     const { loading, error } = useSelector(getUi);
 
-
     const handleSubmit = async (registerData)=>{
         try {
-            handleResetError();
-            dispatch(setLoadingAction());
+            dispatch(setLoadingAction);
             await setRegister(registerData);
-            dispatch(resetLoadingAction);
-            history.push("/login");
-
-        } catch (error) {  
-            dispatch(setErrorAction(error.errors));
+        } catch (error) {
+            dispatch(setErrorAction(error));
         } finally 
         {
             dispatch(resetLoadingAction);
         }
+
     }
     const handleResetError = ()=>{
         dispatch(resetErrorAction())
     }
-
-  
     return (
         <div className="main-content">
             <main className="form-signin">
@@ -48,14 +43,27 @@ function RegisterPage ({history}) {
                 {loading && <Spinner animation="border" />}
                 <RegisterForm onSubmit={handleSubmit} />
 
-                {error && 
+                {error && (	
                     <Alert onClick={handleResetError} variant="danger">
                         <p className="mb-0">
-                            {error[0].msg}
+                            {error.errors[0].msg}
                         </p>
-                    </Alert>           
-                    
-                }
+                    </Alert>
+                )}
+
+                <p className="text-muted">
+                  
+                    <FormattedMessage
+                        id="register.account.message"
+                        defaultMessage="Already have an account?"
+                    />
+                    <Link to="/login" className="form-label text-primary ml-2">
+                        <FormattedMessage
+                            id="register.account.link"
+                            defaultMessage="Entrar"
+                        />
+            
+                    </Link></p>
              
             </main>           
         </div>

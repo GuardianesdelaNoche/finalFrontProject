@@ -1,10 +1,5 @@
 @import url('../../../index.css');
 
-/* body{
-   display: flex;
-  justify-content: center;
-} */
-
 .main-content {
   height: 100%;
 }
@@ -35,6 +30,18 @@
     text-align: left;
 }
 
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.form-control{
+    color: #5e6278 !important;
+    background-color: #F5F8FA !important;
+    background-clip: padding-box;
+    border: 1px solid #F5F8FA!important;
+    border-radius: .25rem;
+    padding: 0!important;    
+}
+
 .form-label{
   font-weight: 600!important;
   font-size: 1.00rem!important;
@@ -47,4 +54,29 @@
 
 .form-label.text-primary:hover {
     color: #20d489 !important;
+}
+
+
+
+/* Responsive */
+
+@media(max-width:768px){
+    body{
+      padding-top: 10px;
+    }
+      .form-signin {
+          max-width: 90%;
+          padding: 20px 5px;
+    }
+
+  
+}
+
+@media(max-width: 1200px){
+   body{
+      padding-top: 10px;
+    }
+    .form-signin {
+        max-width: 90%;
+    }
 }

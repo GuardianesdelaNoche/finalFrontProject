@@ -1,13 +1,19 @@
 /* Commons */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
+
+
+
 html,
 body {
   height: 100%;
 }
 
 body {
+/*Testing User Panel   
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 60px; */
+
+
   background-color: #FBF9F6 !important;
   color: #181c32!important;
   font-family: Poppins,Helvetica,"sans-serif" !important;
@@ -33,6 +39,14 @@ a, a:hover {
     text-decoration: none !important;
    
 }
+
+/* Button */
+
+button:disabled {
+    opacity: 0.3
+}
+
+
 /* ----Text */
 .text-description {
     color: #a1a5b7!important;
@@ -54,9 +68,13 @@ a, a:hover {
     color: #20d489!important;
 }
 
+<<<<<<< HEAD
 .text-muted {
     color: #a1a5b7!important;
 }
+=======
+
+>>>>>>> develop
 /* ----Fonts */
 .fs-3 {
     font-size: 1.35rem!important;
@@ -66,11 +84,15 @@ a, a:hover {
     font-weight: 600!important;
 }
 
+
 /* ----Espaces */
+
 .me-2 {
     margin-right: .5rem!important;
 }
-
+.ml-2 {
+    margin-left: .2rem!important;
+}
 .pt-12 {
     padding-top: 3rem!important;
 }
@@ -82,33 +104,29 @@ a, a:hover {
 .navbar-brand{
     font-weight: 700;
 }
+.navbar-right{
+    float: right;
+}
 
+.menu{
+    justify-content: space-between;
+}
 /* Menu */
-.menu-item {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    padding: .65rem 1rem;
-    transition: none;
-    outline: 0!important;
-    color: #7e8299;
-}
-.menu-item:hover{
-    color: #20d489;
+.navbar-light .navbar-nav .nav-link {
+    color: #7e8299 !important;
 }
 
+.navbar-light .navbar-nav .nav-link:hover {
+     color: #20d489 !important;
+}
 /* Main */
 .container.main {
     max-width: 1140px;
     padding: 60px 0px;
 }
 
-/* Alert */
-.alertLogin{
-    margin: -15px 20px 30px;
-}
 
+/* Card */
 
 .card.card-stretch {
     height: calc(100% - var(--bs-gutter-y));
@@ -119,10 +137,21 @@ a, a:hover {
     border: 0;
 }
 
+.Container{
+    position: relative;
+}
+.ribbon{
+    position: absolute;
+}
+.float-right {
+    display: flex;
+    justify-content: flex-end;
+}
 .Modal-Boder.modal-header{
   border-bottom: none;
 }
 
+<<<<<<< HEAD
 /* Button */
 .btn.btn-light-danger {
     color: #f1416c;
@@ -130,6 +159,22 @@ a, a:hover {
     background-color: #ffeff3;
 }
 /* Homepage */
+=======
+
+/* Card - Homepage */
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid rgba(0, 0, 0, 0.125)!important;
+    border-radius: 0.65rem !important;
+}
+>>>>>>> develop
 
 .card {
     position: relative;

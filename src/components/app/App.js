@@ -4,6 +4,7 @@ import { LoginPage, RegisterPage, PrivateRoute, RememberPass } from '../auth';
 
 import { EventsPage } from '../events';
 import { MemberPage, UpdateMemberPage } from '../members';
+import UserDashboard from '../user/dashboard/Userdashboard';
 import NotFoundPage from './NotFoundPage';
 
 function App() {
@@ -16,8 +17,17 @@ function App() {
       <PrivateRoute exact path="/changeMyData">
         {routeProps => <UpdateMemberPage {...routeProps} />}
       </PrivateRoute>
+      <Route exact path="/rememberPassword" component={RememberPassPage} />
+      <Route exact path="/rememberPassword/tokenExpired">
+        <RememberPassPage tokenExpired />
+      </Route>
+
+      <Route exact path="/forgotthepassword/:token">
+        { routeProps => <RecoverPassPage { ...routeProps} />}
+      </Route>
       <PrivateRoute exact path="/member" component={MemberPage} />
       <Route exact path="/events" component={EventsPage} />
+      <Route exact path="/user" component={UserDashboard} />
       <Route exact path="/register">
         {routeProps => <RegisterPage {...routeProps} />}
       </Route>

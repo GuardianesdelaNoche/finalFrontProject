@@ -16,10 +16,10 @@ function RegisterPage () {
 
     const { loading, error } = useSelector(getUi);
 
-    const handleSubmit = (registerData)=>{
+    const handleSubmit = async (registerData)=>{
         try {
             dispatch(setLoadingAction);
-            setRegister(registerData)
+            await setRegister(registerData);
         } catch (error) {
             dispatch(setErrorAction(error));
         } finally 
@@ -46,7 +46,7 @@ function RegisterPage () {
                 {error && (	
                     <Alert onClick={handleResetError} variant="danger">
                         <p className="mb-0">
-                            {error.message}
+                            {error.errors[0].msg}
                         </p>
                     </Alert>
                 )}

@@ -1,50 +1,76 @@
-import { NavLink, Link } from 'react-router-dom';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
+
+import { connect } from 'react-redux';
+import { getIsLogged } from '../../store/selectors/auth';
 import Button from '../shared/Button';
 import AuthButton from '../auth/AuthButton/AuthButton';
 import './Header.css';
 
 
 
-const isExact = match => match?.isExact;
-
-function Header() {
+function Header({ isLogged }) {
 	return (
 		<header>
-			<Navbar bg="light" variant="light" fixed="top">
+
+			<Navbar collapseOnSelect expand="lg" bg="light white" variant="light" fixed="top" >
 				<Container>
-					<Navbar.Brand href="/">4EVENTS</Navbar.Brand>
-					<Nav className="me-auto">
-						<NavLink
-							to="/events/new"
-							className="menu-item"
-							isActive={isExact}
-						>
-							<FormattedMessage
+					<Navbar.Brand href="#home" className="logo py-2 pb-7"><img alt="4EVENTS" src="http://isagomez.com/wp-content/uploads/2021/07/logo4eventsPNG.png" atl="logo" className="mh-50px"></img></Navbar.Brand>
+					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
+						<Nav className="me-auto">
+							<Nav.Link href="/events/new">
+								<FormattedMessage
 								id="navbar.item.menu"
 								defaultMessage="New Event"
-							/>
-							
-						</NavLink>
-						
-						<Button variant="secundary" className="me-2">
-							<Link to="/register">
-								<FormattedMessage
-									id="button.register.menu"
-									defaultMessage="Register"
 								/>
-							</Link> 
-						</Button>
+							</Nav.Link>
+						</Nav>
 						
-						
-						<AuthButton />
-					</Nav>
+						<Nav >
+							{isLogged === true  ?
+								<NavDropdown
+									title={
+										<span><img src="http://isagomez.com/wp-content/uploads/2021/07/avatar.svg" alt="avatar" width="40px"></img> Mark</span>
+									}
+									id="nav-dropdown">
+									<NavDropdown.Item eventKey="4.1">
+										<Link to="/user">My Profile</Link>
+									</NavDropdown.Item>
+
+									<NavDropdown.Divider />
+									<NavDropdown.Item eventKey="4.4"><AuthButton className="navbar-btn" /></NavDropdown.Item>
+								</NavDropdown>
+							 : 
+							 <div>
+									<Button variant="secundary" className="navbar-btn me-2">
+										<Link to="/register">
+										<FormattedMessage
+											id="button.register.menu"
+											defaultMessage="Register"
+										/>
+									</Link>
+								</Button>
+								
+									<AuthButton className="navbar-btn" />
+								
+							</div>
+							}
+							
+						</Nav>
+					</Navbar.Collapse>
 				</Container>
 			</Navbar>
-
+			
 		</header>
 	);
 }
 
-export default Header;
+const mapStateToProps = state => ({
+	isLogged: getIsLogged(state)
+})
+
+
+
+export default connect(mapStateToProps)(Header);

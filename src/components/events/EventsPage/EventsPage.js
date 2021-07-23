@@ -41,8 +41,8 @@ function EventsPage() {
   const location = useLocation();
   const { page: pageTest,  limit: limitTest } = useParams(); 
   const queryPath = new URLSearchParams(location.search);
-  const pageQuery =  queryPath.get("page");
-  const limitQuery = queryPath.get("limit");
+  const pageQuery =  queryPath.get("page") || 1;
+  const limitQuery = queryPath.get("limit") || 10;
 
   React.useEffect(() => {
     // console.log('in useEffect page value', page)

@@ -1,8 +1,8 @@
-import React from 'react';
+import React  from 'react';
 
 
 function useForm(initialState){
-	const [formValue, setFormValue] = React.useState({...initialState});
+	const [formValue, setFormValue] = React.useState((prevState) => ({...initialState}));
 
 	const handleChange = ({ target })=>{
 		setFormValue({

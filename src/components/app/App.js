@@ -19,7 +19,6 @@ function App() {
       <Route exact path="/rememberPassword/tokenExpired">
         <RememberPassPage tokenExpired />
       </Route>
-
       <Route exact path="/forgotthepassword/:token">
         { routeProps => <RecoverPassPage { ...routeProps} />}
       </Route>

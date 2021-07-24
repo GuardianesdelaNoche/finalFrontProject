@@ -9,20 +9,24 @@ import { FormattedMessage } from 'react-intl';
 import RegisterForm from './UserdashboardForm';
 import storage from '../../../utils/storage';
 import { setUserData } from '../../../api/user';
+import { SuccessMessage } from '../../shared/elements/formElements';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useIntl } from 'react-intl';
 
 
 function UserDashboard() {
 	const dispatch = useDispatch();
-    
-    const token = storage.get('auth');   
-   
-
+	const intl = useIntl();    
+    const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
+	const { dataSave, setDataSave} = React.useState(false);
 
     const handleSubmit = async (registerData)=>{
         try {
             dispatch(setLoadingAction);
             await setUserData(token.token, registerData)
+			setDataSave(true);
         } catch (error) {
             dispatch(setErrorAction(error));
         } finally 
@@ -71,6 +75,12 @@ function UserDashboard() {
                         				 </p>
                     					</Alert>
                 				)}
+								{dataSave && <SuccessMessage>
+									<p>
+										<FontAwesomeIcon icon={faComment}/>
+										<b></b>{intl.formatMessage({ id: 'register.validate.successmessage'})}
+									</p>
+									</SuccessMessage>} 
 
 
 							</Card.Body>

@@ -74,64 +74,68 @@ function EventCard(event) {
         </div>
       </div>
       <Link key={event._id} to={`/event/${event._id}`}>
-        <Card.Body>
-          <Card.Title>{event.title}</Card.Title>
-          <Card.Title style={{ display: "flex", justifyContent: "flex-end" }}>
-            {event.price} €
-          </Card.Title>
-          <div className="d-flex flex-row justify-content-between">
-            <Card.Subtitle className="mb-2 text-muted">
+        <Card.Body className="card">
+          <Card.Title className="text-dark">{event.title}</Card.Title>
+       
+          <div className="d-flex flex-row justify-content-between  time  text-gray-800 ">
+            <Card.Subtitle className="fs-6 fw-bolder">
               <BsCalendar /> {moment(new Date(event.date)).format("DD-MM-YYYY")}
             </Card.Subtitle>
-            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Subtitle className="fs-6 fw-bolder">
               <BsClock /> {event.duration} h
             </Card.Subtitle>
           </div>
-          <Card.Text className="line-clamp-custom">
+          <Card.Text className="text-description">
             {event.description}
           </Card.Text>
-          {/* <div className="mb-3">
-          <CollapseText>{event.description}</CollapseText>
-        </div> */}
-          <Card.Body className="d-flex flex-column justify-content-between">
-            <div>
-              <FormattedMessage
-                id="eventCard.availableSeats"
-                defaultMessage="Available seats"
-              />
-              <span className="float-right">
-                {event.max_places - event._id_assistants.length}
-              </span>
+  
+          <div className="row participant">
+            <div className="col d-flex">
+                    <span>
+                    <i className="fas fa-users mw-75 me-2"></i>
+                   
+                      {event.max_places - event._id_assistants.length}
+                      <FormattedMessage
+                        id="eventCard.availableSeats"
+                        defaultMessage="Seats"
+                      />
+                  </span>
             </div>
-            <div>
-              <FormattedMessage
-                id="eventCard.activity"
-                defaultMessage="Activity"
-              />
-              <span className="float-right">
-                {event.indoor ? (
-                  <div>
-                    <FormattedMessage
-                      id="eventCard.indoor"
-                      defaultMessage="Indoor"
-                    />
-                    <RiHome4Line />
-                  </div>
-                ) : (
-                  <div>
-                    <FormattedMessage
-                      id="eventCard.outdoor"
-                      defaultMessage="Outdoor"
-                    />
+            <div className="col d-flex float-right">
+                      {event.indoor ? (
+                        <div>
+                  <RiHome4Line />
+                          <FormattedMessage
+                            id="eventCard.indoor"
+                            defaultMessage="Indoor"
+                          />
+                         
+                        </div>
+                      ) : (
+                        <div>
                     <TiTree />
-                  </div>
-                )}
-              </span>
+                          <FormattedMessage
+                            id="eventCard.outdoor"
+                            defaultMessage="Outdoor"
+                          />
+                          
+                        </div>
+                      )}
             </div>
-          </Card.Body>
-          <div className="d-inline-flex flex-row justify-content-between">
-            <Card.Text className="text-muted">{event.tags.map((tag) => `#${tag}`)}</Card.Text>
+              </div>
+            <div>   
           </div>
+          <div class="d-flex pt-4">
+            <div class="symbol tags me-2">
+              <span class="bg-light-primary">{event.tags.map((tag) => `#${tag}`)}
+              </span>
+             </div>
+          </div>
+        
+         
+          {/* <Card.Title style={{ display: "flex", justifyContent: "flex-end" }}>
+            {event.price} €
+          </Card.Title> */}
         </Card.Body>
       </Link>
     </Card>

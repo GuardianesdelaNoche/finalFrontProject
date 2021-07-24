@@ -48,6 +48,8 @@ button:disabled {
 
 
 /* ----Text */
+
+
 .text-description {
     color: #a1a5b7!important;
     font-size: 1.020rem!important;
@@ -177,8 +179,29 @@ button:disabled {
     padding: 0 2.25rem;
     background-color: transparent;
 }
-.card>.card-body, .card>.card-footer {
+/* .card>.card-body, .card>.card-footer {
     padding: 2rem 2.25rem;
+} */
+
+.card.card-body {
+    padding: 2rem 2.25rem;
+}
+.card-columns .card {
+    margin-bottom: 1.75rem !important;
+}
+
+.time{
+    align-items: center;
+    padding: 0.9rem 0rem;
+}
+
+.time.text-primary{
+   color: #20d489 !important;
+
+}
+
+.participant{
+   color: #f1416c!important;
 }
 
 

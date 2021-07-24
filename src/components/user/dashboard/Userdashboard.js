@@ -45,28 +45,19 @@ function UserDashboard() {
 			 {loading && <Spinner animation="border" />}
 			<UserLayout>
 				<div className="row g-0 g-xl-5 g-xxl-8">	
-
 					<div className="col-xl-12">
 						<Card>
 							<Card.Body>
-								<Card.Title>
-					
+								<Card.Title>					
                 				    <FormattedMessage
                         				id="updatemember.title"
                         				defaultMessage="Change my data"
-                    				/>
-                
+                    				/>                
 								</Card.Title>
 							
-								<div className="d-flex flex-row justify-content-between">
-									<Card.Subtitle className="mb-2 text-muted">
-									 <RegisterForm onSubmit={handleSubmit} token={token} /> 
-
-									</Card.Subtitle>
-									<Card.Subtitle className="mb-2 text-muted">
-
-									</Card.Subtitle>
-								</div>
+							
+									<RegisterForm onSubmit={handleSubmit} token={token} /> 									
+							
 
 								{error && (	
                    					 <Alert onClick={handleResetError} variant="danger">
@@ -81,8 +72,6 @@ function UserDashboard() {
 										<b></b>{intl.formatMessage({ id: 'register.validate.successmessage'})}
 									</p>
 									</SuccessMessage>} 
-
-
 							</Card.Body>
 		
 						</Card>

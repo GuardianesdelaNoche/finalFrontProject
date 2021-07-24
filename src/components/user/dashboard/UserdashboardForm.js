@@ -81,7 +81,7 @@ function UserdashboardForm ({onSubmit,  token}) {
 
     return (
 	
-		<Form  className="form-signin" onSubmit={checkFormData}>
+		<Form onSubmit={checkFormData}>
 			<div className="form-container">
 				<Input
 					type="text"

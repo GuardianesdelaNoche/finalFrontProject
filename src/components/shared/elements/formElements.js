@@ -14,8 +14,6 @@ const Form = styled.form`
     gap: 0px;
 `;
 
-
-
 const Label = styled.label`
     display: block;
     font-weight: 500;
@@ -47,7 +45,7 @@ const InputC = styled.input`
 
     &:focus {
         outline:none;       
-        box-shadow: 0 0 0 .2rem ${colors.focus}; 
+        border: 2px solid ${colors.focus}; 
     }
      
     ${props => props.isValueValid === 'true'  && css `
@@ -78,20 +76,19 @@ const ErrorLegend = styled.p`
 const ValidationIcon = styled(FontAwesomeIcon)`
     position:absolute;
     right: 10px;
-    bottom: 25px;
+    bottom: 23px;
     z-index: 100;
     font-size: 16px;
     opacity:0;
 
     ${props => props.isvaluevalid === 'false'  && css `
         opacity:1;
-        bottom:42px;
         color: ${colors.error}
     `} 
 
     ${props => props.isvaluevalid === 'true'  && css `
         opacity:1;
-        bottom:25px;
+        
         color: ${colors.success}
     `} 
 `;

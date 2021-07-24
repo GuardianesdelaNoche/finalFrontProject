@@ -3,24 +3,26 @@ import { Redirect, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Layout from '../../layout'
-import EventDetail from './EventDetails'
+import EventDetails from './EventDetails'
 
 import { eventDetailsActions } from '../../../store/actions/events';
-import { getEventDetail} from '../../../store/selectors/events'; 
+import { getEventDetail} from '../../../store/selectors/events';
 import { getUi } from '../../../store/selectors/ui';
 
-function DetailsPage({ events }) {
+function DetailsPage() {
 	const dispatch = useDispatch();
 	const { eventId } = useParams();
 
 	const { error } = useSelector(getUi);
-	const event = useSelector(state => getEventDetail(state, eventId))
+	const event = useSelector(state => getEventDetail (state, eventId))
 
+	
 
 	React.useEffect(() => {
 		dispatch(eventDetailsActions(eventId))
 	}, [dispatch, eventId]);
 
+	
 	const handleDelete = () => {
 		console.log('Hola Mundo')
 	};
@@ -33,11 +35,11 @@ function DetailsPage({ events }) {
 		return <Redirect to="/404" />;
 	}
 
+
 	return (
 		<div>
 			<Layout>
-				
-				{event && <EventDetail {...event} key={event._id}/>}
+				<EventDetails {...event} />
 			</Layout>
 		</div>
 	)

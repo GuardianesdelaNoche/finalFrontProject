@@ -6,6 +6,7 @@ const eventsPath = "/api/v1/events";
 const mapEvent = ({ photo, ...event }) => {
   return {
     ...event,
+
     //photo: photo ? `${process.env.REACT_APP_API_BASE_URL}${photo}` : photo,
   };
 };

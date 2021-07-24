@@ -4,12 +4,11 @@ import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { getUi } from '../../../store/selectors/ui'; 
-import { Link } from 'react-router-dom';
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './UserdashboardForm';
 import storage from '../../../utils/storage';
-import { setMemberData } from '../../../api/members';
+import { setUserData } from '../../../api/user';
 
 
 function UserDashboard() {
@@ -20,10 +19,10 @@ function UserDashboard() {
 
     const { loading, error } = useSelector(getUi);
 
-    const handleSubmit = (registerData)=>{
+    const handleSubmit = async (registerData)=>{
         try {
             dispatch(setLoadingAction);
-            setMemberData(token.token, registerData)
+            await setUserData(token.token, registerData)
         } catch (error) {
             dispatch(setErrorAction(error));
         } finally 
@@ -41,26 +40,7 @@ function UserDashboard() {
 		<div>
 			 {loading && <Spinner animation="border" />}
 			<UserLayout>
-				<div className="row g-0 g-xl-5 g-xxl-8">
-					{/* <div className="col-xl-4">
-						<Card>
-							<Card.Body>
-								<Card.Title> </Card.Title>
-								
-								
-								<div className="d-flex flex-row justify-content-between">
-									<Card.Subtitle className="mb-2 text-muted">
-									
-										
-									</Card.Subtitle>
-									<Card.Subtitle className="mb-2 text-muted">
-										
-									</Card.Subtitle>
-								</div>
-						
-							</Card.Body>
-   					 	</Card>
-					</div> */}
+				<div className="row g-0 g-xl-5 g-xxl-8">	
 
 					<div className="col-xl-12">
 						<Card>
@@ -76,7 +56,7 @@ function UserDashboard() {
 							
 								<div className="d-flex flex-row justify-content-between">
 									<Card.Subtitle className="mb-2 text-muted">
-									<RegisterForm onSubmit={handleSubmit} token={token} />
+									 <RegisterForm onSubmit={handleSubmit} token={token} /> 
 
 									</Card.Subtitle>
 									<Card.Subtitle className="mb-2 text-muted">
@@ -84,10 +64,22 @@ function UserDashboard() {
 									</Card.Subtitle>
 								</div>
 
+								{error && (	
+                   					 <Alert onClick={handleResetError} variant="danger">
+                        				 <p className="mb-0">
+                            				{error.message}
+                        				 </p>
+                    					</Alert>
+                				)}
+
+
 							</Card.Body>
+		
 						</Card>
 					</div>
+
 				</div>
+		
 
 			</UserLayout>
 		</div>

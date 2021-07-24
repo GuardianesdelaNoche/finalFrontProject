@@ -3,7 +3,6 @@ import axios from 'axios';
 const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
 // const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL_LOCAL }); //add in .env for testing
 
-
 const setAuthorizationHeader = token => {
     client.defaults.headers.common['x-access-token'] = token;
 };

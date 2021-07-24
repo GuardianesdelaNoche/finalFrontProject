@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Layout from "../../layout";
+import { Layout } from "../../layout";
 import { Alert } from "react-bootstrap";
 import Spinner from "../../shared/Spinner";
 import EventsCardsList from "./EventsCardsList";

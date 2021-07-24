@@ -5,30 +5,35 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { Form,ContentBottomCenter, ErrorMessage, SuccessMessage, Button } from '../../shared/elements/formElements';
 import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-icons';
-import { getMemberDataById } from '../../../api/members';
+import { getUserDataById } from '../../../api/user';
 
-function UpdateMemberForm ({onSubmit,  token}) {
+
+function UserdashboardForm ({onSubmit,  token}) {
 	const dispatch = useDispatch();
+	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
+	const intl = useIntl();
+
     const {
 		formValue: memberData, 
 		handleChange,	
 		handleSetValue,
 	} = useForm({
-        username:"",
+		username:"",
 		email:"",
         role:1,
 		nickname:"",
 	});
+
+	const { username, email,  nickname } = memberData;   
 	
 
 	useEffect (() => {
 		async function executeGetMemberData (){
             try {                             
                 dispatch(setLoadingAction);
-                const member = await getMemberDataById(token.token);
+                const member = await getUserDataById(token.token);
                 handleSetValue(member.result);
             } catch (error) {
                 dispatch(setErrorAction(error));
@@ -40,11 +45,6 @@ function UpdateMemberForm ({onSubmit,  token}) {
 	}, [])
 
 
-	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
-	
-	const intl = useIntl();
-
-    const { username, email,  nickname } = memberData;   
 
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {
@@ -80,6 +80,7 @@ function UpdateMemberForm ({onSubmit,  token}) {
 	}
 
     return (
+	
 		<Form  className="form-signin" onSubmit={checkFormData}>
 			<div className="form-container">
 				<Input
@@ -150,7 +151,8 @@ function UpdateMemberForm ({onSubmit,  token}) {
 			</ContentBottomCenter>
         </div>
 		</Form>
+		
 	) 
 }
 
-export default UpdateMemberForm;
+export default UserdashboardForm;

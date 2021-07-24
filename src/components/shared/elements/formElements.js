@@ -14,8 +14,6 @@ const Form = styled.form`
     gap: 0px;
 `;
 
-
-
 const Label = styled.label`
     display: block;
     font-weight: 500;
@@ -47,7 +45,7 @@ const InputC = styled.input`
 
     &:focus {
         outline:none;       
-        box-shadow: 0 0 0 .2rem ${colors.focus}; 
+        border: 2px solid ${colors.focus}; 
     }
      
     ${props => props.isValueValid === 'true'  && css `
@@ -78,20 +76,19 @@ const ErrorLegend = styled.p`
 const ValidationIcon = styled(FontAwesomeIcon)`
     position:absolute;
     right: 10px;
-    bottom: 25px;
+    bottom: 23px;
     z-index: 100;
     font-size: 16px;
     opacity:0;
 
     ${props => props.isvaluevalid === 'false'  && css `
         opacity:1;
-        bottom:42px;
         color: ${colors.error}
     `} 
 
     ${props => props.isvaluevalid === 'true'  && css `
         opacity:1;
-        bottom:25px;
+        
         color: ${colors.success}
     `} 
 `;
@@ -123,10 +120,10 @@ const Button = styled.button `
 const SuccessMessage = styled.p`
     color: #0d5537;
     background-color: #d2f6e7;
-    padding: 20px;
+    padding: 13px;
     font-size: 15px;
     border: 1px solid #bcf2dc;
-    border-radius: .65rem;
+    border-radius: .25rem;
     margin-top: 1.5rem!important;
     margin-bottom: 2.5rem!important;
     p {

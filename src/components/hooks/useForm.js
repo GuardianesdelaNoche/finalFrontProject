@@ -1,8 +1,10 @@
-import React from 'react';
+import React  from 'react';
 
 
 function useForm(initialState){
 	const [formValue, setFormValue] = React.useState(initialState);
+
+	const handleSetValue= dataForm => {setFormValue(dataForm)};
 
 	const handleChange = ({ target })=>{
 		setFormValue({
@@ -16,7 +18,7 @@ function useForm(initialState){
 
 
 
-	return { formValue, setFormValue, handleChange, handleSubmit};
+	return { formValue, setFormValue, handleChange, handleSubmit, handleSetValue};
 }
 
 export default useForm;

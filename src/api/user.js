@@ -16,3 +16,9 @@ export const setUserData = (token, memberData) => {
     const url = `${baseURL}`;
     return client.put(url, memberData);
 } 
+
+export const getMyEvents = (token) => {
+    configureClient(token);
+    const url = `${baseURL}`;
+    return client.get(url);
+}

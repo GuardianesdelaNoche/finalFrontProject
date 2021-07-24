@@ -3,15 +3,13 @@ import UserLayout from '../../layout/UserLayout';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
-import { getUi } from '../../../store/selectors/ui'; 
+import { getMyEvents } from '../../../api/user';
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-
 import storage from '../../../utils/storage';
-//import { setUserData } from '../../../api/user';
-
-import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
+import { getUi } from '../../../store/selectors/ui';
+
 
 
 function ListMyEvents() {
@@ -19,13 +17,13 @@ function ListMyEvents() {
 	const intl = useIntl();    
     const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
-	//const [dataSaved, setDataSaved] = React.useState(false);
+
 
 	useEffect(()=>{
 		async function executeGetMyEvents (){
             try {                             
                 dispatch(setLoadingAction);
-                //const myEvents = await getMyEvents(token.token);
+                const myEvents = await getMyEvents(token.token);
                 //handleSetValue(member.result);
             } catch (error) {
                 dispatch(setErrorAction(error));
@@ -66,12 +64,7 @@ function ListMyEvents() {
                         				 </p>
                     					</Alert>
                 				)}
-								{/* {dataSaved && 
-									<SuccessMessage>
-										<p  className="mb-0">
-											{intl.formatMessage({ id: 'register.validate.successmessage'})}
-										</p>
-									</SuccessMessage>}  */}
+							
 							</Card.Body>
 		
 						</Card>

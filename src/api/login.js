@@ -15,6 +15,7 @@ export const login = ({ remember, ...credentials }) => {
 		.then(accessToken => {
 			if (remember) {
 				storage.set('auth', accessToken);
+				return accessToken;
 			}
 		});
 };
@@ -22,3 +23,5 @@ export const login = ({ remember, ...credentials }) => {
 export const logout = () => {
 	return Promise.resolve().then(resetClient).then(storage.clear);
 };
+
+

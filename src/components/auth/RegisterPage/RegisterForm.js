@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Form,ContentBottomCenter, ErrorMessage, Button } from '../../shared/elements/formElements';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
-
 import '../LoginPage/login.css'
 
 function RegisterForm ({onSubmit}) {
@@ -24,11 +23,7 @@ function RegisterForm ({onSubmit}) {
 		nickname:"",
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
-
-	
 	const intl = useIntl();
-
-
     const { username, email, password, password2,  nickname } = registerData;   
 
 	const isValidValue = (expression, value) =>{

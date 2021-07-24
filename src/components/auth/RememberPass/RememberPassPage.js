@@ -8,22 +8,23 @@ import { FormattedMessage } from 'react-intl';
 import RememberPassForm from './RememberPassForm';
 import { setRememberPass } from '../../../api/rememberPass';
 import { useIntl } from 'react-intl';
-import './RememberPass.css'
+import { SuccessMessage } from '../../shared/elements/formElements';
+import './RememberPass.css';
 
 
 
 function RememberPassPage ({tokenExpired}) {
-    const intl = useIntl();
-
+    const intl = useIntl();  
     const dispatch = useDispatch();
-
+    const [ dataSaved, setDataSaved] = React.useState(false);
     const { loading, error } = useSelector(getUi);
-
 
     const handleSubmit = async (rememberPassData)=>{
         try {
             dispatch(setLoadingAction);
-            await setRememberPass(rememberPassData)
+            dispatch(resetErrorAction());
+            await setRememberPass(rememberPassData);
+            setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));
         } finally 
@@ -68,6 +69,13 @@ function RememberPassPage ({tokenExpired}) {
                         </p>
                     </Alert>
                 )}     
+
+                
+			{dataSaved && <SuccessMessage>
+				<p className="mb-0">				
+					{intl.formatMessage({ id: 'rememberPass.validate.successmessage'})}
+				</p>
+			</SuccessMessage>}
 
             </main>           
         </div>

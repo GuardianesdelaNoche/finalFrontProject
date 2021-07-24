@@ -3,8 +3,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Form,ContentBottomCenter, ErrorMessage, SuccessMessage, Button } from '../../shared/elements/formElements';
-import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-icons';
+import { Form,ContentBottomCenter, ErrorMessage, Button } from '../../shared/elements/formElements';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import './RememberPass.css';
 
@@ -16,10 +16,7 @@ function RememberPassForm ({onSubmit}) {
 		email:"",        
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
-		
 	const intl = useIntl();
-
-
     const { email } = rememberPassData;   
 
 	const isValidValue = (expression, value) =>{
@@ -34,8 +31,7 @@ function RememberPassForm ({onSubmit}) {
 		e.preventDefault();
 		if ( isValidValue(expressions.email, email)) {
 			try {
-				onSubmit(rememberPassData);	
-		
+				onSubmit(rememberPassData);			
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {
 				changeIsFormValid({...isFormValid, status:false});
@@ -51,10 +47,8 @@ function RememberPassForm ({onSubmit}) {
 	}
 
     return (
-		<Form  className="form-signin" onSubmit={checkFormData}>
+		<Form  onSubmit={checkFormData}>
 			<div className="form-container">
-                
-				
 					
 				<Input
 					type="text"
@@ -77,12 +71,6 @@ function RememberPassForm ({onSubmit}) {
 				</p>
 			</ErrorMessage>}
 
-			{isFormValid.status === true && <SuccessMessage>
-				<p>
-					<FontAwesomeIcon icon={faComment}/>
-					<b></b>{intl.formatMessage({ id: 'rememberPass.validate.successmessage'})}
-				</p>
-			</SuccessMessage>}
 
 			<ContentBottomCenter>
 

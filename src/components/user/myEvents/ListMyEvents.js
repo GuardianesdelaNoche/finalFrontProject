@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import UserLayout from '../../layout/UserLayout';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,34 +6,38 @@ import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction
 import { getUi } from '../../../store/selectors/ui'; 
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-import RegisterForm from './UserdashboardForm';
+
 import storage from '../../../utils/storage';
-import { setUserData } from '../../../api/user';
+//import { setUserData } from '../../../api/user';
+
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 
 
-function UserDashboard() {
+function ListMyEvents() {
 	const dispatch = useDispatch();
 	const intl = useIntl();    
     const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
-	const [dataSaved, setDataSaved] = React.useState(false);
+	//const [dataSaved, setDataSaved] = React.useState(false);
 
-    const handleSubmit = async (registerData)=>{
-        try {
-            dispatch(setLoadingAction);
-			dispatch(resetErrorAction);
-            await setUserData(token.token, registerData)
-			setDataSaved(true);
-        } catch (error) {
-            dispatch(setErrorAction(error));
-        } finally 
-        {
-            dispatch(resetLoadingAction);
+	useEffect(()=>{
+		async function executeGetMyEvents (){
+            try {                             
+                dispatch(setLoadingAction);
+                //const myEvents = await getMyEvents(token.token);
+                //handleSetValue(member.result);
+            } catch (error) {
+                dispatch(setErrorAction(error));
+            } finally {
+                dispatch(resetLoadingAction);
+            }
         }
-    }
+        executeGetMyEvents();
 
+	}, []);
+
+   
     const handleResetError = ()=>{
         dispatch(resetErrorAction())
     }
@@ -48,12 +52,12 @@ function UserDashboard() {
 							<Card.Body>
 								<Card.Title>					
                 				    <FormattedMessage
-                        				id="updatemember.title"
-                        				defaultMessage="Change my data"
+                        				id="listmyevents.title"
+                        				defaultMessage="My Events"
                     				/>                
 								</Card.Title>
 												
-								<RegisterForm onSubmit={handleSubmit} token={token} /> 									
+								Listado							
 
 								{error && (	
                    					 <Alert onClick={handleResetError} variant="danger">
@@ -62,12 +66,12 @@ function UserDashboard() {
                         				 </p>
                     					</Alert>
                 				)}
-								{dataSaved && 
+								{/* {dataSaved && 
 									<SuccessMessage>
 										<p  className="mb-0">
 											{intl.formatMessage({ id: 'register.validate.successmessage'})}
 										</p>
-									</SuccessMessage>} 
+									</SuccessMessage>}  */}
 							</Card.Body>
 		
 						</Card>
@@ -81,4 +85,4 @@ function UserDashboard() {
 	)
 }
 
-export default UserDashboard
+export default ListMyEvents

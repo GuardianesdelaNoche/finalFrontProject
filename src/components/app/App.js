@@ -4,6 +4,7 @@ import { LoginPage, RegisterPage, PrivateRoute } from '../auth';
 import { EventsPage } from '../events';
 
 import UserDashboard from '../user/dashboard/Userdashboard';
+import ListMyEvents from '../user/myEvents/ListMyEvents';
 import NotFoundPage from './NotFoundPage';
 import { RememberPassPage, RecoverPassPage } from '../auth';
 
@@ -23,7 +24,7 @@ function App() {
         { routeProps => <RecoverPassPage { ...routeProps} />}
       </Route>
       <Route exact path="/events" component={EventsPage} />
-      <PrivateRoute exact path="/myEvents" component={UserDashboard} />
+      <PrivateRoute exact path="/myEvents" component={ListMyEvents} />
       <PrivateRoute exact path="/user" component={UserDashboard} />
 
       <Route exact path="/register">

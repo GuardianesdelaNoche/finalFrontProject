@@ -1,5 +1,6 @@
 import React from 'react'
 import { Redirect, useParams } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Layout from '../../layout'
@@ -9,11 +10,12 @@ import { eventDetailsActions } from '../../../store/actions/events';
 import { getEventDetail} from '../../../store/selectors/events';
 import { getUi } from '../../../store/selectors/ui';
 
+
 function DetailsPage() {
 	const dispatch = useDispatch();
 	const { eventId } = useParams();
+	const { loading, error } = useSelector(getUi);
 
-	const { error } = useSelector(getUi);
 	const event = useSelector(state => getEventDetail (state, eventId))
 
 	
@@ -22,7 +24,8 @@ function DetailsPage() {
 		dispatch(eventDetailsActions(eventId))
 	}, [dispatch, eventId]);
 
-	
+	//TODO - Add delete event details 
+	//TODO - Add edit event details 
 	const handleDelete = () => {
 		console.log('Hola Mundo')
 	};
@@ -39,7 +42,8 @@ function DetailsPage() {
 	return (
 		<div>
 			<Layout>
-				<EventDetails {...event} />
+				{loading && <Spinner animation="border" />}
+				{event && <EventDetails {...event} />}
 			</Layout>
 		</div>
 	)

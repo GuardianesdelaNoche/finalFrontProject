@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
@@ -7,10 +8,16 @@ import { getIsLogged } from '../../store/selectors/auth';
 import Button from '../shared/Button';
 import AuthButton from '../auth/AuthButton/AuthButton';
 import './Header.css';
+import storage from '../../utils/storage';
+import jwt_decode from "jwt-decode";
 
 
 
 function Header({ isLogged }) {
+	const token = storage.get('auth');  
+	
+	const userData = jwt_decode(token.token);
+
 	return (
 		<header>
 

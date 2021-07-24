@@ -8,7 +8,7 @@ function Layout({ children }) {
 		<>
 			<Header />
 			<div className="container main">
-				<div className="content">
+				<div className="content pt-4">
 					{children}
 				</div>
 			</div>

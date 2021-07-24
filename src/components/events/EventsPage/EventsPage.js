@@ -52,6 +52,7 @@ function EventsPage() {
         {!loading && !error && events.length > 0 && (
           <div className="container">
             <PaginationNavStyle />
+            <EventsCardsList events={events}></EventsCardsList>
             <div className="p-3 pb-4 d-flex justify-content-center">
               <Pagination
                 total={totalEvents}
@@ -61,7 +62,6 @@ function EventsPage() {
                 onChange={handleSetCurrentPage}
               />
             </div>
-            <EventsCardsList events={events}></EventsCardsList>
           </div>
         )}
         {!loading && !error && events.length === 0 && (

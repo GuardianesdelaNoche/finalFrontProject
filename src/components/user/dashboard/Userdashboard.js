@@ -10,8 +10,6 @@ import RegisterForm from './UserdashboardForm';
 import storage from '../../../utils/storage';
 import { setUserData } from '../../../api/user';
 import { SuccessMessage } from '../../shared/elements/formElements';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useIntl } from 'react-intl';
 
 
@@ -20,20 +18,20 @@ function UserDashboard() {
 	const intl = useIntl();    
     const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
-	const { dataSave, setDataSave} = React.useState(false);
+	const [dataSaved, setDataSaved] = React.useState(false);
 
     const handleSubmit = async (registerData)=>{
         try {
             dispatch(setLoadingAction);
+			dispatch(resetErrorAction);
             await setUserData(token.token, registerData)
-			setDataSave(true);
+			setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));
         } finally 
         {
             dispatch(resetLoadingAction);
         }
-
     }
 
     const handleResetError = ()=>{
@@ -54,23 +52,21 @@ function UserDashboard() {
                         				defaultMessage="Change my data"
                     				/>                
 								</Card.Title>
-							
-							
-									<RegisterForm onSubmit={handleSubmit} token={token} /> 									
-							
+												
+								<RegisterForm onSubmit={handleSubmit} token={token} /> 									
 
 								{error && (	
                    					 <Alert onClick={handleResetError} variant="danger">
                         				 <p className="mb-0">
-                            				{error.message}
+                            				{error.errors[0].msg}
                         				 </p>
                     					</Alert>
                 				)}
-								{dataSave && <SuccessMessage>
-									<p>
-										<FontAwesomeIcon icon={faComment}/>
-										<b></b>{intl.formatMessage({ id: 'register.validate.successmessage'})}
-									</p>
+								{dataSaved && 
+									<SuccessMessage>
+										<p  className="mb-0">
+											{intl.formatMessage({ id: 'register.validate.successmessage'})}
+										</p>
 									</SuccessMessage>} 
 							</Card.Body>
 		

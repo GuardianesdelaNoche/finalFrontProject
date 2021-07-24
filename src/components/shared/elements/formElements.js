@@ -120,10 +120,10 @@ const Button = styled.button `
 const SuccessMessage = styled.p`
     color: #0d5537;
     background-color: #d2f6e7;
-    padding: 20px;
+    padding: 13px;
     font-size: 15px;
     border: 1px solid #bcf2dc;
-    border-radius: .65rem;
+    border-radius: .25rem;
     margin-top: 1.5rem!important;
     margin-bottom: 2.5rem!important;
     p {

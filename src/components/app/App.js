@@ -23,7 +23,9 @@ function App() {
         { routeProps => <RecoverPassPage { ...routeProps} />}
       </Route>
       <Route exact path="/events" component={EventsPage} />
+      <PrivateRoute exact path="/myEvents" component={UserDashboard} />
       <PrivateRoute exact path="/user" component={UserDashboard} />
+
       <Route exact path="/register">
         {routeProps => <RegisterPage {...routeProps} />}
       </Route>

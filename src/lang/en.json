@@ -45,5 +45,8 @@
     "eventCard.indoor": "Indoor",
     "eventCard.overlay.fav": "Favourite",
     "updatemember.form.button": "Update",
-    "updatemember.title": "Change my data"
+    "updatemember.title": "Change my data",
+    "logout.confirmation": "Do you want to exit?" ,
+    "logout.title": "Logout" 
+
 }

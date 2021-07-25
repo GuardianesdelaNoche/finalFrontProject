@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-
-import { connect } from 'react-redux';
+import { connect} from 'react-redux';
 import { getIsLogged } from '../../store/selectors/auth';
 import Button from '../shared/Button';
 import AuthButton from '../auth/AuthButton/AuthButton';
+import { getUserData } from '../../store/selectors/auth';
+
 import './Header.css';
 
 
 
-function Header({ isLogged }) {
+function Header({ isLogged, userData }) {
 	return (
 		<header>
 
@@ -32,7 +33,7 @@ function Header({ isLogged }) {
 							{isLogged === true  ?
 								<NavDropdown
 									title={
-										<span><img src="http://isagomez.com/wp-content/uploads/2021/07/avatar.svg" alt="avatar" width="40px"></img> Mark</span>
+										<span><img src="http://isagomez.com/wp-content/uploads/2021/07/avatar.svg" alt="avatar" width="40px"></img> {userData.nickname}</span>
 									}
 									id="nav-dropdown">
 									<NavDropdown.Item eventKey="4.1">
@@ -68,7 +69,8 @@ function Header({ isLogged }) {
 }
 
 const mapStateToProps = state => ({
-	isLogged: getIsLogged(state)
+	isLogged: getIsLogged(state),
+	userData: getUserData(state)
 })
 
 

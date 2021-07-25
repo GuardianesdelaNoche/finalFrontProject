@@ -10,15 +10,17 @@ export const login = ({ remember, ...credentials }) => {
 		.post(`${baseURL}/login`, credentials)
 		.then(( token ) => {
 			configureClient(token);
-			return token;
 		})
 		.then(accessToken => {
 			if (remember) {
-				storage.set('auth', accessToken);
+				storage.set('auth', accessToken);			
 			}
+			return accessToken;
 		});
 };
 
 export const logout = () => {
 	return Promise.resolve().then(resetClient).then(storage.clear);
 };
+
+

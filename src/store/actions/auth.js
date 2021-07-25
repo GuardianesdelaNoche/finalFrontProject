@@ -1,12 +1,15 @@
 import { types } from "../types/types";
-import {login, logout} from '../../api/login'
+import {login, logout} from '../../api/login';
+import { getUserDataById } from "../../api/user";
+
 
 export const authLoginRequest = () => ({
 type: types.authLoginRequest
 });
 
-export const authLoginSuccess = () => ({
-    type: types.authLoginSuccess
+export const authLoginSuccess = userData => ({
+        type: types.authLoginSuccess,
+        payload: userData
 });
 
 export const authLoginError = error => ({
@@ -25,8 +28,9 @@ export const loginAction = credentials => {
         dispatch(authLoginRequest());
         try {
            
-            const logged = await login(credentials);
-            dispatch(authLoginSuccess(logged));
+            const logged = await login(credentials);       
+            const userData = await getUserDataById(logged.token);                       
+            dispatch(authLoginSuccess(userData.result));
 
             // Redirect
             const { from } = history.location.state || { from: { pathname: '/' } };
@@ -37,11 +41,10 @@ export const loginAction = credentials => {
     };
 };
 
-
 export const logoutAction = () => {
-    return async function (dispatch, _getState, { api }) {
-        //await api.auth.logout();
+    return async function (dispatch, _getState, { api, history }) {
         await logout();
         dispatch(authLogout());
+        history.push("/");
     };
 };

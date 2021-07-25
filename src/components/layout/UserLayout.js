@@ -13,7 +13,7 @@ function UserLayout({ children }) {
 						<div className="container main">
 						<HeaderUser />
 							<div className="container">
-							{children}
+							{children} 
 							</div>
 						</div>
 					<Footer />

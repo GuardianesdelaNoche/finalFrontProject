@@ -4,6 +4,11 @@ const storage = {
       if (!value) {
         return null;
       }
+      if (value === undefined)
+      {
+        localStorage.removeItem(key);
+        return null;
+      }
       return JSON.parse(value);
     },
   

@@ -3,9 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { LoginPage, RegisterPage, PrivateRoute } from '../auth';
 import { EventsPage } from '../events';
 import DetailsPage from '../events/EventDetail/DetailsPage';
-import { MemberPage } from '../members';
 import UserDashboard from '../user/dashboard/Userdashboard';
-import ListMyEvents from '../user/myEvents/ListMyEvents';
 import NotFoundPage from './NotFoundPage';
 import { RememberPassPage, RecoverPassPage } from '../auth';
 
@@ -24,12 +22,10 @@ function App() {
       <Route exact path="/forgotthepassword/:token">
         { routeProps => <RecoverPassPage { ...routeProps} />}
       </Route>
-      <PrivateRoute exact path="/member" component={MemberPage} />
+      
       <Route exact path="/event/:eventId" component={DetailsPage} />
       <Route exact path="/events" component={EventsPage} />
-      <PrivateRoute exact path="/myEvents" component={ListMyEvents} />
       <PrivateRoute exact path="/user" component={UserDashboard} />
-
       <Route exact path="/register">
         {routeProps => <RegisterPage {...routeProps} />}
       </Route>

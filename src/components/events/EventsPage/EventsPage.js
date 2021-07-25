@@ -51,17 +51,11 @@ function EventsPage() {
         )}
         {!loading && !error && events.length > 0 && (
           <div className="container">
-            <PaginationNavStyle />
-            <div className="p-3 pb-4 d-flex justify-content-center">
-              <Pagination
-                total={totalEvents}
-                pageSize={limit}
-                current={currentPage}
-                showLessItems={true}
-                onChange={handleSetCurrentPage}
-              />
-            </div>
+            <PaginationNavStyle  className="pt-4"/>
+            
+            
             <EventsCardsList events={events}></EventsCardsList>
+            
           </div>
         )}
         {!loading && !error && events.length === 0 && (
@@ -69,6 +63,16 @@ function EventsPage() {
             <EventsCardsEmptyList eventsCount={0}></EventsCardsEmptyList>
           </div>
         )}
+
+         <div className="d-flex justify-content-center">
+              <Pagination
+                total={totalEvents}
+                pageSize={limit}
+                current={currentPage}
+                showLessItems={true}
+                onChange={handleSetCurrentPage}
+              />
+            </div> 
       </Layout>
     </div>
   );

@@ -39,7 +39,7 @@
     "rememberPass.validate.successmessage":"Recibirás un email con un link para poder cambiar la contraseña",
     "rememberPass.page.tokenexpired": "El token ha expirado. Solicite otro enviando su email",  
     "eventCard.overlay.registerLogin": "Regístrate o Login",
-    "eventCard.availableSeats": "Plazas disponibles",
+    "eventCard.availableSeats": "Plazas",
     "eventCard.activity": "Actividad",
     "eventCard.outdoor": "Aire libre",
     "eventCard.indoor": "Interior",

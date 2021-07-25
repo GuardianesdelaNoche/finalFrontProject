@@ -17,4 +17,9 @@ export const types = {
     uiResetLoading: 'UI Reset Loading',
 
 
+    eventDetailsRequest: 'EVENT Details Request',
+    eventDetailsSuccess: 'EVENT Details Success',
+    eventDetailsError: 'EVENT Details Error'
+
+
 }

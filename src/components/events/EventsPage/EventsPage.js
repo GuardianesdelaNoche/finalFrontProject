@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "../../layout";
-import { Alert } from "react-bootstrap";
+import { Accordion, Alert, Card, Button } from "react-bootstrap";
 import Spinner from "../../shared/Spinner";
 import EventsCardsList from "./EventsCardsList";
 import EventsCardsEmptyList from "./EventsCardsEmptyList";
@@ -13,10 +13,13 @@ import { resetErrorAction } from "../../../store/actions/ui";
 import { PaginationNavStyle } from "../../shared/PaginationNavStyle";
 import Pagination from "rc-pagination";
 import "../../shared/paginator/paginator.css";
-
+import './EventsPage.css';
 import { getEventsTotal } from "../../../store/selectors/events";
 import { getCurrentPage, getLimit } from "../../../store/selectors/pagination";
 import { paginationSetCurrentPage } from "../../../store/actions/pagination";
+
+import { FiltersForm } from "./filters/FiltersForm";
+import { Sorter } from "./filters/Sorter";
 
 function EventsPage() {
   const dispatch = useDispatch();
@@ -51,16 +54,40 @@ function EventsPage() {
         )}
         {!loading && !error && events.length > 0 && (
           <div className="container">
-            <PaginationNavStyle />
-            <EventsCardsList events={events}></EventsCardsList>
-            <div className="p-3 pb-4 d-flex justify-content-center">
-              <Pagination
-                total={totalEvents}
-                pageSize={limit}
-                current={currentPage}
-                showLessItems={true}
-                onChange={handleSetCurrentPage}
-              />
+            <div className="row">
+              <div className="col-md-3 d-none d-md-block">
+                <FiltersForm />
+              </div>
+              <div className="col-md-9">
+                <div className="p-3 pb-4 row">
+                  <div className="pt-3 pb-3 d-md-none">
+                    <Button
+                      className="inline-block"
+                      variant="secondary"
+                    >
+                      Filters Modal
+                    </Button>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <Sorter />
+                    <PaginationNavStyle />
+                  </div>
+                </div>
+                <div className="row">
+                  <EventsCardsList events={events}></EventsCardsList>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="p-3 pb-4 d-flex justify-content-center">
+                <Pagination
+                  total={totalEvents}
+                  pageSize={limit}
+                  current={currentPage}
+                  showLessItems={true}
+                  onChange={handleSetCurrentPage}
+                />
+              </div>
             </div>
           </div>
         )}

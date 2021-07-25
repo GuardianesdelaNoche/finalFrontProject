@@ -22,7 +22,7 @@ const ButtonItems = ({ variant = "primary", val, onClick }) => {
 
 const defaultValues = ["10", "20", "50"];
 
-export const PaginationNavStyle = ({ values = defaultValues }) => {
+export const PaginationNavStyle = ({ values = defaultValues, ...props}) => {
   const dispatch = useDispatch();
 
   const onClick = (val) => (ev) => {
@@ -31,7 +31,7 @@ export const PaginationNavStyle = ({ values = defaultValues }) => {
 
 
   return (
-    <div className="p-3 pb-4 d-flex justify-content-end">
+    <div {...props}>
       {values.length > 0 && (
         <ButtonGroup>
           {values.map((val) => ButtonItems({ val, onClick }))}

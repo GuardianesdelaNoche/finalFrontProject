@@ -1,6 +1,6 @@
 
-import React, { PropTypes } from 'react';
-import { ConfirmationButton } from '../../shared';
+import React  from 'react';
+
 
 var moment = require("moment");
 
@@ -154,11 +154,8 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 							</div>
 
 						</div>
-
 					</div>
 				</div>
-				 
-
 		</div>
 		)
 	}

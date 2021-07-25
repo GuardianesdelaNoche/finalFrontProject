@@ -85,65 +85,56 @@ function EventCard(event) {
               <BsClock className="me-2"/> {event.duration} h
             </Card.Subtitle>
           </div>
-          <Card.Text className="text-description">
-            {event.description}   
-
-            <div className="row participant pt-4">
-              <div className="col d-flex">
-                <span>
-                  <i className="fas fa-users mw-75 me-2"></i>
-
-                  {event.max_places - event._id_assistants.length}
-                  <FormattedMessage
-                    id="eventCard.availableSeats"
-                    defaultMessage="Seats"
-                  />
-                </span>
+            <Card.Text className="text-description">
+              {event.description}   
+                <div className="row participant pt-4">
+                    <div className="col d-flex">
+                      <span>
+                        <i className="fas fa-users mw-75 me-2"></i>
+                        {event.max_places - event._id_assistants.length}
+                        <FormattedMessage
+                          id="eventCard.availableSeats"
+                          defaultMessage="Seats"
+                        />
+                      </span>
+                    </div>
+                    <div className="col d-flex float-right">
+                        {event.indoor ? (
+                            <div>
+                               
+                    <RiHome4Line className="me-2"/>
+                               
+                              <FormattedMessage
+                                id="eventCard.indoor"
+                                defaultMessage="Indoor"
+                              />
+                            </div>
+                        ) : (
+                            <div>
+                              
+                      <TiTree className="me-2"/>
+                              <FormattedMessage
+                                id="eventCard.outdoor"
+                                defaultMessage="Outdoor"
+                              />
+                            </div>
+                        )}
+                    </div>
               </div>
-              <div className="col d-flex float-right">
-                {event.indoor ? (
-                  <div>
-                    <span className="me-2">
-                      <RiHome4Line />
-                    </span>
-                    <FormattedMessage
-                      id="eventCard.indoor"
-                      defaultMessage="Indoor"
-                    />
-                  </div>
-                ) : (
-                  <div>
-                    <span className="me-2">
-                      <TiTree />
-                    </span>
-                    <FormattedMessage
-                      id="eventCard.outdoor"
-                      defaultMessage="Outdoor"
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-            <div>
-
-            </div>
-  
-          
+                
           </Card.Text>
         
-          <div class="separator mt-2 pt-2"></div>
+          <div className="separator mt-2 pt-2"></div>
           
-          <div className="row">
-
-           
-            <div class="col d-flex pt-4">
-              <div class="symbol tags me-2">
-                <span class="bg-light-primary">{event.tags.map((tag) => `#${tag}`)}
+          <div className="row">     
+            <div className="col d-flex pt-4">
+              <div className="symbol tags me-2">
+                <span className="bg-light-primary">{event.tags.map((tag) => `#${tag}`)}
                 </span>
               </div>
             </div>
             <div className="col d-flex pt-4 float-right">
-              <div class="bg-light rounded text-gray-600 py-2 px-3">
+              <div className="bg-light rounded text-gray-600 py-2 px-3">
                 {event.price} €
               </div>
             </div>

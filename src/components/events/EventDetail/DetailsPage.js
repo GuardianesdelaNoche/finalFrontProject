@@ -3,7 +3,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Layout from '../../layout'
+import Layout from '../../layout/Layout'
 import EventDetails from './EventDetails'
 
 import { eventDetailsActions } from '../../../store/actions/events';
@@ -26,9 +26,7 @@ function DetailsPage() {
 
 	//TODO - Add delete event details 
 	//TODO - Add edit event details 
-	const handleDelete = () => {
-		console.log('Hola Mundo')
-	};
+
 
 	if (error?.statusCode === 401) {
 		return <Redirect to="/login" />;

@@ -191,6 +191,10 @@ button:disabled {
     padding: 2rem 2.25rem;
     padding-bottom: 0.5rem;
 }
+
+.container.details .card-body{
+ padding: 2rem 2.25rem !important;
+}
 .card-columns .card {
     margin-bottom: 1.75rem !important;
 }

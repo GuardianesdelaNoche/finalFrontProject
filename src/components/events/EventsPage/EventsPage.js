@@ -52,8 +52,7 @@ function EventsPage() {
         {!loading && !error && events.length > 0 && (
           <div className="container">
             <PaginationNavStyle  className="pt-4"/>
-            
-            
+
             <EventsCardsList events={events}></EventsCardsList>
             
           </div>
@@ -64,7 +63,7 @@ function EventsPage() {
           </div>
         )}
 
-         <div className="d-flex justify-content-center">
+         <div className="d-flex justify-content-center pt-12">
               <Pagination
                 total={totalEvents}
                 pageSize={limit}
@@ -72,7 +71,7 @@ function EventsPage() {
                 showLessItems={true}
                 onChange={handleSetCurrentPage}
               />
-            </div> 
+          </div> 
       </Layout>
     </div>
   );

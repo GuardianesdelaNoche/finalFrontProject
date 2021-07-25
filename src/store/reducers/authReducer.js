@@ -11,7 +11,7 @@
          case types.authLoginSuccess:
              return {
                  ...state,
-                 data:[...action.payload],
+                 data: action.payload,
                  isLoaded: true}
          case types.authLogout:
             return {

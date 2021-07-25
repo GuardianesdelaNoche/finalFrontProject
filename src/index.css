@@ -62,7 +62,9 @@ button:disabled {
 .text-dark {
     color: #181c32!important;
 }
-
+.text-gray-600 {
+    color: #7e8299!important;
+}
 .text-gray-800 {
     color: #3f4254!important;
 }
@@ -98,7 +100,9 @@ button:disabled {
 .pt-14{
     padding-top: 4rem!important;
 }
-
+.pb-12 {
+    padding-bottom: 3rem!important;
+}
 
 /* Navbar */
 .navbar-brand{
@@ -185,11 +189,21 @@ button:disabled {
 
 .card.card-body {
     padding: 2rem 2.25rem;
+    padding-bottom: 0.5rem;
 }
 .card-columns .card {
     margin-bottom: 1.75rem !important;
 }
 
+
+.card-img-top.home{
+    border-top-left-radius: .65rem ;
+    border-top-right-radius: .65rem;
+}
+
+.ribbon.home{
+border-top-right-radius: .65rem;
+}
 .time{
     align-items: center;
     padding: 0.9rem 0rem;

@@ -5,15 +5,19 @@ import { ButtonGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getLimit } from "../../store/selectors/pagination";
 import { paginationSetLimit } from "../../store/actions/pagination";
+import './PaginationNav.css'
+
+
 
 const ButtonItems = ({ variant = "primary", val, onClick }) => {
     const active = useSelector(getLimit);
   return (
-    <Button
+    <Button 
       key={val}
       variant={variant}
       active={active === val}
       onClick={onClick(val)}
+      className="ms-3"
     >
       Ver {val}
     </Button>
@@ -31,9 +35,9 @@ export const PaginationNavStyle = ({ values = defaultValues }) => {
 
 
   return (
-    <div className="p-3 pb-4 d-flex justify-content-end">
+    <div className="p-4 pb-4 d-flex justify-content-end">
       {values.length > 0 && (
-        <ButtonGroup>
+        <ButtonGroup className="home-pagination">
           {values.map((val) => ButtonItems({ val, onClick }))}
         </ButtonGroup>
       )}

@@ -43,5 +43,12 @@
     "eventCard.activity": "Actividad",
     "eventCard.outdoor": "Aire libre",
     "eventCard.indoor": "Interior",
-    "eventCard.overlay.fav": "Favorito"
+    "eventCard.overlay.fav": "Favorito",
+    "details.event.edit": "Editar",
+    "details.event.remove": "Eliminar",
+    "details.event.subtitle": "Detalles",
+    "details.event.currency": "€",
+    "details.event.indoor": "Interior",
+    "details.event.outdoor": "Exterior"
+
 }

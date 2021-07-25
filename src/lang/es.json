@@ -46,5 +46,7 @@
     "eventCard.overlay.fav": "Favorito",
     "updatemember.form.button": "Cambiar",
     "updatemember.title": "Cambiar mis datos",
-    "listmyevents.title":"Mis eventos"
+    "listmyevents.title":"Mis eventos",
+    "logout.confirmation": "Quieres salir?",
+    "logout.title": "Salir" 
 }

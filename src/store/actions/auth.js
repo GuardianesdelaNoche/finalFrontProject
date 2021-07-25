@@ -28,11 +28,8 @@ export const loginAction = credentials => {
         dispatch(authLoginRequest());
         try {
            
-            const logged = await login(credentials);
-       
-            const userData = await getUserDataById(logged.token);
-            
-            
+            const logged = await login(credentials);       
+            const userData = await getUserDataById(logged.token);                       
             dispatch(authLoginSuccess(userData.result));
 
             // Redirect
@@ -44,11 +41,10 @@ export const loginAction = credentials => {
     };
 };
 
-
 export const logoutAction = () => {
-    return async function (dispatch, _getState, { api }) {
-        //await api.auth.logout();
+    return async function (dispatch, _getState, { api, history }) {
         await logout();
         dispatch(authLogout());
+        history.push("/");
     };
 };

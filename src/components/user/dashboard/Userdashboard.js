@@ -11,6 +11,7 @@ import storage from '../../../utils/storage';
 import { setUserData } from '../../../api/user';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
+import { getUserData } from '../../../store/selectors/auth';
 
 
 
@@ -19,6 +20,7 @@ function UserDashboard() {
 	const intl = useIntl();    
     const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
+	const userData = useSelector(getUserData);
 	const [dataSaved, setDataSaved] = React.useState(false);
 
     const handleSubmit = async (registerData)=>{
@@ -54,7 +56,7 @@ function UserDashboard() {
                     				/>                
 								</Card.Title>
 												
-								<RegisterForm onSubmit={handleSubmit} token={token} /> 									
+								<RegisterForm onSubmit={handleSubmit} token={token} userData={userData} /> 									
 
 								{error && (	
                    					 <Alert onClick={handleResetError} variant="danger">

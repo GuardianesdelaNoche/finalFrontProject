@@ -10,13 +10,12 @@ export const login = ({ remember, ...credentials }) => {
 		.post(`${baseURL}/login`, credentials)
 		.then(( token ) => {
 			configureClient(token);
-			return token;
 		})
 		.then(accessToken => {
 			if (remember) {
-				storage.set('auth', accessToken);
-				return accessToken;
+				storage.set('auth', accessToken);			
 			}
+			return accessToken;
 		});
 };
 

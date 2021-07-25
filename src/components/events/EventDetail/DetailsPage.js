@@ -3,7 +3,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Layout from '../../layout'
+import { Layout } from '../../layout'
 import EventDetails from './EventDetails'
 
 import { eventDetailsActions } from '../../../store/actions/events';

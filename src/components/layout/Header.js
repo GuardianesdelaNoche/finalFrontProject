@@ -6,12 +6,14 @@ import { getIsLogged } from '../../store/selectors/auth';
 import Button from '../shared/Button';
 import AuthButton from '../auth/AuthButton/AuthButton';
 import { getUserData } from '../../store/selectors/auth';
+import { useIntl } from 'react-intl';
 
 import './Header.css';
 
 
 
 function Header({ isLogged, userData }) {
+	const intl = useIntl();
 	return (
 		<header>
 
@@ -37,7 +39,7 @@ function Header({ isLogged, userData }) {
 									}
 									id="nav-dropdown">
 									<NavDropdown.Item eventKey="4.1">
-										<Link to="/user">My Profile</Link>
+										<Link to="/user">{intl.formatMessage({ id: 'header.menu.myprofile'})}</Link>
 									</NavDropdown.Item>
 
 									<NavDropdown.Divider />

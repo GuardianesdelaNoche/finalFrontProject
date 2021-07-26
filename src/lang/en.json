@@ -49,6 +49,7 @@
     "logout.confirmation": "Do you want to exit?" ,
     "logout.title": "Log out",
     "logout.yes": "Yes",
-    "logout.no": "No"
+    "logout.no": "No",
+    "header.menu.myprofile": "My profile"
 
 }

@@ -50,5 +50,6 @@
     "logout.confirmation": "Quieres cerrar sesión?",
     "logout.title": "Cerrar sesión" ,
     "logout.yes": "Si",
-    "logout.no": "No"
+    "logout.no": "No",
+    "header.menu.myprofile": "Mis datos"
 }

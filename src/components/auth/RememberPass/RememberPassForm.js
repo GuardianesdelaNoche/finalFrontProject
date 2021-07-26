@@ -77,12 +77,7 @@ function RememberPassForm ({onSubmit}) {
 				</p>
 			</ErrorMessage>}
 
-			{isFormValid.status === true && <SuccessMessage>
-				<p>
-					<FontAwesomeIcon icon={faComment}/>
-					<b></b>{intl.formatMessage({ id: 'rememberPass.validate.successmessage'})}
-				</p>
-			</SuccessMessage>}
+
 
 			<ContentBottomCenter>
 

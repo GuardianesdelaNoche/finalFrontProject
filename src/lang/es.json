@@ -47,6 +47,8 @@
     "updatemember.form.button": "Cambiar",
     "updatemember.title": "Cambiar mis datos",
     "listmyevents.title":"Mis eventos",
-    "logout.confirmation": "Quieres salir?",
-    "logout.title": "Salir" 
+    "logout.confirmation": "Quieres cerrar sesión?",
+    "logout.title": "Cerrar sesión" ,
+    "logout.yes": "Si",
+    "logout.no": "No"
 }

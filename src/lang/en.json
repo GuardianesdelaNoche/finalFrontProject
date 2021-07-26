@@ -47,6 +47,8 @@
     "updatemember.form.button": "Update",
     "updatemember.title": "Change my data",
     "logout.confirmation": "Do you want to exit?" ,
-    "logout.title": "Logout" 
+    "logout.title": "Log out",
+    "logout.yes": "Yes",
+    "logout.no": "No"
 
 }

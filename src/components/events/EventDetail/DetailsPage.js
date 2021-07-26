@@ -3,7 +3,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Layout from '../../layout'
+import { Layout } from '../../layout'
 import EventDetails from './EventDetails'
 
 import { eventDetailsActions, eventDetailsSuccess } from '../../../store/actions/events';
@@ -18,10 +18,8 @@ function DetailsPage() {
 
 	const event = useSelector(state => getEventDetail (state, eventId))
 
-
 	React.useEffect(() => {
 
-		
 		dispatch(eventDetailsActions(eventId))	
 	
 	}, [dispatch, eventId]);

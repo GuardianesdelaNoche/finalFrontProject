@@ -7,30 +7,35 @@ import { Link } from 'react-router-dom';
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './RegisterForm';
+import { SuccessMessage } from '../../shared/elements/formElements';
+import { useIntl } from 'react-intl';
 
 import '../LoginPage/login.css'
 
 function RegisterPage () {
 
     const dispatch = useDispatch();
-
     const { loading, error } = useSelector(getUi);
-
+    const [ dataSaved, setDataSaved] = React.useState(false);
+    const intl = useIntl();  
     const handleSubmit = async (registerData)=>{
         try {
-            dispatch(setLoadingAction);
+            dispatch(setLoadingAction());
+            dispatch(resetErrorAction());
             await setRegister(registerData);
+            setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));
         } finally 
         {
-            dispatch(resetLoadingAction);
+            dispatch(resetLoadingAction());
         }
-
     }
+
     const handleResetError = ()=>{
         dispatch(resetErrorAction())
     }
+
     return (
         <div className="main-content">
             <main className="form-signin">
@@ -50,6 +55,12 @@ function RegisterPage () {
                         </p>
                     </Alert>
                 )}
+                {dataSaved && 
+                    <SuccessMessage>
+                        <p className="mb-0">										
+                            {intl.formatMessage({ id: 'register.validate.successmessage'})}
+                        </p>
+                    </SuccessMessage>} 
 
                 <p className="text-muted">
                   

@@ -49,7 +49,7 @@ function EventCard(event) {
             >
               {isLogged ? (
                 <Button
-                  className="ribbon"
+                  className="ribbon home"
                   // className="float-right"
                   variant="secondary"
                   onClick={handleAddEventFavs}
@@ -68,71 +68,88 @@ function EventCard(event) {
               )}
             </OverlayTrigger>
             <Link key={event._id} to={`/event/${event._id}`}>
-              <Card.Img variant="top" src={event.photo} />
+              <Card.Img variant="top"  className="home" src={event.photo} />
             </Link>
           </span>
         </div>
       </div>
       <Link key={event._id} to={`/event/${event._id}`}>
-        <Card.Body>
-          <Card.Title>{event.title}</Card.Title>
-          <Card.Title style={{ display: "flex", justifyContent: "flex-end" }}>
-            {event.price} €
-          </Card.Title>
-          <div className="d-flex flex-row justify-content-between">
-            <Card.Subtitle className="mb-2 text-muted">
-              <BsCalendar /> {moment(new Date(event.date)).format("DD-MM-YYYY")}
+        <Card.Body className="card">
+          <Card.Title className="text-dark">{event.title}</Card.Title>
+       
+          <div className="d-flex flex-row justify-content-between  time  text-gray-800 ">
+            <Card.Subtitle className="fs-6 fw-bolder">
+              <BsCalendar className="me-2"/> {moment(new Date(event.date)).format("DD-MM-YYYY")}
             </Card.Subtitle>
-            <Card.Subtitle className="mb-2 text-muted">
-              <BsClock /> {event.duration} h
+            <Card.Subtitle className="fs-6 fw-bolder">
+              <BsClock className="me-2"/> {event.duration} h
             </Card.Subtitle>
           </div>
-          <Card.Text className="line-clamp-custom">
-            {event.description}
-          </Card.Text>
-          {/* <div className="mb-3">
-          <CollapseText>{event.description}</CollapseText>
-        </div> */}
-          <Card.Body className="d-flex flex-column justify-content-between">
-            <div>
-              <FormattedMessage
-                id="eventCard.availableSeats"
-                defaultMessage="Available seats"
-              />
-              <span className="float-right">
-                {event.max_places - event._id_assistants.length}
-              </span>
-            </div>
-            <div>
-              <FormattedMessage
-                id="eventCard.activity"
-                defaultMessage="Activity"
-              />
-              <span className="float-right">
+          <Card.Text className="text-description">
+            {event.description}   
+
+            <div className="row participant pt-4">
+              <div className="col d-flex">
+                <span>
+                  <i className="fas fa-users mw-75 me-2"></i>
+
+                  {event.max_places - event._id_assistants.length}
+                  <FormattedMessage
+                    id="eventCard.availableSeats"
+                    defaultMessage="Seats"
+                  />
+                </span>
+              </div>
+              <div className="col d-flex float-right">
                 {event.indoor ? (
                   <div>
+                    <span className="me-2">
+                      <RiHome4Line />
+                    </span>
                     <FormattedMessage
                       id="eventCard.indoor"
                       defaultMessage="Indoor"
                     />
-                    <RiHome4Line />
                   </div>
                 ) : (
                   <div>
+                    <span className="me-2">
+                      <TiTree />
+                    </span>
                     <FormattedMessage
                       id="eventCard.outdoor"
                       defaultMessage="Outdoor"
                     />
-                    <TiTree />
                   </div>
                 )}
-              </span>
+              </div>
             </div>
-          </Card.Body>
-          <div className="d-inline-flex flex-row justify-content-between">
-            <Card.Text className="text-muted">{event.tags.map((tag) => `#${tag}`)}</Card.Text>
+            <div>
+
+            </div>
+  
+          
+          </Card.Text>
+        
+          <div className="separator mt-2 pt-2"></div>
+          
+          <div className="row">
+
+           
+            <div className="col d-flex pt-4">
+              <div className="symbol tags me-2">
+                <span className="bg-light-primary">{event.tags.map((tag) => `#${tag}`)}
+                </span>
+              </div>
+            </div>
+            <div className="col d-flex pt-4 float-right">
+              <div className="bg-light rounded text-gray-600 py-2 px-3">
+                {event.price} €
+              </div>
+            </div>
           </div>
         </Card.Body>
+      
       </Link>
     </Card>
   );

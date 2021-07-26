@@ -47,7 +47,7 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 							</div>
 
 							{/*  Si soy el propietario 
-							 <div class="card-toolbar">
+							 <div className="card-toolbar">
 									<ConfirmationButton className="me-2"
 									onConfirm={onDelete} 
 									>Editar</ConfirmationButton>

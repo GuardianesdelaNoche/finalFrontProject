@@ -55,8 +55,6 @@ function RememberPassPage ({tokenExpired}) {
                 </p>
               {loading && <Spinner animation="border" />} 
                 <RememberPassForm onSubmit={handleSubmit} />
-
-
                 {error !== null && (	
                     <Alert className="alertLogin" onClick={handleResetError} variant="danger">
                         <p className="mb-0">

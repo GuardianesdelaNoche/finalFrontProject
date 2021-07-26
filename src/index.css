@@ -284,6 +284,7 @@ border-top-right-radius: .65rem;
 
 .img-event{
     width: 100%;
+    max-height: 550px;
 
     
 

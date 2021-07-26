@@ -20,7 +20,7 @@
              return {
                  ...state,
                  loaded: false,
-                 data: [...state.data, action.payload],
+                 data: [...state.data, action.payload.event],
              }
          default:
              return state;

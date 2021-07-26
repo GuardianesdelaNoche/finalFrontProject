@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../layout'
 import EventDetails from './EventDetails'
 
-import { eventDetailsActions } from '../../../store/actions/events';
-import { getEventDetail} from '../../../store/selectors/events';
+import { eventDetailsActions, eventDetailsSuccess } from '../../../store/actions/events';
+import { getEvents, getEventDetail} from '../../../store/selectors/events';
 import { getUi } from '../../../store/selectors/ui';
 
 
@@ -18,10 +18,12 @@ function DetailsPage() {
 
 	const event = useSelector(state => getEventDetail (state, eventId))
 
-	
 
 	React.useEffect(() => {
-		dispatch(eventDetailsActions(eventId))
+
+		
+		dispatch(eventDetailsActions(eventId))	
+	
 	}, [dispatch, eventId]);
 
 	//TODO - Add delete event details 
@@ -29,7 +31,9 @@ function DetailsPage() {
 	const handleDelete = () => {
 		console.log('Hola Mundo')
 	};
-
+	/* if(!event){
+		return <Redirect to="/404" />;
+	} */
 	if (error?.statusCode === 401) {
 		return <Redirect to="/login" />;
 	}

@@ -20,8 +20,6 @@ export const eventsLoadedError = error => ({
 
 export const eventsLoadAction = (page, limit) => {
     return async function (dispatch, getState, { api }) {
-      dispatch(eventsLoadedRequest());
-
           try{
             const events = await api.events.getEventsPage(page, limit);
             dispatch(eventsLoadedSuccess(events));
@@ -48,12 +46,8 @@ export const eventDetailsError = (error) => ({
 })
 
 export const eventDetailsActions = eventId => {
-  return async function (dispatch, getState, { api }) {
-   const eventDetailLoad = getEventDetail(getState(), eventId);
-    if (eventDetailLoad) {
-      return;
-    } 
-    dispatch(eventDetailsRequest());
+  return async function (dispatch, getState, { api, history}) {
+  
     try {
       const eventDetail = await api.events.getEvents(eventId);
       dispatch(eventDetailsSuccess(eventDetail));

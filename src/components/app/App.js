@@ -13,10 +13,13 @@ import storage from "../../utils/storage";
 
 function App() {
   const dispatch = useDispatch();
-  const accessToken = storage.get("auth");
-  if(accessToken.token){
-    dispatch(loginWithTokenAction(accessToken.token))
+  if( storage.get("auth")){
+    const accessToken = storage.get("auth");
+    if(accessToken.token){
+      dispatch(loginWithTokenAction(accessToken.token))
+    }
   }
+  
   return (
     
     <Switch>

@@ -39,7 +39,7 @@ function EventsPage() {
   const handleSetCurrentPage = (current, pageSize) => {
     dispatch(paginationSetCurrentPage(current));
   };
-console.log("Eva");
+
   return (
     <div>
       <Layout>

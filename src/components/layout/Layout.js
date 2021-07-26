@@ -4,7 +4,6 @@ import Header from './Header';
 import Footer from './Footer';
 
 function Layout({ children }) {
-	console.log("pasa2");
 	return (
 		<>
 			<Header />

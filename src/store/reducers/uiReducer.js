@@ -14,7 +14,7 @@ export const uiReducer = (state = initialState, action) => {
     case types.authLoginSuccess:
       case types.eventsLoadedSuccess:
     case types.uiResetLoading:
-      return { ...state, loading: false, error: null };
+      return { ...state, loading: false };
     case types.authLoginError:
     case types.eventsLoadedError:
       return { ...state, loading: false, error: action.payload };

@@ -1,6 +1,11 @@
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
+
+
+import { FormattedMessage } from 'react-intl';
 import { ConfirmationButton } from '../../shared';
+
 
 var moment = require("moment");
 
@@ -27,8 +32,18 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 
 							{/* Si no soy el usuario */}
 							<div className="card-toolbar">
-								<span className="tab-panel me-2">Editar</span>
-								<span className="tab-panel">Eliminar</span>
+								<span className="tab-panel me-2">
+									<FormattedMessage
+										id="details.event.edit"
+										defaultMessage="Edit"
+									/>
+								</span>
+								<span className="tab-panel">
+									<FormattedMessage
+										id="details.event.remove"
+										defaultMessage="Remove"
+									/>
+									</span>
 							</div>
 
 							{/*  Si soy el propietario 
@@ -51,7 +66,7 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 							<img src={photo}
 								className="img-event"
 								alt={title}
-								style={{ objectFit: 'contain' }} />
+								style={{ objectFit: 'cover' }} />
 
 							{/* Event Title */}
 							<h2 className="text-dark fw-bolder pt-5 mb-10">{title} </h2>
@@ -61,7 +76,12 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 							<p className="text-description fs-6 fw-normal pt-2 mb-2"> {description}</p>
 
 							<h5 className="card-title align-items-start pt-4 flex-column">
-								<span className="fw-bolder text-dark">Details</span>
+								<span className="fw-bolder text-dark">
+									<FormattedMessage
+										id="details.event.subtitle"
+										defaultMessage="Details"
+									/>
+									</span>
 							</h5>
 							{/* Event Details */}
 							<div className="details-info d-flex align-items-center me-2">
@@ -75,7 +95,12 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 
 										<div className="me-5">
 											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Precio</span>
-											<div className="fs-7 text-muted mt-1">{price} €</div>
+											<div className="fs-7 text-muted mt-1">{price} 
+												<FormattedMessage
+													id="details.event.currency"
+													defaultMessage="$"
+												/>
+											</div>
 										</div>
 									</div>
 									<div className="col-sm-2 d-flex">
@@ -124,7 +149,22 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 
 										<div className="me-5">
 											<span href="#" className="fs-6 text-gray-800 text-hover-primary fw-bolder">Espacio</span>
-											<div className="fs-7 text-muted  mt-1">{ indoor === true ? 'Interior' : 'Exterior'} </div>
+											<div className="fs-7 text-muted  mt-1">
+												{ indoor ? (
+													
+													<FormattedMessage
+														id="details.event.indoor"
+														defaultMessage="Indoor"
+													/> 
+												):(
+													
+													<FormattedMessage
+														id="details.event.outdoor"
+														defaultMessage="Outdoor"
+													/>
+													
+												)} 
+											</div>
 										</div>
 									</div>
 								</div>
@@ -162,6 +202,19 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 		</div>
 		)
 	}
+
+EventDetails.propTypes = {
+	title: PropTypes.string.isRequired,
+	price: PropTypes.bool.isRequired,
+	date: PropTypes.number.isRequired,
+	duration: PropTypes.number.isRequired,
+	description: PropTypes.string.isRequired,
+	max_places: PropTypes.number,
+	indoor: PropTypes.bool,
+	tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+	photo: PropTypes.string, 
+};
+
 
 
 export default EventDetails

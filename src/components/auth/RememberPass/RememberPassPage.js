@@ -28,7 +28,6 @@ function RememberPassPage ({tokenExpired}) {
             await setRememberPass(rememberPassData);
             setDataSend(true);
         } catch (error) {
-            setDataSend(false);
             dispatch(setErrorAction(error));
         } finally 
         {
@@ -57,7 +56,7 @@ function RememberPassPage ({tokenExpired}) {
               {loading && <Spinner animation="border" />} 
                 <RememberPassForm onSubmit={handleSubmit} />
 
-                {dataSend === false && (	
+                {error && (	
                     <Alert className="alertLogin" onClick={handleResetError} variant="danger">
                         <p className="mb-0">
                             {error.message}
@@ -72,7 +71,7 @@ function RememberPassPage ({tokenExpired}) {
                         </p>
                     </Alert>
                 )}     
-                { dataSend === true && <SuccessMessage>
+                { dataSend  && <SuccessMessage>
 				<p className="mb-0">					
 					{intl.formatMessage({ id: 'rememberPass.validate.successmessage'})}
 				</p>

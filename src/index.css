@@ -1,13 +1,19 @@
 /* Commons */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
+
+
+
 html,
 body {
   height: 100%;
 }
 
 body {
+/*Testing User Panel   
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 60px; */
+
+
   background-color: #FBF9F6 !important;
   color: #181c32!important;
   font-family: Poppins,Helvetica,"sans-serif" !important;
@@ -47,8 +53,16 @@ button:disabled {
     font-size: 1.020rem!important;
 }
 
+.text-muted {
+    color: #a1a5b7!important;
+}
+
 .text-dark {
     color: #181c32!important;
+}
+
+.text-gray-800 {
+    color: #3f4254!important;
 }
 
 .text-hover-primary:hover, .text-hover-primary:hover i {
@@ -79,27 +93,30 @@ button:disabled {
     padding-top: 3rem!important;
 }
 
+.pt-14{
+    padding-top: 4rem!important;
+}
+
 
 /* Navbar */
 .navbar-brand{
     font-weight: 700;
 }
+.navbar-right{
+    float: right;
+}
 
+.menu{
+    justify-content: space-between;
+}
 /* Menu */
-.menu-item {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    padding: .65rem 1rem;
-    transition: none;
-    outline: 0!important;
-    color: #7e8299;
-}
-.menu-item:hover{
-    color: #20d489;
+.navbar-light .navbar-nav .nav-link {
+    color: #7e8299 !important;
 }
 
+.navbar-light .navbar-nav .nav-link:hover {
+     color: #20d489 !important;
+}
 /* Main */
 .container.main {
     max-width: 1140px;
@@ -134,6 +151,18 @@ button:disabled {
 
 
 /* Card - Homepage */
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid rgba(0, 0, 0, 0.125)!important;
+    border-radius: 0.65rem !important;
+}
 
 .card>.card-header {
     display: -webkit-flex;
@@ -175,5 +204,170 @@ button:disabled {
     border-radius: .65rem;
     color: #912741;
 }
+.btn-icon.btn.btn-icon.btn-sm.icon{
+    justify-content: center;
+    background-color: #f5f8fa!important;
+}
 
 
+
+.bg-light {
+    background-color: 245,248,250;
+}
+
+
+.dropdown-item button{
+    width: 100%;
+}
+
+
+
+
+
+
+.card.card-flush>.card-header {
+    border-bottom: 0;
+        align-items: center;
+}
+.card.card-flush>.card-footer {
+    border-top: 0;
+    background-color: white;
+}
+
+
+.separator {
+    display: block;
+    height: 0;
+    border-bottom: 1px solid #eff2f5;
+}
+
+
+
+/* Event Details */
+
+.img-event{
+    width: 100%;
+    max-height: 550px;
+
+    
+
+}
+
+
+.symbol .symbol-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: #3f4254;
+    background-color: #f5f8fa!important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: .65rem;
+}
+
+.symbol.symbol-45px .symbol-label {
+    width: 60px;
+    height: 60px;
+}
+
+
+.details-info {
+    padding: 1rem 0rem;
+    justify-content: space-around;
+}
+
+.symbol.tags{
+    background-color: #E4FFF4;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: #19B674;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: .65rem;
+    padding: 0.5rem;
+}
+
+.icons-footer{
+    justify-content: flex-end;
+ 
+}
+
+.icons-footer i{
+        line-height: 1;
+    font-size: 1rem;
+    color: #a1a5b7;
+}
+
+
+.icons-footer i:hover, i:active{
+    transition: color .2s ease,background-color .2s ease;
+    color: #20d489!important;
+}
+
+
+.mh-40px{
+    padding: 10px;
+}
+
+.details a{
+      color: #3f4254;
+}
+
+.tab-panel{
+     color: #7e8299 !important;
+    border-color: #f5f8fa;
+    background-color: #f5f8fa;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+}
+.btn.btn-light-danger{
+    color: #7e8299;
+    border-color: #f5f8fa;
+    background-color: #f5f8fa;
+}
+
+
+
+/* Responsive */
+
+@media(max-width:768px){
+    .navbar-btn{
+        width: 100% !important;
+        margin: 0.5rem 0rem;
+
+    }
+    .signed{
+            background-color: rgba(245,248,250,.5)!important;
+            padding: 2.5rem!important;
+            text-align: center;
+            border-radius: .85rem!important;
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+    }
+    .col-sm.d-flex{
+    margin-bottom: 1rem;
+    }
+
+    .card-toolbar{
+        padding-top: 2rem;
+
+    }
+
+
+}
+
+@media(max-width: 1200px){
+    .col-sm.d-flex{
+    margin-bottom: 1rem;
+}
+  
+}

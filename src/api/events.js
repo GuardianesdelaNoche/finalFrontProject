@@ -4,16 +4,15 @@ const eventsPath = "/api/v1/events";
 
 
 const mapEvent = ({ photo, ...event }) => {
-
-  console.log(photo);
   return {
     ...event,
-    // photo: photo ? `${process.env.REACT_APP_API_BASE_URL}${photo}` : photo,
+
+    //photo: photo ? `${process.env.REACT_APP_API_BASE_URL}${photo}` : photo,
   };
 };
 
-export const getEvents = () => {
-  return client.get(`${eventsPath}`).then(eve => eve);
+export const getEvents = (eventId) => {
+  return client.get(`${eventsPath}/${eventId}`).then(mapEvent);
 };
 
 export const getEventsPage = (currentPage, limit) => {

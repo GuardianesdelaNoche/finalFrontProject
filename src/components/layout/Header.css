@@ -1,6 +1,10 @@
 @import url('../../index.css');
 
-.bg-light {
+.bg-light.white {
     background-color: #ffff !important;
     padding: 15px;
+}
+
+.mh-50px{
+    max-height: 50px!important;
 }

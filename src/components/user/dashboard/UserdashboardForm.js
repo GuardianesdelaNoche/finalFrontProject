@@ -6,10 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Form,ContentBottomCenter, ErrorMessage, Button } from '../../shared/elements/formElements';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
-
-
 function UserdashboardForm ({onSubmit,  token, userData}) {
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
+
 	const intl = useIntl();
     const {
 		formValue: memberData, 

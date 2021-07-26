@@ -32,8 +32,7 @@ function App() {
       </Route>
       <Route exact path="/forgotthepassword/:token">
         { routeProps => <RecoverPassPage { ...routeProps} />}
-      </Route>
-      
+      </Route>      
       <Route exact path="/event/:eventId" component={DetailsPage} />
       <Route exact path="/events" component={EventsPage} />
       <PrivateRoute exact path="/user">

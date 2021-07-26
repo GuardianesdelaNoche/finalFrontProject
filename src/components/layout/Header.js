@@ -13,6 +13,7 @@ import './Header.css';
 
 
 function Header({ isLogged, userData }) {
+	console.log("pasa3", "isLogged", isLogged);
 	const intl = useIntl();
 	return (
 		<header>

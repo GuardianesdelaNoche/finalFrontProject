@@ -131,19 +131,19 @@ function EventCard(event) {
           
           </Card.Text>
         
-          <div class="separator mt-2 pt-2"></div>
+          <div className="separator mt-2 pt-2"></div>
           
           <div className="row">
 
            
-            <div class="col d-flex pt-4">
-              <div class="symbol tags me-2">
-                <span class="bg-light-primary">{event.tags.map((tag) => `#${tag}`)}
+            <div className="col d-flex pt-4">
+              <div className="symbol tags me-2">
+                <span className="bg-light-primary">{event.tags.map((tag) => `#${tag}`)}
                 </span>
               </div>
             </div>
             <div className="col d-flex pt-4 float-right">
-              <div class="bg-light rounded text-gray-600 py-2 px-3">
+              <div className="bg-light rounded text-gray-600 py-2 px-3">
                 {event.price} €
               </div>
             </div>

@@ -23,6 +23,24 @@ export const authLogout = () => {
     };
 }
 
+export const loginWithTokenAction = token => {
+    return async function (dispatch, getState, { api, history }) {
+        
+        try {      
+      
+            const userData = await getUserDataById(token);                       
+            dispatch(authLoginSuccess(userData.result));
+
+            // Redirect
+            const { from } = history.location.state || { from: { pathname: '/' } };
+            history.replace(from);
+        } catch (error) {
+            dispatch(authLoginError(error));
+        }
+    };
+
+}
+
 export const loginAction = credentials => {
     return async function (dispatch, getState, { api, history }) {
         dispatch(authLoginRequest());

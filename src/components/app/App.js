@@ -7,9 +7,16 @@ import UserDashboard from '../user/dashboard/Userdashboard';
 import NotFoundPage from './NotFoundPage';
 import { RememberPassPage, RecoverPassPage } from '../auth';
 import ListMyEvents from '../user/myEvents/ListMyEvents';
-
+import { loginWithTokenAction } from '../../store/actions/auth';
+import { useDispatch } from 'react-redux';
+import storage from "../../utils/storage";
 
 function App() {
+  const dispatch = useDispatch();
+  const accessToken = storage.get("auth");
+  if(accessToken.token){
+    dispatch(loginWithTokenAction(accessToken.token))
+  }
   return (
     
     <Switch>

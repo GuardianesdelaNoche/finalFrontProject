@@ -1,7 +1,7 @@
  import { types } from "../types/types";
 
  const initialState = {
-     isLoaded: false,
+     isLogged: false,
      data:[]
     };
  
@@ -12,12 +12,12 @@
              return {
                  ...state,
                  data: action.payload,
-                 isLoaded: true}
+                 isLogged: true}
          case types.authLogout:
             return {
                 ...state,
                 data:[],
-                isLoaded: false,
+                isLogged: false,
             }
          default:
              return state;

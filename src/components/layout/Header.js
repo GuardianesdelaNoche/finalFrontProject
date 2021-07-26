@@ -6,12 +6,12 @@ import { getIsLogged } from '../../store/selectors/auth';
 import Button from '../shared/Button';
 import AuthButton from '../auth/AuthButton/AuthButton';
 import { getUserData } from '../../store/selectors/auth';
+import { useIntl } from 'react-intl';
 
 import './Header.css';
 
-
-
 function Header({ isLogged, userData }) {
+	const intl = useIntl();
 	return (
 		<header>
 
@@ -21,12 +21,12 @@ function Header({ isLogged, userData }) {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
 						<Nav className="me-auto">
-							<Nav.Link href="/events/new">
+							{isLogged && <Nav.Link href="/events/new">
 								<FormattedMessage
 								id="navbar.item.menu"
 								defaultMessage="New Event"
 								/>
-							</Nav.Link>
+							</Nav.Link>}
 						</Nav>
 						
 						<Nav >
@@ -37,8 +37,9 @@ function Header({ isLogged, userData }) {
 									}
 									id="nav-dropdown">
 									<NavDropdown.Item eventKey="4.1">
-										<Link to="/user">My Profile</Link>
+										<Link to="/user">{intl.formatMessage({ id: 'header.menu.myprofile'})}</Link>
 									</NavDropdown.Item>
+								
 
 									<NavDropdown.Divider />
 									<NavDropdown.Item eventKey="4.4"><AuthButton className="navbar-btn" /></NavDropdown.Item>

@@ -17,7 +17,6 @@ function DetailsPage() {
 	const { loading, error } = useSelector(getUi);
 
 	const event = useSelector(state => getEventDetail (state, eventId))
-
 	
 
 	React.useEffect(() => {

@@ -15,7 +15,7 @@ import { getUserData } from '../../../store/selectors/auth';
 
 
 
-function UserDashboard() {
+function UserDashboard({history}) {
 	const dispatch = useDispatch();
 	const intl = useIntl();    
     const token = storage.get('auth');     
@@ -23,6 +23,9 @@ function UserDashboard() {
 	const userData = useSelector(getUserData);
 	const [dataSaved, setDataSaved] = React.useState(false);
 
+	if (!userData){
+		history.push("/login");
+	}
     const handleSubmit = async (registerData)=>{
         try {
             dispatch(setLoadingAction);

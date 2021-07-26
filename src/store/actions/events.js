@@ -46,8 +46,7 @@ export const eventDetailsError = (error) => ({
 })
 
 export const eventDetailsActions = eventId => {
-  return async function (dispatch, getState, { api, history}) {
-  
+  return async function (dispatch, getState, { api}) {
     try {
       const eventDetail = await api.events.getEvents(eventId);
       dispatch(eventDetailsSuccess(eventDetail));

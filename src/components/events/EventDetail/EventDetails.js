@@ -1,22 +1,25 @@
 
 import React from 'react';
 import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux';
 
 
 import { FormattedMessage } from 'react-intl';
 import { ConfirmationButton } from '../../shared';
 
 
+
 var moment = require("moment");
 
-function EventDetails({description, photo, title, price, date, duration, indoor, tags, max_places }) {
-	
-		return (
+function EventDetails({description, photo, title, price, date, duration, indoor, tags, max_places}) {
+		
+		return (	
 		<div>
 				<div className="container details pt-14">
 					<div className="card card-flush pt-12">
 						<div className="card-header">
 							{/* OwnerAvatar */}
+							
 							<div className="symbol symbol-45px me-4">
 								<span className="symbol-label bg-light align-items-end">
 									<img alt="Autor" src="https://preview.keenthemes.com/start-html-free/assets/media/svg/avatars/047-girl-25.svg" className="mh-40px" />
@@ -204,7 +207,7 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 	}
 
 EventDetails.propTypes = {
-	title: PropTypes.string.isRequired,
+	/* title: PropTypes.string.isRequired,
 	price: PropTypes.bool.isRequired,
 	date: PropTypes.number.isRequired,
 	duration: PropTypes.number.isRequired,
@@ -212,7 +215,7 @@ EventDetails.propTypes = {
 	max_places: PropTypes.number,
 	indoor: PropTypes.bool,
 	tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-	photo: PropTypes.string, 
+	photo: PropTypes.string,  */
 };
 
 

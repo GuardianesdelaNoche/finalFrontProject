@@ -7,9 +7,11 @@ import { Layout } from '../../layout'
 import EventDetails from './EventDetails'
 
 import { eventDetailsActions, eventDetailsSuccess } from '../../../store/actions/events';
-import { getEvents, getEventDetail} from '../../../store/selectors/events';
+import { getEventDetail} from '../../../store/selectors/events';
+
 import { getUi } from '../../../store/selectors/ui';
 
+import { getUserData } from '../../../store/selectors/auth';
 
 function DetailsPage() {
 	const dispatch = useDispatch();
@@ -18,8 +20,11 @@ function DetailsPage() {
 
 	const event = useSelector(state => getEventDetail (state, eventId))
 
-	React.useEffect(() => {
+	const userData = useSelector(getUserData);
+	console.log(userData, 'datos')
 
+	React.useEffect(() => {
+	
 		dispatch(eventDetailsActions(eventId))	
 	
 	}, [dispatch, eventId]);
@@ -28,6 +33,7 @@ function DetailsPage() {
 	//TODO - Add edit event details 
 	const handleDelete = () => {
 		console.log('Hola Mundo')
+		
 	};
 	/* if(!event){
 		return <Redirect to="/404" />;

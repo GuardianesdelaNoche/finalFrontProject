@@ -11,6 +11,7 @@ import { loginWithTokenAction } from '../../store/actions/auth';
 import { useDispatch } from 'react-redux';
 import storage from "../../utils/storage";
 
+
 function App() {
   const dispatch = useDispatch();
   if( storage.get("auth")){
@@ -19,6 +20,8 @@ function App() {
       dispatch(loginWithTokenAction(accessToken.token))
     }
   }
+
+ 
   
   return (
     
@@ -33,7 +36,9 @@ function App() {
       <Route exact path="/forgotthepassword/:token">
         { routeProps => <RecoverPassPage { ...routeProps} />}
       </Route>      
+     
       <Route exact path="/event/:eventId" component={DetailsPage} />
+
       <Route exact path="/events" component={EventsPage} />
       <PrivateRoute exact path="/user">
         {routeProps => <UserDashboard {...routeProps} />}

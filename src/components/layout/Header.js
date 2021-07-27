@@ -37,7 +37,8 @@ function Header({ isLogged, userData }) {
 									}
 									id="nav-dropdown">
 									<NavDropdown.Item eventKey="4.1">
-										<Link to="/user">{intl.formatMessage({ id: 'header.menu.myprofile'})}</Link>
+										<Link to="/user">
+											{intl.formatMessage({ id: 'header.menu.myprofile'})}</Link>
 									</NavDropdown.Item>
 								
 

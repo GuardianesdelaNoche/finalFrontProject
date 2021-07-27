@@ -16,12 +16,6 @@
                  data: [...action.payload.data],
                  total: action.payload.total
              }
-         case types.eventDetailsSuccess:
-             return {
-                 ...state,
-                 loaded: false,
-                 data: [...state.data, action.payload.event],
-             }
          default:
              return state;
      }

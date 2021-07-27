@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Layout } from '../../layout'
 import EventDetails from './EventDetails'
 
-import { eventDetailsActions, eventDetailsSuccess } from '../../../store/actions/events';
-import { getEventDetail} from '../../../store/selectors/events';
+import { eventDetailsActions } from '../../../store/actions/eventDetails';
+import { getEventDetail, getEventDetailbyID} from '../../../store/selectors/eventDetails';
 
 import { getUi } from '../../../store/selectors/ui';
 
@@ -17,15 +17,19 @@ function DetailsPage() {
 	const dispatch = useDispatch();
 	const { eventId } = useParams();
 	const { loading, error } = useSelector(getUi);
+	
+	
+	//const { id, title } = useSelector(state => getEventDetail(state))
+	const event = useSelector(state => getEventDetailbyID(state, eventId))
 
-	const event = useSelector(state => getEventDetail (state, eventId))
+	
 
-	const userData = useSelector(getUserData);
-	console.log(userData, 'datos')
+/* 	const userData = useSelector(getUserData); */
+
 
 	React.useEffect(() => {
 	
-		dispatch(eventDetailsActions(eventId))	
+		dispatch(eventDetailsActions(eventId))
 	
 	}, [dispatch, eventId]);
 

@@ -6,13 +6,17 @@ import { useSelector } from 'react-redux';
 
 import { FormattedMessage } from 'react-intl';
 import { ConfirmationButton } from '../../shared';
+import { getUserData } from '../../../store/selectors/auth';
 
 
 
 var moment = require("moment");
 
+
+
 function EventDetails({description, photo, title, price, date, duration, indoor, tags, max_places}) {
-		
+	/* const userData = useSelector(state => getUserData(state => state)) */
+	
 		return (	
 		<div>
 				<div className="container details pt-14">
@@ -28,8 +32,8 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">Ruby Liam</a>
-								<span className="text-description d-block mt-1">Nickname Users</span>
+								{/* <a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{userData.username}</a>
+								<span className="text-description d-block mt-1">{userData.nickname}</span>  */}
 							</div>
 
 
@@ -48,6 +52,8 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 									/>
 									</span>
 							</div>
+
+							{/* {if userData.name === owner} */}
 
 							{/*  Si soy el propietario 
 							 <div className="card-toolbar">
@@ -177,7 +183,8 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 								<div className="col d-flex flex-grow-1 my-lg-0 my-2 pe-3 pt-4">
 									<div className="symbol tags me-2">
 										<span className="bg-light-primary">
-											{tags.map((tag) => `#${tag}`)}
+											{tags}
+											{/* {tags.map((tag) => `#${tag}`)} */}
 										</span>
 									</div>
 									

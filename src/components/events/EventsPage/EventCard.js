@@ -73,7 +73,7 @@ function EventCard(event) {
           </span>
         </div>
       </div>
-      <Link key={event._id} to={`/event/${event._id}`}>
+      <Link key={event._id} to={`/event/${event.title}`}>
         <Card.Body className="card">
           <Card.Title className="text-dark">{event.title}</Card.Title>
        

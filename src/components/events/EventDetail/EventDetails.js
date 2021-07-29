@@ -5,10 +5,13 @@ import { useSelector } from 'react-redux';
 
 import { FormattedMessage } from 'react-intl';
 import { ConfirmationButton } from '../../shared';
+import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
+import { useIntl } from 'react-intl';
 
 var moment = require("moment");
 
-function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date, isOwner, isFavorite, detailOwn }) {
+function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date, isOwner, isFavorite, country, detailOwn, address, city, location, onDelete}) {
+		const intl = useIntl();
 
 		return (
 		<div>
@@ -32,24 +35,23 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 							</div>
 
 							
-							{isOwner === false ? 
+							{isOwner ? 
 								(<div className="card-toolbar">
-									<ConfirmationButton className="me-2"
-									
-									>Editar</ConfirmationButton>
-								
+									{/* Botón con color */}
 									<ConfirmationButton 
-									
-									>Eliminar</ConfirmationButton>
+										title={intl.formatMessage({ id: 'popups.remove.title' })}
+										confirmation={intl.formatMessage({ id: 'popups.remove.mesage' })}
+										onConfirm={onDelete}
+									>
+										<FormattedMessage
+											id="details.event.remove"
+											defaultMessage="Remove"
+										/>
+									</ConfirmationButton>
 								</div>)
 								: 
 								(<div className="card-toolbar">
-									<span className="tab-panel me-2">
-										<FormattedMessage
-											id="details.event.edit"
-											defaultMessage="Edit"
-										/>
-									</span>
+									
 									<span className="tab-panel">
 										<FormattedMessage
 											id="details.event.remove"
@@ -89,40 +91,22 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 									<div className="col-sm-auto d-flex">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
-												<i className="fas fa-coins mw-75"></i>
+												<i class="fas fa-map-marker-alt"></i>
 											</span>
 										</div>
 
 										<div className="me-5">
 											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
-												<FormattedMessage
-													id="details.event.currency.name"
-													defaultMessage="Price"
-												/>
+												 <FormattedMessage
+													id="details.event.location.name"
+													defaultMessage="Location"
+												/> 
 											</span>
-											<div className="fs-7 text-muted mt-1">{price} 
-												<FormattedMessage
-													id="details.event.currency"
-													defaultMessage="$"
-												/>
+											<div className="fs-7 text-muted mt-1">
+												{address}
+												<p>{city}</p>
+											
 											</div>
-										</div>
-									</div>
-									<div className="col-sm-2 d-flex">
-										<div className="symbol symbol-45px me-2">
-											<span className="symbol-label bg-light align-items-center">
-												<i className="fas fa-users mw-75"></i>
-											</span>
-										</div>
-
-										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
-												<FormattedMessage
-													id="details.event.places"
-													defaultMessage="Places"
-												/>
-											</span>
-											<div className="fs-7 text-muted  mt-1">{max_places}</div>
 										</div>
 									</div>
 
@@ -204,14 +188,41 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 									</div>
 									
 								</div>
-								<div className="col"></div>
+								<div className="col d-flex">
+								
+									
+								</div>
 								<div className="col d-flex icons-footer my-lg-0 my-2 pe-3 pt-4">
-									<span className="btn btn-icon btn-sm btn-active-color-primary">
-										<i className="fas fa-map-marker-alt fs-6"></i>
+									<p className="mt-1 text-description mr-1">
+										Update:   
+									</p>
+									<span className="text-danger mt-1 mr-2">
+										Quedan 10 Plazas!
 									</span>
+									
+									
+									
 
-									<span className="btn btn-icon btn-sm">
-										
+										{['top'].map((placement) => (
+											<OverlayTrigger
+												key={placement}
+												placement={placement}
+												overlay={
+													<Tooltip id={`tooltip-${placement}`}>
+														{location.coordinates.map((cord) =><div>{`${cord}`}</div>)}
+													</Tooltip>
+												}
+											>
+												<span className="btn btn-icon">
+												<i className="fas fa-map-marker-alt fs-6"></i>
+												</span>
+											</OverlayTrigger>
+										))}
+
+
+								
+
+									<span className="btn btn-icon">
 										{isFavorite === true ? <i className="fas fa-heart favorite"></i> : <i className="fas fa-heart no-favorite"></i>  }
 									</span>
 

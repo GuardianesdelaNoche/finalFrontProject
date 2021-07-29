@@ -54,9 +54,7 @@ function Header({ isLogged, userData }) {
 										/>
 									</Link>
 								</Button>
-								
 									<AuthButton className="navbar-btn" />
-								
 							</div>
 							}
 							

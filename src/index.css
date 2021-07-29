@@ -68,6 +68,9 @@ button:disabled {
 .text-gray-800 {
     color: #3f4254!important;
 }
+.text-danger{
+     color:#f1416c !important;
+}
 
 .text-hover-primary:hover, .text-hover-primary:hover i {
     transition: color .2s ease,background-color .2s ease;

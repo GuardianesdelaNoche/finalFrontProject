@@ -1,6 +1,8 @@
 import { types } from "../types/types";
 import { getEventDetail } from '../selectors/events'
 
+
+//Load Events
 export const eventsLoadedRequest = () => ({
     type: types.eventsLoadedRequest
 });
@@ -31,7 +33,7 @@ export const eventsLoadAction = (page, limit) => {
 };
 
 
-//Details Actions 
+//Event Details Actions 
 export const eventDetailsRequest = () => ({
   type: types.eventDetailsRequest,
 })
@@ -55,5 +57,37 @@ export const eventDetailsActions = eventId => {
       dispatch(eventDetailsError(error));
     }
   
+  }
+}
+
+
+//Delete Event Actions 
+
+
+export const eventDeleteRequest = () => ({
+  type: types.eventDeleteRequest,
+})
+export const eventDeleteSuccess = (eventId) => ({
+  type: types.eventDeleteSuccess,
+  payload: eventId
+})
+
+export const eventDeleteError = (error) => ({
+  type: types.eventDeleteError,
+  payload: error
+})
+
+
+export const eventDeleteActions = eventId => {
+  return async function (dispatch, getState, { api, history }) {
+    dispatch(eventDeleteRequest())
+    try {
+      const removeEvent = await api.events.deleteEvent(eventId);
+      dispatch(eventDeleteSuccess(removeEvent));
+      history.push('/');
+    } catch (error) {
+      dispatch(eventDeleteError(error));
+    }
+
   }
 }

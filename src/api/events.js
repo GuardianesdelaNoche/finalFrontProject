@@ -15,6 +15,10 @@ export const getEvents = (eventId) => {
   return client.get(`${eventsPath}/${eventId}`).then(mapEvent);
 };
 
+export const deleteEvent = eventId => {
+  return client.delete(`${eventsPath}/${eventId}`);
+};
+
 export const getEventsPage = (currentPage, limit) => {
   const request = `${eventsPath}?skip=${(currentPage-1)*limit}&limit=${limit}`;
   return client.get(`${request}`).then(eve => eve);

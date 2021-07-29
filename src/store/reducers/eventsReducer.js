@@ -22,6 +22,12 @@
                  loaded: false,
                  data: [...state.data, action.payload.event],
              }
+         case types.eventDeleteSuccess:
+             return {
+                 ...state,
+                 loaded: false,
+                 data: state.data.filter((event) => event.id !== action.payload.event),
+             }
          default:
              return state;
      }

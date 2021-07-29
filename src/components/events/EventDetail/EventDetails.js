@@ -5,13 +5,10 @@ import { useSelector } from 'react-redux';
 
 import { FormattedMessage } from 'react-intl';
 import { ConfirmationButton } from '../../shared';
-import { getUserData } from '../../../store/selectors/auth';
 
 var moment = require("moment");
 
-function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date}) {
-
-		const userData = useSelector(state => getUserData(state)) 
+function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date, isOwner, isFavorite, detailOwn }) {
 
 		return (
 		<div>
@@ -27,41 +24,40 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{/* {userData.username} */}</a>
+								{/* TODO Add username Own  */}
+								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{/* {detailOwn.username} */}</a>
 								<span className="text-description d-block mt-1">
 									{moment(new Date(created_date)).format("DD-MM-YYYY")}
-									</span>
-							</div>
-
-
-							{/* Si no soy el usuario */}
-							<div className="card-toolbar">
-								<span className="tab-panel me-2">
-									<FormattedMessage
-										id="details.event.edit"
-										defaultMessage="Edit"
-									/>
 								</span>
-								<span className="tab-panel">
-									<FormattedMessage
-										id="details.event.remove"
-										defaultMessage="Remove"
-									/>
-									</span>
 							</div>
 
-							{/*  Si soy el propietario 
-							 <div className="card-toolbar">
+							
+							{isOwner === false ? 
+								(<div className="card-toolbar">
 									<ConfirmationButton className="me-2"
-									onConfirm={onDelete} 
+									
 									>Editar</ConfirmationButton>
 								
 									<ConfirmationButton 
-									onConfirm={onDelete} 
+									
 									>Eliminar</ConfirmationButton>
-
-							</div>  */}
-
+								</div>)
+								: 
+								(<div className="card-toolbar">
+									<span className="tab-panel me-2">
+										<FormattedMessage
+											id="details.event.edit"
+											defaultMessage="Edit"
+										/>
+									</span>
+									<span className="tab-panel">
+										<FormattedMessage
+											id="details.event.remove"
+											defaultMessage="Remove"
+										/>
+									</span>
+								</div>)
+ 							}
 
 						</div>
 						<div className="card-body">
@@ -98,7 +94,12 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Precio</span>
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
+												<FormattedMessage
+													id="details.event.currency.name"
+													defaultMessage="Price"
+												/>
+											</span>
 											<div className="fs-7 text-muted mt-1">{price} 
 												<FormattedMessage
 													id="details.event.currency"
@@ -115,7 +116,12 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Plazas</span>
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
+												<FormattedMessage
+													id="details.event.places"
+													defaultMessage="Places"
+												/>
+											</span>
 											<div className="fs-7 text-muted  mt-1">{max_places}</div>
 										</div>
 									</div>
@@ -128,7 +134,12 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Fecha</span>
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
+												<FormattedMessage
+													id="details.event.date"
+													defaultMessage="Date"
+												/>
+											</span>
 											<div className="fs-7 text-muted mt-1">{moment(new Date(date)).format("DD-MM-YYYY")}</div>
 										</div>
 									</div>
@@ -140,7 +151,12 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Duración</span>
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
+												<FormattedMessage
+													id="details.event.duration"
+													defaultMessage="Duration"
+												/>
+											</span>
 											<div className="fs-7 text-muted  mt-1">{duration} H</div>
 										</div>
 									</div>
@@ -152,10 +168,15 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 										</div>
 
 										<div className="me-5">
-											<span href="#" className="fs-6 text-gray-800 text-hover-primary fw-bolder">Espacio</span>
+											<span  className="fs-6 text-gray-800 text-hover-primary fw-bolder">
+												<FormattedMessage
+													id="details.event.space"
+													defaultMessage="Space"
+												/>
+											</span>
 											<div className="fs-7 text-muted  mt-1">
 												{ indoor ? (
-													
+
 													<FormattedMessage
 														id="details.event.indoor"
 														defaultMessage="Indoor"
@@ -186,12 +207,12 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 								<div className="col"></div>
 								<div className="col d-flex icons-footer my-lg-0 my-2 pe-3 pt-4">
 									<span className="btn btn-icon btn-sm btn-active-color-primary">
-
 										<i className="fas fa-map-marker-alt fs-6"></i>
 									</span>
 
-									<span className="btn btn-icon btn-sm btn-active-color-primary">
-										<i className="fas fa-heart"></i>
+									<span className="btn btn-icon btn-sm">
+										
+										{isFavorite === true ? <i className="fas fa-heart favorite"></i> : <i className="fas fa-heart no-favorite"></i>  }
 									</span>
 
 								</div>
@@ -209,8 +230,8 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 
 EventDetails.propTypes = {
 	title: PropTypes.string.isRequired,
-	price: PropTypes.bool.isRequired,
-	date: PropTypes.number.isRequired,
+	price: PropTypes.number.isRequired,
+	date: PropTypes.string.isRequired,
 	duration: PropTypes.number.isRequired,
 	description: PropTypes.string.isRequired,
 	max_places: PropTypes.number,

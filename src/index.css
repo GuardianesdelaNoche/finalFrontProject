@@ -338,6 +338,12 @@ border-top-right-radius: .65rem;
     font-size: 1rem;
     color: #a1a5b7;
 }
+.icons-footer .no-favorite{
+color: #a1a5b7;
+}
+.icons-footer .favorite{
+color:#f1416c;
+}
 
 
 .icons-footer i:hover, i:active{

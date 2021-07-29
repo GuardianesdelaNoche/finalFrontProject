@@ -39,7 +39,7 @@
     "rememberPass.validate.successmessage":"Recibirás un email con un link para poder cambiar la contraseña",
     "rememberPass.page.tokenexpired": "El token ha expirado. Solicite otro enviando su email",  
     "eventCard.overlay.registerLogin": "Regístrate o Login",
-    "eventCard.availableSeats": "Plazas disponibles",
+    "eventCard.availableSeats": "Plazas",
     "eventCard.activity": "Actividad",
     "eventCard.outdoor": "Aire libre",
     "eventCard.indoor": "Interior",
@@ -49,6 +49,13 @@
     "details.event.subtitle": "Detalles",
     "details.event.currency": "€",
     "details.event.indoor": "Interior",
-    "details.event.outdoor": "Exterior"
-
+    "details.event.outdoor": "Exterior",
+    "updatemember.form.button": "Cambiar",
+    "updatemember.title": "Cambiar mis datos",
+    "listmyevents.title":"Mis eventos",
+    "logout.confirmation": "Quieres cerrar sesión?",
+    "logout.title": "Cerrar sesión" ,
+    "logout.yes": "Si",
+    "logout.no": "No",
+    "header.menu.myprofile": "Mis datos"
 }

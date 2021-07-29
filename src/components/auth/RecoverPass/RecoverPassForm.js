@@ -3,8 +3,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Form,ContentBottomCenter, ErrorMessage, SuccessMessage, Button } from '../../shared/elements/formElements';
-import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-icons';
+import { Form,ContentBottomCenter, ErrorMessage, Button } from '../../shared/elements/formElements';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import './RecoverPass.css';
 
@@ -92,13 +92,7 @@ function RecoverPassForm ({onSubmit, token}) {
 				</p>
 			</ErrorMessage>}
 
-			{isFormValid.status === true && <SuccessMessage>
-				<p>
-					<FontAwesomeIcon icon={faComment}/>
-					<b></b>{intl.formatMessage({ id: 'register.validate.successmessage'})}
-				</p>
-			</SuccessMessage>}
-
+			
 			<ContentBottomCenter>
 
 			<Button			

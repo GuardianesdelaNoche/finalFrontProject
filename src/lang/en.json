@@ -49,5 +49,13 @@
     "details.event.subtitle":"Details",
     "details.event.currency":"$",
     "details.event.indoor":"indoor",
-    "details.event.outdoor": "outdoor"
+    "details.event.outdoor": "outdoor",
+    "updatemember.form.button": "Update",
+    "updatemember.title": "Change my data",
+    "logout.confirmation": "Do you want to exit?" ,
+    "logout.title": "Log out",
+    "logout.yes": "Yes",
+    "logout.no": "No",
+    "header.menu.myprofile": "My profile"
+
 }

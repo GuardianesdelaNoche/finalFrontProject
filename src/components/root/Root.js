@@ -6,7 +6,9 @@ import { Provider } from 'react-redux';
 import App from '../app';
 
 
+
 function Root({ store, history, ...props }) {
+
   return (
     <Provider store={store}>
       <Router history={history}>

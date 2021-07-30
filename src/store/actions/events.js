@@ -30,7 +30,6 @@ export const eventsLoadAction = (page, limit) => {
           try{
             console.log(page, limit)
             const events = await api.events.getEventsPage(page, limit);
-            console.log(events)
             dispatch(eventsLoadedSuccess(events));
             // set new total 
           }catch(error) {

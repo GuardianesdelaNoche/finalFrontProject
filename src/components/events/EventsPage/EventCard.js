@@ -100,7 +100,9 @@ function EventCard(event) {
                 defaultMessage="Available seats"
               />
               <span className="float-right">
-                {event.max_places - event._id_assistants.length}
+                {/* {event.max_places - event._id_assistants.length} */}
+                {event.max_places - event.assistants_count}
+
               </span>
             </div>
             <div>

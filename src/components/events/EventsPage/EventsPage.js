@@ -1,29 +1,48 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Layout from '../../layout';
-import { Alert } from 'react-bootstrap';
-import Spinner from '../../shared/Spinner';
-import EventsCardsList from './EventsCardsList';
-import EventsCardsEmptyList from './EventsCardsEmptyList';
-import { getUi } from '../../../store/selectors/ui';
-import { useDispatch, useSelector } from 'react-redux';
-import { eventsLoadAction } from '../../../store/actions/events';
-import { getEvents } from '../../../store/selectors/events';
-import { resetErrorAction } from '../../../store/actions/ui';
-import { PaginationNavStyle } from '../../shared/PaginationNavStyle';
-import { Paginator } from '../../shared/paginator/Paginator';
-import Pagination from 'rc-pagination';
-import '../../shared/paginator/paginator.css';
-
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Layout from "../../layout";
+import { Alert } from "react-bootstrap";
+import Spinner from "../../shared/Spinner";
+import EventsCardsList from "./EventsCardsList";
+import EventsCardsEmptyList from "./EventsCardsEmptyList";
+import { getUi } from "../../../store/selectors/ui";
+import { useDispatch, useSelector } from "react-redux";
+import { eventsLoadAction } from "../../../store/actions/events";
+import { getEvents } from "../../../store/selectors/events";
+import { resetErrorAction } from "../../../store/actions/ui";
+import { PaginationNavStyle } from "../../shared/PaginationNavStyle";
+import { Paginator } from "../../shared/paginator/Paginator";
+import Pagination from "rc-pagination";
+import "../../shared/paginator/paginator.css";
+import { intl_es, intl_en } from "../../shared/paginator/es_en.js";
+import { useIntl } from 'react-intl';
 import { getEventsTotal } from "../../../store/selectors/events";
-import { getCurrentPage, getLimit, getTotalPages } from '../../../store/selectors/pagination';
-import { paginationRedirect, paginationSetCurrentPage, paginationUpdateCurrentPage } from '../../../store/actions/pagination';
-import { useHistory, useLocation, useParams } from 'react-router-dom';
+import {
+  getCurrentPage,
+  getLimit,
+  getTotalPages,
+} from "../../../store/selectors/pagination";
+import {
+  paginationRedirect,
+  paginationSetCurrentPage,
+  paginationUpdateCurrentPage,
+} from "../../../store/actions/pagination";
+import { useHistory, useLocation, useParams } from "react-router-dom";
+
+const lang_es = 'es';
 
 function EventsPage() {
   const dispatch = useDispatch();
   const { loading, error } = useSelector(getUi);
   const events = useSelector(getEvents);
+  console.log(events);
+  console.log(events.length);
+  console.log(typeof events);
+  if (events.length) {
+    console.log("tiene longitud");
+  } else {
+    console.log("no tiene longitud");
+  }
 
   // vars modify events results
   const currentPage = useSelector(getCurrentPage);
@@ -33,17 +52,19 @@ function EventsPage() {
   // const { page } = useParams(); //test pag-h
   // console.log('page',page);
 
-  const handleResetError = ()=>{
-    dispatch(resetErrorAction())
-}
+  const handleResetError = () => {
+    dispatch(resetErrorAction());
+  };
 
   const history = useHistory();
   const location = useLocation();
-  const { page: pageTest,  limit: limitTest } = useParams(); 
+  const { page: pageTest, limit: limitTest } = useParams();
   const queryPath = new URLSearchParams(location.search);
-  const pageQuery =  queryPath.get("page") || 1;
+  const pageQuery = queryPath.get("page") || 1;
   const limitQuery = queryPath.get("limit") || 10;
 
+  const intl = useIntl();
+  
   React.useEffect(() => {
     // console.log('in useEffect page value', page)
     // if(page){ //test pag-h
@@ -55,69 +76,75 @@ function EventsPage() {
     // dispatch( eventsLoadAction(currentPage, limit) ); //bueno
 
     // dispatch( eventsLoadAction(pageTest, limit) ); //test
-    dispatch( eventsLoadAction( pageQuery, limitQuery ) )
+    dispatch(eventsLoadAction(pageQuery, limitQuery));
 
-    // dispatch( eventsLoadAction(currentPage, limit) ); 
-  // }, [dispatch, currentPage, limit]);
-// }, [dispatch, currentPage, limit]); //bueno
-}, [dispatch, pageQuery, limitQuery]); //bueno
-
-
-
+    // dispatch( eventsLoadAction(currentPage, limit) );
+    // }, [dispatch, currentPage, limit]);
+    // }, [dispatch, currentPage, limit]); //bueno
+  }, [dispatch, pageQuery, limitQuery]); //bueno
 
   const handleSetCurrentPage = (current, pageSize) => {
     // const beforePage = page || "1";
     // console.log('before page', beforePage);
     // console.log('press page ', current);
     // dispatch( paginationUpdateCurrentPage( beforePage, current ) )
-    
+
     //  dispatch( paginationSetCurrentPage( current ));//( bueno)
     const path = `/events?page=${current}&limit=${limitQuery}`;
-    console.log('onClick change page -> path', path)
-     dispatch( paginationRedirect( path ) )
+    console.log("onClick change page -> path", path);
+    dispatch(paginationRedirect(path));
   };
   const onClick = (val) => (ev) => {
     const path = `/events?page=${pageQuery}&limit=${val}`;
-    console.log('onClick limit -> path', path)
-    dispatch( paginationRedirect( path ) )
-};
+    console.log("onClick limit -> path", path);
+    dispatch(paginationRedirect(path));
+  };
 
-  console.log(currentPage)
-  console.log(limit)
-  console.log(totalEvents)
-  console.log('location',location);
-  console.log('location search', location.search)
+  console.log(currentPage);
+  console.log(limit);
+  console.log(totalEvents);
+  console.log("location", location);
+  console.log("location search", location.search);
 
-  console.log('page limit psearchpath', `${pageQuery} ${limitQuery}`)
-  console.log('history', history)
-  console.log('param page', pageTest);
-  console.log('param limit', limitTest);
+  console.log("page limit psearchpath", `${pageQuery} ${limitQuery}`);
+  console.log("history", history);
+  console.log("param page", pageTest);
+  console.log("param limit", limitTest);
+  console.log(intl.locale.slice(0, 2))
+
+  const lang = intl.locale.slice(0, 2);
 
   return (
     <div>
       <Layout>
-      {loading && <Spinner animation="border" />}
-      {error && (	
-        <Alert onClick={handleResetError} variant="danger">
-                        <p className="mb-0">
-                            {error.message}
-                        </p>
-                    </Alert>
-                )}
-      { !loading && !error && (events.length > 0) && 
-      <div className="container">
-        <PaginationNavStyle onClick={onClick} limit={limitQuery}/>
-        <EventsCardsList events={events}></EventsCardsList> 
-        {/* <Paginator getTotalItems={getEventsTotal}></Paginator> */}
-        <div className="p-3 pb-4 d-flex justify-content-center"> 
-        <Pagination total={totalEvents} pageSize={limitQuery} current={pageQuery} showLessItems={true} onChange={handleSetCurrentPage} />
-
-        </div>
-        </div> }
-      { !loading && !error && (events.length === 0) &&
-      <div className="container">
-      <EventsCardsEmptyList eventsCount={0}></EventsCardsEmptyList> 
-      </div> }
+        {loading && <Spinner animation="border" />}
+        {error && (
+          <Alert onClick={handleResetError} variant="danger">
+            <p className="mb-0">{error.message}</p>
+          </Alert>
+        )}
+        {!loading && !error && events.length > 0 && (
+          <div className="container">
+            <PaginationNavStyle onClick={onClick} limit={limitQuery} />
+            <EventsCardsList events={events}></EventsCardsList>
+            {/* <Paginator getTotalItems={getEventsTotal}></Paginator> */}
+            <div className="p-3 pb-4 d-flex justify-content-center">
+              <Pagination
+                locale={lang_es === lang ? intl_es : intl_en}
+                total={totalEvents}
+                pageSize={limitQuery}
+                current={pageQuery}
+                showLessItems={true}
+                onChange={handleSetCurrentPage}
+              />
+            </div>
+          </div>
+        )}
+        {!loading && !error && events.length === 0 && (
+          <div className="container">
+            <EventsCardsEmptyList eventsCount={0}></EventsCardsEmptyList>
+          </div>
+        )}
       </Layout>
     </div>
   );

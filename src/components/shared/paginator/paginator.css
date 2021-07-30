@@ -65,7 +65,7 @@
   border-color: #1890ff;
 }
 .rc-pagination-item-active a {
-  color: #1890ff;
+  color: #1890ff !important;
 }
 .rc-pagination-item-active:focus,
 .rc-pagination-item-active:hover {

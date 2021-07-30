@@ -8,9 +8,8 @@ import { RiBookmark3Line, RiHome4Line } from "react-icons/ri";
 import { TiTree } from "react-icons/ti";
 import { FormattedMessage } from "react-intl";
 
-import { CollapseText } from "../../shared/CollapseText";
 import { Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { getIsLogged } from "../../../store/selectors/auth";
 
@@ -19,7 +18,6 @@ var moment = require("moment");
 function EventCard(event) {
   // const state = useSelector(getIsEventFav(event._id));
   const isLogged = useSelector(getIsLogged);
-  const dispatch = useDispatch();
 
   const handleAddEventFavs = () => {
     console.log("add/remove fav -> redux & api");
@@ -90,9 +88,6 @@ function EventCard(event) {
           <Card.Text className="line-clamp-custom">
             {event.description}
           </Card.Text>
-          {/* <div className="mb-3">
-          <CollapseText>{event.description}</CollapseText>
-        </div> */}
           <Card.Body className="d-flex flex-column justify-content-between">
             <div>
               <FormattedMessage
@@ -100,7 +95,6 @@ function EventCard(event) {
                 defaultMessage="Available seats"
               />
               <span className="float-right">
-                {/* {event.max_places - event._id_assistants.length} */}
                 {event.max_places - event.assistants_count}
 
               </span>

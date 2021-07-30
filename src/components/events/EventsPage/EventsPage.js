@@ -95,7 +95,7 @@ function EventsPage() {
     dispatch(paginationRedirect(path));
   };
   const onClick = (val) => (ev) => {
-    const path = `/events?page=${pageQuery}&limit=${val}`;
+    const path = `/events?page=1&limit=${val}`;
     console.log("onClick limit -> path", path);
     dispatch(paginationRedirect(path));
   };

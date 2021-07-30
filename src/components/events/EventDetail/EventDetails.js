@@ -10,7 +10,7 @@ import { useIntl } from 'react-intl';
 
 var moment = require("moment");
 
-function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date, isOwner, isFavorite, country, detailOwn, address, city, location, onDelete}) {
+function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date, isOwner, isFavorite, assistants_count, country, detailOwn, address, city, location, onDelete}) {
 		const intl = useIntl();
 
 		return (
@@ -197,7 +197,7 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 										Update:   
 									</p>
 									<span className="text-danger mt-1 mr-2">
-										Quedan 10 Plazas!
+										Quedan {assistants_count} Plazas!
 									</span>
 									
 									

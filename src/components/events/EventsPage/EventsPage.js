@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "../../layout";
-import { Accordion, Alert, Card, Button } from "react-bootstrap";
+import { Accordion, Alert, Card, Button, Modal } from "react-bootstrap";
 import Spinner from "../../shared/Spinner";
 import EventsCardsList from "./EventsCardsList";
 import EventsCardsEmptyList from "./EventsCardsEmptyList";
@@ -13,13 +13,14 @@ import { resetErrorAction } from "../../../store/actions/ui";
 import { PaginationNavStyle } from "../../shared/PaginationNavStyle";
 import Pagination from "rc-pagination";
 import "../../shared/paginator/paginator.css";
-import './EventsPage.css';
+import "./EventsPage.css";
 import { getEventsTotal } from "../../../store/selectors/events";
 import { getCurrentPage, getLimit } from "../../../store/selectors/pagination";
 import { paginationSetCurrentPage } from "../../../store/actions/pagination";
 
 import { FiltersForm } from "./filters/FiltersForm";
 import { Sorter } from "./filters/Sorter";
+import { SearchBar } from "./filters/SearchBar";
 
 function EventsPage() {
   const dispatch = useDispatch();
@@ -43,6 +44,8 @@ function EventsPage() {
     dispatch(paginationSetCurrentPage(current));
   };
 
+  const modalPressed = true;
+
   return (
     <div>
       <Layout>
@@ -54,19 +57,42 @@ function EventsPage() {
         )}
         {!loading && !error && events.length > 0 && (
           <div className="container">
-            <div className="row">
+            <div className="row pt-3">
               <div className="col-md-3 d-none d-md-block">
                 <FiltersForm />
               </div>
               <div className="col-md-9">
+                <div className="pt-3 pl-3 pr-3 row">
+                  <div>
+                    <SearchBar />
+                  </div>
+                </div>
                 <div className="p-3 pb-4 row">
                   <div className="pt-3 pb-3 d-md-none">
-                    <Button
-                      className="inline-block"
-                      variant="secondary"
-                    >
+                    {/* <Button className="inline-block" variant="secondary">
                       Filters Modal
+                    </Button> */}
+                    
+                    <Button variant="primary" onClick={() => {console.log('on press modal')}}>
+                      Launch demo modal
                     </Button>
+
+                    <Modal show={!modalPressed} onHide={() => console.log('close modal')}>
+                      <Modal.Header closeButton>
+                        <Modal.Title>Modal heading</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Woohoo, you're reading this text in a modal!
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={() => console.log('close')}>
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={() => console.log('save changes')}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
                   </div>
                   <div className="d-flex justify-content-between">
                     <Sorter />

@@ -29,14 +29,14 @@ const FilterCard = ({ title, body, ...props }) => {
   );
 };
 
-const InputSearchBodyCard = ({ ...props }) => {
-  return (
-    <Form.Group {...props} controlId="filterformusername">
-      <Form.Control type="text" placeholder="Username" />
-      <Form.Text className="text-muted">Get event´s user.</Form.Text>
-    </Form.Group>
-  );
-};
+// const InputSearchBodyCard = ({ ...props }) => {
+//   return (
+//     <Form.Group {...props} controlId="filterformusername">
+//       <Form.Control type="text" placeholder="Username" />
+//       <Form.Text className="text-muted">Get event´s user.</Form.Text>
+//     </Form.Group>
+//   );
+// };
 
 // const InputSearchLabelCard = ({ text }) => {
 //   return <Form.Label>{text}</Form.Label>;
@@ -46,7 +46,7 @@ export const FiltersForm = () => {
   return (
     <Form>
       <div className="pt-3 d-flex flex-column">
-        <div className="mb-1 p-4 bg-white">
+        <div className="mb-1 p-4 bg-white rounded-top">
           <BiSlider></BiSlider>
           <span className="ml-2">Filtros</span>
         </div>
@@ -67,7 +67,7 @@ export const FiltersForm = () => {
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
               <Card.Body className="ml-0 pl-0">
-                <FormControl placeholder="Type an username..."></FormControl>
+                <FormControl className="rounded-pill border-0 pl-1" placeholder="Enter an username..."></FormControl>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
@@ -99,7 +99,7 @@ export const FiltersForm = () => {
             <Accordion.Toggle
               as={Card.Text}
               className="fs-6 text-muted m-0 pt-2 pb-2"
-              eventKey="2"
+              eventKey="3"
             >
               Tipo
             </Accordion.Toggle>

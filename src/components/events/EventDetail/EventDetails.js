@@ -47,7 +47,7 @@ function EventDetails({ description,_id,
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
 								{/* TODO Add username Own  */}
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder"></a>
+								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder"> </a>
 								<span className="text-description d-block mt-1">
 									{moment(new Date(created_date)).format("DD-MM-YYYY")}
 								</span>
@@ -201,8 +201,8 @@ function EventDetails({ description,_id,
 							<div className="d-flex ">
 								<div className="col d-flex flex-grow-1 my-lg-0 my-2 pe-3 pt-4">
 									<div className="symbol tags me-2">
-										<span className="bg-light-primary">
-											{tags.map((tag) => `#${tag}`)}
+										<span className="bg-light-primary" >
+											{/* {tags.map((tag) => `#${tag}`)} */}
 										</span>
 									</div>
 									
@@ -228,7 +228,7 @@ function EventDetails({ description,_id,
 												placement={placement}
 												overlay={
 													<Tooltip id={`tooltip-${placement}`}>
-														{location.coordinates.map((cord) =><div>{`${cord}`}</div>)}
+													{/* 	{location.coordinates.map((cord) =><div>{`${cord}`}</div>)} */}
 													</Tooltip>
 												}
 											>

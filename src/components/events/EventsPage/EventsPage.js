@@ -16,21 +16,22 @@ import "../../shared/paginator/paginator.css";
 import "./EventsPage.css";
 import { getEventsTotal } from "../../../store/selectors/events";
 
-
-import { paginationRedirect} from '../../../store/actions/pagination';
-import { useHistory, useLocation } from 'react-router-dom';
-
+import { paginationRedirect } from "../../../store/actions/pagination";
+import { useHistory, useLocation } from "react-router-dom";
 
 import { FiltersForm } from "./filters/FiltersForm";
 import { Sorter } from "./filters/Sorter";
 import { SearchBar } from "./filters/SearchBar";
 
+import { intl_es, intl_en } from "../../shared/paginator/es_en.js";
+import { useIntl } from "react-intl";
+
+const lang_es = "es";
 
 function EventsPage() {
   const dispatch = useDispatch();
   const { loading, error } = useSelector(getUi);
   const events = useSelector(getEvents);
-
   // vars modify events results
   const totalEvents = useSelector(getEventsTotal);
 
@@ -39,31 +40,29 @@ function EventsPage() {
   };
 
   const location = useLocation();
- 
+
   const queryPath = new URLSearchParams(location.search);
-  const pageQuery =  queryPath.get("page") || 1;
+  const pageQuery = queryPath.get("page") || 1;
   const limitQuery = queryPath.get("limit") || 10;
 
+  const intl = useIntl();
+
   React.useEffect(() => {
-    dispatch( eventsLoadAction( pageQuery, limitQuery ) )
-
-}, [dispatch, pageQuery, limitQuery]); //bueno
-
+    dispatch(eventsLoadAction(pageQuery, limitQuery));
+  }, [dispatch, pageQuery, limitQuery]);
 
   const handleSetCurrentPage = (current, pageSize) => {
-
     const path = `/events?page=${current}&limit=${limitQuery}`;
-    console.log('onClick change page -> path', path)
-     dispatch( paginationRedirect( path ) )
-
+    dispatch(paginationRedirect(path));
   };
   const onClick = (val) => (ev) => {
     const path = `/events?page=1&limit=${val}`;
-    dispatch( paginationRedirect( path ) )
-};
+    dispatch(paginationRedirect(path));
+  };
 
   const modalPressed = true;
 
+  const lang = intl.locale.slice(0, 2);
 
   return (
     <div>
@@ -91,13 +90,20 @@ function EventsPage() {
                     {/* <Button className="inline-block" variant="secondary">
                       Filters Modal
                     </Button> */}
-                    
-                    <Button variant="primary" onClick={() => {console.log('on press modal')}}>
+
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        console.log("on press modal");
+                      }}
+                    >
                       Launch demo modal
                     </Button>
 
-
-                    <Modal show={!modalPressed} onHide={() => console.log('close modal')}>
+                    <Modal
+                      show={!modalPressed}
+                      onHide={() => console.log("close modal")}
+                    >
                       <Modal.Header closeButton>
                         <Modal.Title>Modal heading</Modal.Title>
                       </Modal.Header>
@@ -105,10 +111,16 @@ function EventsPage() {
                         Woohoo, you're reading this text in a modal!
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button variant="secondary" onClick={() => console.log('close')}>
+                        <Button
+                          variant="secondary"
+                          onClick={() => console.log("close")}
+                        >
                           Close
                         </Button>
-                        <Button variant="primary" onClick={() => console.log('save changes')}>
+                        <Button
+                          variant="primary"
+                          onClick={() => console.log("save changes")}
+                        >
                           Save Changes
                         </Button>
                       </Modal.Footer>
@@ -127,6 +139,7 @@ function EventsPage() {
             <div className="row">
               <div className="p-3 pb-4 d-flex justify-content-center">
                 <Pagination
+                  locale={lang_es === lang ? intl_es : intl_en}
                   total={totalEvents}
                   pageSize={limitQuery}
                   current={pageQuery}

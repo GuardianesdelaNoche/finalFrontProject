@@ -37,7 +37,7 @@ function EventDetails({ description,_id,
 				<div className="container details pt-14">
 					<div className="card card-flush pt-12" key={_id} >
 						<div className="card-header">
-							{/* OwnerAvatar */}
+							{/* TODO: Add OwnerAvatar img */}
 							<div className="symbol symbol-45px me-4">
 								<span className="symbol-label bg-light align-items-end">
 									<img alt="Autor" src="https://preview.keenthemes.com/start-html-free/assets/media/svg/avatars/047-girl-25.svg" className="mh-40px" />
@@ -46,8 +46,7 @@ function EventDetails({ description,_id,
 
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
-								{/* TODO Add username Own  */}
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder"> </a>
+								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{/* TODO Add username Own  */}</a>
 								<span className="text-description d-block mt-1">
 									{moment(new Date(created_date)).format("DD-MM-YYYY")}
 								</span>
@@ -79,6 +78,10 @@ function EventDetails({ description,_id,
 									</span>
 								</div>)
  							}
+
+							 {/* TODO: Add if is assitant create info: Asistirás a este evento
+							 si no es Assistan mostrar botón reservar plaza */
+							 }
 
 						</div>
 						<div className="card-body">
@@ -202,6 +205,7 @@ function EventDetails({ description,_id,
 								<div className="col d-flex flex-grow-1 my-lg-0 my-2 pe-3 pt-4">
 									<div className="symbol tags me-2">
 										<span className="bg-light-primary" >
+											{/* TODO Add key to tags */}
 											{/* {tags.map((tag) => `#${tag}`)} */}
 										</span>
 									</div>
@@ -213,14 +217,14 @@ function EventDetails({ description,_id,
 								</div>
 								<div className="col d-flex icons-footer my-lg-0 my-2 pe-3 pt-4">
 									<p className="mt-1 text-description mr-1">
+										{/* TODO Add traslate */}
 										Update:   
 									</p>
 									<span className="text-danger mt-1 mr-2">
 										Quedan {assistants_count} Plazas!
 									</span>
 									
-									
-									
+				
 
 										{['top'].map((placement) => (
 											<OverlayTrigger
@@ -228,6 +232,7 @@ function EventDetails({ description,_id,
 												placement={placement}
 												overlay={
 													<Tooltip id={`tooltip-${placement}`}>
+													{/* TODO Add key to tags */}
 													{/* 	{location.coordinates.map((cord) =><div>{`${cord}`}</div>)} */}
 													</Tooltip>
 												}

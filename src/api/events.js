@@ -15,7 +15,7 @@ export const getEvents = (eventId) => {
   return client.get(`${eventsPath}/${eventId}`).then(mapEvent);
 };
 
-//TODO probar a obtener los detalles de los propietarios del evento
+
 export const getEventsDetails = (eventId, token) => {
   configureClient(token);
   return client.get(`${eventsPath}/event/${eventId}`).then(mapEvent);

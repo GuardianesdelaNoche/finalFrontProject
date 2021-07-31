@@ -1,5 +1,5 @@
 import { types } from "../types/types";
-import { getEventDetail } from '../selectors/events'
+import { getEvents, getEventsDetails } from '../selectors/events'
 
 
 //Load Events
@@ -48,9 +48,9 @@ export const eventDetailsError = (error) => ({
 })
 
 export const eventDetailsActions = eventId => {
-  return async function (dispatch, getState, { api}) {
+  return async function (dispatch, getState, {api}) {
     try {
-      const eventDetail = await api.events.getEvents(eventId);
+      const eventDetail = await api.events.getEventsDetails(eventId);
       dispatch(eventDetailsSuccess(eventDetail));
       return eventDetail;
     } catch (error) {

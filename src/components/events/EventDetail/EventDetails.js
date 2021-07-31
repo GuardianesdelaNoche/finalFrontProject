@@ -5,8 +5,12 @@ import { useSelector } from 'react-redux';
 
 import { FormattedMessage } from 'react-intl';
 import { ConfirmationButton } from '../../shared';
-import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useIntl } from 'react-intl';
+
+
+
+
 
 var moment = require("moment");
 

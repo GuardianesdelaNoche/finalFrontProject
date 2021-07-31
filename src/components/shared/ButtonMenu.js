@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-const accentColor ='rgb(29, 161, 242)';
+const accentColor = 'rgb(29, 161, 242)';
 
-const ButtonMenu = styled.button `
-
+const ButtonMenu = styled.button`
     align-items: center;
     background-color: ${'black'};
     
@@ -22,14 +21,11 @@ const ButtonMenu = styled.button `
     
     text-decoration: none;
     transition: background-color 0.2s;
-
     &:hover {
         background-color: ${accentColor};
         color:white
-
         }   
     }
-
 `;
 
 export default ButtonMenu;

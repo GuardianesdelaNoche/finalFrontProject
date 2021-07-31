@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
-// const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL_LOCAL }); //add in .env for testing
+// const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
+const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL_LOCAL }); //add in .env for testing
 
 
 const setAuthorizationHeader = token => {
@@ -10,7 +10,7 @@ const setAuthorizationHeader = token => {
 
 const removeAuthorizationHeader = () => {
     delete client.defaults.headers.common['x-access-token'];
-}; 
+};
 
 client.interceptors.response.use(
   response => response.data,

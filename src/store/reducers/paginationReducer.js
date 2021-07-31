@@ -2,8 +2,7 @@ import { types } from "../types/types";
 
 const initialState = {
     limit: "10",
-    currentPage: "1",
-    totalPages: null
+    currentPage: "1"
 };
 
 export const paginationReducer = ( state = initialState, action ) => {

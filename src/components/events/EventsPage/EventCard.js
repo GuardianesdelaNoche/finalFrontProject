@@ -68,14 +68,14 @@ function EventCard(event) {
                 </Button>
               )}
             </OverlayTrigger>
-            <Link key={event._id} to={`/event/${event._id}/${event.title}`}>
+            <Link key={event._id} to={`/event/${event._id}/${event.title.replace(/\s+/g, '-')}`}>
 
               <Card.Img variant="top"  className="home" src={event.photo} />
             </Link>
           </span>
         </div>
       </div>
-      <Link key={event._id} to={`/event/${event._id}/${event.title}`}>
+      <Link key={event._id} to={`/event/${event._id}/${event.title.replace(/\s+/g, '-')}`}>
         <Card.Body className="card">
           <Card.Title className="text-dark">{event.title}</Card.Title>
        

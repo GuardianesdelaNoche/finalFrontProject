@@ -14,7 +14,7 @@ import { useIntl } from 'react-intl';
 
 var moment = require("moment");
 
-function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date, isOwner, isFavorite, assistants_count, country, detailOwn, address, city, location, onDelete}) {
+function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date, isOwner, isFavorite, assistants_count, country, detailOwn, address, city, location,  onDelete}) {
 		const intl = useIntl();
 
 		return (
@@ -32,7 +32,7 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
 								{/* TODO Add username Own  */}
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{/* {detailOwn.username} */}</a>
+								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{/*  {detailOwn}  */} </a>
 								<span className="text-description d-block mt-1">
 									{moment(new Date(created_date)).format("DD-MM-YYYY")}
 								</span>

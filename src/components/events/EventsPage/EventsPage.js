@@ -60,6 +60,10 @@ function EventsPage() {
     dispatch(paginationRedirect(path));
   };
 
+  const onClickSearch = (text) => {
+    console.log(text)
+  }
+
   const modalPressed = true;
 
   const lang = intl.locale.slice(0, 2);
@@ -82,7 +86,7 @@ function EventsPage() {
               <div className="col-md-9">
                 <div className="pt-3 pl-3 pr-3 row">
                   <div>
-                    <SearchBar />
+                    <SearchBar onClickSearch={onClickSearch}/>
                   </div>
                 </div>
                 <div className="p-3 pb-4 row">

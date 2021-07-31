@@ -1,6 +1,4 @@
 import { types } from "../types/types";
-import { getEvents, getEventsDetails } from '../selectors/events'
-
 
 //Load Events
 export const eventsLoadedRequest = () => ({

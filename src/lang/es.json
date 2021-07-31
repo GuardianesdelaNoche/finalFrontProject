@@ -55,8 +55,10 @@
     "details.event.space": "Espacio",
     "details.event.indoor": "Interior",
     "details.event.outdoor": "Exterior",
+    "details.event.location.name": "Localización",
     "popups.remove.title": "Advertencia",
     "popups.remove.mesage": "¿Quieres eliminar el evento?",
+    
     "updatemember.form.button": "Cambiar",
     "updatemember.title": "Cambiar mis datos",
     "listmyevents.title":"Mis eventos",

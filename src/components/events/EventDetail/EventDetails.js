@@ -1,7 +1,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux';
 
 import { FormattedMessage } from 'react-intl';
 import { ConfirmationButton } from '../../shared';
@@ -9,18 +8,34 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useIntl } from 'react-intl';
 
 
-
-
-
 var moment = require("moment");
 
-function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date, isOwner, isFavorite, assistants_count, country, detailOwn, address, city, location,  onDelete}) {
+function EventDetails({ description,_id,
+	photo, 
+	title, 
+	date, 
+	duration, 
+	indoor, 
+	tags, 
+	created_date,
+	isOwner, 
+	isFavorite, 
+	assistants_count, 
+	detailOwn,
+	address, 
+	city, 
+	location,  
+	onDelete
+	})
+	 {
 		const intl = useIntl();
+		console.log(address, 'La direccion')
+		console.log(detailOwn, 'detalle')
 
 		return (
 		<div>
 				<div className="container details pt-14">
-					<div className="card card-flush pt-12">
+					<div className="card card-flush pt-12" key={_id} >
 						<div className="card-header">
 							{/* OwnerAvatar */}
 							<div className="symbol symbol-45px me-4">
@@ -32,7 +47,7 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
 								{/* TODO Add username Own  */}
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{/*  {detailOwn}  */} </a>
+								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder"></a>
 								<span className="text-description d-block mt-1">
 									{moment(new Date(created_date)).format("DD-MM-YYYY")}
 								</span>
@@ -95,7 +110,7 @@ function EventDetails({ description, photo, title, price, date, duration, indoor
 									<div className="col-sm-auto d-flex">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
-												<i class="fas fa-map-marker-alt"></i>
+												<i className="fas fa-map-marker-alt"></i>
 											</span>
 										</div>
 

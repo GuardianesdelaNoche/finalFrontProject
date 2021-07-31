@@ -7,7 +7,7 @@ import { Layout } from '../../layout'
 import EventDetails from './EventDetails'
 
 import { eventDetailsActions, eventDetailsSuccess, eventDeleteActions } from '../../../store/actions/events';
-import { getEvents, getEventDetail} from '../../../store/selectors/events';
+import { getEventDetail} from '../../../store/selectors/events';
 import { getUi } from '../../../store/selectors/ui';
 
 
@@ -27,9 +27,9 @@ function DetailsPage() {
 		dispatch(eventDeleteActions(eventId))
 	};
 
-	if (error?.statusCode === 404) {
+	/* if (error?.statusCode === 404) {
 		return <Redirect to="/404" />;
-	}
+	} */
 
 	return (
 		<div>

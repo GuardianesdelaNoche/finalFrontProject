@@ -348,6 +348,10 @@ color: #a1a5b7;
 color:#f1416c;
 }
 
+.iconRRSS{
+    border-radius: 0.65rem;
+   
+}
 
 .icons-footer i:hover, i:active{
     transition: color .2s ease,background-color .2s ease;

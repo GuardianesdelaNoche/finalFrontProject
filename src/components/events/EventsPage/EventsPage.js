@@ -44,24 +44,83 @@ function EventsPage() {
   const queryPath = new URLSearchParams(location.search);
   const pageQuery = queryPath.get("page") || 1;
   const limitQuery = queryPath.get("limit") || 10;
+  const titleQuery = queryPath.get("title") || '';
+
+  console.log('queryPath',location.search);
 
   const intl = useIntl();
 
   React.useEffect(() => {
-    dispatch(eventsLoadAction(pageQuery, limitQuery));
-  }, [dispatch, pageQuery, limitQuery]);
+    console.log('useEffect')
+    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery));
+  }, [dispatch, pageQuery, limitQuery, titleQuery]);
+
+
+  // const dispatchAction = (path) => {
+  //   console.log('dispatchAction', path)
+  //   dispatch(paginationRedirect(path));
+  // }
+
+  const dispatchAction = (req) => {
+    console.log('dispatchAction', req)
+    let newReq = req;
+    if(!req.title && titleQuery){
+      newReq = {
+        ...req,
+        title: titleQuery
+      }
+    }
+    dispatch(paginationRedirect(newReq));
+  }
 
   const handleSetCurrentPage = (current, pageSize) => {
-    const path = `/events?page=${current}&limit=${limitQuery}`;
-    dispatch(paginationRedirect(path));
+    if(titleQuery){
+      console.log('hay titleQuery', titleQuery)
+    }
+    // const path = `/events?page=${current}&limit=${limitQuery}`;
+    // dispatchAction(path);
+    let reqParams = {
+        page: current,
+        limit: limitQuery
+    };
+    dispatchAction(reqParams);
+    // dispatch(paginationRedirect(path));
   };
   const onClick = (val) => (ev) => {
-    const path = `/events?page=1&limit=${val}`;
-    dispatch(paginationRedirect(path));
+    if(titleQuery){
+      console.log('hay titleQuery', titleQuery)
+    }else{
+      console.log('no hay titleQuery', titleQuery)
+    }
+    // const path = `/events?page=1&limit=${val}`;
+    // dispatchAction(path);
+    let reqParams = {
+      page: 1,
+      limit: val
+    }
+    dispatchAction(reqParams)
+    // dispatch(paginationRedirect(path));
   };
 
-  const onClickSearch = (text) => {
-    console.log(text)
+  const execFilters = (text) => {
+    console.log('execFilters', text)
+    // const path = `/events?page=1&limit=${limitQuery}&title=${text}`;
+    // dispatch(paginationRedirect(path));
+    const reqParams = {
+      page: 1,
+      limit: limitQuery,
+      title: text
+    }
+    // dispatchAction(path);
+    dispatchAction(reqParams);
+  };
+
+  const onClickSearch = (event, text) => {
+    const id = event.target.id;
+    console.log(id)
+    event.preventDefault();
+    console.log("events page ",text);
+    execFilters(text);
   }
 
   const modalPressed = true;
@@ -86,7 +145,7 @@ function EventsPage() {
               <div className="col-md-9">
                 <div className="pt-3 pl-3 pr-3 row">
                   <div>
-                    <SearchBar onClickSearch={onClickSearch}/>
+                    <SearchBar text={titleQuery} onClickSearch={onClickSearch}/>
                   </div>
                 </div>
                 <div className="p-3 pb-4 row">

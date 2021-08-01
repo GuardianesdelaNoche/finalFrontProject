@@ -14,15 +14,20 @@ export const SearchBar = ({ text, onClearButton, onClickSearch, onChangeSearch }
   const [inputText, setInputText] = useState(initialText);
 
   const handleClearButton = () => {
-    setInputText(initialText);
+    setInputText(defaultText);
   };
 
   const handleChange = (event) => {
+    // console.log(inputText)
     setInputText(event.target.value);
   }
 
   const handleSearch = (event) => {
-    onClickSearch(inputText);
+    // console.log('searching')
+    // const id = event.target.id;
+    // console.log(id)
+    // console.log(inputText)
+    onClickSearch(event, inputText);
   }
 
   return (
@@ -45,7 +50,7 @@ export const SearchBar = ({ text, onClearButton, onClickSearch, onChangeSearch }
         </div>
         <div className="rounded-circle align-self-end">
           <Button className="bg-light rounded-circle pl-2 pr-2 pt-1 pb-1 m-1 border-0"
-          onClick={handleSearch}>
+          onClick={handleSearch} id="searchButton" type="submit">
             <BsSearch className="text-primary" />
           </Button>{" "}
         </div>

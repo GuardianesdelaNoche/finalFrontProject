@@ -35,7 +35,6 @@ function ListMyEvents() {
 
 	}, []);
 
-   
     const handleResetError = ()=>{
         dispatch(resetErrorAction())
     }
@@ -48,14 +47,102 @@ function ListMyEvents() {
 					<div className="col-xl-12">
 						<Card>
 							<Card.Body>
-								<Card.Title>					
-                				    <FormattedMessage
-                        				id="listmyevents.title"
-                        				defaultMessage="My Events"
-                    				/>                
-								</Card.Title>
-												
-								Listado							
+
+								<div class="card-body pt-4">
+
+									<Card.Title className="align-items-center border-0">
+										<div className="align-items-start flex-column">
+											<h2 className="text-dark fs-4">
+												<FormattedMessage
+													id="listmyevents.title"
+													defaultMessage="My Events"
+												/>
+											</h2>
+											<span className="text-description d-block mt-1">
+												Echa un vistazo a todos los eventos que has publicado
+											</span>
+										</div>
+									</Card.Title>
+
+									
+									{/* TODO: Recoger los eventos y crear un map para mostrar listado */}
+
+									<div class="d-flex mb-7 pt-10">
+										{/* Imagen del evento */}
+										<div class="symbol symbol-60px symbol-2by3 me-4">
+											<img src="https://preview.keenthemes.com/start-html-free/assets/media/stock/600x400/img-17.jpg" alt="" className="mw-100" />
+										</div>
+											
+										{/* titulo de los eventos*/}
+											<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
+											
+												<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
+													<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Cup &amp; Green</a>
+													<span class="text-description fs-7 my-1">Study the highway types</span>
+													
+												</div>
+											
+										{/* info de los eventos*/}
+												<div class="text-end py-lg-0 py-2">
+													<div class="btn btn-icon btn-bg-light btn-active-primary">
+													<i class="fas fa-arrow-right"></i>
+													</div>
+												</div>
+											</div>
+									</div>
+
+
+									<div class="d-flex mb-7">
+										{/* Imagen del evento */}
+										<div class="symbol symbol-60px symbol-2by3 me-4">
+											<img src="https://preview.keenthemes.com/start-html-free/assets/media/stock/600x400/img-10.jpg" alt="" className="mw-100" />
+										</div>
+
+										{/* titulo de los eventos*/}
+										<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
+
+											<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
+												<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Yellow Background</a>
+												<span class="text-description fs-7 my-1">Study the highway types</span>
+
+											</div>
+
+											{/* info de los eventos*/}
+											<div class="text-end py-lg-0 py-2">
+												<div class="btn btn-icon btn-bg-light btn-active-primary">
+													<i class="fas fa-arrow-right"></i>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+									<div class="d-flex mb-7">
+										{/* Imagen del evento */}
+										<div class="symbol symbol-60px symbol-2by3 me-4">
+											<img src="https://preview.keenthemes.com/start-html-free/assets/media/stock/600x400/img-9.jpg" alt="" className="mw-100" />
+										</div>
+
+										{/* titulo de los eventos*/}
+										<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
+
+											<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
+												<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Desserts platter</a>
+												<span class="text-description fs-7 my-1">Study the highway types</span>
+
+											</div>
+
+											{/* info de los eventos*/}
+											<div class="text-end py-lg-0 py-2">
+												<div class="btn btn-icon btn-bg-light btn-active-primary">
+													<i class="fas fa-arrow-right"></i>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+
 
 								{error && (	
                    					 <Alert onClick={handleResetError} variant="danger">

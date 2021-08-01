@@ -56,6 +56,8 @@
     "logout.title": "Log out",
     "logout.yes": "Yes",
     "logout.no": "No",
-    "header.menu.myprofile": "My profile"
+    "header.menu.myprofile": "My profile",
+    "newEvent.title": "New Event",
+    "newEvent.form.button": "Save"
 
 }

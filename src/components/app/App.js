@@ -7,6 +7,7 @@ import UserDashboard from '../user/dashboard/Userdashboard';
 import NotFoundPage from './NotFoundPage';
 import { RememberPassPage, RecoverPassPage } from '../auth';
 import ListMyEvents from '../user/myEvents/ListMyEvents';
+import NewEventPage from '../events/NewEvent/NewEventPage';
 import { loginWithTokenAction } from '../../store/actions/auth';
 import { useDispatch } from 'react-redux';
 import storage from "../../utils/storage";
@@ -34,6 +35,7 @@ function App() {
         { routeProps => <RecoverPassPage { ...routeProps} />}
       </Route>      
       <Route exact path="/event/:eventId" component={DetailsPage} />
+      <PrivateRoute exact path="/events/new" component={NewEventPage} />
       <Route exact path="/events" component={EventsPage} />
       <PrivateRoute exact path="/user">
         {routeProps => <UserDashboard {...routeProps} />}

@@ -57,5 +57,7 @@
     "logout.title": "Cerrar sesión" ,
     "logout.yes": "Si",
     "logout.no": "No",
-    "header.menu.myprofile": "Mis datos"
+    "header.menu.myprofile": "Mis datos",
+    "newEvent.title": "Nuevo Evento",
+    "newEvent.form.button": "Guardar"
 }

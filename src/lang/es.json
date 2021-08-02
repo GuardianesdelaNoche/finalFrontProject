@@ -64,6 +64,7 @@
     "newevent.formLabel.description": "Descripción",
     "newevent.formLabel.price": "Precio",
     "newevent.formLabel.max_places": "Aforo",
+    "newevent.formLabel.tags": "Tags",
     "newevent.validate.title":"Hay algún error",
     "newevent.validate.description": "Hay algún error",
     "newevent.validate.price": "Hay algún error",

@@ -19,13 +19,21 @@ function useForm(initialState){
 			['tags']: tags
 		})
 	}
+
+	const handleChangeFile = (e)=> {
+		setFormValue({
+			...formValue,
+			['photo']: e
+		})
+	}
+
 	const handleSubmit = onSubmit => (e) =>{	
 		onSubmit(formValue);
 	}
 
 
 
-	return { formValue, setFormValue, handleChange, handleSubmit, handleSetValue, hadleChangeArray};
+	return { formValue, setFormValue, handleChange, handleSubmit, handleSetValue, hadleChangeArray, handleChangeFile};
 }
 
 export default useForm;

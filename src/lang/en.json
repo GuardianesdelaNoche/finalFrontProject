@@ -63,6 +63,7 @@
     "newevent.formLabel.description": "Description",
     "newevent.formLabel.price": "Pricwe",
     "newevent.formLabel.max_places": "Capacity",
+    "newevent.formLabel.tags": "Tags",
     "newevent.validate.title":"There is something wrong",
     "newevent.validate.description": "There is something wrong",
     "newevent.validate.price": "There is something wrong",

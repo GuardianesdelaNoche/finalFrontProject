@@ -10,6 +10,8 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import MultiSelectTags from '../../shared/MultiSelectTags';
 
+import File from '../../shared/File';
+
 
 //import '../LoginPage/login.css'
 
@@ -17,6 +19,7 @@ function NewEventForm ({onSubmit}) {
     const {
 		formValue: eventData, 
 		handleChange,	
+		handleChangeFile,
 		hadleChangeArray
 	} = useForm({
         title:"",
@@ -61,6 +64,9 @@ function NewEventForm ({onSubmit}) {
 		hadleChangeArray (tags);
 }
 
+	const handleChangeFiles = e => {		
+		handleChangeFile(e);	  
+	}
 
 
 
@@ -78,6 +84,9 @@ function NewEventForm ({onSubmit}) {
 		} else {
 			changeIsFormValid({...isFormValid, status:false});
 		}	
+	}
+	const handleError = () => {
+
 	}
 
 	const expressions = {
@@ -148,6 +157,13 @@ function NewEventForm ({onSubmit}) {
 					id="tags"					
 					label =  {intl.formatMessage({ id: 'newevent.formLabel.tags'})}
 					required
+				/>
+
+				<File 
+					name="photo" 
+					id="photo"
+					onFileSelectSuccess={handleChangeFiles} 
+					onFileSelectError={handleError}
 				/>
 
 			{isFormValid.status === false && <ErrorMessage>

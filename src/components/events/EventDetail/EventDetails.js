@@ -114,7 +114,7 @@ function EventDetails({ description,
 																	</Tooltip>
 																}
 															>
-																<span className="tab-panel">
+																<span className="tab-panel mr-2">
 																	<FormattedMessage
 																		id="details.event.reserve.place"
 																		defaultMessage="Reserve a place"

@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { useSelector } from "react-redux";
+import { useLocation } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl';
 import { Button, ConfirmationButton } from '../../shared';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -42,23 +43,31 @@ function EventDetails({ description,
 	 {
 		const intl = useIntl();
 		const isLogged = useSelector(getIsLogged);
-		const shareUrl = 'https://www.google.com' // TODO: Coger la URL pathname para compartir en RRSS
+		const BaseURL = "https://4events.net";
+
+		const urlpath = useLocation();
+
+		const shareUrl = BaseURL + urlpath.pathname 
+
+		const handleReserve = ()=>{
+			{/* //TODO: Añadir funcionalidad apuntando al endpoint de reservar */}
+		}
+
 		return (
 		<div>
 				<div className="container details pt-14">
 					<div className="card card-flush pt-12">
 						<div className="card-header">
-							{/* TODO: Testing detailOwn image and username */}
+							
 							<div className="symbol symbol-45px me-4">
 								<span className="symbol-label bg-light align-items-end">
-									<img alt="Autor" src="https://preview.keenthemes.com/start-html-free/assets/media/svg/avatars/047-girl-25.svg" className="mh-40px" />
-									{/* detailOwn.image */}
+									<img alt="Autor" src={ detailOwn.image } width="60" className="mh-40px" />
 								</span>
 							</div>
 
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{/* detailOwn.username */}</a>
+								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{detailOwn.username}</a>
 								<span className="text-description d-block mt-1">
 									{moment(new Date(created_date)).format("DD-MM-YYYY")}
 								</span>
@@ -76,8 +85,7 @@ function EventDetails({ description,
 									</div>
 									) : (isLogged && isAssistant === false &&  assistants_count > 0 ? (
 												<div className="card-toolbar mr-2">
-													<Button variant="primary">
-														{/* //TODO: Añadir funcionalidad apuntando al endpoint de reservar */}
+													<Button variant="primary" onClick={handleReserve}>
 														Reservar Plaza
 													</Button>
 												</div>)

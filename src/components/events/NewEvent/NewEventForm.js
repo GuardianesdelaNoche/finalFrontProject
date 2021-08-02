@@ -8,28 +8,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Form,ContentBottomCenter, ErrorMessage, Button } from '../../shared/elements/formElements';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
+import MultiSelectTags from '../../shared/MultiSelectTags';
+
 
 //import '../LoginPage/login.css'
 
 function NewEventForm ({onSubmit}) {
     const {
-		formValue: registerData, 
+		formValue: eventData, 
 		handleChange,	
+		hadleChangeArray
 	} = useForm({
-        username:"",
-		email:"",
-        role:1,
-		password:"",	
-		password2:"",
-		nickname:"",
+        title:"",
+		description:"",
+        price:1,
+		max_places:"",	
+		duration:"",
+		photo:"",
+		indoor:false,
+		address:"",
+		city:"",
+		postal_code:"",
+		country:"",
+		tags:[]
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
-
 	
 	const intl = useIntl();
 
 
-    const { username, email, password, password2,  nickname } = registerData;   
+    const { title, description, price, max_places, duration, photo, indoor, address, city, postal_code, country, tags } = eventData;   
+
+
 
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {
@@ -39,15 +49,28 @@ function NewEventForm ({onSubmit}) {
 			return false;
 		}
 	}
+
+	const handleChangeMultiSelect = event => {                
+		let tags = [];
+		
+
+		event.forEach(element => {
+				tags.push(element.value);                   				
+		});              
+		
+		hadleChangeArray (tags);
+}
+
+
+
+
 	const checkFormData = (e) => {
 		e.preventDefault();
-		if ( isValidValue(expressions.username, username)
-		&& isValidValue(expressions.nikname, nickname) 
-		&& isValidValue(expressions.email, email)
-		&& isValidValue(expressions.password, password)
-		&& password === password2	) {
+		if ( isValidValue(expressions.title, title)
+		&& isValidValue(expressions.description, description) 
+			) {
 			try {
-				onSubmit(registerData);	
+				//onSubmit(registerData);	
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {
 				changeIsFormValid({...isFormValid, status:false});
@@ -58,30 +81,75 @@ function NewEventForm ({onSubmit}) {
 	}
 
 	const expressions = {
-		username: /^[a-zA-Z0-9_-]{6,18}$/,
-		nikname: /^[a-zA-ZÀ-ÿ0-9\s]{1,18}$/,
-		email:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]+$/,
-		password: /^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})\S{8,}$/,
+		title: /^[a-zA-Z0-9_-]{1,48}$/,
+		description: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
+		price:/^[0-9,]$/,
+		max_places: /^[0-9,]$/,
+		
 	}
 
     return (
 		<Form  className="form-signin" onSubmit={checkFormData}>
 			<div className="form-container">
-				{/* <Input
+				<Input
 					type="text"
-					label= {intl.formatMessage({ id: 'register.formLabel.username'})}
-					name="username"
-					id="username"
-					placeholder="username"
-					value={username}
+					label= {intl.formatMessage({ id: 'newevent.formLabel.title'})}
+					name="title"
+					id="title"
+					placeholder="title"
+					value={title}
 					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'register.validate.username'})}
-					regularExpression={expressions.username}
+					errorLegend={intl.formatMessage({ id: 'newevent.validate.title'})}
+					regularExpression={expressions.title}
 					required
 				/>
-      */}
+     
+	 			<Input
+					type="text"
+					label= {intl.formatMessage({ id: 'newevent.formLabel.description'})}
+					name="description"
+					id="description"
+					placeholder="description"
+					value={description}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'newevent.validate.description'})}
+					regularExpression={expressions.description}
+					required
+				/>
 				
+				<Input
+					type="text"
+					label= {intl.formatMessage({ id: 'newevent.formLabel.price'})}
+					name="price"
+					id="price"
+					placeholder="15,50"
+					value={price}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'newevent.validate.price'})}
+					regularExpression={expressions.price}
+					required
+				/>
 				
+				<Input
+					type="text"
+					label= {intl.formatMessage({ id: 'newevent.formLabel.max_places'})}
+					name="max_places"
+					id="max_places"
+					placeholder="14"
+					value={description}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'newevent.validate.max_places'})}
+					regularExpression={expressions.max_places}
+					required
+				/>
+				<MultiSelectTags 
+					onChange={handleChangeMultiSelect}
+					name="tags"
+					id="tags"					
+					label =  {intl.formatMessage({ id: 'newevent.formLabel.tags'})}
+					required
+				/>
+
 			{isFormValid.status === false && <ErrorMessage>
 				<p>
 					<FontAwesomeIcon icon={faExclamationTriangle}/>

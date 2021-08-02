@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { getTags } from '../../api/products';
+import { getTags } from '../../api/tags';
 import pT from 'prop-types';
 
 
@@ -14,8 +14,8 @@ const MultiSelectTags = ({onChange, label, isRequired}) => {
     });
 
     const getTagsValue = tags => {
-        const tagsValues = tags.map(tag =>{ 
-            const tagLine = {value: tag,label: tag,name: 'tags'};
+        const tagsValues = tags.tags.map(tag =>{ 
+            const tagLine = {value: tag.name,label: tag.name,name: 'tags'};
             return tagLine; 
         });			
         return tagsValues;

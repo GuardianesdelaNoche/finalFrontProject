@@ -12,13 +12,20 @@ function useForm(initialState){
 			[target.name]: target.value
 		})
 	}
+
+	const hadleChangeArray = (tags)=> {
+		setFormValue({
+			...formValue,
+			['tags']: tags
+		})
+	}
 	const handleSubmit = onSubmit => (e) =>{	
 		onSubmit(formValue);
 	}
 
 
 
-	return { formValue, setFormValue, handleChange, handleSubmit, handleSetValue};
+	return { formValue, setFormValue, handleChange, handleSubmit, handleSetValue, hadleChangeArray};
 }
 
 export default useForm;

@@ -59,5 +59,13 @@
     "logout.no": "No",
     "header.menu.myprofile": "Mis datos",
     "newEvent.title": "Nuevo Evento",
-    "newEvent.form.button": "Guardar"
+    "newEvent.form.button": "Guardar",
+    "newevent.formLabel.title": "Título",
+    "newevent.formLabel.description": "Descripción",
+    "newevent.formLabel.price": "Precio",
+    "newevent.formLabel.max_places": "Aforo",
+    "newevent.validate.title":"Hay algún error",
+    "newevent.validate.description": "Hay algún error",
+    "newevent.validate.price": "Hay algún error",
+    "newevent.validate.max_places": "Hay algún error"
 }

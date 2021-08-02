@@ -58,6 +58,14 @@
     "logout.no": "No",
     "header.menu.myprofile": "My profile",
     "newEvent.title": "New Event",
-    "newEvent.form.button": "Save"
+    "newEvent.form.button": "Save",
+    "newevent.formLabel.title": "Title",
+    "newevent.formLabel.description": "Description",
+    "newevent.formLabel.price": "Pricwe",
+    "newevent.formLabel.max_places": "Capacity",
+    "newevent.validate.title":"There is something wrong",
+    "newevent.validate.description": "There is something wrong",
+    "newevent.validate.price": "There is something wrong",
+    "newevent.validate.max_places": "There is something wrong"
 
 }

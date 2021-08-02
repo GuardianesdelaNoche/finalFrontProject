@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "../../layout";
 import { Accordion, Alert, Card, Button, Modal } from "react-bootstrap";
@@ -34,18 +34,19 @@ function EventsPage() {
   const events = useSelector(getEvents);
   // vars modify events results
   const totalEvents = useSelector(getEventsTotal);
-
+  
   const handleResetError = () => {
     dispatch(resetErrorAction());
   };
-
+  
   const location = useLocation();
-
+  
   const queryPath = new URLSearchParams(location.search);
   const pageQuery = queryPath.get("page") || 1;
   const limitQuery = queryPath.get("limit") || 10;
   const titleQuery = queryPath.get("title") || '';
-
+  
+ 
   console.log('queryPath',location.search);
 
   const intl = useIntl();
@@ -63,13 +64,18 @@ function EventsPage() {
 
   const dispatchAction = (req) => {
     console.log('dispatchAction', req)
-    let newReq = req;
-    if(!req.title && titleQuery){
+    let { title, ...newReq } = req;
+    if(title){
       newReq = {
-        ...req,
-        title: titleQuery
+        ...newReq,
+        title
       }
+      console.log('newReq', newReq)
     }
+    if(title === '' || !title) {
+      newReq = req
+    }
+    console.log('total dispatchAction', newReq)
     dispatch(paginationRedirect(newReq));
   }
 
@@ -77,13 +83,13 @@ function EventsPage() {
     if(titleQuery){
       console.log('hay titleQuery', titleQuery)
     }
-    // const path = `/events?page=${current}&limit=${limitQuery}`;
-    // dispatchAction(path);
     let reqParams = {
         page: current,
         limit: limitQuery
     };
     dispatchAction(reqParams);
+    // const path = `/events?page=${current}&limit=${limitQuery}`;
+    // dispatchAction(path);
     // dispatch(paginationRedirect(path));
   };
   const onClick = (val) => (ev) => {
@@ -92,13 +98,13 @@ function EventsPage() {
     }else{
       console.log('no hay titleQuery', titleQuery)
     }
-    // const path = `/events?page=1&limit=${val}`;
-    // dispatchAction(path);
     let reqParams = {
       page: 1,
       limit: val
     }
     dispatchAction(reqParams)
+    // const path = `/events?page=1&limit=${val}`;
+    // dispatchAction(path);
     // dispatch(paginationRedirect(path));
   };
 

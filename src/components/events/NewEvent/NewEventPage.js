@@ -38,7 +38,7 @@ function NewEventPage () {
         formData.append('title', newEventData.title);
         formData.append('description', newEventData.description);
         formData.append('price', newEventData.price);
-        formData.append('latitud', newEventData.latitud);
+        formData.append('latitude', newEventData.latitude);
         formData.append('longitude', newEventData.longitude);
         formData.append('address', newEventData.address);
         formData.append('city', newEventData.city);

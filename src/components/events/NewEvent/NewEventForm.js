@@ -33,13 +33,13 @@ function NewEventForm ({onSubmit}) {
 		duration:"",
 		photo:"",
 		indoor:false,
-		address:"",
-		city:"",
-		postal_code:"",
-		country:"",
+		address:"calle",
+		city:"madrid",
+		postal_code:"28001",
+		country:"españa",
 		tags:[],
 		date:"",
-		longitud: "-143.4838",
+		longitude: "-143.4838",
 		latitude: "-30.0519"
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});

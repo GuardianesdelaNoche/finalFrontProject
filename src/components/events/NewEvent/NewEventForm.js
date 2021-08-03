@@ -9,8 +9,11 @@ import { Form,ContentBottomCenter, ErrorMessage, Button } from '../../shared/ele
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import MultiSelectTags from '../../shared/MultiSelectTags';
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import File from '../../shared/File';
+import es from 'date-fns/locale/es';
+import { setDefaultLocale } from  "react-datepicker";
 
 
 //import '../LoginPage/login.css'
@@ -20,7 +23,8 @@ function NewEventForm ({onSubmit}) {
 		formValue: newEventData, 
 		handleChange,	
 		handleChangeFile,
-		hadleChangeArray
+		hadleChangeArray,
+		handleChangeDate
 	} = useForm({
         title:"",
 		description:"",
@@ -33,17 +37,20 @@ function NewEventForm ({onSubmit}) {
 		city:"",
 		postal_code:"",
 		country:"",
-		tags:[]
+		tags:[],
+		date:"",
+		longitud: "-143.4838",
+		latitude: "-30.0519"
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
 	
 	const intl = useIntl();
-
-
+	
+	setDefaultLocale('es');
+	
     const { title, description, price, max_places, duration, indoor, address, city, postal_code, country, tags } = newEventData;   
-
-
-
+	const [startDate, setStartDate] = useState(new Date());
+	
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {
 			return true;
@@ -67,6 +74,7 @@ function NewEventForm ({onSubmit}) {
 	const handleChangeFiles = e => {		
 		handleChangeFile(e);	  
 	}
+
 
 
 
@@ -100,6 +108,14 @@ function NewEventForm ({onSubmit}) {
     return (
 		<Form  className="form-signin" onSubmit={checkFormData}>
 			<div className="form-container">
+				<DatePicker
+					locale="es"	
+					name="date"
+					id="date"
+					selected={startDate} 
+					onChange={(date) => {setStartDate(date);handleChangeDate(date)}}		
+						
+				/>
 				<Input
 					type="text"
 					label= {intl.formatMessage({ id: 'newevent.formLabel.title'})}
@@ -149,6 +165,18 @@ function NewEventForm ({onSubmit}) {
 					value={max_places}
 					onChange={handleChange}
 					errorLegend={intl.formatMessage({ id: 'newevent.validate.max_places'})}
+					regularExpression={expressions.max_places}
+					required
+				/>
+				<Input
+					type="text"
+					label= {intl.formatMessage({ id: 'newevent.formLabel.duration'})}
+					name="duration"
+					id="duration"
+					placeholder="14"
+					value={duration}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'newevent.validate.duration'})}
 					regularExpression={expressions.max_places}
 					required
 				/>

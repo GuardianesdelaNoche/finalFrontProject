@@ -31,9 +31,15 @@ function useForm(initialState){
 		onSubmit(formValue);
 	}
 
+	const handleChangeDate = (date)=> {
+		setFormValue({
+			...formValue,
+			['date']: date
+		})
+	}
 
 
-	return { formValue, setFormValue, handleChange, handleSubmit, handleSetValue, hadleChangeArray, handleChangeFile};
+	return { formValue, setFormValue, handleChange, handleSubmit, handleSetValue, hadleChangeArray, handleChangeFile, handleChangeDate};
 }
 
 export default useForm;

@@ -22,7 +22,8 @@ function NewEventPage () {
         try {
             dispatch(setLoadingAction());
             dispatch(resetErrorAction());
-            await setNewEvent(newEventData);
+            const formData=getFormData(newEventData);
+            await setNewEvent(formData);
             setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));
@@ -30,6 +31,26 @@ function NewEventPage () {
         {
             dispatch(resetLoadingAction());
         }
+    }
+
+    const getFormData = (newEventData) => {
+        let formData = new FormData();
+        formData.append('title', newEventData.title);
+        formData.append('description', newEventData.description);
+        formData.append('price', newEventData.price);
+        formData.append('latitud', newEventData.latitud);
+        formData.append('longitude', newEventData.longitude);
+        formData.append('address', newEventData.address);
+        formData.append('city', newEventData.city);
+        formData.append('country', newEventData.country);
+        formData.append('postal_code', newEventData.postal_code);
+        formData.append('max_places', newEventData.max_places);
+        formData.append('indoor', newEventData.indoor);
+        formData.append('duration', newEventData.duration);
+        formData.append('tags', newEventData.tags);
+        formData.append('date', newEventData.date);
+        if(newEventData.photo !== "") formData.append('photo', newEventData.photo);
+        return formData;
     }
 
     const handleResetError = ()=>{

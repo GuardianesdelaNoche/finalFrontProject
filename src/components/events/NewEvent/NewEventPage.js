@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
-import { setRegister } from '../../../api/register';
+import { setNewEvent } from '../../../api/events';
 import { getUi } from '../../../store/selectors/ui'; 
 import { Link } from 'react-router-dom';
 import { Alert, Spinner} from 'react-bootstrap';
@@ -18,11 +18,11 @@ function NewEventPage () {
     const { loading, error } = useSelector(getUi);
     const [ dataSaved, setDataSaved] = React.useState(false);
     const intl = useIntl();  
-    const handleSubmit = async (registerData)=>{
+    const handleSubmit = async (newEventData)=>{
         try {
             dispatch(setLoadingAction());
             dispatch(resetErrorAction());
-          //  await setRegister(registerData);
+            await setNewEvent(newEventData);
             setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));

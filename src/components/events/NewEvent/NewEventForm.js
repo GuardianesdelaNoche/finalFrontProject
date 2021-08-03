@@ -17,7 +17,7 @@ import File from '../../shared/File';
 
 function NewEventForm ({onSubmit}) {
     const {
-		formValue: eventData, 
+		formValue: newEventData, 
 		handleChange,	
 		handleChangeFile,
 		hadleChangeArray
@@ -40,7 +40,7 @@ function NewEventForm ({onSubmit}) {
 	const intl = useIntl();
 
 
-    const { title, description, price, max_places, duration, photo, indoor, address, city, postal_code, country, tags } = eventData;   
+    const { title, description, price, max_places, duration, indoor, address, city, postal_code, country, tags } = newEventData;   
 
 
 
@@ -76,7 +76,7 @@ function NewEventForm ({onSubmit}) {
 		&& isValidValue(expressions.description, description) 
 			) {
 			try {
-				//onSubmit(registerData);	
+				onSubmit(newEventData);	
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {
 				changeIsFormValid({...isFormValid, status:false});
@@ -90,10 +90,10 @@ function NewEventForm ({onSubmit}) {
 	}
 
 	const expressions = {
-		title: /^[a-zA-Z0-9_-]{1,48}$/,
+		title: /^[a-zA-Z0-9_-\s]{1,48}$/,
 		description: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
-		price:/^[0-9,]$/,
-		max_places: /^[0-9,]$/,
+		price:/^[0-9]{1,255}$/,
+		max_places: /^[0-9]{1,255}$/,
 		
 	}
 
@@ -110,6 +110,7 @@ function NewEventForm ({onSubmit}) {
 					onChange={handleChange}
 					errorLegend={intl.formatMessage({ id: 'newevent.validate.title'})}
 					regularExpression={expressions.title}
+					max-length="5"
 					required
 				/>
      
@@ -145,7 +146,7 @@ function NewEventForm ({onSubmit}) {
 					name="max_places"
 					id="max_places"
 					placeholder="14"
-					value={description}
+					value={max_places}
 					onChange={handleChange}
 					errorLegend={intl.formatMessage({ id: 'newevent.validate.max_places'})}
 					regularExpression={expressions.max_places}

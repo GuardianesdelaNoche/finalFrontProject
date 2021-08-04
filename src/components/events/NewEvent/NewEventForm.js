@@ -4,19 +4,18 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SelectIndoor from '../../shared/SelectIndoor';
 
-import { Form,ContentBottomCenter, ErrorMessage, Button } from '../../shared/elements/formElements';
+import { Form,ContentBottomCenter, ErrorMessage, Button, DatePickerF, Label } from '../../shared/elements/formElements';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import MultiSelectTags from '../../shared/MultiSelectTags';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import File from '../../shared/File';
-import es from 'date-fns/locale/es';
 import { setDefaultLocale } from  "react-datepicker";
 
 
-//import '../LoginPage/login.css'
+import './newEvent.css'
 
 function NewEventForm ({onSubmit}) {
     const {
@@ -24,7 +23,8 @@ function NewEventForm ({onSubmit}) {
 		handleChange,	
 		handleChangeFile,
 		hadleChangeArray,
-		handleChangeDate
+		handleChangeDate,
+		handleChangeIndoor
 	} = useForm({
         title:"",
 		description:"",
@@ -33,10 +33,10 @@ function NewEventForm ({onSubmit}) {
 		duration:"",
 		photo:"",
 		indoor:false,
-		address:"calle",
-		city:"madrid",
-		postal_code:"28001",
-		country:"españa",
+		address:"",
+		city:"",
+		postal_code:"",
+		country:"",
 		tags:[],
 		date:"",
 		longitude: "-143.4838",
@@ -48,7 +48,7 @@ function NewEventForm ({onSubmit}) {
 	
 	setDefaultLocale('es');
 	
-    const { title, description, price, max_places, duration, indoor, address, city, postal_code, country, tags } = newEventData;   
+    const { title, description, price, max_places, duration, address, city, postal_code, country } = newEventData;   
 	const [startDate, setStartDate] = useState(new Date());
 	
 	const isValidValue = (expression, value) =>{
@@ -76,6 +76,10 @@ function NewEventForm ({onSubmit}) {
 	}
 
 
+	const handleChangeIndoorA = dataIndoor => {
+		console.log(dataIndoor);
+		handleChangeIndoor(dataIndoor.value);
+	} 
 
 
 	const checkFormData = (e) => {
@@ -102,13 +106,20 @@ function NewEventForm ({onSubmit}) {
 		description: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
 		price:/^[0-9]{1,255}$/,
 		max_places: /^[0-9]{1,255}$/,
+		city: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
+		address: /^[a-zA-ZÀ-ÿ0-9\s,]{1,255}$/,
+		postal_code:/^[0-9]{1,255}$/,
+		country: /^[a-zA-ZÀ-ÿ0-9\s,]{1,255}$/,
 		
 	}
 
     return (
 		<Form  className="form-signin" onSubmit={checkFormData}>
 			<div className="form-container">
-				<DatePicker
+			<Label htmlFor='date' >
+				{intl.formatMessage({ id: 'newevent.formLabel.date'})}		
+			</Label>       
+				<DatePickerF
 					locale="es"	
 					name="date"
 					id="date"
@@ -188,6 +199,10 @@ function NewEventForm ({onSubmit}) {
 					required
 				/>
 
+				<Label htmlFor='photo' >
+					{intl.formatMessage({ id: 'newevent.formLabel.photo'})}		
+				</Label>      
+
 				<File 
 					name="photo" 
 					id="photo"
@@ -195,6 +210,66 @@ function NewEventForm ({onSubmit}) {
 					onFileSelectError={handleError}
 				/>
 
+				<Input
+					type="text"
+					label= {intl.formatMessage({ id: 'newevent.formLabel.address'})}
+					name="address"
+					id="address"
+					placeholder="address"
+					value={address}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'newevent.validate.address'})}
+					regularExpression={expressions.address}					
+					
+				/>
+
+				<Input
+					type="text"
+					label= {intl.formatMessage({ id: 'newevent.formLabel.city'})}
+					name="city"
+					id="city"
+					placeholder="city"
+					value={city}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'newevent.validate.city'})}
+					regularExpression={expressions.address}					
+					
+				/>
+
+				<Input
+					type="text"
+					label= {intl.formatMessage({ id: 'newevent.formLabel.postal-code'})}
+					name="postal_code"
+					id="postal_code"
+					placeholder="postal_code"
+					value={postal_code}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'newevent.validate.postal-code'})}
+					regularExpression={expressions.postal_code}					
+					
+				/>
+
+				<Input
+					type="text"
+					label= {intl.formatMessage({ id: 'newevent.formLabel.country'})}
+					name="country"
+					id="country"
+					placeholder="country"
+					value={country}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'newevent.validate.country'})}
+					regularExpression={expressions.country}					
+					
+				/>
+
+				<Label htmlFor='indoor' >
+					{intl.formatMessage({ id: 'newevent.formLabel.indoor'})}		
+				</Label> 
+				<SelectIndoor 
+					id="indoor"
+					name="indoor"
+					onChange={handleChangeIndoorA}				
+				/>
 			{isFormValid.status === false && <ErrorMessage>
 				<p>
 					<FontAwesomeIcon icon={faExclamationTriangle}/>

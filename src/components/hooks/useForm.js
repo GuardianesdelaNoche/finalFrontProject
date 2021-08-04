@@ -38,8 +38,14 @@ function useForm(initialState){
 		})
 	}
 
+	const handleChangeIndoor = (value)=> {
+		setFormValue({
+			...formValue,
+			['indoor']: value
+		})
+	}
 
-	return { formValue, setFormValue, handleChange, handleSubmit, handleSetValue, hadleChangeArray, handleChangeFile, handleChangeDate};
+	return { formValue, setFormValue, handleChange, handleSubmit, handleSetValue, hadleChangeArray, handleChangeFile, handleChangeDate, handleChangeIndoor};
 }
 
 export default useForm;

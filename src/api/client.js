@@ -1,11 +1,14 @@
 import axios from 'axios';
 
-// const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
-const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL_LOCAL }); //add in .env for testing
+const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
+// const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL_LOCAL }); //add in .env for testing
 
 
 const setAuthorizationHeader = token => {
+  if(typeof token === 'string' || token instanceof String) {
     client.defaults.headers.common['x-access-token'] = token;
+    return;
+  }
 };
 
 const removeAuthorizationHeader = () => {

@@ -19,6 +19,8 @@ export const eventsLoadedError = error => ({
 
 export const eventsLoadAction = (page, limit, title) => {
     return async function (dispatch, getState, { api }) {
+    console.log("eventsLoadAction", page, limit, title);
+
       dispatch(eventsLoadedRequest());
           try{
             const events = await api.events.getEventsPage(page, limit, title);

@@ -3,6 +3,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { getTags } from '../../api/tags';
 import pT from 'prop-types';
+import { Label } from './elements/formElements';
 
 
 const MultiSelectTags = ({onChange, label, isRequired}) => {
@@ -38,7 +39,10 @@ const MultiSelectTags = ({onChange, label, isRequired}) => {
 
     return (
         <label className="formField-label">
-        <span>{label}</span>
+     
+		<Label>
+			{label}		
+		</Label>
         <Select 
             closeMenuOnSelect={false}
             components = {animatedComponents}

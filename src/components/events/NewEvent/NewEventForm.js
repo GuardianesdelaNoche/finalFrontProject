@@ -11,9 +11,9 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import MultiSelectTags from '../../shared/MultiSelectTags';
 import "react-datepicker/dist/react-datepicker.css";
-import File from '../../shared/File';
-import { setDefaultLocale } from  "react-datepicker";
 
+import File from '../../shared/File';
+import es from 'date-fns/locale/es';
 
 import './newEvent.css'
 
@@ -38,16 +38,14 @@ function NewEventForm ({onSubmit}) {
 		postal_code:"",
 		country:"",
 		tags:[],
-		date:"",
+		date:new Date(),
 		longitude: "-143.4838",
 		latitude: "-30.0519"
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
 	
 	const intl = useIntl();
-	
-	setDefaultLocale('es');
-	
+
     const { title, description, price, max_places, duration, address, city, postal_code, country } = newEventData;   
 	const [startDate, setStartDate] = useState(new Date());
 	
@@ -120,7 +118,8 @@ function NewEventForm ({onSubmit}) {
 				{intl.formatMessage({ id: 'newevent.formLabel.date'})}		
 			</Label>       
 				<DatePickerF
-					locale="es"	
+					locale={es}	
+					dateFormat="P"
 					name="date"
 					id="date"
 					selected={startDate} 
@@ -191,24 +190,9 @@ function NewEventForm ({onSubmit}) {
 					regularExpression={expressions.max_places}
 					required
 				/>
-				<MultiSelectTags 
-					onChange={handleChangeMultiSelect}
-					name="tags"
-					id="tags"					
-					label =  {intl.formatMessage({ id: 'newevent.formLabel.tags'})}
-					required
-				/>
+			
 
-				<Label htmlFor='photo' >
-					{intl.formatMessage({ id: 'newevent.formLabel.photo'})}		
-				</Label>      
-
-				<File 
-					name="photo" 
-					id="photo"
-					onFileSelectSuccess={handleChangeFiles} 
-					onFileSelectError={handleError}
-				/>
+			
 
 				<Input
 					type="text"
@@ -262,6 +246,17 @@ function NewEventForm ({onSubmit}) {
 					
 				/>
 
+				<Label htmlFor='photo' >
+					{intl.formatMessage({ id: 'newevent.formLabel.photo'})}		
+				</Label>      
+
+				<File 
+					name="photo" 
+					id="photo"
+					onFileSelectSuccess={handleChangeFiles} 
+					onFileSelectError={handleError}
+				/>
+
 				<Label htmlFor='indoor' >
 					{intl.formatMessage({ id: 'newevent.formLabel.indoor'})}		
 				</Label> 
@@ -269,7 +264,16 @@ function NewEventForm ({onSubmit}) {
 					id="indoor"
 					name="indoor"
 					onChange={handleChangeIndoorA}				
+					required
 				/>
+				<MultiSelectTags 
+					onChange={handleChangeMultiSelect}
+					name="tags"
+					id="tags"					
+					label =  {intl.formatMessage({ id: 'newevent.formLabel.tags'})}
+					required
+				/>
+
 			{isFormValid.status === false && <ErrorMessage>
 				<p>
 					<FontAwesomeIcon icon={faExclamationTriangle}/>

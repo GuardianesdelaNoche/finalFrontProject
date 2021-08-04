@@ -75,6 +75,11 @@
     "newevent.validate.title":"There is something wrong",
     "newevent.validate.description": "There is something wrong",
     "newevent.validate.price": "There is something wrong",
-    "newevent.validate.max_places": "There is something wrong"
+    "newevent.validate.max_places": "There is something wrong",
+    "newevent.validate.duration": "There is something wrong",
+    "newevent.validate.address": "There is something wrong",
+    "newevent.validate.country": "There is something wrong",
+    "newevent.validate.postal-code": "There is something wrong",
+    "newevent.validate.citiy": "There is something wrong"
 
 }

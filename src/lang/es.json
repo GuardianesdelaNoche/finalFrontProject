@@ -76,5 +76,10 @@
     "newevent.validate.title":"Hay algún error",
     "newevent.validate.description": "Hay algún error",
     "newevent.validate.price": "Hay algún error",
-    "newevent.validate.max_places": "Hay algún error"
+    "newevent.validate.max_places": "Hay algún error",
+    "newevent.validate.duration": "Hay algún error",
+    "newevent.validate.address": "Hay algún error",
+    "newevent.validate.country": "Hay algún error",
+    "newevent.validate.postal-code": "Hay algún error",
+    "newevent.validate.city": "Hay algún error"
 }

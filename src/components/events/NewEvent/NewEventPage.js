@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { setNewEvent } from '../../../api/events';
 import { getUi } from '../../../store/selectors/ui'; 
-import { Link } from 'react-router-dom';
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import NewEventForm from './NewEventForm';

@@ -73,6 +73,8 @@ const ErrorLegend = styled.p`
     `} 
 `;
 
+
+
 const DatePickerF = styled(DatePicker)`
     width: 100%;
     background: #fff;    
@@ -84,6 +86,10 @@ const DatePickerF = styled(DatePicker)`
     background:#F5F8FA;
     border-radius:5px;
     margin-bottom:10px;
+    &:focus {
+        outline:none;       
+        border: 2px solid ${colors.focus}; 
+    }
 `
 
 
@@ -179,5 +185,6 @@ export {Form,
         Button,
         ErrorMessage,
         SuccessMessage,
-        DatePickerF 
+        DatePickerF,
+         
 };

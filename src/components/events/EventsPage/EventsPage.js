@@ -67,6 +67,7 @@ const getNewReq = (queryPath, key, value) => {
     case "limit":
       paramsQuery = {
         ...paramsQuery,
+        page: 1,
         limit: value,
       };
       break;
@@ -74,6 +75,7 @@ const getNewReq = (queryPath, key, value) => {
     case "title":
       paramsQuery = {
         ...paramsQuery,
+        page: 1,
         title: value,
       };
       break;

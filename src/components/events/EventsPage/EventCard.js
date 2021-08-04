@@ -93,7 +93,7 @@ function EventCard(event) {
                 <span>
                   <i className="fas fa-users mw-75 me-2"></i>
 
-                  {event.max_places - event._id_assistants.length}
+                  {event.assistants_count}
                   <FormattedMessage
                     id="eventCard.availableSeats"
                     defaultMessage="Seats"

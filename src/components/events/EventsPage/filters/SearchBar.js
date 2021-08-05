@@ -17,8 +17,11 @@ export const SearchBar = ({
 
   const [inputText, setInputText] = useState(text);
 
-  const handleClearButton = () => {
+  const handleClearButton = (event) => {
     setInputText('');
+    if(onClearButton && typeof onClearButton === 'function'){
+      onClearButton(event, '');
+    }
   };
 
   const handleChange = (event) => {
@@ -41,12 +44,12 @@ export const SearchBar = ({
         />
         <div className="d-flex flex-row justify-content-evenly">
           <div className="rounded-circle align-self-end">
-            <Button
+            {(inputText.trim() !== '') && <Button
               className="bg-light rounded-circle pl-2 pr-2 pt-1 pb-1 m-1 border-0"
               onClick={onClearButton || handleClearButton}
             >
               <VscChromeClose className="text-primary" />
-            </Button>
+            </Button>}
           </div>
           <div className="rounded-circle align-self-end">
             <Button
@@ -54,6 +57,7 @@ export const SearchBar = ({
               // onClick={handleSearch}
               id="searchButton"
               type="submit"
+              disabled={inputText.trim() === ''}
             >
               <BsSearch className="text-primary" />
             </Button>{" "}

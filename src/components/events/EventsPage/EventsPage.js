@@ -249,6 +249,7 @@ function EventsPage() {
                     <SearchBar
                       text={titleQuery}
                       onClickSearch={onClickSearch}
+                      onClearButton={onClickSearch}
                     />
                   </div>
                 </div>

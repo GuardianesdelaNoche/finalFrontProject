@@ -32,3 +32,9 @@ export const getEventsPage = (currentPage, limit) => {
   return client.get(`${request}`).then(eve => eve);
   // return client.get(`${eventsPath}`).then(eve => eve);
 };
+
+export const setNewEvent = (newEventData) => {
+  //configureClient(token);
+  const url = `${eventsPath}`;
+    return client.post(url, newEventData);
+}

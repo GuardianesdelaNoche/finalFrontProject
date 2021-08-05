@@ -83,7 +83,7 @@ const getNewReq = (queryPath, key, value) => {
     default:
       break;
   }
-  
+
   return paramsQuery;
 };
 
@@ -107,9 +107,9 @@ function EventsPage() {
 
   console.log("location.search", location.search);
   console.log("queryPath", queryPath.getAll);
-  console.log('pageQuery', pageQuery)
-  console.log('limitQuery', limitQuery)
-  console.log('titleQuery', titleQuery)
+  console.log("pageQuery", pageQuery);
+  console.log("limitQuery", limitQuery);
+  console.log("titleQuery", titleQuery);
 
   const intl = useIntl();
 
@@ -143,14 +143,12 @@ function EventsPage() {
     //     ...newReq
     //   };
     //   console.log('title fill')
-
     // }else if(titleQuery){
     //   newReq = {
     //     ...newReq,
     //     title: titleQuery
     //   }
     //   console.log('titlequery')
-
     // }
     // console.log("dispatchAction out", newReq);
     // dispatch(paginationRedirect(newReq));
@@ -165,13 +163,12 @@ function EventsPage() {
 
     const reqParams = getNewReq(queryPath, "page", current);
     console.log("events page onclick page", reqParams);
-    
+
     // dispatchAction(reqParams);
     // const path = `/events?page=${current}&limit=${limitQuery}`;
     // dispatchAction(path);
     // dispatch(paginationRedirect(path));
     dispatch(paginationRedirect(reqParams));
-
   };
   const onClick = (val) => (ev) => {
     // let reqParams = {
@@ -207,7 +204,6 @@ function EventsPage() {
     // dispatchAction(reqParams);
 
     dispatch(paginationRedirect(reqParams));
-
   };
 
   const onClickSearch = (event, text) => {
@@ -228,6 +224,13 @@ function EventsPage() {
 
   const lang = intl.locale.slice(0, 2);
 
+  console.log("error", error);
+  if(error){
+    const {message, statusCode } = error;
+    console.log(typeof message)
+    console.log(typeof statusCode)
+  }
+
   return (
     <div>
       <Layout>
@@ -235,9 +238,11 @@ function EventsPage() {
         {error && (
           <Alert onClick={handleResetError} variant="danger">
             <p className="mb-0">{error.message}</p>
+            <p className="mb-0">{error.statusCode}</p>
           </Alert>
         )}
-        {!loading && !error && events.length > 0 && (
+        {!loading && !error && (
+          // && events.length > 0
           <div className="container">
             <div className="row pt-3">
               <div className="col-md-3 d-none d-md-block">
@@ -300,7 +305,19 @@ function EventsPage() {
                   </div>
                 </div>
                 <div className="row">
-                  <EventsCardsList events={events}></EventsCardsList>
+                  {!loading && !error && events.length > 0 && (
+                    <EventsCardsList events={events}></EventsCardsList>
+                  )}
+                  {!loading && error && (error.statusCode === 500) && (
+                    <EventsCardsEmptyList
+                      eventsCount={0}
+                    ></EventsCardsEmptyList>
+                  )}
+                  {!loading && !error && events.length === 0 && (
+                      <EventsCardsEmptyList
+                        eventsCount={0}
+                      ></EventsCardsEmptyList>
+                  )}
                 </div>
               </div>
             </div>
@@ -318,11 +335,11 @@ function EventsPage() {
             </div>
           </div>
         )}
-        {!loading && !error && events.length === 0 && (
+        {/* {!loading && !error && events.length === 0 && (
           <div className="container">
             <EventsCardsEmptyList eventsCount={0}></EventsCardsEmptyList>
           </div>
-        )}
+        )} */}
       </Layout>
     </div>
   );

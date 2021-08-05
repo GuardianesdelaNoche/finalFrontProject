@@ -20,9 +20,10 @@ function EventCard(event) {
   // const state = useSelector(getIsEventFav(event._id));
   const isLogged = useSelector(getIsLogged);
 
-
+ 
   const handleAddEventFavs = () => {
     // console.log("add/remove fav -> redux & api");
+   
   };
 
   return (
@@ -67,13 +68,14 @@ function EventCard(event) {
                 </Button>
               )}
             </OverlayTrigger>
-            <Link key={event._id} to={`/event/${event._id}`}>
+            <Link key={event._id} to={`/event/${event._id}/${event.title.replace(/\s+/g, '-')}`}>
+
               <Card.Img variant="top"  className="home" src={event.photo} />
             </Link>
           </span>
         </div>
       </div>
-      <Link key={event._id} to={`/event/${event._id}`}>
+      <Link key={event._id} to={`/event/${event._id}/${event.title.replace(/\s+/g, '-')}`}>
         <Card.Body className="card">
           <Card.Title className="text-dark">{event.title}</Card.Title>
        
@@ -92,8 +94,7 @@ function EventCard(event) {
               <div className="col d-flex">
                 <span>
                   <i className="fas fa-users mw-75 me-2"></i>
-
-                  {event.assistants_count}
+                 {/*  {event.max_places - event._id_assistants.length} */}
                   <FormattedMessage
                     id="eventCard.availableSeats"
                     defaultMessage="Seats"

@@ -2,21 +2,42 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-
 import { FormattedMessage } from 'react-intl';
 import { ConfirmationButton } from '../../shared';
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useIntl } from 'react-intl';
 
 
 var moment = require("moment");
 
-function EventDetails({description, photo, title, price, date, duration, indoor, tags, max_places }) {
-	
+function EventDetails({ description,_id,
+	photo, 
+	title, 
+	date, 
+	duration, 
+	indoor, 
+	tags, 
+	created_date,
+	isOwner, 
+	isFavorite, 
+	assistants_count, 
+	detailOwn,
+	address, 
+	city, 
+	location,  
+	onDelete
+	})
+	 {
+		const intl = useIntl();
+		console.log(address, 'La direccion')
+		console.log(detailOwn, 'detalle')
+
 		return (
 		<div>
 				<div className="container details pt-14">
-					<div className="card card-flush pt-12">
+					<div className="card card-flush pt-12" key={_id} >
 						<div className="card-header">
-							{/* OwnerAvatar */}
+							{/* TODO: Add OwnerAvatar img */}
 							<div className="symbol symbol-45px me-4">
 								<span className="symbol-label bg-light align-items-end">
 									<img alt="Autor" src="https://preview.keenthemes.com/start-html-free/assets/media/svg/avatars/047-girl-25.svg" className="mh-40px" />
@@ -25,39 +46,42 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">Ruby Liam</a>
-								<span className="text-description d-block mt-1">Nickname Users</span>
-							</div>
-
-
-							{/* Si no soy el usuario */}
-							<div className="card-toolbar">
-								<span className="tab-panel me-2">
-									<FormattedMessage
-										id="details.event.edit"
-										defaultMessage="Edit"
-									/>
+								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{/* TODO Add username Own  */}</a>
+								<span className="text-description d-block mt-1">
+									{moment(new Date(created_date)).format("DD-MM-YYYY")}
 								</span>
-								<span className="tab-panel">
-									<FormattedMessage
-										id="details.event.remove"
-										defaultMessage="Remove"
-									/>
-									</span>
 							</div>
 
-							{/*  Si soy el propietario 
-							 <div className="card-toolbar">
-									<ConfirmationButton className="me-2"
-									onConfirm={onDelete} 
-									>Editar</ConfirmationButton>
-								
+							
+							{isOwner ? 
+								(<div className="card-toolbar">
+									{/* Botón con color */}
 									<ConfirmationButton 
-									onConfirm={onDelete} 
-									>Eliminar</ConfirmationButton>
+										title={intl.formatMessage({ id: 'popups.remove.title' })}
+										confirmation={intl.formatMessage({ id: 'popups.remove.mesage' })}
+										onConfirm={onDelete}
+									>
+										<FormattedMessage
+											id="details.event.remove"
+											defaultMessage="Remove"
+										/>
+									</ConfirmationButton>
+								</div>)
+								: 
+								(<div className="card-toolbar">
+									
+									<span className="tab-panel">
+										<FormattedMessage
+											id="details.event.remove"
+											defaultMessage="Remove"
+										/>
+									</span>
+								</div>)
+ 							}
 
-							</div>  */}
-
+							 {/* TODO: Add if is assitant create info: Asistirás a este evento
+							 si no es Assistan mostrar botón reservar plaza */
+							 }
 
 						</div>
 						<div className="card-body">
@@ -89,30 +113,22 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 									<div className="col-sm-auto d-flex">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
-												<i className="fas fa-coins mw-75"></i>
+												<i className="fas fa-map-marker-alt"></i>
 											</span>
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Precio</span>
-											<div className="fs-7 text-muted mt-1">{price} 
-												<FormattedMessage
-													id="details.event.currency"
-													defaultMessage="$"
-												/>
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
+												 <FormattedMessage
+													id="details.event.location.name"
+													defaultMessage="Location"
+												/> 
+											</span>
+											<div className="fs-7 text-muted mt-1">
+												{address}
+												<p>{city}</p>
+											
 											</div>
-										</div>
-									</div>
-									<div className="col-sm-2 d-flex">
-										<div className="symbol symbol-45px me-2">
-											<span className="symbol-label bg-light align-items-center">
-												<i className="fas fa-users mw-75"></i>
-											</span>
-										</div>
-
-										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Plazas</span>
-											<div className="fs-7 text-muted  mt-1">{max_places}</div>
 										</div>
 									</div>
 
@@ -124,7 +140,12 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Fecha</span>
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
+												<FormattedMessage
+													id="details.event.date"
+													defaultMessage="Date"
+												/>
+											</span>
 											<div className="fs-7 text-muted mt-1">{moment(new Date(date)).format("DD-MM-YYYY")}</div>
 										</div>
 									</div>
@@ -136,7 +157,12 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Duración</span>
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
+												<FormattedMessage
+													id="details.event.duration"
+													defaultMessage="Duration"
+												/>
+											</span>
 											<div className="fs-7 text-muted  mt-1">{duration} H</div>
 										</div>
 									</div>
@@ -148,10 +174,15 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 										</div>
 
 										<div className="me-5">
-											<span href="#" className="fs-6 text-gray-800 text-hover-primary fw-bolder">Espacio</span>
+											<span  className="fs-6 text-gray-800 text-hover-primary fw-bolder">
+												<FormattedMessage
+													id="details.event.space"
+													defaultMessage="Space"
+												/>
+											</span>
 											<div className="fs-7 text-muted  mt-1">
 												{ indoor ? (
-													
+
 													<FormattedMessage
 														id="details.event.indoor"
 														defaultMessage="Indoor"
@@ -173,21 +204,50 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 							<div className="d-flex ">
 								<div className="col d-flex flex-grow-1 my-lg-0 my-2 pe-3 pt-4">
 									<div className="symbol tags me-2">
-										<span className="bg-light-primary">
-											{tags.map((tag) => `#${tag}`)}
+										<span className="bg-light-primary" >
+											{/* TODO Add key to tags */}
+											{/* {tags.map((tag) => `#${tag}`)} */}
 										</span>
 									</div>
 									
 								</div>
-								<div className="col"></div>
+								<div className="col d-flex">
+								
+									
+								</div>
 								<div className="col d-flex icons-footer my-lg-0 my-2 pe-3 pt-4">
-									<span className="btn btn-icon btn-sm btn-active-color-primary">
-
-										<i className="fas fa-map-marker-alt fs-6"></i>
+									<p className="mt-1 text-description mr-1">
+										{/* TODO Add traslate */}
+										Update:   
+									</p>
+									<span className="text-danger mt-1 mr-2">
+										Quedan {assistants_count} Plazas!
 									</span>
+									
+				
 
-									<span className="btn btn-icon btn-sm btn-active-color-primary">
-										<i className="fas fa-heart"></i>
+										{['top'].map((placement) => (
+											<OverlayTrigger
+												key={placement}
+												placement={placement}
+												overlay={
+													<Tooltip id={`tooltip-${placement}`}>
+													{/* TODO Add key to tags */}
+													{/* 	{location.coordinates.map((cord) =><div>{`${cord}`}</div>)} */}
+													</Tooltip>
+												}
+											>
+												<span className="btn btn-icon">
+												<i className="fas fa-map-marker-alt fs-6"></i>
+												</span>
+											</OverlayTrigger>
+										))}
+
+
+								
+
+									<span className="btn btn-icon">
+										{isFavorite === true ? <i className="fas fa-heart favorite"></i> : <i className="fas fa-heart no-favorite"></i>  }
 									</span>
 
 								</div>
@@ -205,8 +265,8 @@ function EventDetails({description, photo, title, price, date, duration, indoor,
 
 EventDetails.propTypes = {
 	title: PropTypes.string.isRequired,
-	price: PropTypes.bool.isRequired,
-	date: PropTypes.number.isRequired,
+	price: PropTypes.number.isRequired,
+	date: PropTypes.string.isRequired,
 	duration: PropTypes.number.isRequired,
 	description: PropTypes.string.isRequired,
 	max_places: PropTypes.number,

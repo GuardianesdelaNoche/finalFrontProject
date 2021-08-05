@@ -1,6 +1,5 @@
 import client from "./client";
 import { configureClient } from './client';
-
 const eventsPath = "/api/v1/events";
 
 
@@ -14,6 +13,18 @@ const mapEvent = ({ photo, ...event }) => {
 
 export const getEvents = (eventId) => {
   return client.get(`${eventsPath}/${eventId}`).then(mapEvent);
+};
+
+
+export const getEventsDetails = (eventId, token) => {
+  configureClient(token);
+  return client.get(`${eventsPath}/event/${eventId}`).then(mapEvent);
+};
+
+
+
+export const deleteEvent = eventId => {
+  return client.delete(`${eventsPath}/${eventId}`);
 };
 
 export const getEventsPage = (currentPage, limit) => {

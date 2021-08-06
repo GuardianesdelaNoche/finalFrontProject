@@ -225,11 +225,6 @@ function EventsPage() {
   const lang = intl.locale.slice(0, 2);
 
   console.log("error", error);
-  if(error){
-    const {message, statusCode } = error;
-    console.log(typeof message)
-    console.log(typeof statusCode)
-  }
 
   return (
     <div>
@@ -238,7 +233,6 @@ function EventsPage() {
         {error && (
           <Alert onClick={handleResetError} variant="danger">
             <p className="mb-0">{error.message}</p>
-            <p className="mb-0">{error.statusCode}</p>
           </Alert>
         )}
         {!loading && !error && (
@@ -307,11 +301,6 @@ function EventsPage() {
                 <div className="row">
                   {!loading && !error && events.length > 0 && (
                     <EventsCardsList events={events}></EventsCardsList>
-                  )}
-                  {!loading && error && (error.statusCode === 500) && (
-                    <EventsCardsEmptyList
-                      eventsCount={0}
-                    ></EventsCardsEmptyList>
                   )}
                   {!loading && !error && events.length === 0 && (
                       <EventsCardsEmptyList

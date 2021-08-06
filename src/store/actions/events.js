@@ -27,16 +27,16 @@ export const eventsLoadAction = (page, limit, title) => {
             dispatch(eventsLoadedSuccess(events));
             // set new total 
           }catch(error) {
-            console.log('error en events load action', error)
-            if(error.message.includes('total[0]')){
-              const customEvents = {
-                events: [],
-                total: 0
-              }
-              dispatch(eventsLoadedSuccess(customEvents));
-            }else{
+            // console.log('error en events load action', error)
+            // if(error.message.includes('total[0]')){
+            //   const customEvents = {
+            //     events: [],
+            //     total: 0
+            //   }
+            //   dispatch(eventsLoadedSuccess(customEvents));
+            // }else{
               dispatch(eventsLoadedError(error));
-            }
+            // }
           }
   }
 };

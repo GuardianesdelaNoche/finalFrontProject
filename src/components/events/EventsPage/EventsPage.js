@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "../../layout";
-import { Accordion, Alert, Card, Button, Modal } from "react-bootstrap";
+import { Alert, Button, Modal } from "react-bootstrap";
 import Spinner from "../../shared/Spinner";
 import EventsCardsList from "./EventsCardsList";
 import EventsCardsEmptyList from "./EventsCardsEmptyList";
@@ -17,7 +17,7 @@ import "./EventsPage.css";
 import { getEventsTotal } from "../../../store/selectors/events";
 
 import { paginationRedirect } from "../../../store/actions/pagination";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { FiltersForm } from "./filters/FiltersForm";
 import { Sorter } from "./filters/Sorter";
@@ -25,7 +25,7 @@ import { SearchBar } from "./filters/SearchBar";
 
 import { intl_es, intl_en } from "../../shared/paginator/es_en.js";
 import { useIntl } from "react-intl";
-import { RiEyeCloseFill } from "react-icons/ri";
+
 
 const lang_es = "es";
 
@@ -105,126 +105,31 @@ function EventsPage() {
   const limitQuery = queryPath.get("limit") || 10;
   const titleQuery = queryPath.get("title") || "";
 
-  console.log("location.search", location.search);
-  console.log("queryPath", queryPath.getAll);
-  console.log("pageQuery", pageQuery);
-  console.log("limitQuery", limitQuery);
-  console.log("titleQuery", titleQuery);
-
   const intl = useIntl();
 
   React.useEffect(() => {
-    console.log("useEffect");
     dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery));
   }, [dispatch, pageQuery, limitQuery, titleQuery]);
 
-  // const dispatchAction = (path) => {
-  //   console.log('dispatchAction', path)
-  //   dispatch(paginationRedirect(path));
-  // }
-
-  const dispatchAction = (req) => {
-    // console.log('dispatchAction in', req)
-    // let { title, ...newReq } = req;
-    // //case modify page or limit
-    // if(title !== ''){
-    //   newReq = {
-    //     ...newReq,
-    //     title
-    //   }
-    //   console.log('title empty')
-    // }else if(title !== '' && titleQuery){
-    //   newReq = {
-    //     ...newReq,
-    //     title: titleQuery
-    //   }
-    // }else if(title === ''){
-    //   newReq = {
-    //     ...newReq
-    //   };
-    //   console.log('title fill')
-    // }else if(titleQuery){
-    //   newReq = {
-    //     ...newReq,
-    //     title: titleQuery
-    //   }
-    //   console.log('titlequery')
-    // }
-    // console.log("dispatchAction out", newReq);
-    // dispatch(paginationRedirect(newReq));
-  };
 
   const handleSetCurrentPage = (current, pageSize) => {
-    // let reqParams = {
-    //     page: current,
-    //     limit: limitQuery
-    // };
-    console.log("events page onclick page", current);
-
     const reqParams = getNewReq(queryPath, "page", current);
-    console.log("events page onclick page", reqParams);
-
-    // dispatchAction(reqParams);
-    // const path = `/events?page=${current}&limit=${limitQuery}`;
-    // dispatchAction(path);
-    // dispatch(paginationRedirect(path));
     dispatch(paginationRedirect(reqParams));
   };
   const onClick = (val) => (ev) => {
-    // let reqParams = {
-    //   page: 1,
-    //   limit: val,
-    // };
-    // console.log("onclick events page", reqParams);
-    console.log("events page onclick limit", val);
-
     const reqParams = getNewReq(queryPath, "limit", val);
-    // dispatchAction(reqParams);
-    console.log("events page onclick limit", reqParams);
-
-    dispatch(paginationRedirect(reqParams));
-
-    // const path = `/events?page=1&limit=${val}`;
-    // dispatchAction(path);
-    // dispatch(paginationRedirect(path));
-  };
-
-  const execFilters = (text) => {
-    // console.log('execFilters', text)
-    // const path = `/events?page=1&limit=${limitQuery}&title=${text}`;
-    // dispatch(paginationRedirect(path));
-    // console.log("execFilters text", text);
-    // let reqParams = {
-    //   page: 1,
-    //   limit: limitQuery,
-    //   title: text,
-    // };
-    // // dispatchAction(path);
-    const reqParams = getNewReq(queryPath, "title", text);
-    // dispatchAction(reqParams);
-
-    dispatch(paginationRedirect(reqParams));
+     dispatch(paginationRedirect(reqParams));
   };
 
   const onClickSearch = (event, text) => {
-    // const id = event.target.id;
-    // console.log(id)
-    console.log("events page text search text", text);
-
     event.preventDefault();
-    // execFilters(text);
     const reqParams = getNewReq(queryPath, "title", text);
-    // dispatchAction(reqParams);
-    console.log("events page text search reqParams", reqParams);
-
     dispatch(paginationRedirect(reqParams));
   };
 
   const modalPressed = true;
 
   const lang = intl.locale.slice(0, 2);
-
-  console.log("error", error);
 
   return (
     <div>
@@ -324,11 +229,6 @@ function EventsPage() {
             </div>
           </div>
         )}
-        {/* {!loading && !error && events.length === 0 && (
-          <div className="container">
-            <EventsCardsEmptyList eventsCount={0}></EventsCardsEmptyList>
-          </div>
-        )} */}
       </Layout>
     </div>
   );

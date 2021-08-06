@@ -13,7 +13,7 @@ export const paginationRedirect = (req) => {
         if(title) {
             path = path.concat(`&title=${title}`)
         }
-        // let path = `/events?page=1&limit=${limitQuery}&title=${text}`
+
         history.push(path);
     }
 }

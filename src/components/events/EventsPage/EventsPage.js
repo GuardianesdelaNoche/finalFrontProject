@@ -29,10 +29,22 @@ import { useIntl } from "react-intl";
 
 const lang_es = "es";
 
+const optionsSort = [
+{
+  key: 'asc',
+  value: 'asc'
+},
+{
+  key: 'des',
+  value: 'des'
+}
+];
+
 const getNewReq = (queryPath, key, value) => {
   const pageQuery = queryPath.get("page") || 1;
   const limitQuery = queryPath.get("limit") || 10;
   const titleQuery = queryPath.get("title");
+  const sortQuery = queryPath.get("sort");
 
   let paramsQuery = {};
   if (pageQuery) {
@@ -53,6 +65,13 @@ const getNewReq = (queryPath, key, value) => {
     paramsQuery = {
       ...paramsQuery,
       title: titleQuery,
+    };
+  }
+
+  if (sortQuery) {
+    paramsQuery = {
+      ...paramsQuery,
+      sort: sortQuery,
     };
   }
 
@@ -77,6 +96,13 @@ const getNewReq = (queryPath, key, value) => {
         ...paramsQuery,
         page: 1,
         title: value,
+      };
+      break;
+    case "sort":
+      paramsQuery = {
+        ...paramsQuery,
+        page: 1,
+        sort: value,
       };
       break;
 
@@ -104,12 +130,13 @@ function EventsPage() {
   const pageQuery = queryPath.get("page") || 1;
   const limitQuery = queryPath.get("limit") || 10;
   const titleQuery = queryPath.get("title") || "";
+  const sortQuery = queryPath.get("sort") || "asc";
 
   const intl = useIntl();
 
   React.useEffect(() => {
-    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery));
-  }, [dispatch, pageQuery, limitQuery, titleQuery]);
+    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery));
+  }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery]);
 
 
   const handleSetCurrentPage = (current, pageSize) => {
@@ -130,6 +157,12 @@ function EventsPage() {
   const modalPressed = true;
 
   const lang = intl.locale.slice(0, 2);
+
+  const onSelectSorter = (key, event) => {
+    event.preventDefault();
+    const reqParams = getNewReq(queryPath, "sort", key);
+    dispatch(paginationRedirect(reqParams));
+  }
 
   return (
     <div>
@@ -199,7 +232,7 @@ function EventsPage() {
                     </Modal>
                   </div>
                   <div className="d-flex justify-content-between">
-                    <Sorter />
+                    <Sorter onSelect={onSelectSorter}/>
                     <PaginationNavStyle onClick={onClick} limit={limitQuery} />
                   </div>
                 </div>

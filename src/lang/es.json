@@ -43,5 +43,8 @@
     "eventCard.activity": "Actividad",
     "eventCard.outdoor": "Aire libre",
     "eventCard.indoor": "Interior",
-    "eventCard.overlay.fav": "Favorito"
+    "eventCard.overlay.fav": "Favorito",
+    "sorter.itemText.asc": "Más reciente",
+    "sorter.itemText.des": "Menos reciente",
+    "sorter.ButtonText.order": "Ordenar"
 }

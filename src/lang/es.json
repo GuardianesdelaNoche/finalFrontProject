@@ -50,5 +50,11 @@
     "filtersform.title.username": "Nombre de usuario",
     "filtersform.input.username": "Introduce usuario...",
     "filtersfrom.headerfilters.advancedfilters": "Filtros avanzados",
-    "filtersfrom.headerfilters.filters": "Filtros"
+    "filtersfrom.headerfilters.filters": "Filtros",
+    "filtersfrom.filters.price": "Precio",
+    "filtersfrom.filters.type": "Tipo",
+    "filtersfrom.filters.tags": "Etiquetas",
+    "filtersfrom.buttonsfilters.filters": "Filtros",
+    "filtersfrom.buttonsfilters.clean": "Limpiar",
+    "filtersfrom.placeholdersearch": "Introduce un evento.."
 }

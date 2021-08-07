@@ -56,8 +56,12 @@ export const FiltersForm = () => {
   const placeholderUsername = intl.formatMessage({
     id: "filtersform.input.username",
   });
-  const filtersText = intl.formatMessage({id: "filtersfrom.headerfilters.filters"});
-  const advancedFiltersText = intl.formatMessage({id: "filtersfrom.headerfilters.advancedfilters"});
+  const filtersText = intl.formatMessage({
+    id: "filtersfrom.headerfilters.filters",
+  });
+  const advancedFiltersText = intl.formatMessage({
+    id: "filtersfrom.headerfilters.advancedfilters",
+  });
 
   return (
     <Form>
@@ -102,7 +106,10 @@ export const FiltersForm = () => {
                 className="fs-6 text-muted m-0 pt-2 pb-2"
                 eventKey="1"
               >
-                Price
+                            <FormattedMessage
+                  id="filtersfrom.filters.price"
+                  defaultMessage="Filter"
+                />
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
@@ -124,7 +131,10 @@ export const FiltersForm = () => {
                 className="fs-6 text-muted m-0 pt-2 pb-2"
                 eventKey="3"
               >
-                Tipo
+                <FormattedMessage
+                  id="filtersfrom.filters.type"
+                  defaultMessage="Type"
+                />
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="3">
                 <Card.Body className="p-0">
@@ -146,7 +156,10 @@ export const FiltersForm = () => {
                       className="flex-grow-0 m-1 btn-sm rounded-pill"
                     >
                       {/* {radio.name} */}
-                      Indoor
+                      <FormattedMessage
+                        id="eventCard.indoor"
+                        defaultMessage="Indoor"
+                      />
                     </ToggleButton>
                     <ToggleButton
                       // key={idx}
@@ -160,7 +173,10 @@ export const FiltersForm = () => {
                       className="flex-grow-0 m-1 btn-sm rounded-pill"
                     >
                       {/* {radio.name} */}
-                      Outdoor
+                      <FormattedMessage
+                        id="eventCard.outdoor"
+                        defaultMessage="Outdoor"
+                      />
                     </ToggleButton>
                     {/* ))} */}
                   </ToggleButtonGroup>
@@ -176,7 +192,10 @@ export const FiltersForm = () => {
                 className="fs-6 text-muted m-0 pt-2 pb-2"
                 eventKey="2"
               >
-                Tags
+                <FormattedMessage
+                  id="filtersfrom.filters.tags"
+                  defaultMessage="Tags"
+                />
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="2">
                 <Card.Body className="p-0">
@@ -217,11 +236,26 @@ export const FiltersForm = () => {
             </Card>
           </Accordion>
           <div className="d-flex flex-row justify-content-center pt-2 pb-2 bg-white">
-            <Button className="m-1 btn-sm" variant="primary" type="submit" disabled={disabledButtons}>
-              Filtrar
+            <Button
+              className="m-1 btn-sm"
+              variant="primary"
+              type="submit"
+              disabled={disabledButtons}
+            >
+              <FormattedMessage
+                id="filtersfrom.buttonsfilters.filters"
+                defaultMessage="Filter"
+              />
             </Button>
-            <Button className="m-1 btn-sm" variant="primary" disabled={disabledButtons}>
-              Limpiar
+            <Button
+              className="m-1 btn-sm"
+              variant="primary"
+              disabled={disabledButtons}
+            >
+              <FormattedMessage
+                id="filtersfrom.buttonsfilters.clean"
+                defaultMessage="Clean"
+              />
             </Button>
           </div>
         </div>
@@ -236,7 +270,7 @@ export const FiltersForm = () => {
           {/* <Accordion className="accordion-flush">
         <FilterCard className="pt-1" title="Localidad" body="body" />
       </Accordion> */}
-                    
+
           <Accordion onSelect={() => setDisabledButtons(!disabledButtons)}>
             <Card className="mb-1 pl-3 rounded-0 fs-6">
               <Accordion.Toggle
@@ -260,11 +294,26 @@ export const FiltersForm = () => {
             </Card>
           </Accordion>
           <div className="d-flex flex-row justify-content-center pt-2 pb-2 bg-white">
-            <Button className="m-1 btn-sm" variant="primary" type="submit" disabled={!disabledButtons}>
-              Filtrar
+            <Button
+              className="m-1 btn-sm"
+              variant="primary"
+              type="submit"
+              disabled={!disabledButtons}
+            >
+              <FormattedMessage
+                id="filtersfrom.buttonsfilters.filters"
+                defaultMessage="Filter"
+              />
             </Button>
-            <Button className="m-1 btn-sm" variant="primary" disabled={!disabledButtons}>
-              Limpiar
+            <Button
+              className="m-1 btn-sm"
+              variant="primary"
+              disabled={!disabledButtons}
+            >
+              <FormattedMessage
+                id="filtersfrom.buttonsfilters.clean"
+                defaultMessage="Clean"
+              />
             </Button>
           </div>
         </div>

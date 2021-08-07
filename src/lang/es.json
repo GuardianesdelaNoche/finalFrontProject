@@ -46,5 +46,9 @@
     "eventCard.overlay.fav": "Favorito",
     "sorter.itemText.asc": "Más reciente",
     "sorter.itemText.des": "Menos reciente",
-    "sorter.ButtonText.order": "Ordenar"
+    "sorter.ButtonText.order": "Ordenar",
+    "filtersform.title.username": "Nombre de usuario",
+    "filtersform.input.username": "Introduce usuario...",
+    "filtersfrom.headerfilters.advancedfilters": "Filtros avanzados",
+    "filtersfrom.headerfilters.filters": "Filtros"
 }

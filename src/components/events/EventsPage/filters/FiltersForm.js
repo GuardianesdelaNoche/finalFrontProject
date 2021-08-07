@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Accordion,
@@ -12,6 +12,7 @@ import {
   ToggleButtonGroup,
   ButtonGroup,
 } from "react-bootstrap";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
 import { BiSlider } from "react-icons/bi";
@@ -43,74 +44,96 @@ const FilterCard = ({ title, body, ...props }) => {
 // };
 
 export const FiltersForm = () => {
+  // const placeholderUsername = () => {return ( <FormattedMessage
+  //   id="filtersform.username"
+  //   defaultMessage="Username"
+  // />)};
+
+  const [disabledButtons, setDisabledButtons] = useState(false);
+  // const totaltags = useSelector(getEventsTags);
+
+  const intl = useIntl();
+  const placeholderUsername = intl.formatMessage({
+    id: "filtersform.input.username",
+  });
+  const filtersText = intl.formatMessage({id: "filtersfrom.headerfilters.filters"});
+  const advancedFiltersText = intl.formatMessage({id: "filtersfrom.headerfilters.advancedfilters"});
+
   return (
     <Form>
-      <div className="pt-3 d-flex flex-column">
-        <div className="mb-1 p-4 bg-white rounded-top">
-          <BiSlider></BiSlider>
-          <span className="ml-2">Filtros</span>
-        </div>
-        {/* <FilterCard title={<Form.Label>Username</Form.Label>} 
+      <div className="mt-3 d-flex flex-column shadow-sm">
+        <div className="bg-light bg-gradient border border-4">
+          <div className="mb-1 p-4 bg-white rounded-top">
+            <BiSlider></BiSlider>
+            <span className="ml-2">{filtersText}</span>
+          </div>
+          {/* <FilterCard title={<Form.Label>Username</Form.Label>} 
         body={<InputSearchBodyCard ></InputSearchBodyCard>}
       ></FilterCard> */}
-        {/* <Accordion className="accordion-flush">
+          {/* <Accordion className="accordion-flush">
         <FilterCard className="pt-1" title="Localidad" body="body" />
       </Accordion> */}
-        <Accordion defaultActiveKey="0">
+          {/* <Accordion defaultActiveKey="0">
           <Card className="mb-1 pl-3 rounded-0 fs-6">
             <Accordion.Toggle
               as={Card.Text}
               className="fs-6 text-muted m-0 pt-2 pb-2"
               eventKey="0"
             >
-              Username
+              <FormattedMessage
+                id="filtersform.title.username"
+                defaultMessage="Username"
+              />
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
               <Card.Body className="ml-0 pl-0">
-                <FormControl className="rounded-pill border-0 pl-1" placeholder="Enter an username..."></FormControl>
+                <FormControl
+                  className="rounded-pill border-0 pl-1"
+                  placeholder={placeholderUsername}
+                ></FormControl>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
-        </Accordion>
-        <Accordion defaultActiveKey="1">
-          <Card className="mb-1 pl-3 rounded-0 fs-6">
-            <Accordion.Toggle
-              as={Card.Text}
-              className="fs-6 text-muted m-0 pt-2 pb-2"
-              eventKey="1"
-            >
-              Price
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="1">
-              <Card.Body>
-                <Range
-                  onChange={(value) => {
-                    console.log(value);
-                  }}
-                  min={0}
-                  max={1000}
-                />
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
-        <Accordion defaultActiveKey="3">
-          <Card className="mb-1 pl-3 rounded-0 fs-6">
-            <Accordion.Toggle
-              as={Card.Text}
-              className="fs-6 text-muted m-0 pt-2 pb-2"
-              eventKey="3"
-            >
-              Tipo
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="3">
-              <Card.Body className="p-0">
-                <ToggleButtonGroup
-                              className="d-flex flex-row flex-wrap justify-content-evenly"
-                              type="radio"
-                              name="radio"
-                >
-                  {/* {radios.map((radio, idx) => ( */}
+        </Accordion> */}
+          <Accordion defaultActiveKey="1">
+            <Card className="mb-1 pl-3 rounded-0 fs-6">
+              <Accordion.Toggle
+                as={Card.Text}
+                className="fs-6 text-muted m-0 pt-2 pb-2"
+                eventKey="1"
+              >
+                Price
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body>
+                  <Range
+                    onChange={(value) => {
+                      console.log(value);
+                    }}
+                    min={0}
+                    max={1000}
+                  />
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+          <Accordion defaultActiveKey="3">
+            <Card className="mb-1 pl-3 rounded-0 fs-6">
+              <Accordion.Toggle
+                as={Card.Text}
+                className="fs-6 text-muted m-0 pt-2 pb-2"
+                eventKey="3"
+              >
+                Tipo
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="3">
+                <Card.Body className="p-0">
+                  <ToggleButtonGroup
+                    className="d-flex flex-row flex-wrap justify-content-evenly"
+                    type="radio"
+                    name="radio"
+                  >
+                    {/* {radios.map((radio, idx) => ( */}
                     <ToggleButton
                       // key={idx}
                       type="radio"
@@ -119,7 +142,7 @@ export const FiltersForm = () => {
                       value={1}
                       // checked={radioValue === radio.value}
                       checked={true}
-                      onChange={(e) => console.log('Indoor')}
+                      onChange={(e) => console.log("Indoor")}
                       className="flex-grow-0 m-1 btn-sm rounded-pill"
                     >
                       {/* {radio.name} */}
@@ -133,73 +156,117 @@ export const FiltersForm = () => {
                       value={2}
                       // checked={radioValue === radio.value}
                       checked={false}
-                      onChange={(e) => console.log('Outdoor')}
+                      onChange={(e) => console.log("Outdoor")}
                       className="flex-grow-0 m-1 btn-sm rounded-pill"
                     >
                       {/* {radio.name} */}
                       Outdoor
                     </ToggleButton>
-                  {/* ))} */}
-                </ToggleButtonGroup>
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
+                    {/* ))} */}
+                  </ToggleButtonGroup>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
 
-        <Accordion defaultActiveKey="2">
-          <Card className="mb-1 pl-3 rounded-0 fs-6">
-            <Accordion.Toggle
-              as={Card.Text}
-              className="fs-6 text-muted m-0 pt-2 pb-2"
-              eventKey="2"
-            >
-              Tags
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="2">
-              <Card.Body className="p-0">
-                <ToggleButtonGroup
-                  className="d-flex flex-row flex-wrap justify-content-start"
-                  type="checkbox"
-                  // value={value}
-                  onChange={(val) => console.log(val)}
-                >
-                  <ToggleButton
-                    id="tbg-btn-1"
-                    className="flex-grow-0 m-1 btn-sm rounded-pill outline-light"
-                    // variant="outline-light"
+          <Accordion defaultActiveKey="2">
+            <Card className="mb-1 pl-3 rounded-0 fs-6">
+              <Accordion.Toggle
+                as={Card.Text}
+                className="fs-6 text-muted m-0 pt-2 pb-2"
+                eventKey="2"
+              >
+                Tags
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="2">
+                <Card.Body className="p-0">
+                  <ToggleButtonGroup
+                    className="d-flex flex-row flex-wrap justify-content-start"
+                    type="checkbox"
+                    // value={value}
+                    onChange={(val) => console.log(val)}
+                  >
+                    <ToggleButton
+                      id="tbg-btn-1"
+                      className="flex-grow-0 m-1 btn-sm rounded-pill outline-light"
+                      // variant="outline-light"
 
-                    value={1}
-                  >
-                    #playa
-                  </ToggleButton>
-                  <ToggleButton
-                    id="tbg-btn-2"
-                    className="flex-grow-0 m-1 btn-sm rounded-pill"
-                    // variant="outline-light"
-                    value={2}
-                  >
-                    #tenis
-                  </ToggleButton>
-                  <ToggleButton
-                    id="tbg-btn-3"
-                    className="flex-grow-0 m-1 btn-sm rounded-pill"
-                    // variant="outline-light"
-                    value={3}
-                  >
-                    #football
-                  </ToggleButton>
-                </ToggleButtonGroup>
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
-        <div className="d-flex flex-row justify-content-center pt-2 pb-2 bg-white">
-          <Button className="m-1 btn-sm" variant="primary" type="submit">
-            Filtrar
-          </Button>
-          <Button className="m-1 btn-sm" variant="primary" type="submit">
-            Limpiar
-          </Button>
+                      value={1}
+                    >
+                      #playa
+                    </ToggleButton>
+                    <ToggleButton
+                      id="tbg-btn-2"
+                      className="flex-grow-0 m-1 btn-sm rounded-pill"
+                      // variant="outline-light"
+                      value={2}
+                    >
+                      #tenis
+                    </ToggleButton>
+                    <ToggleButton
+                      id="tbg-btn-3"
+                      className="flex-grow-0 m-1 btn-sm rounded-pill"
+                      // variant="outline-light"
+                      value={3}
+                    >
+                      #football
+                    </ToggleButton>
+                  </ToggleButtonGroup>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+          <div className="d-flex flex-row justify-content-center pt-2 pb-2 bg-white">
+            <Button className="m-1 btn-sm" variant="primary" type="submit" disabled={disabledButtons}>
+              Filtrar
+            </Button>
+            <Button className="m-1 btn-sm" variant="primary" disabled={disabledButtons}>
+              Limpiar
+            </Button>
+          </div>
+        </div>
+        <div className="mt-2 shadow-sm bg-light bg-gradient border border-4">
+          <div className="mb-1 p-4 bg-white rounded-top shadow-sm">
+            <BiSlider></BiSlider>
+            <span className="ml-2">{advancedFiltersText}</span>
+          </div>
+          {/* <FilterCard title={<Form.Label>Username</Form.Label>} 
+        body={<InputSearchBodyCard ></InputSearchBodyCard>}
+      ></FilterCard> */}
+          {/* <Accordion className="accordion-flush">
+        <FilterCard className="pt-1" title="Localidad" body="body" />
+      </Accordion> */}
+                    
+          <Accordion onSelect={() => setDisabledButtons(!disabledButtons)}>
+            <Card className="mb-1 pl-3 rounded-0 fs-6">
+              <Accordion.Toggle
+                as={Card.Text}
+                className="fs-6 text-muted m-0 pt-2 pb-2"
+                eventKey="0"
+              >
+                <FormattedMessage
+                  id="filtersform.title.username"
+                  defaultMessage="Username"
+                />
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body className="ml-0 pl-0">
+                  <FormControl
+                    className="rounded-pill border-0 pl-1"
+                    placeholder={placeholderUsername}
+                  ></FormControl>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+          <div className="d-flex flex-row justify-content-center pt-2 pb-2 bg-white">
+            <Button className="m-1 btn-sm" variant="primary" type="submit" disabled={!disabledButtons}>
+              Filtrar
+            </Button>
+            <Button className="m-1 btn-sm" variant="primary" disabled={!disabledButtons}>
+              Limpiar
+            </Button>
+          </div>
         </div>
       </div>
     </Form>

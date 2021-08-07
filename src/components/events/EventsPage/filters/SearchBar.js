@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { VscChromeClose } from "react-icons/vsc";
+import { useIntl } from "react-intl";
 
 const defaultText = "";
 
@@ -15,7 +16,13 @@ export const SearchBar = ({
 }) => {
   // const initialText = text || defaultText;
 
+  const intl = useIntl();
+
   const [inputText, setInputText] = useState(text);
+
+  const placeholder = intl.formatMessage({
+    id: "filtersfrom.placeholdersearch",
+  });
 
   const handleClearButton = (event) => {
     setInputText('');
@@ -38,7 +45,7 @@ export const SearchBar = ({
         <FormControl
           className="rounded-pill bg-white border-0 pl-2 mr-2"
           type="text"
-          placeholder="   Enter an event.."
+          placeholder={`${placeholder}`}
           value={inputText}
           onChange={onChangeSearch || handleChange}
         />

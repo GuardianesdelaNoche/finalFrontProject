@@ -18,6 +18,7 @@ import "rc-slider/assets/index.css";
 import { BiSlider } from "react-icons/bi";
 import { FilterToggleButtons } from "./FilterToggleButtons";
 import { FilterRadioToggleButtons } from "./FilterRadioToggleButtons";
+import { FilterRange } from "./FilterRange";
 
 const FilterCard = ({ title, body, ...props }) => {
   return (
@@ -55,6 +56,7 @@ export const FiltersForm = ({ tags }) => {
 
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedType, setSelectedType] = useState("");
+  const [price, setPrice] = useState([]);
   const [disabledButtons, setDisabledButtons] = useState(false);
   // const totaltags = useSelector(getEventsTags);
 
@@ -91,12 +93,19 @@ export const FiltersForm = ({ tags }) => {
   };
 
   const onChangeType = (event) => {
-    console.log('child value',event.target.value);
+    console.log("child value", event.target.value);
     setSelectedType(event.target.value);
   };
 
+  const tooltipPrice = (value) => `${value}€`;
+
+  // const onChangePrice = (values) => setPrice(values);
+  const onChangePrice = (values) => console.log(values);
+
+
   console.log("selectedTags", selectedTags);
   console.log("selectedType", selectedType);
+  console.log("price", price);
   return (
     <Form>
       <div className="mt-3 d-flex flex-column shadow-sm">
@@ -147,13 +156,22 @@ export const FiltersForm = ({ tags }) => {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
-                  <Range
+                  {/* <Range
                     onChange={(value) => {
                       console.log(value);
                     }}
                     min={0}
                     max={1000}
-                  />
+                    tipFormatter={value => `${value}`}
+                  /> */}
+                  <FilterRange
+                    value={price}
+                    tooltip={tooltipPrice}
+                    min={0}
+                    max={1000}
+                    onChange={onChangePrice}
+                    allowCross={false}
+                  />{" "}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>

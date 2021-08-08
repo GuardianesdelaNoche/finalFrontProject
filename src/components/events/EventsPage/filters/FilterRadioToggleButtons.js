@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToggleButton, ToggleButtonGroup } from "react-bootstrap";
-import { FormattedMessage, useIntl } from "react-intl";
 
 const customToggleButton = (opt, className, onChange, boolValue, i) => {
   return (

@@ -16,6 +16,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
 import { BiSlider } from "react-icons/bi";
+import { FilterToggleButtons } from "./FilterToggleButtons";
 
 const FilterCard = ({ title, body, ...props }) => {
   return (
@@ -43,12 +44,13 @@ const FilterCard = ({ title, body, ...props }) => {
 //   return <Form.Label>{text}</Form.Label>;
 // };
 
-export const FiltersForm = () => {
+export const FiltersForm = ({tags}) => {
   // const placeholderUsername = () => {return ( <FormattedMessage
   //   id="filtersform.username"
   //   defaultMessage="Username"
   // />)};
 
+  const [selectedTags, setSelectedTags] = useState([]);
   const [disabledButtons, setDisabledButtons] = useState(false);
   // const totaltags = useSelector(getEventsTags);
 
@@ -63,6 +65,12 @@ export const FiltersForm = () => {
     id: "filtersfrom.headerfilters.advancedfilters",
   });
 
+  const onChangeTags = (values) => {
+    console.log(values)
+    setSelectedTags(values)
+  };
+
+  console.log('selectedTags', selectedTags)
   return (
     <Form>
       <div className="mt-3 d-flex flex-column shadow-sm">
@@ -199,7 +207,8 @@ export const FiltersForm = () => {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="2">
                 <Card.Body className="p-0">
-                  <ToggleButtonGroup
+                  <FilterToggleButtons opts={tags} onChange={onChangeTags}/>
+                  {/* <ToggleButtonGroup
                     className="d-flex flex-row flex-wrap justify-content-start"
                     type="checkbox"
                     // value={value}
@@ -230,7 +239,7 @@ export const FiltersForm = () => {
                     >
                       #football
                     </ToggleButton>
-                  </ToggleButtonGroup>
+                  </ToggleButtonGroup> */}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>

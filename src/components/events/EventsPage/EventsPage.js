@@ -184,7 +184,7 @@ function EventsPage() {
           <div className="container">
             <div className="row pt-3">
               <div className="col-md-3 d-none d-md-block">
-                <FiltersForm />
+                <FiltersForm tags={tags}/>
               </div>
               <div className="col-md-9">
                 <div className="pt-3 pl-3 pr-3 row">

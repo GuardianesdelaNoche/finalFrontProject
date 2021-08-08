@@ -25,6 +25,8 @@ import { SearchBar } from "./filters/SearchBar";
 
 import { intl_es, intl_en } from "../../shared/paginator/es_en.js";
 import { useIntl } from "react-intl";
+import { getTags } from "../../../store/selectors/tags";
+import { tagsLoadAction } from "../../../store/actions/tags";
 
 
 const lang_es = "es";
@@ -117,6 +119,7 @@ function EventsPage() {
   const dispatch = useDispatch();
   const { loading, error } = useSelector(getUi);
   const events = useSelector(getEvents);
+  const tags = useSelector(getTags);
   // vars modify events results
   const totalEvents = useSelector(getEventsTotal);
 
@@ -138,7 +141,10 @@ function EventsPage() {
     dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery));
   }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery]);
 
-
+  React.useEffect(() => {
+    dispatch(tagsLoadAction());
+  }, [dispatch, tags]);
+  
   const handleSetCurrentPage = (current, pageSize) => {
     const reqParams = getNewReq(queryPath, "page", current);
     dispatch(paginationRedirect(reqParams));

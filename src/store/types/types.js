@@ -16,5 +16,5 @@ export const types = {
     uiSetError: 'UI Set Error',
     uiResetLoading: 'UI Reset Loading',
 
-
+    tagsLoadedSuccess: 'TAGS Loaded Sucess'
 }

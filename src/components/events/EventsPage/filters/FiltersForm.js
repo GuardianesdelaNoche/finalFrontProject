@@ -17,6 +17,7 @@ import { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
 import { BiSlider } from "react-icons/bi";
 import { FilterToggleButtons } from "./FilterToggleButtons";
+import { FilterRadioToggleButtons } from "./FilterRadioToggleButtons";
 
 const FilterCard = ({ title, body, ...props }) => {
   return (
@@ -44,13 +45,16 @@ const FilterCard = ({ title, body, ...props }) => {
 //   return <Form.Label>{text}</Form.Label>;
 // };
 
-export const FiltersForm = ({tags}) => {
+const typeActivity = "Indoor";
+
+export const FiltersForm = ({ tags }) => {
   // const placeholderUsername = () => {return ( <FormattedMessage
   //   id="filtersform.username"
   //   defaultMessage="Username"
   // />)};
 
   const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedType, setSelectedType] = useState("");
   const [disabledButtons, setDisabledButtons] = useState(false);
   // const totaltags = useSelector(getEventsTags);
 
@@ -64,13 +68,35 @@ export const FiltersForm = ({tags}) => {
   const advancedFiltersText = intl.formatMessage({
     id: "filtersfrom.headerfilters.advancedfilters",
   });
+  const indoorActivity = intl.formatMessage({
+    id: "eventCard.indoor",
+  });
+  const outdoorActivity = intl.formatMessage({
+    id: "eventCard.outdoor",
+  });
+  const typesActivities = [
+    {
+      name: indoorActivity,
+      value: true,
+    },
+    {
+      name: outdoorActivity,
+      value: false,
+    },
+  ];
 
   const onChangeTags = (values) => {
-    console.log(values)
-    setSelectedTags(values)
+    console.log(values);
+    setSelectedTags(values);
   };
 
-  console.log('selectedTags', selectedTags)
+  const onChangeType = (event) => {
+    console.log('child value',event.target.value);
+    setSelectedType(event.target.value);
+  };
+
+  console.log("selectedTags", selectedTags);
+  console.log("selectedType", selectedType);
   return (
     <Form>
       <div className="mt-3 d-flex flex-column shadow-sm">
@@ -114,7 +140,7 @@ export const FiltersForm = ({tags}) => {
                 className="fs-6 text-muted m-0 pt-2 pb-2"
                 eventKey="1"
               >
-                            <FormattedMessage
+                <FormattedMessage
                   id="filtersfrom.filters.price"
                   defaultMessage="Filter"
                 />
@@ -146,12 +172,17 @@ export const FiltersForm = ({tags}) => {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="3">
                 <Card.Body className="p-0">
-                  <ToggleButtonGroup
+                  <FilterRadioToggleButtons
+                    opts={typesActivities}
+                    onChange={onChangeType}
+                    classNameGroup="d-flex flex-row flex-wrap justify-content-evenly"
+                    classNameOpts="flex-grow-0 m-1 btn-sm rounded-pill"
+                  />
+                  {/* <ToggleButtonGroup
                     className="d-flex flex-row flex-wrap justify-content-evenly"
                     type="radio"
                     name="radio"
                   >
-                    {/* {radios.map((radio, idx) => ( */}
                     <ToggleButton
                       // key={idx}
                       type="radio"
@@ -163,7 +194,6 @@ export const FiltersForm = ({tags}) => {
                       onChange={(e) => console.log("Indoor")}
                       className="flex-grow-0 m-1 btn-sm rounded-pill"
                     >
-                      {/* {radio.name} */}
                       <FormattedMessage
                         id="eventCard.indoor"
                         defaultMessage="Indoor"
@@ -180,14 +210,12 @@ export const FiltersForm = ({tags}) => {
                       onChange={(e) => console.log("Outdoor")}
                       className="flex-grow-0 m-1 btn-sm rounded-pill"
                     >
-                      {/* {radio.name} */}
                       <FormattedMessage
                         id="eventCard.outdoor"
                         defaultMessage="Outdoor"
                       />
                     </ToggleButton>
-                    {/* ))} */}
-                  </ToggleButtonGroup>
+                  </ToggleButtonGroup> */}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
@@ -207,7 +235,12 @@ export const FiltersForm = ({tags}) => {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="2">
                 <Card.Body className="p-0">
-                  <FilterToggleButtons opts={tags} onChange={onChangeTags}/>
+                  <FilterToggleButtons
+                    opts={tags}
+                    onChange={onChangeTags}
+                    classNameGroup="d-flex flex-row flex-wrap justify-content-start"
+                    classNameOpts="flex-grow-0 m-1 btn-sm rounded-pill outline-light"
+                  />
                   {/* <ToggleButtonGroup
                     className="d-flex flex-row flex-wrap justify-content-start"
                     type="checkbox"

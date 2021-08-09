@@ -161,6 +161,9 @@ function EventsPage() {
   };
 
   const modalPressed = true;
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
 
   const lang = intl.locale.slice(0, 2);
 
@@ -204,37 +207,32 @@ function EventsPage() {
 
                     <Button
                       variant="primary"
-                      onClick={() => {
-                        console.log("on press modal");
-                      }}
+                      // onClick={() => {console.log("on press modal");}}
+                      onClick={handleShowModal}
                     >
-                      Launch demo modal
+                      Filtros
                     </Button>
 
                     <Modal
-                      show={!modalPressed}
-                      onHide={() => console.log("close modal")}
+                      // show={!modalPressed}
+                      show={showModal}
+                      // onHide={() => console.log("close modal")}
+                      onHide={handleCloseModal}
                     >
                       <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
-                        Woohoo, you're reading this text in a modal!
+                        <FiltersForm tags={tags}/>
                       </Modal.Body>
-                      <Modal.Footer>
+                      {/* <Modal.Footer>
                         <Button
                           variant="secondary"
-                          onClick={() => console.log("close")}
+                          // onClick={() => console.log("close")}
+                          onClick={handleCloseModal}
                         >
                           Close
                         </Button>
-                        <Button
-                          variant="primary"
-                          onClick={() => console.log("save changes")}
-                        >
-                          Save Changes
-                        </Button>
-                      </Modal.Footer>
+                      </Modal.Footer> */}
                     </Modal>
                   </div>
                   <div className="d-flex justify-content-between">

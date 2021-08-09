@@ -49,14 +49,13 @@ const FilterCard = ({ title, body, ...props }) => {
 const typeActivity = "Indoor";
 
 export const FiltersForm = ({ tags }) => {
-
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedType, setSelectedType] = useState("");
   const [disabledButtons, setDisabledButtons] = useState(false);
 
   const [price, setPrice] = useState({
     low: 0,
-    high: 0
+    high: 0,
   });
 
   const intl = useIntl();
@@ -178,7 +177,7 @@ export const FiltersForm = ({ tags }) => {
                     onChange={onChangeTags}
                     classNameGroup="d-flex flex-row flex-wrap justify-content-start"
                     classNameOpts="flex-grow-0 m-1 btn-sm rounded-pill outline-light"
-                  />                  
+                  />
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
@@ -187,12 +186,24 @@ export const FiltersForm = ({ tags }) => {
             <Button
               className="m-1 btn-sm"
               variant="primary"
+              disabled={disabledButtons}
+            >
+              <FormattedMessage
+                id="filtersform.buttonsfilters.clean"
+                defaultMessage="Clean"
+              />
+            </Button>
+          </div>
+          <div className="d-flex flex-row justify-content-center pt-2 pb-2 bg-white">
+            <Button
+              className="m-1 btn-sm"
+              variant="primary"
               type="submit"
               disabled={disabledButtons}
             >
               <FormattedMessage
-                id="filtersform.buttonsfilters.filters"
-                defaultMessage="Filter"
+                id="filtersform.buttonsfilters.apply"
+                defaultMessage="Apply"
               />
             </Button>
             <Button
@@ -201,8 +212,8 @@ export const FiltersForm = ({ tags }) => {
               disabled={disabledButtons}
             >
               <FormattedMessage
-                id="filtersform.buttonsfilters.clean"
-                defaultMessage="Clean"
+                id="filtersform.buttonsfilters.remove"
+                defaultMessage="Remove"
               />
             </Button>
           </div>
@@ -242,8 +253,21 @@ export const FiltersForm = ({ tags }) => {
               disabled={!disabledButtons}
             >
               <FormattedMessage
-                id="filtersform.buttonsfilters.filters"
-                defaultMessage="Filter"
+                id="filtersform.buttonsfilters.clean"
+                defaultMessage="Clean"
+              />
+            </Button>
+          </div>
+          <div className="d-flex flex-row justify-content-center pt-2 pb-2 bg-white">
+            <Button
+              className="m-1 btn-sm"
+              variant="primary"
+              type="submit"
+              disabled={!disabledButtons}
+            >
+              <FormattedMessage
+                id="filtersform.buttonsfilters.apply"
+                defaultMessage="Apply"
               />
             </Button>
             <Button
@@ -252,8 +276,8 @@ export const FiltersForm = ({ tags }) => {
               disabled={!disabledButtons}
             >
               <FormattedMessage
-                id="filtersform.buttonsfilters.clean"
-                defaultMessage="Clean"
+                id="filtersform.buttonsfilters.remove"
+                defaultMessage="Remove"
               />
             </Button>
           </div>

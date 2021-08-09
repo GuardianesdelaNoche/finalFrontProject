@@ -54,8 +54,9 @@
     "filtersform.filters.price": "Precio",
     "filtersform.filters.type": "Tipo",
     "filtersform.filters.tags": "Etiquetas",
-    "filtersform.buttonsfilters.filters": "Filtrar",
-    "filtersform.buttonsfilters.clean": "Limpiar",
+    "filtersform.buttonsfilters.apply": "Aplicar filtros",
+    "filtersform.buttonsfilters.clean": "Limpiar filtros",
+    "filtersform.buttonsfilters.remove": "Quitar filtros",
     "filtersform.placeholdersearch": "      Introduce un evento..",
     "filtersform.range.min": "Mínimo",
     "filtersform.range.max": "Máximo"

@@ -60,6 +60,12 @@ export const FiltersForm = ({ tags }) => {
   const [disabledButtons, setDisabledButtons] = useState(false);
   // const totaltags = useSelector(getEventsTags);
 
+  const [state, setState] = useState({
+    lowerBound: 20,
+    upperBound: 40,
+    value: [20, 40],
+  });
+
   const intl = useIntl();
   const placeholderUsername = intl.formatMessage({
     id: "filtersform.input.username",
@@ -100,12 +106,22 @@ export const FiltersForm = ({ tags }) => {
   const tooltipPrice = (value) => `${value}€`;
 
   // const onChangePrice = (values) => setPrice(values);
-  const onChangePrice = (values) => console.log(values);
+  const onChangePrice = (values) => {
+    // setPrice(values);
+    console.log('onchangeprice',values);
+  };
+  const onAfterChangePrice = (values) => {
+    // setPrice(values);
+    console.log('onafterchangeprice',values);
+  };
 
+  const setter = () => {
+    console.log('poststate', state)
+  }
 
   console.log("selectedTags", selectedTags);
   console.log("selectedType", selectedType);
-  console.log("price", price);
+  // console.log("price", price);
   return (
     <Form>
       <div className="mt-3 d-flex flex-column shadow-sm">
@@ -165,12 +181,16 @@ export const FiltersForm = ({ tags }) => {
                     tipFormatter={value => `${value}`}
                   /> */}
                   <FilterRange
-                    value={price}
+                    // value={price}
+                    displayValues={state}
+                    setState={setState}
+                    setter={setter}
                     tooltip={tooltipPrice}
                     min={0}
                     max={1000}
                     onChange={onChangePrice}
                     allowCross={false}
+                    onAfterChange={onAfterChangePrice}
                   />{" "}
                 </Card.Body>
               </Accordion.Collapse>

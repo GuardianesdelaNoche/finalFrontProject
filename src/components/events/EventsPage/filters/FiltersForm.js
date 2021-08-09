@@ -56,14 +56,12 @@ export const FiltersForm = ({ tags }) => {
 
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedType, setSelectedType] = useState("");
-  const [price, setPrice] = useState([]);
   const [disabledButtons, setDisabledButtons] = useState(false);
   // const totaltags = useSelector(getEventsTags);
 
-  const [state, setState] = useState({
-    lowerBound: 20,
-    upperBound: 40,
-    value: [20, 40],
+  const [price, setPrice] = useState({
+    low: 0,
+    high: 0
   });
 
   const intl = useIntl();
@@ -71,10 +69,10 @@ export const FiltersForm = ({ tags }) => {
     id: "filtersform.input.username",
   });
   const filtersText = intl.formatMessage({
-    id: "filtersfrom.headerfilters.filters",
+    id: "filtersform.headerfilters.filters",
   });
   const advancedFiltersText = intl.formatMessage({
-    id: "filtersfrom.headerfilters.advancedfilters",
+    id: "filtersform.headerfilters.advancedfilters",
   });
   const indoorActivity = intl.formatMessage({
     id: "eventCard.indoor",
@@ -82,6 +80,14 @@ export const FiltersForm = ({ tags }) => {
   const outdoorActivity = intl.formatMessage({
     id: "eventCard.outdoor",
   });
+
+  const minPrice = intl.formatMessage({
+    id: "filtersform.range.min",
+  });
+  const maxPrice = intl.formatMessage({
+    id: "filtersform.range.max",
+  });
+
   const typesActivities = [
     {
       name: indoorActivity,
@@ -103,25 +109,10 @@ export const FiltersForm = ({ tags }) => {
     setSelectedType(event.target.value);
   };
 
-  const tooltipPrice = (value) => `${value}€`;
-
-  // const onChangePrice = (values) => setPrice(values);
-  const onChangePrice = (values) => {
-    // setPrice(values);
-    console.log('onchangeprice',values);
-  };
-  const onAfterChangePrice = (values) => {
-    // setPrice(values);
-    console.log('onafterchangeprice',values);
-  };
-
-  const setter = () => {
-    console.log('poststate', state)
-  }
 
   console.log("selectedTags", selectedTags);
   console.log("selectedType", selectedType);
-  // console.log("price", price);
+  console.log("price", price);
   return (
     <Form>
       <div className="mt-3 d-flex flex-column shadow-sm">
@@ -166,7 +157,7 @@ export const FiltersForm = ({ tags }) => {
                 eventKey="1"
               >
                 <FormattedMessage
-                  id="filtersfrom.filters.price"
+                  id="filtersform.filters.price"
                   defaultMessage="Filter"
                 />
               </Accordion.Toggle>
@@ -181,16 +172,10 @@ export const FiltersForm = ({ tags }) => {
                     tipFormatter={value => `${value}`}
                   /> */}
                   <FilterRange
-                    // value={price}
-                    displayValues={state}
-                    setState={setState}
-                    setter={setter}
-                    tooltip={tooltipPrice}
+                    values={price}
+                    setValues={setPrice}
                     min={0}
-                    max={1000}
-                    onChange={onChangePrice}
-                    allowCross={false}
-                    onAfterChange={onAfterChangePrice}
+                    step={0.01}
                   />{" "}
                 </Card.Body>
               </Accordion.Collapse>
@@ -204,7 +189,7 @@ export const FiltersForm = ({ tags }) => {
                 eventKey="3"
               >
                 <FormattedMessage
-                  id="filtersfrom.filters.type"
+                  id="filtersform.filters.type"
                   defaultMessage="Type"
                 />
               </Accordion.Toggle>
@@ -267,7 +252,7 @@ export const FiltersForm = ({ tags }) => {
                 eventKey="2"
               >
                 <FormattedMessage
-                  id="filtersfrom.filters.tags"
+                  id="filtersform.filters.tags"
                   defaultMessage="Tags"
                 />
               </Accordion.Toggle>
@@ -323,7 +308,7 @@ export const FiltersForm = ({ tags }) => {
               disabled={disabledButtons}
             >
               <FormattedMessage
-                id="filtersfrom.buttonsfilters.filters"
+                id="filtersform.buttonsfilters.filters"
                 defaultMessage="Filter"
               />
             </Button>
@@ -333,7 +318,7 @@ export const FiltersForm = ({ tags }) => {
               disabled={disabledButtons}
             >
               <FormattedMessage
-                id="filtersfrom.buttonsfilters.clean"
+                id="filtersform.buttonsfilters.clean"
                 defaultMessage="Clean"
               />
             </Button>
@@ -381,7 +366,7 @@ export const FiltersForm = ({ tags }) => {
               disabled={!disabledButtons}
             >
               <FormattedMessage
-                id="filtersfrom.buttonsfilters.filters"
+                id="filtersform.buttonsfilters.filters"
                 defaultMessage="Filter"
               />
             </Button>
@@ -391,7 +376,7 @@ export const FiltersForm = ({ tags }) => {
               disabled={!disabledButtons}
             >
               <FormattedMessage
-                id="filtersfrom.buttonsfilters.clean"
+                id="filtersform.buttonsfilters.clean"
                 defaultMessage="Clean"
               />
             </Button>

@@ -49,12 +49,14 @@
     "sorter.ButtonText.order": "Ordenar",
     "filtersform.title.username": "Nombre de usuario",
     "filtersform.input.username": "Introduce usuario...",
-    "filtersfrom.headerfilters.advancedfilters": "Filtros avanzados",
-    "filtersfrom.headerfilters.filters": "Filtros",
-    "filtersfrom.filters.price": "Precio",
-    "filtersfrom.filters.type": "Tipo",
-    "filtersfrom.filters.tags": "Etiquetas",
-    "filtersfrom.buttonsfilters.filters": "Filtros",
-    "filtersfrom.buttonsfilters.clean": "Limpiar",
-    "filtersfrom.placeholdersearch": "      Introduce un evento.."
+    "filtersform.headerfilters.advancedfilters": "Filtros avanzados",
+    "filtersform.headerfilters.filters": "Filtros",
+    "filtersform.filters.price": "Precio",
+    "filtersform.filters.type": "Tipo",
+    "filtersform.filters.tags": "Etiquetas",
+    "filtersform.buttonsfilters.filters": "Filtrar",
+    "filtersform.buttonsfilters.clean": "Limpiar",
+    "filtersform.placeholdersearch": "      Introduce un evento..",
+    "filtersform.range.min": "Mínimo",
+    "filtersform.range.max": "Máximo"
 }

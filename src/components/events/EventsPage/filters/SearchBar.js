@@ -21,7 +21,7 @@ export const SearchBar = ({
   const [inputText, setInputText] = useState(text);
 
   const placeholder = intl.formatMessage({
-    id: "filtersfrom.placeholdersearch",
+    id: "filtersform.placeholdersearch",
   });
 
   const handleClearButton = (event) => {

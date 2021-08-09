@@ -49,12 +49,16 @@
     "sorter.ButtonText.order": "Sorter",
     "filtersform.title.username": "Username",
     "filtersform.input.username": "Enter an username..",
-    "filtersfrom.headerfilters.advancedfilters": "Advanced filters",
-    "filtersfrom.headerfilters.filters": "Filters",
-    "filtersfrom.filters.price": "Price",
-    "filtersfrom.filters.type": "Type",
-    "filtersfrom.filters.tags": "Tags",
-    "filtersfrom.buttonsfilters.filters": "Filter",
-    "filtersfrom.buttonsfilters.clean": "Clean",
-    "filtersfrom.placeholdersearch": "      Enter an event.."
+    "filtersform.headerfilters.advancedfilters": "Advanced filters",
+    "filtersform.headerfilters.filters": "Filters",
+    "filtersform.filters.price": "Price",
+    "filtersform.filters.type": "Type",
+    "filtersform.filters.tags": "Tags",
+    "filtersform.buttonsfilters.filters": "Filter",
+    "filtersform.buttonsfilters.clean": "Clean",
+    "filtersform.placeholdersearch": "      Enter an event..",
+    "filtersform.range.min": "Minimum",
+    "filtersform.range.max": "Maximum"
+
+
 }

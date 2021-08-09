@@ -137,6 +137,10 @@ function EventsPage() {
 
   const intl = useIntl();
 
+  const filtersText = intl.formatMessage({
+    id: "filtersform.headerfilters.filters",
+  });
+
   React.useEffect(() => {
     dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery));
   }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery]);
@@ -160,7 +164,6 @@ function EventsPage() {
     dispatch(paginationRedirect(reqParams));
   };
 
-  const modalPressed = true;
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -201,22 +204,15 @@ function EventsPage() {
                 </div>
                 <div className="p-3 pb-4 row">
                   <div className="pt-3 pb-3 d-md-none">
-                    {/* <Button className="inline-block" variant="secondary">
-                      Filters Modal
-                    </Button> */}
-
                     <Button
                       variant="primary"
-                      // onClick={() => {console.log("on press modal");}}
                       onClick={handleShowModal}
                     >
-                      Filtros
+                      {filtersText}
                     </Button>
 
                     <Modal
-                      // show={!modalPressed}
                       show={showModal}
-                      // onHide={() => console.log("close modal")}
                       onHide={handleCloseModal}
                     >
                       <Modal.Header closeButton>
@@ -224,15 +220,6 @@ function EventsPage() {
                       <Modal.Body>
                         <FiltersForm tags={tags}/>
                       </Modal.Body>
-                      {/* <Modal.Footer>
-                        <Button
-                          variant="secondary"
-                          // onClick={() => console.log("close")}
-                          onClick={handleCloseModal}
-                        >
-                          Close
-                        </Button>
-                      </Modal.Footer> */}
                     </Modal>
                   </div>
                   <div className="d-flex justify-content-between">

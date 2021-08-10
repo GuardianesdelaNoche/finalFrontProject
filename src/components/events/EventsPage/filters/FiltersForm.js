@@ -128,6 +128,15 @@ export const FiltersForm = ({ tags }) => {
                     setValues={setPrice}
                     min={0}
                     step={0.01}
+                    labelTextLow={minPrice}
+                    labelTextHigh={maxPrice}
+                    preTextLow="€"
+                    preTextHigh="€"
+                    classNameFormGroup=""
+                    classNameFormLabel="text-muted font-weight-light"
+                    classNameInputGroup="bg-light rounded-pill"
+                    classNameInputGroupText="bg-light rounded-pill border-left-0 border-top-0 border-bottom-0 border-right-1 pl-3"
+                    classNameFormControl="bg-light rounded-pill border-0 text-right"
                   />{" "}
                 </Card.Body>
               </Accordion.Collapse>

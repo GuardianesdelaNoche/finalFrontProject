@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { Spinner, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetErrorAction } from "../../../store/actions/ui";
+import { setErrorAction, resetErrorAction } from "../../../store/actions/ui";
 
 import { Layout } from '../../layout'
 import EventDetails from './EventDetails'
@@ -11,13 +11,14 @@ import { eventDetailsActions, eventDeleteActions } from '../../../store/actions/
 import { getEventDetail} from '../../../store/selectors/events';
 import { getUi } from '../../../store/selectors/ui';
 
+import { addFavorite} from '../../../api/favorite'
 
 function DetailsPage() {
 	const dispatch = useDispatch();
 	const { eventId } = useParams();
 	const { loading, error } = useSelector(getUi);
-
 	const event = useSelector(state => getEventDetail (state, eventId))
+
 
 	React.useEffect(() => {
 		dispatch(eventDetailsActions(eventId))	
@@ -32,9 +33,7 @@ function DetailsPage() {
 		dispatch(resetErrorAction());
 	};
 
-	const handleFav = () => {
-		console.log('has hecho click en favoritos')
-	};
+
 
 
 	return (
@@ -49,8 +48,7 @@ function DetailsPage() {
 				)}
 				{event && <EventDetails {...event} 
 				onDelete={handleDelete} 
-				addFavorite={handleFav} 
-				removeFavorite={handleFav}
+			
 				 />}
 
 			</Layout>

@@ -6,10 +6,9 @@ const version = 'v1';
 const baseURL = `/api/${version}/eventsignup/favsignup`
 
 
-//key: addEventFavorite
 
-export const addEventFavorite = (token, eventId) => {
+export const addFavorite = ( token, _id ) => {
 	configureClient(token);
 	const url = `${baseURL}`;
-	return client.put(url, eventId);
+	return client.put(url, { 'eventfavorite': _id })
 }

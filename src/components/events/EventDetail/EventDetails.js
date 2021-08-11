@@ -1,13 +1,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl';
 import { Button, ConfirmationButton } from '../../shared';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useIntl } from 'react-intl';
 import { getIsLogged } from "../../../store/selectors/auth";
+import { addFavorite } from '../../../api/favorite'
 import {
 	FacebookShareButton,
 	FacebookIcon,
@@ -22,7 +23,7 @@ import {
 
 var moment = require("moment");
 
-function EventDetails({ description,
+function EventDetails({ description, _id,
 	photo, 
 	title, 
 	date, 
@@ -39,20 +40,31 @@ function EventDetails({ description,
 	city, 
 	location,  
 	onDelete,
-	addFavorite,
-	removeFavorite,
 	})
 	 {
 		const intl = useIntl();
 		const isLogged = useSelector(getIsLogged);
 		const BaseURL = "https://4events.net";
-
+		const dispatch = useDispatch();
 		const urlpath = useLocation();
 
 		const shareUrl = BaseURL + urlpath.pathname 
 
 		const handleReserve = ()=>{
 			{/* //TODO: Añadir funcionalidad apuntando al endpoint de reservar */}
+		}
+
+		const handleAddFav = async () => {
+			try {
+				await addFavorite()
+			} catch (error) {
+				console.log(error)
+			}
+
+		}
+
+		const handleRemvFav = () => {
+			console.log('eliminar a favoritos')
 		}
 
 		return (
@@ -327,8 +339,8 @@ function EventDetails({ description,
 
 									{/* TODO: Añadir funcionalidad Favoritos */}
 									<span className="btn btn-icon">
-										{isFavorite === true ? <i className="fas fa-heart favorite" onClick={removeFavorite}></i> :
-												<i className="fas fa-heart no-favorite" onClick={addFavorite}></i>
+										{isFavorite === true ? <i className="fas fa-heart favorite" onClick={handleRemvFav}></i> :
+											<i className="fas fa-heart no-favorite" onClick={handleAddFav}></i>
 										}
 									</span>
 

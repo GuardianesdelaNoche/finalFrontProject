@@ -17,7 +17,8 @@ const CustomToggleButton = (opt, className, i) => {
   );
 };
 
-export const FilterToggleButtons = ({opts, onChange, classNameGroup, classNameOpts }) => {
+export const FilterToggleButtons = ({opts, onChange, classNameGroup, classNameOpts, selected }) => {
+
   return (
       <ToggleButtonGroup
         // className="d-flex flex-row flex-wrap justify-content-start"
@@ -25,6 +26,7 @@ export const FilterToggleButtons = ({opts, onChange, classNameGroup, classNameOp
         type="checkbox"
         // value={value}
         onChange={onChange}
+        value={selected}
       >
           {opts.length > 0 && opts.map((opt,i) => CustomToggleButton(opt, classNameOpts, i))}
         {/* <ToggleButton

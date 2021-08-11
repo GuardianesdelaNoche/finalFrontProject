@@ -123,6 +123,7 @@ function EventsPage() {
   // vars modify events results
   const totalEvents = useSelector(getEventsTotal);
 
+
   const handleResetError = () => {
     dispatch(resetErrorAction());
   };
@@ -190,7 +191,7 @@ function EventsPage() {
           <div className="container">
             <div className="row pt-3">
               <div className="col-md-3 d-none d-md-block">
-                <FiltersForm tags={tags}/>
+                <FiltersForm defaultTags={tags}/>
               </div>
               <div className="col-md-9">
                 <div className="pt-3 pl-3 pr-3 row">
@@ -218,7 +219,7 @@ function EventsPage() {
                       <Modal.Header closeButton>
                       </Modal.Header>
                       <Modal.Body>
-                        <FiltersForm tags={tags}/>
+                        <FiltersForm defaultTags={tags}/>
                       </Modal.Body>
                     </Modal>
                   </div>

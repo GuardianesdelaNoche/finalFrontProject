@@ -48,13 +48,13 @@ const FilterCard = ({ title, body, ...props }) => {
 
 const typeActivity = "Indoor";
 
-export const FiltersForm = ({ tags }) => {
-  const [selectedTags, setSelectedTags] = useState([]);
+export const FiltersForm = ({ defaultTags}) => {
+  const [selectedTags, setSelectedTags] = useState({});
   const [selectedType, setSelectedType] = useState("");
-  const [selectedUsername, setSelectedUsername] = useState("");
+  const [selectedUsername, setSelectedUsername] = useState([]);
   const [disabledButtons, setDisabledButtons] = useState(false);
 
-  const [price, setPrice] = useState({
+  const [selectedPrice, setSelectedPrice] = useState({
     low: 0,
     high: 0,
   });
@@ -106,6 +106,20 @@ export const FiltersForm = ({ tags }) => {
     setSelectedUsername(event.target.value);
   };
 
+  const handleCleanFilters = () => {
+    setSelectedPrice({low: 0,high: 0});
+    setSelectedType(undefined);
+    setSelectedTags([]);
+    setSelectedUsername("");
+  };
+
+  const handleDisplayFilters = () => {
+    if(!disabledButtons){
+      handleCleanFilters();
+    }
+    setDisabledButtons(!disabledButtons);
+  }
+
   return (
     <Form>
       <div className="mt-3 d-flex flex-column shadow-sm">
@@ -129,8 +143,8 @@ export const FiltersForm = ({ tags }) => {
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
                   <FilterRange
-                    values={price}
-                    setValues={setPrice}
+                    values={selectedPrice}
+                    setValues={setSelectedPrice}
                     min={0}
                     step={0.01}
                     labelTextLow={minPrice}
@@ -166,6 +180,7 @@ export const FiltersForm = ({ tags }) => {
                     onChange={onChangeType}
                     classNameGroup="d-flex flex-row flex-wrap justify-content-evenly"
                     classNameOpts="flex-grow-0 m-1 btn-sm rounded-pill"
+                    selected={selectedType}
                   />
                 </Card.Body>
               </Accordion.Collapse>
@@ -187,10 +202,11 @@ export const FiltersForm = ({ tags }) => {
               <Accordion.Collapse eventKey="2">
                 <Card.Body className="p-0">
                   <FilterToggleButtons
-                    opts={tags}
+                    opts={defaultTags}
                     onChange={onChangeTags}
                     classNameGroup="d-flex flex-row flex-wrap justify-content-start"
                     classNameOpts="flex-grow-0 m-1 btn-sm rounded-pill outline-light"
+                    selected={selectedTags}
                   />
                 </Card.Body>
               </Accordion.Collapse>
@@ -201,6 +217,7 @@ export const FiltersForm = ({ tags }) => {
               className="m-1 btn-sm"
               variant="primary"
               disabled={disabledButtons}
+              onClick={handleCleanFilters}
             >
               <FormattedMessage
                 id="filtersform.buttonsfilters.clean"
@@ -237,7 +254,8 @@ export const FiltersForm = ({ tags }) => {
             <BiSlider></BiSlider>
             <span className="ml-2">{advancedFiltersText}</span>
           </div>
-          <Accordion onSelect={() => setDisabledButtons(!disabledButtons)}>
+          {/* <Accordion onSelect={() => setDisabledButtons(!disabledButtons)}> */}
+          <Accordion onSelect={handleDisplayFilters}>
             <Card className="mb-1 pl-3 rounded-0 fs-6">
               <Accordion.Toggle
                 as={Card.Text}
@@ -268,6 +286,7 @@ export const FiltersForm = ({ tags }) => {
               variant="primary"
               type="submit"
               disabled={!disabledButtons}
+              onClick={handleCleanFilters}
             >
               <FormattedMessage
                 id="filtersform.buttonsfilters.clean"

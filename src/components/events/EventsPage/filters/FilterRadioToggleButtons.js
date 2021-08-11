@@ -2,7 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 
-const customToggleButton = (opt, className, onChange, boolValue, i) => {
+const customToggleButton = (opt, className, onChange, i, selected) => {
+
   return (
     <ToggleButton
       key={opt.value}
@@ -10,7 +11,7 @@ const customToggleButton = (opt, className, onChange, boolValue, i) => {
       variant="primary"
       name="radio"
       value={opt.value}
-      // checked={radioValue === radio.value}
+      // checked={opt.value=== selected}
     //   checked={true}
     //   onChange={()=>console.log('selected type', opt.name, opt.value)}
     onChange={onChange}
@@ -28,16 +29,24 @@ export const FilterRadioToggleButtons = ({
   classNameGroup,
   classNameOpts,
   onChange,
-  boolValue
+  selected
 }) => {
+  let selectedBoolean = undefined
+  if(selected === 'true'){
+    selectedBoolean = true;
+  }else if(selected === 'false'){
+    selectedBoolean = false;
+  }
+
   return (
     <ToggleButtonGroup
     //   className="d-flex flex-row flex-wrap justify-content-evenly"
     className={classNameGroup}
       type="radio"
       name="radio"
+      value={selectedBoolean}
     >
-        {opts.length > 0 && opts.map((opt, i) => customToggleButton(opt, classNameOpts, onChange, i))}
+        {opts.length > 0 && opts.map((opt, i) => customToggleButton(opt, classNameOpts, onChange, i, selected))}
       {/* {radios.map((radio, idx) => ( */}
       {/* <ToggleButton
         // key={idx}

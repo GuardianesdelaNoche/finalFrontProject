@@ -67,7 +67,7 @@ function EventDetails({ description,
 
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{detailOwn.username}</a>
+								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{detailOwn.nickname}</a>
 								<span className="text-description d-block mt-1">
 									{moment(new Date(created_date)).format("DD-MM-YYYY")}
 								</span>

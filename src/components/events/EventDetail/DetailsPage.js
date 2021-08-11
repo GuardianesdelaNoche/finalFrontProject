@@ -32,6 +32,10 @@ function DetailsPage() {
 		dispatch(resetErrorAction());
 	};
 
+	const handleFav = () => {
+		console.log('has hecho click en favoritos')
+	};
+
 
 	return (
 		<div>
@@ -43,7 +47,11 @@ function DetailsPage() {
 						<p className="mb-0">{error.message}</p>
 					</Alert>
 				)}
-				{event && <EventDetails {...event} onDelete={handleDelete} />}
+				{event && <EventDetails {...event} 
+				onDelete={handleDelete} 
+				addFavorite={handleFav} 
+				removeFavorite={handleFav}
+				 />}
 
 			</Layout>
 		</div>

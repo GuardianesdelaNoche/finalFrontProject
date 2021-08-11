@@ -38,7 +38,9 @@ function EventDetails({ description,
 	address, 
 	city, 
 	location,  
-	onDelete
+	onDelete,
+	addFavorite,
+	removeFavorite,
 	})
 	 {
 		const intl = useIntl();
@@ -325,7 +327,9 @@ function EventDetails({ description,
 
 									{/* TODO: Añadir funcionalidad Favoritos */}
 									<span className="btn btn-icon">
-										{isFavorite === true ? <i className="fas fa-heart favorite"></i> : <i className="fas fa-heart no-favorite"></i>}
+										{isFavorite === true ? <i className="fas fa-heart favorite" onClick={removeFavorite}></i> :
+												<i className="fas fa-heart no-favorite" onClick={addFavorite}></i>
+										}
 									</span>
 
 

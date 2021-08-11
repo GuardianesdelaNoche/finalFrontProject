@@ -30,6 +30,113 @@ export const eventsLoadAction = (page, limit) => {
   }
 };
 
+/** BACK 3008 */
+
+// Load Favorites
+export const eventsFavoriteLoadedRequest = () => ({
+  type: types.eventsFavoriteLoadedRequest
+});
+
+export const eventsFavoriteLoadedSuccess = (events) => ({
+  type: types.eventsFavoriteLoadedSuccess,
+  payload: {
+    data: events.events,
+    total: events.total
+  }
+});
+
+export const eventsFavoriteLoadedError = error => ({
+  type: types.eventsFavoriteLoadedError,
+  payload: error
+});
+
+//export const eventsFavoriteLoadAction = (token) => {
+export const eventsFavoriteLoadAction = () => {
+
+  return async function (dispatch, getState, { api }) {
+        try{
+          //const events = await api.events.getEventsPage(page, limit);
+          const eventsFavorite = await api.events.getEventsFavorite();
+          //const eventsFavorite = await api.events.getEventsFavorite();
+          dispatch(eventsFavoriteLoadedSuccess(eventsFavorite));
+          // set new total 
+        }catch(error) {
+          dispatch(eventsFavoriteLoadedError(error));
+        }
+}
+};
+
+
+// Load My events created
+export const eventsOwnLoadedRequest = () => ({
+  type: types.eventsOwnLoadedRequest
+});
+
+export const eventsOwnLoadedSuccess = (events) => ({
+  type: types.eventsLoadedSuccess,
+  payload: {
+    data: events.events,
+    total: events.total
+  }
+});
+
+export const eventsOwnLoadedError = error => ({
+  type: types.eventsOwnLoadedError,
+  payload: error
+});
+
+//export const eventsFavoriteLoadAction = (token) => {
+export const eventsOwnLoadAction = () => {
+
+  return async function (dispatch, getState, { api }) {
+        try{
+          //const events = await api.events.getEventsPage(page, limit);
+          const eventsOwn = await api.events.getEventsOwn();
+          //const eventsFavorite = await api.events.getEventsFavorite();
+          dispatch(eventsOwnLoadedSuccess(eventsOwn));
+          // set new total 
+        }catch(error) {
+          dispatch(eventsOwnLoadedError(error));
+        }
+}
+};
+
+// Load Suscribed
+export const eventsAssistantLoadedRequest = () => ({
+  type: types.eventsAssistantLoadedRequest
+});
+
+export const eventsAssistantLoadedSuccess = (events) => ({
+  type: types.eventsAssistantLoadedSuccess,
+  payload: {
+    data: events.events,
+    total: events.total
+  }
+});
+
+export const eventsAssistantLoadedError = error => ({
+  type: types.eventsAssistantLoadedError,
+  payload: error
+});
+
+//export const eventsFavoriteLoadAction = (token) => {
+export const eventsAssistantLoadAction = () => {
+
+  return async function (dispatch, getState, { api }) {
+        try{
+          //const events = await api.events.getEventsPage(page, limit);
+          const eventsAssistant = await api.events.getEventsAssistant();
+          //const eventsFavorite = await api.events.getEventsFavorite();
+          dispatch(eventsAssistantLoadedSuccess(eventsAssistant));
+          // set new total 
+        }catch(error) {
+          dispatch(eventsAssistantLoadedError(error));
+        }
+}
+};
+
+//==============================================================
+
 
 //Event Details Actions 
 export const eventDetailsRequest = () => ({

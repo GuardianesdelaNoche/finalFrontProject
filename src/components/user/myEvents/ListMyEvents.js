@@ -9,6 +9,8 @@ import { FormattedMessage } from 'react-intl';
 import storage from '../../../utils/storage';
 import { useIntl } from 'react-intl';
 import { getUi } from '../../../store/selectors/ui';
+import { eventsOwnLoadAction } from '../../../store/actions/events';
+import { getEventsOwnEventsLoaded } from '../../../store/selectors/events';
 
 
 
@@ -17,14 +19,16 @@ function ListMyEvents() {
 	const intl = useIntl();    
     const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
-
+	const eventsOwn = useSelector(getEventsOwnEventsLoaded);
+	console.log(eventsOwn);
 
 	useEffect(()=>{
 		async function executeGetMyEvents (){
             try {                             
                 dispatch(setLoadingAction);
-                const myEvents = await getMyEvents(token.token);
+                //const myEvents = await getMyEvents(token.token);
                 //handleSetValue(member.result);
+				dispatch(eventsOwnLoadAction());
             } catch (error) {
                 dispatch(setErrorAction(error));
             } finally {
@@ -66,81 +70,33 @@ function ListMyEvents() {
 
 									
 									{/* TODO: Recoger los eventos y crear un map para mostrar listado */}
-
-									<div class="d-flex mb-7 pt-10">
+									{eventsOwn.length ? eventsOwn.map(element => (
+									<div className="d-flex mb-7 pt-10" key={element._id}>
 										{/* Imagen del evento */}
-										<div class="symbol symbol-60px symbol-2by3 me-4">
-											<img src="https://preview.keenthemes.com/start-html-free/assets/media/stock/600x400/img-17.jpg" alt="" className="mw-100" />
-										</div>
-											
-										{/* titulo de los eventos*/}
-											<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
-											
-												<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-													<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Cup &amp; Green</a>
-													<span class="text-description fs-7 my-1">Study the highway types</span>
-													
-												</div>
-											
-										{/* info de los eventos*/}
-												<div class="text-end py-lg-0 py-2">
-													<div class="btn btn-icon btn-bg-light btn-active-primary">
-													<i class="fas fa-arrow-right"></i>
-													</div>
-												</div>
-											</div>
-									</div>
-
-
-									<div class="d-flex mb-7">
-										{/* Imagen del evento */}
-										<div class="symbol symbol-60px symbol-2by3 me-4">
-											<img src="https://preview.keenthemes.com/start-html-free/assets/media/stock/600x400/img-10.jpg" alt="" className="mw-100" />
+										<div className="symbol symbol-70px symbol-2by3 me-4">
+											<img src={element.photo} alt="" className="mw-100" />
 										</div>
 
 										{/* titulo de los eventos*/}
-										<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
+										<div className="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
 
-											<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-												<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Yellow Background</a>
-												<span class="text-description fs-7 my-1">Study the highway types</span>
-
+											<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
+												<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6">{element.title}</a>
+												<span className="text-description fs-7 my-1">{element.description}</span>
+												<span className="text-description fs-7">Created by:
+													<span className="text-info">{element.detailOwn.username}</span>
+												</span>
+												
 											</div>
 
 											{/* info de los eventos*/}
-											<div class="text-end py-lg-0 py-2">
-												<div class="btn btn-icon btn-bg-light btn-active-primary">
-													<i class="fas fa-arrow-right"></i>
+											<div className="text-end py-lg-0 py-2">
+												<div className="btn btn-icon btn-bg-light btn-active-primary">
+													<i className="fas fa-heart"></i>
 												</div>
-
 											</div>
 										</div>
-									</div>
-
-									<div class="d-flex mb-7">
-										{/* Imagen del evento */}
-										<div class="symbol symbol-60px symbol-2by3 me-4">
-											<img src="https://preview.keenthemes.com/start-html-free/assets/media/stock/600x400/img-9.jpg" alt="" className="mw-100" />
-										</div>
-
-										{/* titulo de los eventos*/}
-										<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
-
-											<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-												<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Desserts platter</a>
-												<span class="text-description fs-7 my-1">Study the highway types</span>
-
-											</div>
-
-											{/* info de los eventos*/}
-											<div class="text-end py-lg-0 py-2">
-												<div class="btn btn-icon btn-bg-light btn-active-primary">
-													<i class="fas fa-arrow-right"></i>
-												</div>
-
-											</div>
-										</div>
-									</div>
+									</div>)):<p>No hay eventos propios creados</p>}
 								</div>
 
 

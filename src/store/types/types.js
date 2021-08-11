@@ -23,6 +23,18 @@ export const types = {
 
     eventDeleteRequest: 'EVENT Delete Request',
     eventDeleteSuccess: 'EVENT Delete Success',
-    eventDeleteError: 'EVENT Delete Error'
+    eventDeleteError: 'EVENT Delete Error',
+
+    eventsFavoriteLoadedRequest: 'EVENTS FAVORITE Loaded Request',
+    eventsFavoriteLoadedSuccess: 'EVENTS FAVORITE Loaded Success',
+    eventsFavoriteLoadedError: 'EVENTS FAVORITE Loaded Error',
+
+    eventsOwnLoadedRequest: 'EVENTS OWN FAVORITE Loaded Request',
+    eventsOwnLoadedSuccess: 'EVENTS OWN FAVORITELoaded Success',
+    eventsOwnLoadedError: 'EVENTS OWN FAVORITE Loaded Error',
+
+    eventsAssistantLoadedRequest: 'EVENTS ASSISTANT Loaded Request',
+    eventsAssistantLoadedSuccess: 'EVENTS ASSISTANT Loaded Success',
+    eventsAssistantLoadedError: 'EVENTS ASSISTANT Loaded Error',
 
 }

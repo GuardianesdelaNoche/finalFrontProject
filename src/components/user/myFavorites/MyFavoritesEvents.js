@@ -9,32 +9,38 @@ import { FormattedMessage } from 'react-intl';
 import storage from '../../../utils/storage';
 import { useIntl } from 'react-intl';
 import { getUi } from '../../../store/selectors/ui';
+import { eventsFavoriteLoadAction } from '../../../store/actions/events';
+import { getEventsFavoriteLoaded } from '../../../store/selectors/events';
 function MyFavoritesEvents() {
 
 	const dispatch = useDispatch();
 	const intl = useIntl();
 	const token = storage.get('auth');
 	const { loading, error } = useSelector(getUi);
-
+	const eventsFavorite = useSelector(getEventsFavoriteLoaded);
+	console.log(eventsFavorite);
+	React.useEffect(() => {
+		dispatch(eventsFavoriteLoadAction());
+	},[dispatch]);
 
 	const handleResetError = () => {
 		dispatch(resetErrorAction())
 	}
 	return (
 		<div>
-			
+			{loading && <Spinner animation="border" />}
 			<UserLayout>
 				<div className="row g-0 g-xl-5 g-xxl-8">
 					<div className="col-xl-12">
 						<Card>
 							<Card.Body>
 
-								<div class="card-body pt-4">
+								<div className="card-body pt-4">
 
 									<Card.Title className="align-items-center border-0">
 										<div className="align-items-start flex-column">
 											<h2 className="text-dark fs-4">
-												Mis Favotitos
+												Mis Favoritos
 											</h2>
 											<span className="text-description d-block mt-1">
 												Todos los eventos que has marcado como favoritos.
@@ -44,89 +50,33 @@ function MyFavoritesEvents() {
 
 
 									{/* TODO: Recoger los eventos y crear un map para mostrar listado */}
-
-									<div class="d-flex mb-7 pt-10">
+								{eventsFavorite.length ? eventsFavorite.map(element => (
+									<div className="d-flex mb-7 pt-10" key={element._id}>
 										{/* Imagen del evento */}
-										<div class="symbol symbol-60px symbol-2by3 me-4">
-											<img src="https://preview.keenthemes.com/start-html-free/assets/media/stock/600x400/img-17.jpg" alt="" className="mw-100" />
+										<div className="symbol symbol-70px symbol-2by3 me-4">
+											<img src={element.photo} alt="" className="mw-100" />
 										</div>
 
 										{/* titulo de los eventos*/}
-										<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
+										<div className="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
 
-											<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-												<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Cup &amp; Green</a>
-												<span class="text-description fs-7 my-1">Study the highway types</span>
-												<span class="text-description fs-7">Created by:
-													<span class="text-info"> Figma Studio</span>
+											<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
+												<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6">{element.title}</a>
+												<span className="text-description fs-7 my-1">{element.description}</span>
+												<span className="text-description fs-7">Created by:
+													<span className="text-info">{element.detailOwn.username}</span>
 												</span>
-
+												
 											</div>
 
 											{/* info de los eventos*/}
-											<div class="text-end py-lg-0 py-2">
-												<div class="btn btn-icon btn-bg-light btn-active-primary">
-													<i class="fas fa-heart"></i>
+											<div className="text-end py-lg-0 py-2">
+												<div className="btn btn-icon btn-bg-light btn-active-primary">
+													<i className="fas fa-heart"></i>
 												</div>
 											</div>
 										</div>
-									</div>
-
-
-									<div class="d-flex mb-7">
-										{/* Imagen del evento */}
-										<div class="symbol symbol-60px symbol-2by3 me-4">
-											<img src="https://preview.keenthemes.com/start-html-free/assets/media/stock/600x400/img-10.jpg" alt="" className="mw-100" />
-										</div>
-
-										{/* titulo de los eventos*/}
-										<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
-
-											<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-												<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Yellow Background</a>
-												<span class="text-description fs-7 my-1">Study the highway types</span>
-												<span class="text-description fs-7">Created by:
-													<span class="text-info"> Figma Studio</span>
-												</span>
-
-											</div>
-
-											{/* info de los eventos*/}
-											<div class="text-end py-lg-0 py-2">
-												<div class="btn btn-icon btn-bg-light btn-active-primary">
-													<i class="fas fa-heart"></i>
-												</div>
-
-											</div>
-										</div>
-									</div>
-
-									<div class="d-flex mb-7">
-										{/* Imagen del evento */}
-										<div class="symbol symbol-60px symbol-2by3 me-4">
-											<img src="https://preview.keenthemes.com/start-html-free/assets/media/stock/600x400/img-9.jpg" alt="" className="mw-100" />
-										</div>
-
-										{/* titulo de los eventos*/}
-										<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
-
-											<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-												<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Desserts platter</a>
-												<span class="text-description fs-7 my-1">Study the highway types</span>
-												<span class="text-description fs-7">Created by:
-													<span class="text-info"> Figma Studio</span>
-												</span>
-											</div>
-
-											{/* info de los eventos*/}
-											<div class="text-end py-lg-0 py-2">
-												<div class="btn btn-icon btn-bg-light btn-active-primary">
-													<i class="fas fa-heart"></i>
-												</div>
-
-											</div>
-										</div>
-									</div>
+									</div>)):<p>No hay eventos favoritos</p>}
 								</div>
 
 

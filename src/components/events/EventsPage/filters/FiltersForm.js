@@ -51,6 +51,7 @@ const typeActivity = "Indoor";
 export const FiltersForm = ({ tags }) => {
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedType, setSelectedType] = useState("");
+  const [selectedUsername, setSelectedUsername] = useState("");
   const [disabledButtons, setDisabledButtons] = useState(false);
 
   const [price, setPrice] = useState({
@@ -99,6 +100,10 @@ export const FiltersForm = ({ tags }) => {
 
   const onChangeType = (event) => {
     setSelectedType(event.target.value);
+  };
+
+  const handleSelectedUsername = (event) => {
+    setSelectedUsername(event.target.value);
   };
 
   return (
@@ -246,10 +251,13 @@ export const FiltersForm = ({ tags }) => {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
                 <Card.Body className="ml-0 pl-0">
-                  <FormControl
-                    className="rounded-pill border-0 pl-1"
-                    placeholder={placeholderUsername}
-                  ></FormControl>
+                    <FormControl
+                      className="rounded-pill border-0 pl-1"
+                      placeholder={placeholderUsername}
+                      value={selectedUsername}
+                      onChange={handleSelectedUsername}
+                      type="text"
+                    ></FormControl>
                 </Card.Body>
               </Accordion.Collapse>
             </Card>

@@ -4,14 +4,17 @@ import { Spinner, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { setErrorAction, resetErrorAction } from "../../../store/actions/ui";
 
+
 import { Layout } from '../../layout'
 import EventDetails from './EventDetails'
 
 import { eventDetailsActions, eventDeleteActions } from '../../../store/actions/events';
+
 import { getEventDetail} from '../../../store/selectors/events';
+
 import { getUi } from '../../../store/selectors/ui';
 
-import { addFavorite} from '../../../api/favorite'
+
 
 function DetailsPage() {
 	const dispatch = useDispatch();
@@ -34,8 +37,6 @@ function DetailsPage() {
 	};
 
 
-
-
 	return (
 		<div>
 			<Layout>
@@ -48,7 +49,6 @@ function DetailsPage() {
 				)}
 				{event && <EventDetails {...event} 
 				onDelete={handleDelete} 
-			
 				 />}
 
 			</Layout>

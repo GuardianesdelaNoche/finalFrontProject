@@ -1,14 +1,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types'
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl';
 import { Button, ConfirmationButton } from '../../shared';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useIntl } from 'react-intl';
 import { getIsLogged } from "../../../store/selectors/auth";
-import { addFavorite } from '../../../api/favorite'
+import { addFavorite, removeFavorite } from '../../../api/favorite';
+import { addEventAssist, removeEventAssist } from '../../../api/assist'
+
 import {
 	FacebookShareButton,
 	FacebookIcon,
@@ -22,8 +24,7 @@ import {
 
 
 var moment = require("moment");
-
-function EventDetails({ description, _id,
+function EventDetails({ description,
 	photo, 
 	title, 
 	date, 
@@ -31,7 +32,7 @@ function EventDetails({ description, _id,
 	indoor, 
 	tags, 
 	created_date,
-	assistants_count, 
+	available_places,
 	detailOwn,
 	isOwner,
 	isFavorite,
@@ -40,32 +41,57 @@ function EventDetails({ description, _id,
 	city, 
 	location,  
 	onDelete,
+	_id
 	})
 	 {
 		const intl = useIntl();
 		const isLogged = useSelector(getIsLogged);
 		const BaseURL = "https://4events.net";
-		const dispatch = useDispatch();
+	
 		const urlpath = useLocation();
 
 		const shareUrl = BaseURL + urlpath.pathname 
+		
 
-		const handleReserve = ()=>{
-			{/* //TODO: Añadir funcionalidad apuntando al endpoint de reservar */}
-		}
-
-		const handleAddFav = async () => {
+	
+		//Add Assistand 
+		const handleAddAssistant = async (token) => {
 			try {
-				await addFavorite()
+				await addEventAssist(token, _id)
 			} catch (error) {
 				console.log(error)
 			}
-
 		}
 
-		const handleRemvFav = () => {
-			console.log('eliminar a favoritos')
+		const handleRemoveAssistant = async (token) => {
+			try {
+				await removeEventAssist(token, _id)
+			} catch (error) {
+				console.log(error)
+			}
 		}
+
+
+		//Add Favorites & Remove Favorites
+		const handleAddFav = async (token) => {
+			try {
+				await addFavorite(token, _id)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+
+		const handleRemoveFav = async (token) => {
+			try {
+				await removeFavorite(token, 
+					console.log(_id, 'id muestrate please'))
+			} catch (error) {
+				console.log(error)
+			}
+		}
+
+
+
 
 		return (
 		<div>
@@ -90,20 +116,20 @@ function EventDetails({ description, _id,
 							 {/* Reservas de Plazas */}
 							{isLogged && isAssistant ? (
 									<div className="card-toolbar">
-										<Button variant="secundary">
+									<Button variant="secundary" onClick={handleRemoveAssistant}>
 											<FormattedMessage
 												id="details.event.reserved.place"
 											defaultMessage="Reserved Place"
 											/>
 										</Button>
 									</div>
-									) : (isLogged && isAssistant === false &&  assistants_count > 0 ? (
+							) : (isLogged && isAssistant === false && available_places > 0 ? (
 												<div className="card-toolbar mr-2">
-													<Button variant="primary" onClick={handleReserve}>
+												<Button variant="primary" onClick={handleAddAssistant}>
 														Reservar Plaza
 													</Button>
 												</div>)
-											: (isLogged && isAssistant === false && assistants_count <= 0 ? (
+									: (isLogged && isAssistant === false && available_places <= 0 ? (
 												<div className="card-toolbar">
 													<span className="tab-panel">
 														<FormattedMessage
@@ -308,7 +334,7 @@ function EventDetails({ description, _id,
 									</p>
 									<div className="text-danger mt-2 mr-2">
 										<span className="mr-1">
-										{assistants_count} 
+											{available_places}
 										</span>
 										<FormattedMessage
 											id="details.event.places.available"
@@ -339,7 +365,7 @@ function EventDetails({ description, _id,
 
 									{/* TODO: Añadir funcionalidad Favoritos */}
 									<span className="btn btn-icon">
-										{isFavorite === true ? <i className="fas fa-heart favorite" onClick={handleRemvFav}></i> :
+										{isFavorite === true ? <i className="fas fa-heart favorite" onClick={handleRemoveFav}></i> :
 											<i className="fas fa-heart no-favorite" onClick={handleAddFav}></i>
 										}
 									</span>

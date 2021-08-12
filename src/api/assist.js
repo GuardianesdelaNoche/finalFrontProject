@@ -5,16 +5,17 @@ const version = 'v1';
 const baseURL = `/api/${version}/eventsignup/assistsignup`
 
 
-//key: eventassistants
 
-export const addEventAssist = (token, eventId) => {
+export const addEventAssist = (token, _id) => {
 	configureClient(token);
 	const url = `${baseURL}`;
-	return client.put(url, eventId);
+	return client.put(url, { 'eventassistants': _id });
 }
 
-export const removeEventAssist = (token, eventId) => {
+
+export const removeEventAssist = (token, _id) => {
 	configureClient(token);
 	const url = `${baseURL}`;
-	return client.delete(url, eventId);
+	return client.delete(url, { 'eventassistants': _id });
 }
+

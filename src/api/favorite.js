@@ -17,5 +17,5 @@ export const addFavorite = ( token, _id ) => {
 export const removeFavorite = (token, _id) => {
 	configureClient(token);
 	const url = `${baseURL}`;
-	return client.delete(url,{'eventfavorite': _id })
+	return client.delete(url, { data: { 'eventfavorite': _id } } )
 }

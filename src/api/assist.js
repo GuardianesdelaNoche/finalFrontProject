@@ -16,6 +16,5 @@ export const addEventAssist = (token, _id) => {
 export const removeEventAssist = (token, _id) => {
 	configureClient(token);
 	const url = `${baseURL}`;
-	return client.delete(url, { 'eventassistants': _id });
+	return client.delete(url, { data:{ 'eventassistants': _id }});
 }
-

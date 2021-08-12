@@ -346,6 +346,7 @@ color: #a1a5b7;
 }
 .icons-footer .favorite{
 color:#f1416c;
+transition: color 0.5s ease;
 }
 
 .iconRRSS{
@@ -354,7 +355,7 @@ color:#f1416c;
 }
 
 .icons-footer i:hover, i:active{
-    transition: color .2s ease,background-color .2s ease;
+    transition: color .2s ease, color .2s ease;
     color: #20d489!important;
 }
 

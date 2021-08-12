@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types'
 import { useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom'
@@ -41,6 +41,7 @@ function EventDetails({ description,
 	city, 
 	location,  
 	onDelete,
+	price,
 	_id
 	})
 	 {
@@ -52,12 +53,14 @@ function EventDetails({ description,
 
 		const shareUrl = BaseURL + urlpath.pathname 
 		
-
+		const [isFavActive, setFavActive] = useState(isFavorite);
+		
 	
 		//Add Assistand 
 		const handleAddAssistant = async (token) => {
 			try {
 				await addEventAssist(token, _id)
+			
 			} catch (error) {
 				console.log(error)
 			}
@@ -76,6 +79,8 @@ function EventDetails({ description,
 		const handleAddFav = async (token) => {
 			try {
 				await addFavorite(token, _id)
+				setFavActive(!isFavActive)
+
 			} catch (error) {
 				console.log(error)
 			}
@@ -83,8 +88,9 @@ function EventDetails({ description,
 
 		const handleRemoveFav = async (token) => {
 			try {
-				await removeFavorite(token, 
-					console.log(_id, 'id muestrate please'))
+				await removeFavorite(token, _id)
+				setFavActive(!isFavActive)
+
 			} catch (error) {
 				console.log(error)
 			}
@@ -113,6 +119,8 @@ function EventDetails({ description,
 								</span>
 							</div>
 		
+						
+
 							 {/* Reservas de Plazas */}
 							{isLogged && isAssistant ? (
 									<div className="card-toolbar">
@@ -123,10 +131,12 @@ function EventDetails({ description,
 											/>
 										</Button>
 									</div>
-							) : (isLogged && isAssistant === false && available_places > 0 ? (
+							) : ((isLogged && isAssistant === false && available_places > 0) ? (
 												<div className="card-toolbar mr-2">
 												<Button variant="primary" onClick={handleAddAssistant}>
 														Reservar Plaza
+
+											
 													</Button>
 												</div>)
 									: (isLogged && isAssistant === false && available_places <= 0 ? (
@@ -309,7 +319,7 @@ function EventDetails({ description,
 							<div className="separator mt-2 pt-2"></div>
 							
 							<div className="d-flex">
-								<div className="col d-flex flex-grow-1 my-lg-0 my-2 pe-3 pt-3">
+								<div className="col-sm-4 d-flex my-lg-0 my-2 pe-3 pt-3">
 									<div className="symbol tags me-2">
 										<span className="bg-light-primary" >		
 											{tags.map((tags, index) =>
@@ -322,7 +332,7 @@ function EventDetails({ description,
 									
 								</div>
 								
-
+								{isLogged ? (				
 								<div className="col d-flex icons-footer my-lg-0 my-2 pe-3 pt-3">
 									<p className="mt-1 text-description mr-1 mt-2">
 										
@@ -341,8 +351,7 @@ function EventDetails({ description,
 											defaultMessage="Places available:"
 										/>
 									</div>
-
-
+									<div>
 									{['top'].map((placement) => (
 										<OverlayTrigger
 											key={placement}
@@ -362,14 +371,13 @@ function EventDetails({ description,
 											</span>
 										</OverlayTrigger>
 									))}
-
-									{/* TODO: Añadir funcionalidad Favoritos */}
-									<span className="btn btn-icon">
-										{isFavorite === true ? <i className="fas fa-heart favorite" onClick={handleRemoveFav}></i> :
+									</div>
+								
+									<span className="btn btn-icon">										
+										{isFavorite === true || isFavActive ? <i className="fas fa-heart favorite" onClick={handleRemoveFav}></i> :
 											<i className="fas fa-heart no-favorite" onClick={handleAddFav}></i>
 										}
 									</span>
-
 
 									<div className="text-end pe-0 mt-1">
 											<FacebookShareButton
@@ -402,8 +410,28 @@ function EventDetails({ description,
 												<EmailIcon className="iconRRSS" size={30}  />
 											</EmailShareButton>
 									</div>			
-
 								</div>
+								): (
+										<div className="col-sm-8 d-flex pt-3">
+											<div className="col d-flex float-right">
+												<div className="text-danger mt-2 mr-2">
+													<span className="mr-1">
+														{available_places}
+													</span>
+													<FormattedMessage
+														id="details.event.places.available"
+														defaultMessage="Places available:"
+													/>
+												</div>
+												
+												<div className="bg-light rounded text-gray-600 py-2 px-3">
+														{price} €
+												</div>
+											</div>
+										</div>
+								
+								)}
+										
 							</div>
 
 						</div>

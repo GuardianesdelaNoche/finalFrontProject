@@ -4,7 +4,7 @@ import { Button } from './index';
 import { useIntl } from 'react-intl';
 import {Modal} from 'react-bootstrap'
 
-function ConfirmationButton({ title, confirmation, onConfirm,  ...props }) {
+function ConfirmationButton({ title, confirmation, onConfirm,   ...props }) {
 	const [confirmationVisible, setConfirmationVisible] = React.useState(false);
 	const intl = useIntl();
 
@@ -15,12 +15,13 @@ function ConfirmationButton({ title, confirmation, onConfirm,  ...props }) {
 	const handleConfirmClick = () => {
 		hideConfirmation();
 		onConfirm();
+	
 	};
 	const handleCancelClick = hideConfirmation;
 
 	return (
 		<>
-			<Button variant="primary" onClick={handleClick} {...props} />
+			<div onClick={handleClick} {...props} />
 			{confirmationVisible && (
 
 			<Modal 

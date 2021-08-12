@@ -1,12 +1,17 @@
 
 import React, {useState} from 'react';
 import PropTypes from 'prop-types'
-import { useSelector } from "react-redux";
-import { useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useLocation  } from "react-router-dom";
+
 import { FormattedMessage } from 'react-intl';
-import { Button, ConfirmationButton } from '../../shared';
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useIntl } from 'react-intl';
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+
+import { resetErrorAction, setLoadingAction, setErrorAction } from '../../../store/actions/ui';
+import { Button, ConfirmationButton } from '../../shared';
+
+
 import { getIsLogged } from "../../../store/selectors/auth";
 import { addFavorite, removeFavorite } from '../../../api/favorite';
 import { addEventAssist, removeEventAssist } from '../../../api/assist'
@@ -48,41 +53,52 @@ function EventDetails({ description,
 		const intl = useIntl();
 		const isLogged = useSelector(getIsLogged);
 		const BaseURL = "https://4events.net";
-	
-		const urlpath = useLocation();
 
+		const history = useHistory();
+		const urlpath = useLocation();
+	
 		const shareUrl = BaseURL + urlpath.pathname 
 		
+		const dispatch = useDispatch();
 		const [isFavActive, setFavActive] = useState(isFavorite);
+		const [isAssistantActive, setAssistantActive] = useState(isAssistant)
 		
 	
-		//Add Assistand 
+		//Add & Remove Assistans
 		const handleAddAssistant = async (token) => {
 			try {
+				dispatch(setLoadingAction());
+				dispatch(resetErrorAction());
 				await addEventAssist(token, _id)
-			
+				setAssistantActive(!isAssistantActive)
+				history.goBack()
+
 			} catch (error) {
-				console.log(error)
+				setErrorAction(error)
 			}
 		}
 
 		const handleRemoveAssistant = async (token) => {
 			try {
+				dispatch(setLoadingAction()); 
+				dispatch(resetErrorAction());
 				await removeEventAssist(token, _id)
+				setAssistantActive(!isAssistantActive)
+				 history.goBack() 
 			} catch (error) {
-				console.log(error)
+				setErrorAction(error)
 			}
 		}
 
 
-		//Add Favorites & Remove Favorites
+		//Add & Remove Favorites
 		const handleAddFav = async (token) => {
 			try {
 				await addFavorite(token, _id)
 				setFavActive(!isFavActive)
 
 			} catch (error) {
-				console.log(error)
+				setErrorAction(error)
 			}
 		}
 
@@ -92,12 +108,11 @@ function EventDetails({ description,
 				setFavActive(!isFavActive)
 
 			} catch (error) {
-				console.log(error)
+				setErrorAction(error)
 			}
 		}
 
-
-
+	
 
 		return (
 		<div>
@@ -119,26 +134,40 @@ function EventDetails({ description,
 								</span>
 							</div>
 		
-						
-
-							 {/* Reservas de Plazas */}
+							{/* Reservation of Places */}
 							{isLogged && isAssistant ? (
 									<div className="card-toolbar">
-									<Button variant="secundary" onClick={handleRemoveAssistant}>
+									<Button variant="secundary">
+										<ConfirmationButton
+											title={intl.formatMessage({ id: 'popups.remove.reserve.title' })}
+											confirmation={intl.formatMessage({ id: 'popups.remove.reserve.mesage' })}
+											onConfirm={handleRemoveAssistant}
+										>
 											<FormattedMessage
 												id="details.event.reserved.place"
-											defaultMessage="Reserved Place"
+												defaultMessage="Reserved Place"
 											/>
+										</ConfirmationButton>
+											
 										</Button>
 									</div>
 							) : ((isLogged && isAssistant === false && available_places > 0) ? (
 												<div className="card-toolbar mr-2">
-												<Button variant="primary" onClick={handleAddAssistant}>
-														Reservar Plaza
+													<Button variant="primary">
+														<ConfirmationButton
+															title={intl.formatMessage({ id: 'popups.add.reserve.title' })}
+															confirmation={intl.formatMessage({ id: 'popups.add.reserve.mesage' })}
+															onConfirm={handleAddAssistant}
+														>	
+															<FormattedMessage
+															id="details.event.reserve.place"
+															defaultMessage="Reserve a place"
+															/>
 
-											
+														</ConfirmationButton>
 													</Button>
 												</div>)
+												
 									: (isLogged && isAssistant === false && available_places <= 0 ? (
 												<div className="card-toolbar">
 													<span className="tab-panel">
@@ -179,7 +208,7 @@ function EventDetails({ description,
 
 							{isOwner  ?
 								(<div className="card-toolbar">
-									{/* Botón eliminar si eres propietario */}
+									{/* Delete button if you are an owner */}
 									<ConfirmationButton
 										title={intl.formatMessage({ id: 'popups.remove.title' })}
 										confirmation={intl.formatMessage({ id: 'popups.remove.mesage' })}
@@ -198,8 +227,6 @@ function EventDetails({ description,
 
 						<div className="card-body">
 							{/* Event Image */}
-
-							{/* TODO: Testing Placeholder*/}
 							<img src={!photo ? '../images/photoEvent/placeholder.png' : photo }
 								className="img-event"
 								alt={title}
@@ -429,17 +456,12 @@ function EventDetails({ description,
 												</div>
 											</div>
 										</div>
-								
 								)}
 										
 							</div>
-
 						</div>
-
 					</div>
 				</div>
-				 
-
 		</div>
 		)
 	}

@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { Spinner, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { setErrorAction, resetErrorAction } from "../../../store/actions/ui";
+import { resetErrorAction } from "../../../store/actions/ui";
 
 
 import { Layout } from '../../layout'
@@ -18,6 +18,7 @@ import { getUi } from '../../../store/selectors/ui';
 
 function DetailsPage() {
 	const dispatch = useDispatch();
+	
 	const { eventId } = useParams();
 	const { loading, error } = useSelector(getUi);
 	const event = useSelector(state => getEventDetail (state, eventId))

@@ -1,5 +1,4 @@
 import { types } from "../types/types";
-import { getUserDataById } from "../../api/user";
 
 
 export const authLoginRequest = () => ({
@@ -27,7 +26,7 @@ export const loginWithTokenAction = token => {
         
         try {      
       
-            const userData = await getUserDataById(token);                       
+            const userData = await api.user.getUserDataById(token);                       
             dispatch(authLoginSuccess(userData.result));
 
             // Redirect
@@ -42,11 +41,11 @@ export const loginWithTokenAction = token => {
 
 export const loginAction = credentials => {
     return async function (dispatch, getState, { api, history }) {
+        dispatch(authLoginRequest());
         try {
-            dispatch(authLoginRequest());
            
             const logged = await api.login.login(credentials);       
-            const userData = await getUserDataById(logged.token);                       
+            const userData = await api.user.getUserDataById(logged.token);                       
             dispatch(authLoginSuccess(userData.result));
 
             // Redirect

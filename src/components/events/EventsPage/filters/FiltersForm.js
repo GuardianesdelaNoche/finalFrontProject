@@ -48,8 +48,17 @@ const FilterCard = ({ title, body, ...props }) => {
 
 const typeActivity = "Indoor";
 
-export const FiltersForm = ({ defaultTags}) => {
-  const [selectedTags, setSelectedTags] = useState({});
+export const FiltersForm = ({ 
+  defaultTags,
+  initFilters,
+  onClickFilters,
+  onRemoveFilters,
+  onCleanFilters
+}) => {
+
+  // const {indoor, price, tags} = filters;
+
+  const [selectedTags, setSelectedTags] = useState([]);
   const [selectedType, setSelectedType] = useState("");
   const [selectedUsername, setSelectedUsername] = useState([]);
   const [disabledButtons, setDisabledButtons] = useState(false);
@@ -119,6 +128,57 @@ export const FiltersForm = ({ defaultTags}) => {
     }
     setDisabledButtons(!disabledButtons);
   }
+
+  const handleRemoveFilters = (event) => {
+    handleCleanFilters();
+    if(onRemoveFilters && typeof onRemoveFilters === 'function'){
+      // let requestFilters = {};
+      // if(selectedType){
+      //   requestFilters = {
+      //     indoor: selectedType
+      //   }
+      // }
+      // if(selectedPrice){
+      //   requestFilters = {
+      //     price: `${selectedPrice.low}-${selectedPrice.high}`
+      //   }
+      // }
+      // if(selectedTags.length > 0){
+      //   requestFilters = {
+      //     tags: selectedTags
+      //   }
+      // }
+      const requestFilters = {};
+      onRemoveFilters(event, requestFilters);
+    }
+  };
+
+  const handleApplyFilters = (event) => {
+    handleCleanFilters();
+    if(onClickFilters && typeof onClickFilters === 'function'){
+      let requestFilters = {};
+      if(selectedType){
+        requestFilters = {
+          ...requestFilters,
+          indoor: selectedType
+        }
+      }
+      if(selectedPrice.low >= 0 && setSelectedPrice.high > 0){
+        requestFilters = {
+          ...requestFilters,
+          price: selectedPrice
+        }
+      }
+      if(selectedTags.length > 0){
+        requestFilters = {
+          ...requestFilters,
+          tags: selectedTags
+        }
+      }
+      console.log('handleApplyFilters', requestFilters);
+      onClickFilters(event, requestFilters);
+    }
+  };
 
   return (
     <Form>
@@ -231,6 +291,7 @@ export const FiltersForm = ({ defaultTags}) => {
               variant="primary"
               type="submit"
               disabled={disabledButtons}
+              onClick={handleApplyFilters}
             >
               <FormattedMessage
                 id="filtersform.buttonsfilters.apply"
@@ -241,6 +302,7 @@ export const FiltersForm = ({ defaultTags}) => {
               className="m-1 btn-sm"
               variant="primary"
               disabled={disabledButtons}
+              onClick={handleRemoveFilters}
             >
               <FormattedMessage
                 id="filtersform.buttonsfilters.remove"
@@ -300,6 +362,7 @@ export const FiltersForm = ({ defaultTags}) => {
               variant="primary"
               type="submit"
               disabled={!disabledButtons}
+              onClick={handleApplyFilters}
             >
               <FormattedMessage
                 id="filtersform.buttonsfilters.apply"
@@ -310,6 +373,7 @@ export const FiltersForm = ({ defaultTags}) => {
               className="m-1 btn-sm"
               variant="primary"
               disabled={!disabledButtons}
+              onClick={handleRemoveFilters}
             >
               <FormattedMessage
                 id="filtersform.buttonsfilters.remove"

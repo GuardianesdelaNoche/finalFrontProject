@@ -28,18 +28,17 @@ import { useIntl } from "react-intl";
 import { getTags } from "../../../store/selectors/tags";
 import { tagsLoadAction } from "../../../store/actions/tags";
 
-
 const lang_es = "es";
 
 const optionsSort = [
-{
-  key: 'asc',
-  value: 'asc'
-},
-{
-  key: 'des',
-  value: 'des'
-}
+  {
+    key: "asc",
+    value: "asc",
+  },
+  {
+    key: "des",
+    value: "des",
+  },
 ];
 
 const getNewReq = (queryPath, key, value) => {
@@ -107,7 +106,12 @@ const getNewReq = (queryPath, key, value) => {
         sort: value,
       };
       break;
-
+    case "filters":
+      paramsQuery = {
+        ...paramsQuery,
+        filters: value
+      }
+      break;
     default:
       break;
   }
@@ -123,7 +127,6 @@ function EventsPage() {
   // vars modify events results
   const totalEvents = useSelector(getEventsTotal);
 
-
   const handleResetError = () => {
     dispatch(resetErrorAction());
   };
@@ -135,6 +138,15 @@ function EventsPage() {
   const limitQuery = queryPath.get("limit") || 10;
   const titleQuery = queryPath.get("title") || "";
   const sortQuery = queryPath.get("sort") || "asc";
+  const indoorQuery = queryPath.get("indoor") || "";
+  const priceQuery = queryPath.get("price") || "";
+  const tagsQuery = queryPath.getAll("tags") || [];
+  console.log('indoorQuery', indoorQuery);
+  console.log('priceQuery', priceQuery);
+  console.log('tagsQuery', tagsQuery);
+
+  //initFilters
+  const filters = {};
 
   const intl = useIntl();
 
@@ -143,20 +155,20 @@ function EventsPage() {
   });
 
   React.useEffect(() => {
-    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery));
-  }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery]);
+    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery));
+  }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery]);
 
   React.useEffect(() => {
     dispatch(tagsLoadAction());
   }, [dispatch, tags]);
-  
+
   const handleSetCurrentPage = (current, pageSize) => {
     const reqParams = getNewReq(queryPath, "page", current);
     dispatch(paginationRedirect(reqParams));
   };
   const onClick = (val) => (ev) => {
     const reqParams = getNewReq(queryPath, "limit", val);
-     dispatch(paginationRedirect(reqParams));
+    dispatch(paginationRedirect(reqParams));
   };
 
   const onClickSearch = (event, text) => {
@@ -175,7 +187,15 @@ function EventsPage() {
     event.preventDefault();
     const reqParams = getNewReq(queryPath, "sort", key);
     dispatch(paginationRedirect(reqParams));
-  }
+  };
+
+  const onClickFilters = (event, filters) => {
+    event.preventDefault();
+    console.log(filters);
+    const reqParams = getNewReq(queryPath, "filters", filters);
+    console.log('reqParams', reqParams)
+    dispatch(paginationRedirect(reqParams));
+  };
 
   return (
     <div>
@@ -191,7 +211,12 @@ function EventsPage() {
           <div className="container">
             <div className="row pt-3">
               <div className="col-md-3 d-none d-md-block">
-                <FiltersForm defaultTags={tags}/>
+                <FiltersForm
+                  defaultTags={tags}
+                  initFilters={filters}
+                  onClickFilters={onClickFilters}
+                  onRemoveFilters={onClickFilters}
+                />{" "}
               </div>
               <div className="col-md-9">
                 <div className="pt-3 pl-3 pr-3 row">
@@ -205,26 +230,24 @@ function EventsPage() {
                 </div>
                 <div className="p-3 pb-4 row">
                   <div className="pt-3 pb-3 d-md-none">
-                    <Button
-                      variant="primary"
-                      onClick={handleShowModal}
-                    >
+                    <Button variant="primary" onClick={handleShowModal}>
                       {filtersText}
                     </Button>
 
-                    <Modal
-                      show={showModal}
-                      onHide={handleCloseModal}
-                    >
-                      <Modal.Header closeButton>
-                      </Modal.Header>
+                    <Modal show={showModal} onHide={handleCloseModal}>
+                      <Modal.Header closeButton></Modal.Header>
                       <Modal.Body>
-                        <FiltersForm defaultTags={tags}/>
+                        <FiltersForm
+                          defaultTags={tags}
+                          initFilters={filters}
+                          onClickFilters={onClickFilters}
+                          onRemoveFilters={onClickFilters}
+                        />{" "}
                       </Modal.Body>
                     </Modal>
                   </div>
                   <div className="d-flex justify-content-between">
-                    <Sorter onSelect={onSelectSorter}/>
+                    <Sorter onSelect={onSelectSorter} />
                     <PaginationNavStyle onClick={onClick} limit={limitQuery} />
                   </div>
                 </div>
@@ -233,9 +256,9 @@ function EventsPage() {
                     <EventsCardsList events={events}></EventsCardsList>
                   )}
                   {!loading && !error && events.length === 0 && (
-                      <EventsCardsEmptyList
-                        eventsCount={0}
-                      ></EventsCardsEmptyList>
+                    <EventsCardsEmptyList
+                      eventsCount={0}
+                    ></EventsCardsEmptyList>
                   )}
                 </div>
               </div>

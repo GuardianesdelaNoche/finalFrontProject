@@ -2,18 +2,48 @@ import client from "./client";
 
 const eventsPath = "/api/v1/events";
 
-
-export const getEvents = () => {
-  return client.get(`${eventsPath}`).then(eve => eve);
+const composerPathTags = (tags) => {
+  let path = "";
+  if (tags.length > 0) {
+    tags.forEach((tag) => {
+      path = path.concat(`&tags=${tag}`);
+    });
+  }
+  return path;
 };
 
-export const getEventsPage = (currentPage, limit, title, sort) => {
-  let request = `${eventsPath}?skip=${(currentPage-1)*limit}&limit=${limit}`;
-  if(title){
-    request = request.concat(`&title=${title}`)
+export const getEvents = () => {
+  return client.get(`${eventsPath}`).then((eve) => eve);
+};
+
+export const getEventsPage = (
+  currentPage,
+  limit,
+  title,
+  sort,
+  indoor,
+  price,
+  tags
+) => {
+  let request = `${eventsPath}?skip=${
+    (currentPage - 1) * limit
+  }&limit=${limit}`;
+  if (title) {
+    request = request.concat(`&title=${title}`);
   }
-  if(sort){
-    request = request.concat(`&sort=${sort}`)
+  if (sort) {
+    request = request.concat(`&sort=${sort}`);
   }
-  return client.get(`${request}`).then(eve => eve);
+  if (indoor) {
+    request = request.concat(`&indoor=${indoor}`);
+  }
+  if (price) {
+    request = request.concat(`&price=${price}`);
+  }
+  if (tags) {
+    const pathTags = composerPathTags(tags);
+    request = request.concat(pathTags)
+  }
+  console.log('request events', request);
+  return client.get(`${request}`).then((eve) => eve);
 };

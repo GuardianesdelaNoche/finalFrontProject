@@ -225,7 +225,7 @@ function EventDetails({ description,
 
 						</div>
 
-						<div className="card-body">
+						<div className="card card-body">
 							{/* Event Image */}
 							<img src={!photo ? '../images/photoEvent/placeholder.png' : photo }
 								className="img-event"
@@ -252,7 +252,7 @@ function EventDetails({ description,
 							{/* Event Details */}
 							<div className="details-info d-flex align-items-center me-2">
 								<div className="row">
-									<div className="col-sm-auto d-flex">
+									<div className="col-sm-auto d-flex mb-mb-2">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
 												<i className="fas fa-map-marker-alt"></i>
@@ -274,7 +274,7 @@ function EventDetails({ description,
 										</div>
 									</div>
 
-									<div className="col-sm-auto d-flex">
+									<div className="col-sm d-flex mb-mb-2">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
 												<i className="fas fa-calendar-day mw-75"></i>
@@ -291,7 +291,7 @@ function EventDetails({ description,
 											<div className="fs-7 text-muted mt-1">{moment(new Date(date)).format("DD-MM-YYYY")}</div>
 										</div>
 									</div>
-									<div className="col-sm-auto d-flex">
+									<div className="col-sm d-flex mb-mb-2">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
 												<i className="fas fa-hourglass-half mw-75"></i>
@@ -308,7 +308,7 @@ function EventDetails({ description,
 											<div className="fs-7 text-muted  mt-1">{duration} H</div>
 										</div>
 									</div>
-									<div className="col-sm-auto d-flex">
+									<div className="col-sm d-flex mb-mb-2">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
 												<i className="fas fa-home mw-75"></i>
@@ -345,7 +345,7 @@ function EventDetails({ description,
 							
 							<div className="separator mt-2 pt-2"></div>
 							
-							<div className="d-flex">
+							<div className="d-flex icon-responsive">
 								<div className="col-sm-4 d-flex my-lg-0 my-2 pe-3 pt-3">
 									<div className="symbol tags me-2">
 										<span className="bg-light-primary" >		
@@ -360,8 +360,8 @@ function EventDetails({ description,
 								</div>
 								
 								{isLogged ? (				
-								<div className="col d-flex icons-footer my-lg-0 my-2 pe-3 pt-3">
-									<p className="mt-1 text-description mr-1 mt-2">
+									<div className="col d-flex icons-footer icon-responsive my-lg-0 my-2 pe-3 pt-3">
+									<p className="mt-1 text-description mr-1 mt-2 update">
 										
 										<FormattedMessage
 											id="details.event.assistand"
@@ -406,7 +406,7 @@ function EventDetails({ description,
 										}
 									</span>
 
-									<div className="text-end pe-0 mt-1">
+									<div className="text-end pe-0 mt-1 rrss">
 											<FacebookShareButton
 												className="mr-1"
 												url={shareUrl}

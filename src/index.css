@@ -9,9 +9,6 @@ body {
 }
 
 body {
-/*Testing User Panel   
-  padding-top: 60px;
-  padding-bottom: 60px; */
 
 
   background-color: #FBF9F6 !important;
@@ -35,7 +32,7 @@ a {
 }
 
 a, a:hover {
-    transition: color .2s ease,background-color .2s ease;
+    transition: color .2s ease;
     text-decoration: none !important;
    
 }
@@ -186,9 +183,7 @@ button:disabled {
     padding: 0 2.25rem;
     background-color: transparent;
 }
-/* .card>.card-body, .card>.card-footer {
-    padding: 2rem 2.25rem;
-} */
+
 
 .card.card-body {
     padding: 2rem 2.25rem;
@@ -413,6 +408,34 @@ transition: color 0.5s ease;
 
     }
 
+
+    /* DetailsPage */
+    .card>.card-header{
+        padding: 0 1.25rem;   
+    }
+
+    .mb-mb-2{
+       margin-bottom: 1.2rem;
+    }
+    .icon-responsive{
+        flex-wrap: wrap;
+    }
+
+    .icon-responsive.pt-3{
+    padding-top: 0rem !important;
+    justify-content: space-evenly;
+}
+
+    .rrss{
+        padding-top: 0.5rem !important;
+    }
+    .update{
+        display:none;
+    }
+
+    .modal-dialog {
+        margin: 1.5rem;
+    }
 
 }
 

@@ -1,5 +1,4 @@
 import { types } from "../types/types";
-import {login, logout} from '../../api/login';
 import { getUserDataById } from "../../api/user";
 
 
@@ -43,10 +42,10 @@ export const loginWithTokenAction = token => {
 
 export const loginAction = credentials => {
     return async function (dispatch, getState, { api, history }) {
-        dispatch(authLoginRequest());
         try {
+            dispatch(authLoginRequest());
            
-            const logged = await login(credentials);       
+            const logged = await api.login.login(credentials);       
             const userData = await getUserDataById(logged.token);                       
             dispatch(authLoginSuccess(userData.result));
 
@@ -61,7 +60,7 @@ export const loginAction = credentials => {
 
 export const logoutAction = () => {
     return async function (dispatch, _getState, { api, history }) {
-        await logout();
+        await api.login.logout();
         dispatch(authLogout());
         history.push("/");
     };

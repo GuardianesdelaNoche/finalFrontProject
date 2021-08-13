@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.9"
+    "redux-devtools-extension": "^2.13.9",
+    "supertest": "^6.1.5"
   }
 }

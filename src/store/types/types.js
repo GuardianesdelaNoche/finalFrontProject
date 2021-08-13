@@ -19,7 +19,10 @@ export const types = {
 
     eventDetailsRequest: 'EVENT Details Request',
     eventDetailsSuccess: 'EVENT Details Success',
-    eventDetailsError: 'EVENT Details Error'
+    eventDetailsError: 'EVENT Details Error',
 
+    eventDeleteRequest: 'EVENT Delete Request',
+    eventDeleteSuccess: 'EVENT Delete Success',
+    eventDeleteError: 'EVENT Delete Error'
 
 }

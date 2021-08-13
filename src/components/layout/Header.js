@@ -21,12 +21,12 @@ function Header({ isLogged, userData }) {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
 						<Nav className="me-auto">
-							{isLogged && <Nav.Link href="/events/new">
+							{isLogged && <Link to="/event/new">
 								<FormattedMessage
 								id="navbar.item.menu"
 								defaultMessage="New Event"
 								/>
-							</Nav.Link>}
+							</Link>}
 						</Nav>
 						
 						<Nav >
@@ -54,9 +54,7 @@ function Header({ isLogged, userData }) {
 										/>
 									</Link>
 								</Button>
-								
 									<AuthButton className="navbar-btn" />
-								
 							</div>
 							}
 							

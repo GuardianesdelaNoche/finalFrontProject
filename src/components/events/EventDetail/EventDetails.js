@@ -1,237 +1,76 @@
 
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types'
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation  } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 import { FormattedMessage } from 'react-intl';
-import { useIntl } from 'react-intl';
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
-
-import { resetErrorAction, setLoadingAction, setErrorAction } from '../../../store/actions/ui';
-import { Button, ConfirmationButton } from '../../shared';
-
-
-import { getIsLogged } from "../../../store/selectors/auth";
-import { addFavorite, removeFavorite } from '../../../api/favorite';
-import { addEventAssist, removeEventAssist } from '../../../api/assist'
-
-import {
-	FacebookShareButton,
-	FacebookIcon,
-	TwitterShareButton,
-	TwitterIcon,
-	WhatsappShareButton,
-	WhatsappIcon,
-	EmailShareButton,
-	EmailIcon,
-} from "react-share";
-
+import { ConfirmationButton } from '../../shared';
+import { getUserData } from '../../../store/selectors/auth';
 
 var moment = require("moment");
-function EventDetails({ description,
-	photo, 
-	title, 
-	date, 
-	duration, 
-	indoor, 
-	tags, 
-	created_date,
-	available_places,
-	detailOwn,
-	isOwner,
-	isFavorite,
-	isAssistant,
-	address, 
-	city, 
-	location,  
-	onDelete,
-	price,
-	_id
-	})
-	 {
-		const intl = useIntl();
-		const isLogged = useSelector(getIsLogged);
-		const BaseURL = "https://4events.net";
 
-		const history = useHistory();
-		const urlpath = useLocation();
-	
-		const shareUrl = BaseURL + urlpath.pathname 
-		
-		const dispatch = useDispatch();
-		const [isFavActive, setFavActive] = useState(isFavorite);
-		const [isAssistantActive, setAssistantActive] = useState(isAssistant)
-		
-	
-		//Add & Remove Assistans
-		const handleAddAssistant = async (token) => {
-			try {
-				dispatch(setLoadingAction());
-				dispatch(resetErrorAction());
-				await addEventAssist(token, _id)
-				setAssistantActive(!isAssistantActive)
-				history.goBack()
+function EventDetails({ description, photo, title, price, date, duration, indoor, tags, max_places, created_date}) {
 
-			} catch (error) {
-				setErrorAction(error)
-			}
-		}
-
-		const handleRemoveAssistant = async (token) => {
-			try {
-				dispatch(setLoadingAction()); 
-				dispatch(resetErrorAction());
-				await removeEventAssist(token, _id)
-				setAssistantActive(!isAssistantActive)
-				 history.goBack() 
-			} catch (error) {
-				setErrorAction(error)
-			}
-		}
-
-
-		//Add & Remove Favorites
-		const handleAddFav = async (token) => {
-			try {
-				await addFavorite(token, _id)
-				setFavActive(!isFavActive)
-
-			} catch (error) {
-				setErrorAction(error)
-			}
-		}
-
-		const handleRemoveFav = async (token) => {
-			try {
-				await removeFavorite(token, _id)
-				setFavActive(!isFavActive)
-
-			} catch (error) {
-				setErrorAction(error)
-			}
-		}
-
-	
+		const userData = useSelector(state => getUserData(state)) 
 
 		return (
 		<div>
 				<div className="container details pt-14">
 					<div className="card card-flush pt-12">
 						<div className="card-header">
-							
+							{/* OwnerAvatar */}
 							<div className="symbol symbol-45px me-4">
 								<span className="symbol-label bg-light align-items-end">
-									<img alt="Autor" src={ detailOwn.image } width="60" className="mh-40px" />
+									<img alt="Autor" src="https://preview.keenthemes.com/start-html-free/assets/media/svg/avatars/047-girl-25.svg" className="mh-40px" />
 								</span>
 							</div>
 
 							{/* OwnerName & Date */}
 							<div className="d-flex flex-column flex-grow-1">
-								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{detailOwn.nickname}</a>
+								<a className="text-gray-800 text-hover-primary mb-1 fs-6 fw-bolder">{/* {userData.username} */}</a>
 								<span className="text-description d-block mt-1">
 									{moment(new Date(created_date)).format("DD-MM-YYYY")}
-								</span>
+									</span>
 							</div>
-		
-							{/* Reservation of Places */}
-							{isLogged && isAssistant ? (
-									<div className="card-toolbar">
-									<Button variant="secundary">
-										<ConfirmationButton
-											title={intl.formatMessage({ id: 'popups.remove.reserve.title' })}
-											confirmation={intl.formatMessage({ id: 'popups.remove.reserve.mesage' })}
-											onConfirm={handleRemoveAssistant}
-										>
-											<FormattedMessage
-												id="details.event.reserved.place"
-												defaultMessage="Reserved Place"
-											/>
-										</ConfirmationButton>
-											
-										</Button>
-									</div>
-							) : ((isLogged && isAssistant === false && available_places > 0) ? (
-												<div className="card-toolbar mr-2">
-													<Button variant="primary">
-														<ConfirmationButton
-															title={intl.formatMessage({ id: 'popups.add.reserve.title' })}
-															confirmation={intl.formatMessage({ id: 'popups.add.reserve.mesage' })}
-															onConfirm={handleAddAssistant}
-														>	
-															<FormattedMessage
-															id="details.event.reserve.place"
-															defaultMessage="Reserve a place"
-															/>
 
-														</ConfirmationButton>
-													</Button>
-												</div>)
-												
-									: (isLogged && isAssistant === false && available_places <= 0 ? (
-												<div className="card-toolbar">
-													<span className="tab-panel">
-														<FormattedMessage
-															id="details.event.capacity"
-															defaultMessage="Full capacity"
-														/>
-													</span>
-												</div>
-												)
-												: (
-													<div className="card-toolbar">
-														{['top'].map((placement) => (
-															<OverlayTrigger
-																key={placement}
-																placement={placement}
-																overlay={
-																	<Tooltip id={`tooltip-${placement}`}>
-																		<FormattedMessage
-																			id="eventCard.overlay.registerLogin"
-																			defaultMessage="Favourite"
-																		/>
-																	</Tooltip>
-																}
-															>
-																<span className="tab-panel mr-2">
-																	<FormattedMessage
-																		id="details.event.reserve.place"
-																		defaultMessage="Reserve a place"
-																	/>
-																</span>
-															</OverlayTrigger>
-														))}
-													</div>
-												)	
-											)
-									)}
 
-							{isOwner  ?
-								(<div className="card-toolbar">
-									{/* Delete button if you are an owner */}
-									<ConfirmationButton
-										title={intl.formatMessage({ id: 'popups.remove.title' })}
-										confirmation={intl.formatMessage({ id: 'popups.remove.mesage' })}
-										onConfirm={onDelete}
-									>
-										<FormattedMessage
-											id="details.event.remove"
-											defaultMessage="Remove"
-										/>
-									</ConfirmationButton>
-								</div>)
-								: ('')
-							}
+							{/* Si no soy el usuario */}
+							<div className="card-toolbar">
+								<span className="tab-panel me-2">
+									<FormattedMessage
+										id="details.event.edit"
+										defaultMessage="Edit"
+									/>
+								</span>
+								<span className="tab-panel">
+									<FormattedMessage
+										id="details.event.remove"
+										defaultMessage="Remove"
+									/>
+									</span>
+							</div>
+
+							{/*  Si soy el propietario 
+							 <div className="card-toolbar">
+									<ConfirmationButton className="me-2"
+									onConfirm={onDelete} 
+									>Editar</ConfirmationButton>
+								
+									<ConfirmationButton 
+									onConfirm={onDelete} 
+									>Eliminar</ConfirmationButton>
+
+							</div>  */}
+
 
 						</div>
-
-						<div className="card card-body">
+						<div className="card-body">
 							{/* Event Image */}
-							<img src={!photo ? '../images/photoEvent/placeholder.png' : photo }
+							
+							<img src={photo}
 								className="img-event"
 								alt={title}
 								style={{ objectFit: 'cover' }} />
-
 
 							{/* Event Title */}
 							<h2 className="text-dark fw-bolder pt-5 mb-10">{title} </h2>
@@ -248,33 +87,40 @@ function EventDetails({ description,
 									/>
 									</span>
 							</h5>
-							
 							{/* Event Details */}
 							<div className="details-info d-flex align-items-center me-2">
 								<div className="row">
-									<div className="col-sm-auto d-flex mb-mb-2">
+									<div className="col-sm-auto d-flex">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
-												<i className="fas fa-map-marker-alt"></i>
+												<i className="fas fa-coins mw-75"></i>
 											</span>
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
-												 <FormattedMessage
-													id="details.event.location.name"
-													defaultMessage="Location"
-												/> 
-											</span>
-											<div className="fs-7 text-muted mt-1">
-												{address}
-												<p>{city}</p>
-											
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Precio</span>
+											<div className="fs-7 text-muted mt-1">{price} 
+												<FormattedMessage
+													id="details.event.currency"
+													defaultMessage="$"
+												/>
 											</div>
 										</div>
 									</div>
+									<div className="col-sm-2 d-flex">
+										<div className="symbol symbol-45px me-2">
+											<span className="symbol-label bg-light align-items-center">
+												<i className="fas fa-users mw-75"></i>
+											</span>
+										</div>
 
-									<div className="col-sm d-flex mb-mb-2">
+										<div className="me-5">
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Plazas</span>
+											<div className="fs-7 text-muted  mt-1">{max_places}</div>
+										</div>
+									</div>
+
+									<div className="col-sm-auto d-flex">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
 												<i className="fas fa-calendar-day mw-75"></i>
@@ -282,16 +128,11 @@ function EventDetails({ description,
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
-												<FormattedMessage
-													id="details.event.date"
-													defaultMessage="Date"
-												/>
-											</span>
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Fecha</span>
 											<div className="fs-7 text-muted mt-1">{moment(new Date(date)).format("DD-MM-YYYY")}</div>
 										</div>
 									</div>
-									<div className="col-sm d-flex mb-mb-2">
+									<div className="col-sm-auto d-flex">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
 												<i className="fas fa-hourglass-half mw-75"></i>
@@ -299,16 +140,11 @@ function EventDetails({ description,
 										</div>
 
 										<div className="me-5">
-											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">
-												<FormattedMessage
-													id="details.event.duration"
-													defaultMessage="Duration"
-												/>
-											</span>
+											<span className="fs-6 text-gray-800 text-hover-primary fw-bolder">Duración</span>
 											<div className="fs-7 text-muted  mt-1">{duration} H</div>
 										</div>
 									</div>
-									<div className="col-sm d-flex mb-mb-2">
+									<div className="col-sm-auto d-flex">
 										<div className="symbol symbol-45px me-2">
 											<span className="symbol-label bg-light align-items-center">
 												<i className="fas fa-home mw-75"></i>
@@ -316,15 +152,10 @@ function EventDetails({ description,
 										</div>
 
 										<div className="me-5">
-											<span  className="fs-6 text-gray-800 text-hover-primary fw-bolder">
-												<FormattedMessage
-													id="details.event.space"
-													defaultMessage="Space"
-												/>
-											</span>
+											<span href="#" className="fs-6 text-gray-800 text-hover-primary fw-bolder">Espacio</span>
 											<div className="fs-7 text-muted  mt-1">
 												{ indoor ? (
-
+													
 													<FormattedMessage
 														id="details.event.indoor"
 														defaultMessage="Indoor"
@@ -342,145 +173,52 @@ function EventDetails({ description,
 									</div>
 								</div>
 							</div>
-							
 							<div className="separator mt-2 pt-2"></div>
-							
-							<div className="d-flex icon-responsive">
-								<div className="col-sm-4 d-flex my-lg-0 my-2 pe-3 pt-3">
+							<div className="d-flex ">
+								<div className="col d-flex flex-grow-1 my-lg-0 my-2 pe-3 pt-4">
 									<div className="symbol tags me-2">
-										<span className="bg-light-primary" >		
-											{tags.map((tags, index) =>
-												<span key={index}>
-													#{tags}
-												</span>
-											)}
+										<span className="bg-light-primary">
+											{tags.map((tag) => `#${tag}`)}
 										</span>
 									</div>
 									
 								</div>
-								
-								{isLogged ? (				
-									<div className="col d-flex icons-footer icon-responsive my-lg-0 my-2 pe-3 pt-3">
-									<p className="mt-1 text-description mr-1 mt-2 update">
-										
-										<FormattedMessage
-											id="details.event.assistand"
-											defaultMessage="Update:"
-										/>
-										   
-									</p>
-									<div className="text-danger mt-2 mr-2">
-										<span className="mr-1">
-											{available_places}
-										</span>
-										<FormattedMessage
-											id="details.event.places.available"
-											defaultMessage="Places available:"
-										/>
-									</div>
-									<div>
-									{['top'].map((placement) => (
-										<OverlayTrigger
-											key={placement}
-											placement={placement}
-											overlay={
-												<Tooltip id={`tooltip-${placement}`}>
-													{location.coordinates.map((cord, index) =>
-														<span key={index}>
-															{cord}
-														</span>
-													)}
-												</Tooltip>
-											}
-										>
-											<span className="btn btn-icon">
-												<i className="fas fa-map-marker-alt fs-6"></i>
-											</span>
-										</OverlayTrigger>
-									))}
-									</div>
-								
-									<span className="btn btn-icon">										
-										{isFavorite === true || isFavActive ? <i className="fas fa-heart favorite" onClick={handleRemoveFav}></i> :
-											<i className="fas fa-heart no-favorite" onClick={handleAddFav}></i>
-										}
+								<div className="col"></div>
+								<div className="col d-flex icons-footer my-lg-0 my-2 pe-3 pt-4">
+									<span className="btn btn-icon btn-sm btn-active-color-primary">
+
+										<i className="fas fa-map-marker-alt fs-6"></i>
 									</span>
 
-									<div className="text-end pe-0 mt-1 rrss">
-											<FacebookShareButton
-												className="mr-1"
-												url={shareUrl}
-												quote={title}
-											>
-												<FacebookIcon className="iconRRSS"size={30} />
-											</FacebookShareButton>
-											<TwitterShareButton
-											className="mr-1"
-												url={shareUrl}
-												title={title}
-											>
-												<TwitterIcon className="iconRRSS" size={30}  />
-											</TwitterShareButton>
+									<span className="btn btn-icon btn-sm btn-active-color-primary">
+										<i className="fas fa-heart"></i>
+									</span>
 
-											<WhatsappShareButton
-												className="mr-1"
-												url={shareUrl}
-												title={title}
-											>
-												<WhatsappIcon className="iconRRSS" size={30} />
-											</WhatsappShareButton>
-
-											<EmailShareButton
-												url={shareUrl}
-												subject={title}
-											>
-												<EmailIcon className="iconRRSS" size={30}  />
-											</EmailShareButton>
-									</div>			
 								</div>
-								): (
-										<div className="col-sm-8 d-flex pt-3">
-											<div className="col d-flex float-right">
-												<div className="text-danger mt-2 mr-2">
-													<span className="mr-1">
-														{available_places}
-													</span>
-													<FormattedMessage
-														id="details.event.places.available"
-														defaultMessage="Places available:"
-													/>
-												</div>
-												
-												<div className="bg-light rounded text-gray-600 py-2 px-3">
-														{price} €
-												</div>
-											</div>
-										</div>
-								)}
-										
 							</div>
+
 						</div>
+
 					</div>
 				</div>
+				 
+
 		</div>
 		)
 	}
 
 EventDetails.propTypes = {
 	title: PropTypes.string.isRequired,
-	price: PropTypes.number.isRequired,
-	created_date: PropTypes.string.isRequired,
-	date: PropTypes.string.isRequired,
+	price: PropTypes.bool.isRequired,
+	date: PropTypes.number.isRequired,
 	duration: PropTypes.number.isRequired,
 	description: PropTypes.string.isRequired,
 	max_places: PropTypes.number,
-	assistants_count: PropTypes.number,
-	address: PropTypes.string,
-	city: PropTypes.string,
 	indoor: PropTypes.bool,
 	tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 	photo: PropTypes.string, 
 };
+
 
 
 export default EventDetails

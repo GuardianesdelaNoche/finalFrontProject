@@ -9,6 +9,9 @@ body {
 }
 
 body {
+/*Testing User Panel   
+  padding-top: 60px;
+  padding-bottom: 60px; */
 
 
   background-color: #FBF9F6 !important;
@@ -32,7 +35,7 @@ a {
 }
 
 a, a:hover {
-    transition: color .2s ease;
+    transition: color .2s ease,background-color .2s ease;
     text-decoration: none !important;
    
 }
@@ -64,9 +67,6 @@ button:disabled {
 }
 .text-gray-800 {
     color: #3f4254!important;
-}
-.text-danger{
-     color:#f1416c !important;
 }
 
 .text-hover-primary:hover, .text-hover-primary:hover i {
@@ -183,7 +183,9 @@ button:disabled {
     padding: 0 2.25rem;
     background-color: transparent;
 }
-
+/* .card>.card-body, .card>.card-footer {
+    padding: 2rem 2.25rem;
+} */
 
 .card.card-body {
     padding: 2rem 2.25rem;
@@ -336,21 +338,10 @@ border-top-right-radius: .65rem;
     font-size: 1rem;
     color: #a1a5b7;
 }
-.icons-footer .no-favorite{
-color: #a1a5b7;
-}
-.icons-footer .favorite{
-color:#f1416c;
-transition: color 0.5s ease;
-}
 
-.iconRRSS{
-    border-radius: 0.65rem;
-   
-}
 
 .icons-footer i:hover, i:active{
-    transition: color .2s ease, color .2s ease;
+    transition: color .2s ease,background-color .2s ease;
     color: #20d489!important;
 }
 
@@ -408,34 +399,6 @@ transition: color 0.5s ease;
 
     }
 
-
-    /* DetailsPage */
-    .card>.card-header{
-        padding: 0 1.25rem;   
-    }
-
-    .mb-mb-2{
-       margin-bottom: 1.2rem;
-    }
-    .icon-responsive{
-        flex-wrap: wrap;
-    }
-
-    .icon-responsive.pt-3{
-    padding-top: 0rem !important;
-    justify-content: space-evenly;
-}
-
-    .rrss{
-        padding-top: 0.5rem !important;
-    }
-    .update{
-        display:none;
-    }
-
-    .modal-dialog {
-        margin: 1.5rem;
-    }
 
 }
 

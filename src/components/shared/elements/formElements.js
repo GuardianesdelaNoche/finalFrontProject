@@ -1,6 +1,5 @@
 import styled, {css} from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import DatePicker from "react-datepicker";
 
 const colors = {
     edge: "#20d489",
@@ -72,25 +71,6 @@ const ErrorLegend = styled.p`
         display:block;
     `} 
 `;
-
-
-
-const DatePickerF = styled(DatePicker)`
-    width: 100%;
-    background: #fff;    
-    height: 40px;
-    line-height:45px;
-    padding:0 40px 0 10px;
-    transition: .3s ease all;
-    border: 3px solid transparent;
-    background:#F5F8FA;
-    border-radius:5px;
-    margin-bottom:10px;
-    &:focus {
-        outline:none;       
-        border: 2px solid ${colors.focus}; 
-    }
-`
 
 
 const ValidationIcon = styled(FontAwesomeIcon)`
@@ -184,7 +164,4 @@ export {Form,
         ContentBottomCenter,
         Button,
         ErrorMessage,
-        SuccessMessage,
-        DatePickerF,
-         
-};
+        SuccessMessage};

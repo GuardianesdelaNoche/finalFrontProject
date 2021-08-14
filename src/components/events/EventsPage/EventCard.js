@@ -8,9 +8,9 @@ import { RiBookmark3Line, RiHome4Line } from "react-icons/ri";
 import { TiTree } from "react-icons/ti";
 import { FormattedMessage } from "react-intl";
 
-
+import { CollapseText } from "../../shared/CollapseText";
 import { Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { getIsLogged } from "../../../store/selectors/auth";
 
@@ -20,10 +20,9 @@ function EventCard(event) {
   // const state = useSelector(getIsEventFav(event._id));
   const isLogged = useSelector(getIsLogged);
 
- 
+
   const handleAddEventFavs = () => {
     // console.log("add/remove fav -> redux & api");
-   
   };
 
   return (
@@ -68,14 +67,13 @@ function EventCard(event) {
                 </Button>
               )}
             </OverlayTrigger>
-            <Link key={event._id} to={`/event/${event._id}/${event.title.replace(/\s+/g, '-')}`}>
-
+            <Link key={event._id} to={`/event/${event._id}/${event.title}`}>
               <Card.Img variant="top"  className="home" src={event.photo} />
             </Link>
           </span>
         </div>
       </div>
-      <Link key={event._id} to={`/event/${event._id}/${event.title.replace(/\s+/g, '-')}`}>
+      <Link key={event._id} to={`/event/${event._id}/${event.title}`}>
         <Card.Body className="card">
           <Card.Title className="text-dark">{event.title}</Card.Title>
        
@@ -95,7 +93,7 @@ function EventCard(event) {
                 <span>
                   <i className="fas fa-users mw-75 me-2"></i>
 
-                  {event.assistants_count}
+                  {event.max_places - event._id_assistants.length}
                   <FormattedMessage
                     id="eventCard.availableSeats"
                     defaultMessage="Seats"

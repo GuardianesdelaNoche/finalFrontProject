@@ -87,6 +87,10 @@
     "newevent.validate.address": "There is something wrong",
     "newevent.validate.country": "There is something wrong",
     "newevent.validate.postal-code": "There is something wrong",
-    "newevent.validate.citiy": "There is something wrong"
+    "newevent.validate.citiy": "There is something wrong",
+    "user.panel.event.suscribed.title": "My Subscribed Events",
+    "user.panel.event.suscribed.description": "All events I will attend",
+    "user.panel.event.suscribed.createby":"Created by:",
+    "user.panel.event.suscribed.error": "You have not yet subscribed to any event"
 
 }

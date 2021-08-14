@@ -90,5 +90,10 @@
     "newevent.validate.address": "Hay algún error",
     "newevent.validate.country": "Hay algún error",
     "newevent.validate.postal-code": "Hay algún error",
-    "newevent.validate.city": "Hay algún error"
+    "newevent.validate.city": "Hay algún error",
+    "user.panel.event.suscribed.title": "Mis Eventos Suscritos",
+    "user.panel.event.suscribed.description": "Todos los eventos a los que estoy suscrito",
+    "user.panel.event.suscribed.createby": "Creado por:",
+    "user.panel.event.suscribed.error": "No te has suscrito a ningún evento"
+
 }

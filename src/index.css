@@ -382,11 +382,10 @@ color:#f1416c;
 
 
 /* Panel User Events  */
-.symbol.symbol-60px.symbol-2by3>img {
-    height: 70px;
-    width: 100px;
-    max-width: auto;
+.symbol.symbol-70px.symbol-2by3>img {
+    max-width: 200px !important; 
     border-radius: 0.65rem;
+    background-size: contain;
 }
 .mb-7 {
     margin-bottom: 1.75rem!important;
@@ -448,6 +447,14 @@ color:#f1416c;
 a:hover {
     transition: color .2s ease,background-color .2s ease;
 }
+
+
+
+
+
+
+
+
 /* Responsive */
 
 @media(max-width:768px){

@@ -78,23 +78,22 @@ function ListMyEvents() {
 										</div>
 
 										{/* titulo de los eventos*/}
-										<div className="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
+										<div className="d-flex align-items-center flex-grow-1 mt-n2 mt-lg-n1">
 
 											<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
 												<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6">{element.title}</a>
 												<span className="text-description fs-7 my-1">{element.description}</span>
-												<span className="text-description fs-7">Created by:
-													<span className="text-info">{element.detailOwn.username}</span>
-												</span>
+												
 												
 											</div>
 
-											{/* info de los eventos*/}
-											<div className="text-end py-lg-0 py-2">
-												<div className="btn btn-icon btn-bg-light btn-active-primary">
-													<i className="fas fa-heart"></i>
+												{/* info de los eventos*/}
+												<div class="text-end py-lg-0 py-2">
+													<div class="btn btn-icon btn-bg-light btn-active-primary">
+														<i class="fas fa-arrow-right"></i>
+													</div>
+
 												</div>
-											</div>
 										</div>
 									</div>)):<p>No hay eventos propios creados</p>}
 								</div>

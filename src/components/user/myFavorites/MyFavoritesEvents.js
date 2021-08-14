@@ -54,17 +54,17 @@ function MyFavoritesEvents() {
 									<div className="d-flex mb-7 pt-10" key={element._id}>
 										{/* Imagen del evento */}
 										<div className="symbol symbol-70px symbol-2by3 me-4">
-											<img src={element.photo} alt="" className="mw-100" />
+											<img src={element.photo}  alt="" className="mw-100" />
 										</div>
 
 										{/* titulo de los eventos*/}
-										<div className="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
+										<div className="d-flex align-items-center flex-grow-1 mt-n2 mt-lg-n1">
 
 											<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
 												<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6">{element.title}</a>
-												<span className="text-description fs-7 my-1">{element.description}</span>
+												<span className="text-description fs-7 my-1">{element.description.substring(0, 150)}&nbsp; [...]</span>
 												<span className="text-description fs-7">Created by:
-													<span className="text-info">{element.detailOwn.username}</span>
+													<span className="text-info"> {element.detailOwn.username}</span>
 												</span>
 												
 											</div>

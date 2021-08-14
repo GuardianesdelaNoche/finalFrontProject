@@ -94,6 +94,13 @@
     "user.panel.event.suscribed.title": "Mis Eventos Suscritos",
     "user.panel.event.suscribed.description": "Todos los eventos a los que estoy suscrito",
     "user.panel.event.suscribed.createby": "Creado por:",
-    "user.panel.event.suscribed.error": "No te has suscrito a ningún evento"
+    "user.panel.event.suscribed.error": "No te has suscrito a ningún evento",
+    "user.panel.event.favorites.title": "Mis Eventos Favoritos",
+    "user.panel.event.favorites.description": "Todos mis eventos marcados como favoritos",
+    "user.panel.event.favorites.error": "No tienes ningún evento marcado como favorito",
+    "user.panel.event.myevents.title": "Mis Eventos",
+    "user.panel.event.myevents.description": "Todos los eventos que has publicado",
+    "user.panel.event.myevents.error": "No tienes eventos creados"
+
 
 }

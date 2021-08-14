@@ -8,7 +8,7 @@ import NotFoundPage from './NotFoundPage';
 import { RememberPassPage, RecoverPassPage } from '../auth';
 import  ListMyEvents  from '../user/myEvents/ListMyEvents';
 import MyFavoritesEvents from '../user/myFavorites/MyFavoritesEvents';
-import MySuscribesEvents from '../user/mySuscribes/MyFavoritesEvents';
+import MySuscribesEvents from '../user/mySuscribes/MySuscribesEvents';
 import { loginWithTokenAction } from '../../store/actions/auth';
 import { useDispatch } from 'react-redux';
 import storage from "../../utils/storage";

@@ -1,21 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import UserLayout from '../../layout/UserLayout';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
-import { resetErrorAction, setLoadingAction, setErrorAction, resetLoadingAction } from '../../../store/actions/ui';
-import { getMyEvents } from '../../../api/user';
+import { resetErrorAction, } from '../../../store/actions/ui';
+
 import { Alert, Spinner } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-import storage from '../../../utils/storage';
-import { useIntl } from 'react-intl';
+
 import { getUi } from '../../../store/selectors/ui';
 import { eventsFavoriteLoadAction } from '../../../store/actions/events';
 import { getEventsFavoriteLoaded } from '../../../store/selectors/events';
 function MyFavoritesEvents() {
 
 	const dispatch = useDispatch();
-	const intl = useIntl();
-	const token = storage.get('auth');
 	const { loading, error } = useSelector(getUi);
 	const eventsFavorite = useSelector(getEventsFavoriteLoaded);
 	console.log(eventsFavorite);
@@ -40,10 +37,18 @@ function MyFavoritesEvents() {
 									<Card.Title className="align-items-center border-0">
 										<div className="align-items-start flex-column">
 											<h2 className="text-dark fs-4">
-												Mis Favoritos
+												<FormattedMessage
+													id="user.panel.event.favorites.title"
+													defaultMessage="My Favorites Events"
+												/>
+												
 											</h2>
 											<span className="text-description d-block mt-1">
-												Todos los eventos que has marcado como favoritos.
+												<FormattedMessage
+													id="user.panel.event.favorites.description"
+													defaultMessage="All my favourite events"
+												/>
+												
 											</span>
 										</div>
 									</Card.Title>
@@ -63,7 +68,11 @@ function MyFavoritesEvents() {
 											<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
 												<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6">{element.title}</a>
 												<span className="text-description fs-7 my-1">{element.description.substring(0, 150)}&nbsp; [...]</span>
-												<span className="text-description fs-7">Created by:
+												<span className="text-description fs-7">
+													<FormattedMessage
+														id="user.panel.event.suscribed.createby"
+														defaultMessage="Created by:"
+													/>
 													<span className="text-info"> {element.detailOwn.username}</span>
 												</span>
 												
@@ -76,7 +85,12 @@ function MyFavoritesEvents() {
 												</div>
 											</div>
 										</div>
-									</div>)):<p>No hay eventos favoritos</p>}
+									</div>)):<p>
+											<FormattedMessage
+												id="user.panel.event.favorites.error"
+												defaultMessage="You have no events marked as favourites"
+											/>
+										</p>}
 								</div>
 
 

@@ -3,11 +3,8 @@ import UserLayout from '../../layout/UserLayout';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
-import { getMyEvents } from '../../../api/user';
 import { Alert, Spinner} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-import storage from '../../../utils/storage';
-import { useIntl } from 'react-intl';
 import { getUi } from '../../../store/selectors/ui';
 import { eventsOwnLoadAction } from '../../../store/actions/events';
 import { getEventsOwnEventsLoaded } from '../../../store/selectors/events';
@@ -16,8 +13,7 @@ import { getEventsOwnEventsLoaded } from '../../../store/selectors/events';
 
 function ListMyEvents() {
 	const dispatch = useDispatch();
-	const intl = useIntl();    
-    const token = storage.get('auth');     
+ 
     const { loading, error } = useSelector(getUi);
 	const eventsOwn = useSelector(getEventsOwnEventsLoaded);
 	console.log(eventsOwn);
@@ -58,12 +54,16 @@ function ListMyEvents() {
 										<div className="align-items-start flex-column">
 											<h2 className="text-dark fs-4">
 												<FormattedMessage
-													id="listmyevents.title"
+													id="user.panel.event.myevents.title"
 													defaultMessage="My Events"
 												/>
 											</h2>
 											<span className="text-description d-block mt-1">
-												Echa un vistazo a todos los eventos que has publicado
+												<FormattedMessage
+													id="user.panel.event.myevents.description"
+													defaultMessage="All the events you have published"
+												/>
+												
 											</span>
 										</div>
 									</Card.Title>
@@ -95,7 +95,11 @@ function ListMyEvents() {
 
 												</div>
 										</div>
-									</div>)):<p>No hay eventos propios creados</p>}
+									</div>)):<p>
+											<FormattedMessage
+												id="user.panel.event.myevents.error"
+												defaultMessage="You have no events created"
+											/></p>}
 								</div>
 
 

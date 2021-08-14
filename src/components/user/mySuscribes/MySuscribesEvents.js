@@ -3,8 +3,6 @@ import UserLayout from '../../layout/UserLayout';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction } from '../../../store/actions/ui';
-import storage from '../../../utils/storage';
-import { useIntl } from 'react-intl';
 import { getUi } from '../../../store/selectors/ui';
 import { Alert, Spinner } from 'react-bootstrap';
 import { eventsAssistantLoadAction } from '../../../store/actions/events';
@@ -12,11 +10,9 @@ import { getEventsAssistantEventsLoaded } from '../../../store/selectors/events'
 import { FormattedMessage } from 'react-intl';
 
 
-
 function MySuscribesEvents() {
 
 	const dispatch = useDispatch();
-	const token = storage.get('auth');
 	const { loading, error } = useSelector(getUi);
 	const eventsAssistant = useSelector(getEventsAssistantEventsLoaded);
 	console.log(eventsAssistant);

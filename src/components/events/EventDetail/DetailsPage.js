@@ -1,9 +1,9 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { Spinner, Alert } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction } from "../../../store/actions/ui";
-
+import  Spinner  from '../../shared/Spinner';
 
 import { Layout } from '../../layout'
 import EventDetails from './EventDetails'
@@ -49,7 +49,7 @@ function DetailsPage() {
 					</Alert>
 				)}
 				{event && <EventDetails {...event} 
-				onDelete={handleDelete} 
+					onDelete={handleDelete} 
 				 />}
 
 			</Layout>

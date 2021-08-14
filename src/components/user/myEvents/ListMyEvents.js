@@ -4,11 +4,12 @@ import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { getMyEvents } from '../../../api/user';
-import { Alert, Spinner} from 'react-bootstrap';
+import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import storage from '../../../utils/storage';
 import { useIntl } from 'react-intl';
 import { getUi } from '../../../store/selectors/ui';
+import  Spinner  from '../../shared/Spinner';
 
 
 

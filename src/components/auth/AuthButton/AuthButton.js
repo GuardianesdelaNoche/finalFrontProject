@@ -16,6 +16,7 @@ function AuthButton({ isLogged, onLogout }) {
 	return isLogged ? (
 
 		<ConfirmationButton
+			title={intl.formatMessage({ id: 'logout.title' })}
 			confirmation= {intl.formatMessage({ id: 'logout.confirmation'})}
 			onConfirm={handleLogoutConfirm}
 		>

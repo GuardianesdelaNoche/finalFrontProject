@@ -17,7 +17,7 @@ function Header({ isLogged, userData }) {
 
 			<Navbar collapseOnSelect expand="lg" bg="light white" variant="light" fixed="top" >
 				<Container>
-					<Navbar.Brand href="#home" className="logo py-2 pb-7"><img alt="4EVENTS" src="http://isagomez.com/wp-content/uploads/2021/07/logo4eventsPNG.png" atl="logo" className="mh-50px"></img></Navbar.Brand>
+					<Navbar.Brand href="/" className="logo py-2 pb-7"><img alt="4EVENTS" src="http://isagomez.com/wp-content/uploads/2021/07/logo4eventsPNG.png" atl="logo" className="mh-50px"></img></Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
 						<Nav className="me-auto">
@@ -54,9 +54,7 @@ function Header({ isLogged, userData }) {
 										/>
 									</Link>
 								</Button>
-								
 									<AuthButton className="navbar-btn" />
-								
 							</div>
 							}
 							

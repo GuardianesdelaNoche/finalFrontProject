@@ -56,16 +56,17 @@ export const FiltersForm = ({
   onCleanFilters
 }) => {
 
-  // const {indoor, price, tags} = filters;
+   const {indoor, price, tags} = initFilters;
 
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedType, setSelectedType] = useState("");
-  const [selectedUsername, setSelectedUsername] = useState([]);
+  const [selectedTags, setSelectedTags] = useState(tags);
+  const [selectedType, setSelectedType] = useState(indoor);
+  const [selectedUsername, setSelectedUsername] = useState("");
   const [disabledButtons, setDisabledButtons] = useState(false);
 
+  const [ low, high] = price.split("-");
   const [selectedPrice, setSelectedPrice] = useState({
-    low: 0,
-    high: 0,
+    low: low,
+    high: high
   });
 
   const intl = useIntl();
@@ -148,8 +149,8 @@ export const FiltersForm = ({
       //     tags: selectedTags
       //   }
       // }
-      const requestFilters = {};
-      onRemoveFilters(event, requestFilters);
+      const noFilters = {};
+      onRemoveFilters(event, noFilters);
     }
   };
 

@@ -46,6 +46,11 @@ const getNewReq = (queryPath, key, value) => {
   const limitQuery = queryPath.get("limit") || 10;
   const titleQuery = queryPath.get("title");
   const sortQuery = queryPath.get("sort");
+  const indoorQuery = queryPath.get("indoor");
+  const priceQuery = queryPath.get("price");
+  const tagsQuery = queryPath.getAll("tags");
+
+  let filters = {};
 
   let paramsQuery = {};
   if (pageQuery) {
@@ -75,6 +80,41 @@ const getNewReq = (queryPath, key, value) => {
       sort: sortQuery,
     };
   }
+
+  if (indoorQuery) {
+    filters = {
+      ...filters,
+      indoor: indoorQuery,
+    }
+    paramsQuery = {
+      ...paramsQuery,
+      filters: filters
+    };
+  }
+
+  if (priceQuery) {
+    filters = {
+      ...filters,
+      price: priceQuery
+    }
+    paramsQuery = {
+      ...paramsQuery,
+      filters: filters
+    };
+  }
+
+  if (tagsQuery) {
+    filters = {
+      ...filters,
+      tags: tagsQuery
+    }
+    paramsQuery = {
+      ...paramsQuery,
+      filters: filters
+    };
+  }
+
+  console.log('paramsQuery', paramsQuery);
 
   switch (key) {
     case "page":
@@ -109,6 +149,7 @@ const getNewReq = (queryPath, key, value) => {
     case "filters":
       paramsQuery = {
         ...paramsQuery,
+        page: 1,
         filters: value
       }
       break;
@@ -138,15 +179,19 @@ function EventsPage() {
   const limitQuery = queryPath.get("limit") || 10;
   const titleQuery = queryPath.get("title") || "";
   const sortQuery = queryPath.get("sort") || "asc";
-  const indoorQuery = queryPath.get("indoor") || "";
-  const priceQuery = queryPath.get("price") || "";
+  const indoorQuery = queryPath.get("indoor") || undefined;
+  const priceQuery = queryPath.get("price") || "0-0";
   const tagsQuery = queryPath.getAll("tags") || [];
   console.log('indoorQuery', indoorQuery);
   console.log('priceQuery', priceQuery);
   console.log('tagsQuery', tagsQuery);
 
   //initFilters
-  const filters = {};
+  const filters = {
+    indoor: indoorQuery,
+    price: priceQuery,
+    tags: tagsQuery
+  };
 
   const intl = useIntl();
 
@@ -191,7 +236,7 @@ function EventsPage() {
 
   const onClickFilters = (event, filters) => {
     event.preventDefault();
-    console.log(filters);
+    console.log('onClickFilters',filters);
     const reqParams = getNewReq(queryPath, "filters", filters);
     console.log('reqParams', reqParams)
     dispatch(paginationRedirect(reqParams));

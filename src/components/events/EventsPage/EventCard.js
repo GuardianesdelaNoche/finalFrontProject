@@ -88,7 +88,8 @@ function EventCard(event) {
             </Card.Subtitle>
           </div>
           <Card.Text className="text-description">
-            {event.description}   
+            {event.description} 
+          </Card.Text>
 
             <div className="row participant pt-4">
               <div className="col d-flex">
@@ -131,7 +132,6 @@ function EventCard(event) {
             </div>
   
           
-          </Card.Text>
         
           <div className="separator mt-2 pt-2"></div>
           

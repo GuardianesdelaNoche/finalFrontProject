@@ -3,11 +3,12 @@ import UserLayout from '../../layout/UserLayout';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
-import { Alert, Spinner} from 'react-bootstrap';
+import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import { getUi } from '../../../store/selectors/ui';
 import { eventsOwnLoadAction } from '../../../store/actions/events';
 import { getEventsOwnEventsLoaded } from '../../../store/selectors/events';
+import  Spinner  from '../../shared/Spinner';
 
 
 

@@ -6,7 +6,6 @@ const apiPath = "/api/v1"
 const mapEvent = ({ photo, ...event }) => {
   return {
     ...event,
-
     //photo: photo ? `${process.env.REACT_APP_API_BASE_URL}${photo}` : photo,
   };
 };
@@ -20,7 +19,6 @@ export const getEventsDetails = (eventId, token) => {
   configureClient(token);
   return client.get(`${eventsPath}/event/${eventId}`).then(mapEvent);
 };
-
 
 
 export const deleteEvent = eventId => {

@@ -22,6 +22,7 @@ function RegisterForm ({onSubmit}) {
 		password:"",	
 		password2:"",
 		nickname:"",
+		postal_code:""
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
 
@@ -29,7 +30,7 @@ function RegisterForm ({onSubmit}) {
 	const intl = useIntl();
 
 
-    const { username, email, password, password2,  nickname } = registerData;   
+    const { username, email, password, password2,  nickname, postal_code } = registerData;   
 
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {
@@ -62,6 +63,7 @@ function RegisterForm ({onSubmit}) {
 		nikname: /^[a-zA-ZÀ-ÿ0-9\s]{1,18}$/,
 		email:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]+$/,
 		password: /^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})\S{8,}$/,
+		postal_code: /^[0-9]{1,10}$/,
 	}
 
     return (
@@ -103,6 +105,20 @@ function RegisterForm ({onSubmit}) {
 					onChange={handleChange}
 					errorLegend={intl.formatMessage({ id: 'register.validate.email'})}
 					regularExpression={expressions.email}
+					required
+				/>
+
+				
+				<Input
+					type="text"
+					label={intl.formatMessage({ id: 'register.formLabel.postalCode'})}                   
+					name="postal_code"
+					id="postal_code"
+					placeholder="28001"
+					value={postal_code}
+					onChange={handleChange}
+					errorLegend={intl.formatMessage({ id: 'register.validate.postalCode'})}
+					regularExpression={expressions.postal_code}
 					required
 				/>
 			

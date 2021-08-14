@@ -12,7 +12,7 @@ import MySuscribesEvents from '../user/mySuscribes/MySuscribesEvents';
 import { loginWithTokenAction } from '../../store/actions/auth';
 import { useDispatch } from 'react-redux';
 import storage from "../../utils/storage";
-
+import NewEventPage from '../events/NewEvent/NewEventPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +36,8 @@ function App() {
       <Route exact path="/forgotthepassword/:token">
         { routeProps => <RecoverPassPage { ...routeProps} />}
       </Route>      
+
+      <PrivateRoute exact path="/event/New" component={NewEventPage} />
       <Route exact path="/event/:eventId/:eventTitle" component={DetailsPage} />
       <Route exact path="/events" component={EventsPage} />
       <PrivateRoute exact path="/user">

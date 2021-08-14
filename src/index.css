@@ -9,9 +9,6 @@ body {
 }
 
 body {
-/*Testing User Panel   
-  padding-top: 60px;
-  padding-bottom: 60px; */
 
 
   background-color: #FBF9F6 !important;
@@ -35,7 +32,7 @@ a {
 }
 
 a, a:hover {
-    transition: color .2s ease,background-color .2s ease;
+    transition: color .2s ease;
     text-decoration: none !important;
    
 }
@@ -189,9 +186,7 @@ button:disabled {
     padding: 0 2.25rem;
     background-color: transparent;
 }
-/* .card>.card-body, .card>.card-footer {
-    padding: 2rem 2.25rem;
-} */
+
 
 .card.card-body {
     padding: 2rem 2.25rem;
@@ -346,11 +341,16 @@ color: #a1a5b7;
 }
 .icons-footer .favorite{
 color:#f1416c;
+transition: color 0.5s ease;
 }
 
+.iconRRSS{
+    border-radius: 0.65rem;
+   
+}
 
 .icons-footer i:hover, i:active{
-    transition: color .2s ease,background-color .2s ease;
+    transition: color .2s ease, color .2s ease;
     color: #20d489!important;
 }
 
@@ -382,6 +382,84 @@ color:#f1416c;
 
 
 /* Panel User Events  */
+
+
+.row.row-cols-2{
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.nav-item.dropdown:hover{
+    background-color: #f9f2e7;
+    font-size: .925rem;
+    border-radius: .65rem;
+}
+
+.dropdown-toggle::after{
+   color:black;
+}
+.dropdown-menu.show{
+    width: 320px;
+}
+.mh-35px{
+    margin-bottom: 0.4rem;
+}
+
+.py-10 {
+    padding-top: 2.5rem!important;
+    padding-bottom: 2.5rem!important;
+}
+.pt-3 {
+    padding-top: .75rem!important;
+}
+
+.fs-6 {
+    font-size: 1.075rem!important;
+}
+.row-cols-2>* {
+    flex: 0 0 auto;
+    width: 50%;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #eff2f5!important;
+    
+}
+
+
+
+.user-title-menu{
+    color: #181c32;
+    font-weight: 500;
+}
+
+
+
+
+
+.border-end {
+    border-right: 1px solid #eff2f5!important;
+}
+
+
+a:hover {
+    color: #20d489 !important;
+    text-decoration: underline;
+}
+
+
+
+/* Sidebar Menu */
+
+.dFnnGi .activeClicked >li {
+    background: transparent !important;
+    color: #20d489 !important;
+    transition: color .2s ease !important;
+
+
+}
+
+
 .symbol.symbol-70px.symbol-2by3>img {
     max-width: 200px !important; 
     border-radius: 0.65rem;
@@ -397,14 +475,7 @@ color:#f1416c;
    color: #7e8299;
    font-size: 0.8rem;
 }
-/* .dropdown-menu {
-    border-radius: .65rem !important;
-    background-color: #fff !important;
-    box-shadow: 0 0 50px 0 rgb(82 63 105 / 15%) !important;
-     z-index: 105 !important;
-    margin: 0px !important;
-    transform: translate(1180px, 50px);
-} */
+
 .dropdown-menu{
     border-radius: 0.65rem !important;
     margin: 0px !important;
@@ -481,6 +552,34 @@ a:hover {
 
     }
 
+
+    /* DetailsPage */
+    .card>.card-header{
+        padding: 0 1.25rem;   
+    }
+
+    .mb-mb-2{
+       margin-bottom: 1.2rem;
+    }
+    .icon-responsive{
+        flex-wrap: wrap;
+    }
+
+    .icon-responsive.pt-3{
+    padding-top: 0rem !important;
+    justify-content: space-evenly;
+}
+
+    .rrss{
+        padding-top: 0.5rem !important;
+    }
+    .update{
+        display:none;
+    }
+
+    .modal-dialog {
+        margin: 1.5rem;
+    }
 
 }
 

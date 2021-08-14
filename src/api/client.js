@@ -9,6 +9,8 @@ const setAuthorizationHeader = token => {
     return;
   }
 };
+
+
 const removeAuthorizationHeader = () => {
     delete client.defaults.headers.common['x-access-token'];
 };

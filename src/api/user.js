@@ -22,3 +22,5 @@ export const getMyEvents = (token) => {
     const url = `${baseURL}`;
     return client.get(url);
 }
+
+

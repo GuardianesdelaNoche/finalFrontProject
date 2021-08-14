@@ -15,14 +15,22 @@ function HeaderUser({ isLogged, userData }) {
 			
 					<div className="container d-flex align-items-stretch justify-content-between">
 						<div className="d-flex align-items-center">
-							<h4 className="text-dark">Dashboard</h4>
+							<h4 className="text-dark">My Dashboard</h4>
 						</div>
+						
 						<div className="d-flex align-items-center">
+
+
+						<span className="mr-2">
+							<img src="/img/icon-chat.svg" alt="avatar" />
+						</span>
 						{isLogged === true ?
 
+						
+						
 						<NavDropdown 
-						title={
-								<span><img src="http://isagomez.com/wp-content/uploads/2021/07/avatar.svg" alt="avatar" width="40px"></img></span>
+							title={
+								<span><img src="/img/profile.svg" alt="avatar"></img></span>
 						} 
 						id="nav-dropdown">
 							
@@ -30,48 +38,62 @@ function HeaderUser({ isLogged, userData }) {
 								<div className="d-flex align-items-center bgi-no-repeat rounded-top-user popup-user">
 									<div className="symbol symbol-45px mx-3 py-5">
 										<span className="symbol-label bg-primary align-items-end">
-										{/* 	<img alt="Logo" src="/start-html-free/assets/media/svg/avatars/001-boy.svg" class="mh-35px" /> */}
+
+											<img alt="Logo" src={`https://services.4events.net/images/photoUser/${userData.image}`} width="40px" height="40px" className="mh-35px" />
+											
+										
 										</span>
 									</div>
 
 									<div className="">
 										<span className="text-white fs-4">Hello, {userData.nickname}</span>
-										<span className="text-white fs-7 d-block mr-4">CRM Product Designer</span>
+										<span className="text-white fs-7 d-block mr-4">Welcome to 4Events</span>
 									</div>
 
 								</div>
 							</NavDropdown.Header >
 
-							<div className="row">
-								<div className="col-sm d-flex">
-									<div className="text-center py-10 btn btn-active-color-primary rounded-0">
-										<i class="fas fa-th-large"></i>
-										<Link className="fw-bolder fs-6 d-block pt-3" to="/">Home</Link>
-									</div>
+							<div className="row row-cols-2 g-0">
+								
+								<div className="border-bottom border-end text-center py-10 btnrounded-0">
+									<Link className="fs-6 d-block user-title-menu" to="/">
+										
+										<img src="/img/icon-Home.svg" />
+										
+										<span className="d-block pt-3">
+											Home
+										</span>
+									</Link>
 								</div>
-								<div className="col-sm d-flex">
-									<div className="text-center py-10 btn btn-active-color-primary rounded-0">
-											<i class="fas fa-user-alt"></i>
-											<Link className="fw-bolder fs-6 d-block pt-3" to="/">Profile</Link>
+								
+								
+								<div className="border-bottom text-center py-10 rounded-0">
+									
+									<Link className="fs-6 d-block user-title-menu" to="/user">
+									
+										<img src="/img/profile.svg" />
+										<span className="d-block pt-3">
+											My Profile
+										</span>
+									</Link>
 									</div>
-								</div>
-							</div>
-							<div className="row">
-								<div className="col-sm d-flex">
-									<div className="text-center py-10 btn btn-active-color-primary rounded-0">
-										<Link to="/">
-										<i class="fas fa-sliders-h"></i>
-										<span className="fw-bolder fs-6 d-block pt-3" >Events</span>
+
+								<div className="border-end  text-center py-10 rounded-0">
+									<Link className="fs-6 d-block user-title-menu" to="/event/New">
+										<img src="/img/icon-Edit.svg" />
+										<span className="d-block pt-3">New Events</span>
 										</Link>
 									</div>
+
+								<div className="text-center py-10 rounded-0">
+									<Link className="fs-6 d-block user-title-menu" to="/">
+										<img src="/img/icon-signout.svg" />
+									<span className="d-block pt-3" to="/">Logout</span>
+									</Link>
 								</div>
-								<div className="col-sm d-flex">
-									<div className="text-center py-10 btn btn-active-color-primary rounded-0">
-										<i class="fas fa-sign-out-alt"></i>
-										<Link className="fw-bolder fs-6 d-block pt-3" to="/">Logout</Link>
-									</div>
-								</div>
+								
 							</div>
+						
 						
 						</NavDropdown>
 							:

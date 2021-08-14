@@ -4,11 +4,12 @@ import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction
 import { setRegister } from '../../../api/register';
 import { getUi } from '../../../store/selectors/ui'; 
 import { Link } from 'react-router-dom';
-import { Alert, Spinner} from 'react-bootstrap';
+import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './RegisterForm';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
+import  Spinner  from '../../shared/Spinner';
 
 import '../LoginPage/login.css'
 

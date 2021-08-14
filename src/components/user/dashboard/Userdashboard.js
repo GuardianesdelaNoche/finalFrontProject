@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { getUi } from '../../../store/selectors/ui'; 
-import { Alert, Spinner} from 'react-bootstrap';
+import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import RegisterForm from './UserdashboardForm';
 import storage from '../../../utils/storage';
@@ -12,6 +12,7 @@ import { setUserData } from '../../../api/user';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import { getUserData } from '../../../store/selectors/auth';
+import  Spinner  from '../../shared/Spinner';
 
 
 

@@ -1,6 +1,4 @@
 import { types } from "../types/types";
-import {login, logout} from '../../api/login';
-import { getUserDataById } from "../../api/user";
 
 
 export const authLoginRequest = () => ({
@@ -28,7 +26,7 @@ export const loginWithTokenAction = token => {
         
         try {      
       
-            const userData = await getUserDataById(token);                       
+            const userData = await api.user.getUserDataById(token);                       
             dispatch(authLoginSuccess(userData.result));
 
             // Redirect
@@ -46,8 +44,8 @@ export const loginAction = credentials => {
         dispatch(authLoginRequest());
         try {
            
-            const logged = await login(credentials);       
-            const userData = await getUserDataById(logged.token);                       
+            const logged = await api.login.login(credentials);       
+            const userData = await api.user.getUserDataById(logged.token);                       
             dispatch(authLoginSuccess(userData.result));
 
             // Redirect
@@ -61,7 +59,7 @@ export const loginAction = credentials => {
 
 export const logoutAction = () => {
     return async function (dispatch, _getState, { api, history }) {
-        await logout();
+        await api.login.logout();
         dispatch(authLogout());
         history.push("/");
     };

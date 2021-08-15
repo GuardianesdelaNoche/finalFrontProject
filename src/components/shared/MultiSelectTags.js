@@ -17,18 +17,24 @@ const MultiSelectTags = ({onChange, label, isRequired}) => {
     });
     
     const getTagsValue = tags => {
-        const tagsValues = tags.map(tag =>{ 
-            const tagLine = {value: tag.name,label: tag.name,name: 'tags'};
-            return tagLine; 
-        });			
-        return tagsValues;
+        if(tags){
+            const tagsValues = tags.map(tag =>{ 
+                const tagLine = {value: tag.name,label: tag.name,name: 'tags'};
+                return tagLine; 
+            });			
+
+            return tagsValues;
+        } else
+        {
+            return [];
+        }
     }
     const tagsArray = useSelector(getTags);
 
 
      React.useEffect (() => {
          setTagsOptions(getTagsValue(tagsArray));
-     }, []);
+     }, [tagsArray]);
 
     const animatedComponents = makeAnimated();
 

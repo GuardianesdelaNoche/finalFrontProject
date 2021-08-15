@@ -1,9 +1,11 @@
 import React from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { getTags } from '../../api/tags';
 import pT from 'prop-types';
 import { Label } from './elements/formElements';
+import { useSelector } from 'react-redux';
+import { getTags } from '../../store/selectors/tags'; 
+
 
 
 const MultiSelectTags = ({onChange, label, isRequired}) => {
@@ -14,26 +16,19 @@ const MultiSelectTags = ({onChange, label, isRequired}) => {
         name:'tags'
     });
 
+    const tagsArray = useSelector(getTags);
+
     const getTagsValue = tags => {
-        const tagsValues = tags.tags.map(tag =>{ 
-            const tagLine = {value: tag.name,label: tag.name,name: 'tags'};
-            return tagLine; 
-        });			
-        return tagsValues;
+        // const tagsValues = tags.tags.map(tag =>{ 
+        //     const tagLine = {value: tag.name,label: tag.name,name: 'tags'};
+        //     return tagLine; 
+        // });			
+        // return tagsValues;
     }
 
     React.useEffect (() => {
-        async function getTagsList() {
-            try{
-                 setTagsOptions(getTagsValue(await getTags()));
-                
-            }catch (error) {
-            } finally {
-                    }
-            }
-            getTagsList();
-           
-        }, []);
+        setTagsOptions(getTagsValue(tagsArray));
+    }, []);
 
     const animatedComponents = makeAnimated();
 

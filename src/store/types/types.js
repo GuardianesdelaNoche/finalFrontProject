@@ -23,6 +23,8 @@ export const types = {
 
     eventDeleteRequest: 'EVENT Delete Request',
     eventDeleteSuccess: 'EVENT Delete Success',
-    eventDeleteError: 'EVENT Delete Error'
+    eventDeleteError: 'EVENT Delete Error',
+
+    tagsLoadedSuccess: 'TAGS Loaded Sucess'
 
 }

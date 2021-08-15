@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import UserLayout from '../../layout/UserLayout';
+import { Link } from 'react-router-dom';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
@@ -9,7 +10,6 @@ import { getUi } from '../../../store/selectors/ui';
 import { eventsOwnLoadAction } from '../../../store/actions/events';
 import { getEventsOwnEventsLoaded } from '../../../store/selectors/events';
 import  Spinner  from '../../shared/Spinner';
-
 
 
 function ListMyEvents() {
@@ -69,34 +69,30 @@ function ListMyEvents() {
 										</div>
 									</Card.Title>
 
-									
-									{/* TODO: Recoger los eventos y crear un map para mostrar listado */}
+								
 									{eventsOwn.length ? eventsOwn.map(element => (
+										<Link to={`/event/${element._id}/${element.title.replace(/\s+/g, '-')}`}>
 									<div className="d-flex mb-7 pt-10" key={element._id}>
-										{/* Imagen del evento */}
-										<div className="symbol symbol-70px symbol-2by3 me-4">
-											<img src={element.photo} alt="" className="mw-100" />
-										</div>
-
-										{/* titulo de los eventos*/}
-										<div className="d-flex align-items-center flex-grow-1 mt-n2 mt-lg-n1">
-
-											<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-												<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6">{element.title}</a>
-												<span className="text-description fs-7 my-1">{element.description}</span>
-												
-												
+											
+											<div className="symbol symbol-70px symbol-2by3 me-4">
+												<img src={element.photo} alt="" className="mw-100" />
 											</div>
 
-												{/* info de los eventos*/}
-												<div class="text-end py-lg-0 py-2">
-													<div class="btn btn-icon btn-bg-light btn-active-primary">
-														<i class="fas fa-arrow-right"></i>
-													</div>
+		
+											<div className="d-flex align-items-center flex-grow-1 mt-n2 mt-lg-n1">
 
+												<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
+													<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6">{element.title}</a>
+													<span className="text-description fs-7 my-1">{element.description}</span>
+													
+													
 												</div>
-										</div>
-									</div>)):<p>
+
+											</div>
+										
+									</div>
+										</Link>
+									)):<p>
 											<FormattedMessage
 												id="user.panel.event.myevents.error"
 												defaultMessage="You have no events created"

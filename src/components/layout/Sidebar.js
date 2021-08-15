@@ -31,16 +31,17 @@ const Sidebar = () => {
 					<CDBSidebarMenu>
 				
 						<NavLink exact to="/user" activeClassName="activeClicked active">
-							<CDBSidebarMenuItem icon="user">Mis Datos</CDBSidebarMenuItem>
+
+							<CDBSidebarMenuItem ><img src="/img/icon-Settings.svg" className="mr-2" /> Mis Datos</CDBSidebarMenuItem>
 						</NavLink>
 						<NavLink exact to="/myEvents" activeClassName="activeClicked active">
-							<CDBSidebarMenuItem icon="calendar">Mis Eventos</CDBSidebarMenuItem>
+							<CDBSidebarMenuItem ><img src="/img/icon-calendar.svg" className="mr-2" />Mis Eventos</CDBSidebarMenuItem>
 						</NavLink>
 						<NavLink exact to="/myFavorites" activeClassName="activeClicked active">
-							<CDBSidebarMenuItem icon="heart">Mis Favoritos</CDBSidebarMenuItem>
+							<CDBSidebarMenuItem ><img src="/img/icon-favorite.svg" className="mr-2" />Mis Favoritos</CDBSidebarMenuItem>
 						</NavLink>
 						<NavLink exact to="/mySuscribes" activeClassName="activeClicked active">
-							<CDBSidebarMenuItem icon="edit">
+							<CDBSidebarMenuItem > <img src="/img/icon-Bookmark.svg" className="mr-2" />
 								Mis Suscritos
 							</CDBSidebarMenuItem>
 						</NavLink>

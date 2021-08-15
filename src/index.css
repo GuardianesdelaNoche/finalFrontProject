@@ -344,6 +344,22 @@ color:#f1416c;
 transition: color 0.5s ease;
 }
 
+.no-favorite{
+color: #a1a5b7;
+}
+.favorite{
+color:#f1416c;
+transition: color 0.5s ease;
+}
+
+.assistant{
+color: #181c32;
+transition: color 0.5s ease;
+}
+
+.no-assistant{
+color: #a1a5b7;
+}
 .iconRRSS{
     border-radius: 0.65rem;
    

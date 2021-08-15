@@ -3,9 +3,9 @@ import {  NavDropdown  } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
 import { getIsLogged } from '../../store/selectors/auth';
-import AuthButton from '../auth/AuthButton/AuthButton';
 import { getUserData } from '../../store/selectors/auth';
-
+import Button from '../shared/Button';
+import AuthButton from '../auth/AuthButton/AuthButton';
 import './UserHeader.css';
 
 
@@ -86,9 +86,9 @@ function HeaderUser({ isLogged, userData }) {
 									</div>
 
 								<div className="text-center py-10 rounded-0">
-									<Link className="fs-6 d-block user-title-menu" to="/">
+									<Link className="fs-6 d-block user-title-menu">
 										<img src="/img/icon-signout.svg" />
-									<span className="d-block pt-3" to="/">Logout</span>
+										<span className="d-block pt-3" to="/"><AuthButton className="navbar-btn" /></span>	
 									</Link>
 								</div>
 								

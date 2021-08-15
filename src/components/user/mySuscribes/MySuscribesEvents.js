@@ -80,9 +80,13 @@ function MySuscribesEvents() {
 
 											{/* info de los eventos*/}
 											<div className="text-end py-lg-0 py-2">
-												<div className="btn btn-icon btn-bg-light btn-active-primary">
-													<i class="far fa-edit"></i>
-												</div>
+
+												<span className="btn btn-icon btn-bg-light">
+													{element.isAssistant === true ? <i class="fas fa-bookmark assistant"></i> :
+														<i class="fas fa-bookmark no-assistant"></i>
+													}
+												</span>
+
 											</div>
 										</div>
 									</div>)):<p>

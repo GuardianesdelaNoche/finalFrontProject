@@ -7,7 +7,6 @@ import { getMyEvents } from '../../../api/user';
 import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import storage from '../../../utils/storage';
-import { useIntl } from 'react-intl';
 import { getUi } from '../../../store/selectors/ui';
 import  Spinner  from '../../shared/Spinner';
 
@@ -15,7 +14,7 @@ import  Spinner  from '../../shared/Spinner';
 
 function ListMyEvents() {
 	const dispatch = useDispatch();
-	const intl = useIntl();    
+	
     const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
 

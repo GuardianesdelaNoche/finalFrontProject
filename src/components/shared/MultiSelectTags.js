@@ -15,20 +15,20 @@ const MultiSelectTags = ({onChange, label, isRequired}) => {
         label: '',
         name:'tags'
     });
-
+    
+    const getTagsValue = tags => {
+        const tagsValues = tags.map(tag =>{ 
+            const tagLine = {value: tag.name,label: tag.name,name: 'tags'};
+            return tagLine; 
+        });			
+        return tagsValues;
+    }
     const tagsArray = useSelector(getTags);
 
-    const getTagsValue = tags => {
-        // const tagsValues = tags.tags.map(tag =>{ 
-        //     const tagLine = {value: tag.name,label: tag.name,name: 'tags'};
-        //     return tagLine; 
-        // });			
-        // return tagsValues;
-    }
 
-    React.useEffect (() => {
-        setTagsOptions(getTagsValue(tagsArray));
-    }, []);
+     React.useEffect (() => {
+         setTagsOptions(getTagsValue(tagsArray));
+     }, []);
 
     const animatedComponents = makeAnimated();
 

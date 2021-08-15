@@ -22,8 +22,8 @@ export const authLogout = () => {
 }
 
 export const tagsLoadedSuccess = tagsData => ({
-   type:types.tagsLoadedSuccess,
-   payload: [tagsData] 
+   type: types.tagsLoadedSuccess,
+   payload: [tagsData]
 });
 
 export const loginWithTokenAction = token => {

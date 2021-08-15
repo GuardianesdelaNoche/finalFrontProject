@@ -11,6 +11,6 @@ const mapEvent = ({ photo, ...event }) => {
   };
 };
 
-export const getTags = (eventId) => {
+export const getTags = () => {
   return client.get(`${eventsPath}`).then(mapEvent);
 };

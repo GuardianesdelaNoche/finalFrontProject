@@ -164,7 +164,7 @@ export const FiltersForm = ({
           indoor: selectedType
         }
       }
-      if(selectedPrice.low >= 0 && setSelectedPrice.high > 0){
+      if(selectedPrice.low >= 0 && selectedPrice.high >= 0){
         requestFilters = {
           ...requestFilters,
           price: selectedPrice

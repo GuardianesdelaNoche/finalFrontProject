@@ -38,7 +38,9 @@ export const getEventsPage = (
     request = request.concat(`&indoor=${indoor}`);
   }
   if (price) {
-    request = request.concat(`&price=${price}`);
+    if(price !== '0-0'){
+      request = request.concat(`&price=${price}`);
+    }
   }
   if (tags) {
     const pathTags = composerPathTags(tags);

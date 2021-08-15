@@ -8,12 +8,14 @@ const composerPathFilters = (filters) => {
         if(indoor){
             path = path.concat(`&indoor=${indoor}`)
         }
-        if(price){
+        if(price){ //send from click filters = object
+            console.log('hay price', price)
             if(price.low <= price.high){
                 path = path.concat(`&price=${price.low}-${price.high}`);
             }else if(price.low >= price.high){
                 path = path.concat(`&price=${price.high}-${price.low}`)
             }
+            console.log('sale price', price.low, price.high, path)
         }
         if(tags && tags.length > 0){
             tags.forEach(tag => {

@@ -93,9 +93,16 @@ const getNewReq = (queryPath, key, value) => {
   }
 
   if (priceQuery) {
+    console.log('newReqConververter priceQuery', priceQuery)
+    const [low, high] = priceQuery.split('-');
+    const newPriceQuery = {
+      low,
+      high
+    }
+    console.log('newReqConververter newPriceQuery', newPriceQuery)
     filters = {
       ...filters,
-      price: priceQuery
+      price: newPriceQuery
     }
     paramsQuery = {
       ...paramsQuery,
@@ -200,8 +207,8 @@ function EventsPage() {
   });
 
   React.useEffect(() => {
-    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery));
-  }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery]);
+    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery, priceQuery));
+  }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery, priceQuery]);
 
   React.useEffect(() => {
     dispatch(tagsLoadAction());

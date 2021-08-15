@@ -189,9 +189,11 @@ function EventsPage() {
   const indoorQuery = queryPath.get("indoor") || undefined;
   const priceQuery = queryPath.get("price") || "0-0";
   const tagsQuery = queryPath.getAll("tags") || [];
+  const tagsQueryString = tagsQuery.toString() || "";
   console.log('indoorQuery', indoorQuery);
   console.log('priceQuery', priceQuery);
   console.log('tagsQuery', tagsQuery);
+  console.log('tagsQueryString', tagsQueryString);
 
   //initFilters
   const filters = {
@@ -207,8 +209,8 @@ function EventsPage() {
   });
 
   React.useEffect(() => {
-    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery, priceQuery));
-  }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery, priceQuery]);
+    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery, priceQuery, tagsQuery));
+  }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery, priceQuery,tagsQueryString]);
 
   React.useEffect(() => {
     dispatch(tagsLoadAction());

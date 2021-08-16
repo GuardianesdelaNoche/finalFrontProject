@@ -27,6 +27,25 @@ function Header({ isLogged, userData }) {
 								defaultMessage="New Event"
 								/>
 							</Link>}
+							{isLogged && 
+							<Link to="/event/new">
+							<FormattedMessage
+							id="navbar.item.eng"
+							defaultMessage="ENG"
+							/>
+						</Link>
+							
+							}
+						{isLogged && 
+							<Link to="/event/new">
+							<FormattedMessage
+							id="navbar.item.eng"
+							defaultMessage="ESP"
+							/>
+						</Link>
+							
+							}
+
 						</Nav>
 						
 						<Nav >

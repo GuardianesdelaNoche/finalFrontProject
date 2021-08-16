@@ -85,43 +85,39 @@ const getNewReq = (queryPath, key, value) => {
     filters = {
       ...filters,
       indoor: indoorQuery,
-    }
+    };
     paramsQuery = {
       ...paramsQuery,
-      filters: filters
+      filters: filters,
     };
   }
 
   if (priceQuery) {
-    console.log('newReqConververter priceQuery', priceQuery)
-    const [low, high] = priceQuery.split('-');
+    const [low, high] = priceQuery.split("-");
     const newPriceQuery = {
       low,
-      high
-    }
-    console.log('newReqConververter newPriceQuery', newPriceQuery)
+      high,
+    };
     filters = {
       ...filters,
-      price: newPriceQuery
-    }
+      price: newPriceQuery,
+    };
     paramsQuery = {
       ...paramsQuery,
-      filters: filters
+      filters: filters,
     };
   }
 
   if (tagsQuery) {
     filters = {
       ...filters,
-      tags: tagsQuery
-    }
+      tags: tagsQuery,
+    };
     paramsQuery = {
       ...paramsQuery,
-      filters: filters
+      filters: filters,
     };
   }
-
-  console.log('paramsQuery', paramsQuery);
 
   switch (key) {
     case "page":
@@ -157,8 +153,8 @@ const getNewReq = (queryPath, key, value) => {
       paramsQuery = {
         ...paramsQuery,
         page: 1,
-        filters: value
-      }
+        filters: value,
+      };
       break;
     default:
       break;
@@ -190,16 +186,12 @@ function EventsPage() {
   const priceQuery = queryPath.get("price") || "0-0";
   const tagsQuery = queryPath.getAll("tags") || [];
   const tagsQueryString = tagsQuery.toString() || "";
-  console.log('indoorQuery', indoorQuery);
-  console.log('priceQuery', priceQuery);
-  console.log('tagsQuery', tagsQuery);
-  console.log('tagsQueryString', tagsQueryString);
 
   //initFilters
   const filters = {
     indoor: indoorQuery,
     price: priceQuery,
-    tags: tagsQuery
+    tags: tagsQuery,
   };
 
   const intl = useIntl();
@@ -209,8 +201,27 @@ function EventsPage() {
   });
 
   React.useEffect(() => {
-    dispatch(eventsLoadAction(pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery, priceQuery, tagsQuery));
-  }, [dispatch, pageQuery, limitQuery, titleQuery, sortQuery, indoorQuery, priceQuery,tagsQueryString]);
+    dispatch(
+      eventsLoadAction(
+        pageQuery,
+        limitQuery,
+        titleQuery,
+        sortQuery,
+        indoorQuery,
+        priceQuery,
+        tagsQuery
+      )
+    );
+  }, [
+    dispatch,
+    pageQuery,
+    limitQuery,
+    titleQuery,
+    sortQuery,
+    indoorQuery,
+    priceQuery,
+    tagsQueryString,
+  ]);
 
   React.useEffect(() => {
     dispatch(tagsLoadAction());
@@ -245,9 +256,7 @@ function EventsPage() {
 
   const onClickFilters = (event, filters) => {
     event.preventDefault();
-    console.log('onClickFilters',filters);
     const reqParams = getNewReq(queryPath, "filters", filters);
-    console.log('reqParams', reqParams)
     dispatch(paginationRedirect(reqParams));
   };
 

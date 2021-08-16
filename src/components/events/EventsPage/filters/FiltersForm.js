@@ -33,40 +33,26 @@ const FilterCard = ({ title, body, ...props }) => {
   );
 };
 
-// const InputSearchBodyCard = ({ ...props }) => {
-//   return (
-//     <Form.Group {...props} controlId="filterformusername">
-//       <Form.Control type="text" placeholder="Username" />
-//       <Form.Text className="text-muted">Get event´s user.</Form.Text>
-//     </Form.Group>
-//   );
-// };
-
-// const InputSearchLabelCard = ({ text }) => {
-//   return <Form.Label>{text}</Form.Label>;
-// };
-
 const typeActivity = "Indoor";
 
-export const FiltersForm = ({ 
+export const FiltersForm = ({
   defaultTags,
   initFilters,
   onClickFilters,
   onRemoveFilters,
-  onCleanFilters
+  onCleanFilters,
 }) => {
-
-   const {indoor, price, tags} = initFilters;
+  const { indoor, price, tags } = initFilters;
 
   const [selectedTags, setSelectedTags] = useState(tags);
   const [selectedType, setSelectedType] = useState(indoor);
   const [selectedUsername, setSelectedUsername] = useState("");
   const [disabledButtons, setDisabledButtons] = useState(false);
 
-  const [ low, high] = price.split("-");
+  const [low, high] = price.split("-");
   const [selectedPrice, setSelectedPrice] = useState({
     low: low,
-    high: high
+    high: high,
   });
 
   const intl = useIntl();
@@ -117,38 +103,22 @@ export const FiltersForm = ({
   };
 
   const handleCleanFilters = () => {
-    setSelectedPrice({low: 0,high: 0});
+    setSelectedPrice({ low: 0, high: 0 });
     setSelectedType(undefined);
     setSelectedTags([]);
     setSelectedUsername("");
   };
 
   const handleDisplayFilters = () => {
-    if(!disabledButtons){
+    if (!disabledButtons) {
       handleCleanFilters();
     }
     setDisabledButtons(!disabledButtons);
-  }
+  };
 
   const handleRemoveFilters = (event) => {
     handleCleanFilters();
-    if(onRemoveFilters && typeof onRemoveFilters === 'function'){
-      // let requestFilters = {};
-      // if(selectedType){
-      //   requestFilters = {
-      //     indoor: selectedType
-      //   }
-      // }
-      // if(selectedPrice){
-      //   requestFilters = {
-      //     price: `${selectedPrice.low}-${selectedPrice.high}`
-      //   }
-      // }
-      // if(selectedTags.length > 0){
-      //   requestFilters = {
-      //     tags: selectedTags
-      //   }
-      // }
+    if (onRemoveFilters && typeof onRemoveFilters === "function") {
       const noFilters = {};
       onRemoveFilters(event, noFilters);
     }
@@ -156,27 +126,26 @@ export const FiltersForm = ({
 
   const handleApplyFilters = (event) => {
     handleCleanFilters();
-    if(onClickFilters && typeof onClickFilters === 'function'){
+    if (onClickFilters && typeof onClickFilters === "function") {
       let requestFilters = {};
-      if(selectedType){
+      if (selectedType) {
         requestFilters = {
           ...requestFilters,
-          indoor: selectedType
-        }
+          indoor: selectedType,
+        };
       }
-      if(selectedPrice.low >= 0 && selectedPrice.high >= 0){
+      if (selectedPrice.low >= 0 && selectedPrice.high >= 0) {
         requestFilters = {
           ...requestFilters,
-          price: selectedPrice
-        }
+          price: selectedPrice,
+        };
       }
-      if(selectedTags.length > 0){
+      if (selectedTags.length > 0) {
         requestFilters = {
           ...requestFilters,
-          tags: selectedTags
-        }
+          tags: selectedTags,
+        };
       }
-      console.log('handleApplyFilters', requestFilters);
       onClickFilters(event, requestFilters);
     }
   };
@@ -332,13 +301,13 @@ export const FiltersForm = ({
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
                 <Card.Body className="ml-0 pl-0">
-                    <FormControl
-                      className="rounded-pill border-0 pl-1"
-                      placeholder={placeholderUsername}
-                      value={selectedUsername}
-                      onChange={handleSelectedUsername}
-                      type="text"
-                    ></FormControl>
+                  <FormControl
+                    className="rounded-pill border-0 pl-1"
+                    placeholder={placeholderUsername}
+                    value={selectedUsername}
+                    onChange={handleSelectedUsername}
+                    type="text"
+                  ></FormControl>
                 </Card.Body>
               </Accordion.Collapse>
             </Card>

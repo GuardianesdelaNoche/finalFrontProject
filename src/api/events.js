@@ -38,14 +38,13 @@ export const getEventsPage = (
     request = request.concat(`&indoor=${indoor}`);
   }
   if (price) {
-    if(price !== '0-0'){
+    if (price !== "0-0") {
       request = request.concat(`&price=${price}`);
     }
   }
   if (tags) {
     const pathTags = composerPathTags(tags);
-    request = request.concat(pathTags)
+    request = request.concat(pathTags);
   }
-  console.log('request events', request);
   return client.get(`${request}`).then((eve) => eve);
 };

@@ -1,16 +1,8 @@
 import client from "./client";
+const tagsPath = "/api/v1/tags";
 
-const eventsPath = "/api/v1/tags";
-
-
-const mapEvent = ({ photo, ...event }) => {
-  return {
-    ...event,
-
-    //photo: photo ? `${process.env.REACT_APP_API_BASE_URL}${photo}` : photo,
-  };
-};
 
 export const getTags = () => {
-  return client.get(`${eventsPath}`).then(mapEvent);
+  return client.get(`${tagsPath}`).then(tag => tag);
+
 };

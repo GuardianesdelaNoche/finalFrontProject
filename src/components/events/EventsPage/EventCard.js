@@ -20,10 +20,10 @@ function EventCard(event) {
   // const state = useSelector(getIsEventFav(event._id));
   const isLogged = useSelector(getIsLogged);
 
- 
+
   const handleAddEventFavs = () => {
     // console.log("add/remove fav -> redux & api");
-   
+
   };
 
   return (
@@ -78,7 +78,7 @@ function EventCard(event) {
       <Link key={event._id} to={`/event/${event._id}/${event.title.replace(/\s+/g, '-')}`}>
         <Card.Body className="card">
           <Card.Title className="text-dark">{event.title}</Card.Title>
-       
+
           <div className="d-flex flex-row justify-content-between  time  text-gray-800 ">
             <Card.Subtitle className="fs-6 fw-bolder">
               <BsCalendar className="me-2"/> {moment(new Date(event.date)).format("DD-MM-YYYY")}
@@ -88,7 +88,7 @@ function EventCard(event) {
             </Card.Subtitle>
           </div>
           <Card.Text className="text-description">
-            {event.description} 
+            {event.description}
           </Card.Text>
 
             <div className="row participant pt-4">
@@ -96,7 +96,7 @@ function EventCard(event) {
                 <span>
                   <i className="fas fa-users mw-75 me-2"></i>
 
-                  {event.assistants_count}
+                  {event.available_places}
                   <FormattedMessage
                     id="eventCard.availableSeats"
                     defaultMessage="Seats"
@@ -130,14 +130,14 @@ function EventCard(event) {
             <div>
 
             </div>
-  
-          
-        
+
+
+
           <div className="separator mt-2 pt-2"></div>
-          
+
           <div className="row">
 
-           
+
             <div className="col d-flex pt-4">
               <div className="symbol tags me-2">
                 <span className="bg-light-primary">{event.tags.map((tag) => `#${tag}`)}
@@ -151,7 +151,7 @@ function EventCard(event) {
             </div>
           </div>
         </Card.Body>
-      
+
       </Link>
     </Card>
   );

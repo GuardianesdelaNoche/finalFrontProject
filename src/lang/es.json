@@ -45,7 +45,6 @@
     "eventCard.activity": "Actividad",
     "eventCard.outdoor": "Aire libre",
     "eventCard.indoor": "Interior",
-    "eventCard.overlay.fav": "Favorito",
     "details.event.edit": "Editar",
     "details.event.remove": "Eliminar",
     "details.event.subtitle": "Detalles",
@@ -100,7 +99,7 @@
     "newevent.validate.address": "Hay algún error",
     "newevent.validate.country": "Hay algún error",
     "newevent.validate.postal-code": "Hay algún error",
-    "newevent.validate.city": "Hay algún error"
+    "newevent.validate.city": "Hay algún error",
     "eventCard.overlay.fav": "Favorito",
     "sorter.itemText.asc": "Más reciente",
     "sorter.itemText.des": "Menos reciente",

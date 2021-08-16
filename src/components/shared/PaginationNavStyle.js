@@ -2,9 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import { ButtonGroup } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { getLimit } from "../../store/selectors/pagination";
-import { paginationSetLimit } from "../../store/actions/pagination";
 import './PaginationNav.css'
 
 

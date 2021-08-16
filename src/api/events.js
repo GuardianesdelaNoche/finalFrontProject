@@ -8,6 +8,7 @@ const mapEvent = ({ photo, ...event }) => {
     ...event,
     //photo: photo ? `${process.env.REACT_APP_API_BASE_URL}${photo}` : photo,
   };
+}
 const composerPathTags = (tags) => {
   let path = "";
   if (tags.length > 0) {

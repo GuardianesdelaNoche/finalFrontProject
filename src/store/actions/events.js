@@ -1,5 +1,6 @@
 import { types } from "../types/types";
 
+//Load Events
 export const eventsLoadedRequest = () => ({
     type: types.eventsLoadedRequest
 });
@@ -28,3 +29,63 @@ export const eventsLoadAction = (page, limit, title, sort, indoor, price, tags) 
           }
   }
 };
+
+
+//Event Details Actions
+export const eventDetailsRequest = () => ({
+  type: types.eventDetailsRequest,
+})
+export const eventDetailsSuccess = (eventId) => ({
+  type: types.eventDetailsSuccess,
+  payload: eventId
+})
+
+export const eventDetailsError = (error) => ({
+  type: types.eventDetailsError,
+  payload: error
+})
+
+export const eventDetailsActions = eventId => {
+  return async function (dispatch, getState, {api}) {
+    try {
+      const eventDetail = await api.events.getEventsDetails(eventId);
+      dispatch(eventDetailsSuccess(eventDetail));
+      return eventDetail;
+    } catch (error) {
+      dispatch(eventDetailsError(error));
+    }
+
+  }
+}
+
+
+//Delete Event Actions
+
+
+export const eventDeleteRequest = () => ({
+  type: types.eventDeleteRequest,
+})
+export const eventDeleteSuccess = (eventId) => ({
+  type: types.eventDeleteSuccess,
+  payload: eventId
+})
+
+export const eventDeleteError = (error) => ({
+  type: types.eventDeleteError,
+  payload: error
+})
+
+
+export const eventDeleteActions = eventId => {
+  return async function (dispatch, getState, { api, history }) {
+    dispatch(eventDeleteRequest())
+    try {
+      const removeEvent = await api.events.deleteEvent(eventId);
+      dispatch(eventDeleteSuccess(removeEvent));
+      history.push('/');
+    } catch (error) {
+      dispatch(eventDeleteError(error));
+    }
+
+  }
+}

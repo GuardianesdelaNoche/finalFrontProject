@@ -8,13 +8,16 @@ import { FormattedMessage } from 'react-intl';
 import RememberPassForm from './RecoverPassForm';
 import { useJwt } from 'react-jwt';
 import { setRecover } from '../../../api/recoverPass';
+import { SuccessMessage } from '../../shared/elements/formElements';
+import { useIntl } from 'react-intl';
 import './RecoverPass.css';
 
 
 function RecoverPassPage ({match, history}) {
 
     const dispatch = useDispatch();
-
+    const [ dataSend, setDataSend] = React.useState(false);
+    const intl = useIntl();  
     const { loading, error } = useSelector(getUi);
     const token = match.params.token;
     const { isExpired } = useJwt(token);
@@ -29,6 +32,7 @@ function RecoverPassPage ({match, history}) {
         try {
             dispatch(setLoadingAction);
             await setRecover(recoverData);
+            setDataSend(true);
             history.push('/login');
         } catch (error) {
             dispatch(setErrorAction(error));
@@ -58,7 +62,13 @@ function RecoverPassPage ({match, history}) {
                             {error.message}
                         </p>
                     </Alert>
-                )}                 
+                )} 
+                {dataSend && <SuccessMessage>
+				<p>				
+					{intl.formatMessage({ id: 'register.validate.successmessage'})}
+				</p>
+			</SuccessMessage>}
+                
             </main>           
         </div>
     )

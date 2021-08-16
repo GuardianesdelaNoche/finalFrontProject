@@ -13,7 +13,7 @@ import { resetErrorAction } from "../../../store/actions/ui";
 import { PaginationNavStyle } from "../../shared/PaginationNavStyle";
 import Pagination from "rc-pagination";
 import "../../shared/paginator/paginator.css";
-import "./EventsPage.css";
+
 import { getEventsTotal } from "../../../store/selectors/events";
 
 import { paginationRedirect } from "../../../store/actions/pagination";

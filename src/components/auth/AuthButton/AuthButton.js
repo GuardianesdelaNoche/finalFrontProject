@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import {ConfirmationButton, Button} from '../../shared/index';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { connect } from 'react-redux';
 import { getIsLogged } from '../../../store/selectors/auth';
@@ -9,16 +9,18 @@ import { logoutAction } from '../../../store/actions/auth';
 
 
 function AuthButton({ isLogged, onLogout }) {
+	const intl = useIntl();
 	const handleLogoutConfirm = async () => {
-		onLogout()
+		onLogout();
 	}
 	return isLogged ? (
 
 		<ConfirmationButton
-			confirmation="Do you want to exit?"
+			title={intl.formatMessage({ id: 'logout.title' })}
+			confirmation= {intl.formatMessage({ id: 'logout.confirmation'})}
 			onConfirm={handleLogoutConfirm}
 		>
-			Logout
+			{intl.formatMessage({ id: 'logout.title'})}
 		</ConfirmationButton>
 	) : (
 		<Button variant = "primary" >

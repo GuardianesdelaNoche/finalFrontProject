@@ -1,29 +1,29 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
-import { setRegister } from '../../../api/register';
+import { setNewEvent } from '../../../api/events';
 import { getUi } from '../../../store/selectors/ui'; 
-import { Link } from 'react-router-dom';
 import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-import RegisterForm from './RegisterForm';
+import NewEventForm from './NewEventForm';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import  Spinner  from '../../shared/Spinner';
 
-import '../LoginPage/login.css'
+import './newEvent.css'
 
-function RegisterPage () {
+function NewEventPage () {
 
     const dispatch = useDispatch();
     const { loading, error } = useSelector(getUi);
     const [ dataSaved, setDataSaved] = React.useState(false);
     const intl = useIntl();  
-    const handleSubmit = async (registerData)=>{
+    const handleSubmit = async (newEventData)=>{
         try {
             dispatch(setLoadingAction());
             dispatch(resetErrorAction());
-            await setRegister(registerData);
+            const formData=getFormData(newEventData);
+            await setNewEvent(formData);
             setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));
@@ -31,6 +31,26 @@ function RegisterPage () {
         {
             dispatch(resetLoadingAction());
         }
+    }
+
+    const getFormData = (newEventData) => {
+        let formData = new FormData();
+        formData.append('title', newEventData.title);
+        formData.append('description', newEventData.description);
+        formData.append('price', newEventData.price);
+        formData.append('latitude', newEventData.latitude);
+        formData.append('longitude', newEventData.longitude);
+        formData.append('address', newEventData.address);
+        formData.append('city', newEventData.city);
+        formData.append('country', newEventData.country);
+        formData.append('postal_code', newEventData.postal_code);
+        formData.append('max_places', newEventData.max_places);
+        formData.append('indoor', newEventData.indoor);
+        formData.append('duration', newEventData.duration);
+        formData.append('tags', newEventData.tags);
+        formData.append('date', newEventData.date);
+        if(newEventData.photo !== "") formData.append('photo', newEventData.photo);
+        return formData;
     }
 
     const handleResetError = ()=>{
@@ -42,17 +62,17 @@ function RegisterPage () {
             <main className="form-signin">
                 <h1 className="h1 title-signin">
                     <FormattedMessage
-                        id="register.title"
-                        defaultMessage="Register"
+                        id="newEvent.title"
+                        defaultMessage="New Event"
                     />
                 </h1>
                 {loading && <Spinner animation="border" />}
-                <RegisterForm onSubmit={handleSubmit} />
+                <NewEventForm onSubmit={handleSubmit} />
 
                 {error && (	
                     <Alert onClick={handleResetError} variant="danger">
                         <p className="mb-0">
-                            {error.msg}
+                            {error.errors[0].msg}
                         </p>
                     </Alert>
                 )}
@@ -63,25 +83,15 @@ function RegisterPage () {
                         </p>
                     </SuccessMessage>} 
 
-                <p className="text-muted">
                   
-                    <FormattedMessage
-                        id="register.account.message"
-                        defaultMessage="Already have an account?"
-                    />
-                    <Link to="/login" className="form-label text-primary ml-2">
-                        <FormattedMessage
-                            id="register.account.link"
-                            defaultMessage="Entrar"
-                        />
-            
-                    </Link></p>
+           
              
             </main>           
         </div>
+     
     )
 }
 
-export default RegisterPage;
+export default NewEventPage;
 
 

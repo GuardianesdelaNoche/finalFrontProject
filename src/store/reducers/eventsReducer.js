@@ -16,6 +16,18 @@
                  data: [...action.payload.data],
                  total: action.payload.total
              }
+         case types.eventDetailsSuccess:
+             return {
+                 ...state,
+                 loaded: false,
+                 data: [...state.data, action.payload.event],
+             }
+         case types.eventDeleteSuccess:
+             return {
+                 ...state,
+                 loaded: false,
+                 data: state.data.filter((event) => event.id !== action.payload.event),
+             }
          default:
              return state;
      }

@@ -1,12 +1,13 @@
 import { types } from "../types/types";
-import {login, logout} from '../../api/login'
+
 
 export const authLoginRequest = () => ({
 type: types.authLoginRequest
 });
 
-export const authLoginSuccess = () => ({
-    type: types.authLoginSuccess
+export const authLoginSuccess = userData => ({
+        type: types.authLoginSuccess,
+        payload: userData
 });
 
 export const authLoginError = error => ({
@@ -20,13 +21,39 @@ export const authLogout = () => {
     };
 }
 
+export const tagsLoadedSuccess = tagsData => ({
+   type: types.tagsLoadedSuccess,
+   payload: [tagsData]
+});
+
+export const loginWithTokenAction = token => {
+    return async function (dispatch, getState, { api, history }) {
+        
+        try {      
+      
+            const userData = await api.user.getUserDataById(token);                       
+            dispatch(authLoginSuccess(userData.result));
+
+            // Redirect
+            const { from } = history.location.state || { from: { pathname: '/' } };
+            history.replace(from);
+        } catch (error) {
+            dispatch(authLoginError(error));
+        }
+    };
+
+}
+
 export const loginAction = credentials => {
     return async function (dispatch, getState, { api, history }) {
         dispatch(authLoginRequest());
         try {
            
-            const logged = await login(credentials);
-            dispatch(authLoginSuccess(logged));
+            const logged = await api.login.login(credentials);       
+            const userData = await api.user.getUserDataById(logged.token);    
+            const tagsData = await api.tags.getTags();                   
+            dispatch(authLoginSuccess(userData.result));
+            dispatch(tagsLoadedSuccess(tagsData.tags))
 
             // Redirect
             const { from } = history.location.state || { from: { pathname: '/' } };
@@ -37,11 +64,10 @@ export const loginAction = credentials => {
     };
 };
 
-
 export const logoutAction = () => {
-    return async function (dispatch, _getState, { api }) {
-        //await api.auth.logout();
-        await logout();
+    return async function (dispatch, _getState, { api, history }) {
+        await api.login.logout();
         dispatch(authLogout());
+        history.push("/");
     };
 };

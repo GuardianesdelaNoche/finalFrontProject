@@ -1,0 +1,52 @@
+.p-4{
+	margin-top: 1rem;
+}
+
+.pb-4{
+	margin-bottom:  30px;
+}
+.home-pagination.btn-group .btn{
+    color: #181c32;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+
+    font-weight: 600!important;
+    background-color: transparent;
+    border: transparent;
+   
+}
+
+.home-pagination.btn-group .btn.btn-primary{
+	color: #181c32;
+
+	padding: 0.5rem 1rem;
+	border-radius: 0.65rem !important; 
+}
+
+.home-pagination.btn-group .btn.active.btn-primary{
+    color: #20d489;
+    border-color: #f9f2e7;
+    background-color: #f9f2e7;
+	padding: 0.5rem 1rem;
+	border-radius: 0.65rem; 
+}
+
+
+.home-pagination.btn-group .btn:hover{
+	color: #20d489;
+    border-color: #f9f2e7;
+    background-color: #f9f2e7;
+	padding: 0.5rem 1rem;
+	border-radius: 0.65rem; 
+	transition: color .2s ease,background-color .2s ease;
+
+}
+
+.home-pagination.btn-group .btn:focus{
+	box-shadow: none!important;
+	background-color: #f9f2e7 !important;
+	transition: color .2s ease,background-color .2s ease !important;
+	color: #20d489!important;
+}

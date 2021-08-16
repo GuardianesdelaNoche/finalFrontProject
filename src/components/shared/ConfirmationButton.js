@@ -1,11 +1,12 @@
 import React from 'react';
 import T from 'prop-types';
 import { Button } from './index';
-
+import { useIntl } from 'react-intl';
 import {Modal} from 'react-bootstrap'
 
-function ConfirmationButton({ confirmation, onConfirm,  ...props }) {
+function ConfirmationButton({ title, confirmation, onConfirm,   ...props }) {
 	const [confirmationVisible, setConfirmationVisible] = React.useState(false);
+	const intl = useIntl();
 
 	const showConfirmation = () => setConfirmationVisible(true);
 	const hideConfirmation = () => setConfirmationVisible(false);
@@ -14,12 +15,13 @@ function ConfirmationButton({ confirmation, onConfirm,  ...props }) {
 	const handleConfirmClick = () => {
 		hideConfirmation();
 		onConfirm();
+	
 	};
 	const handleCancelClick = hideConfirmation;
 
 	return (
 		<>
-			<Button variant="primary" onClick={handleClick} {...props} />
+			<div onClick={handleClick} {...props} />
 			{confirmationVisible && (
 
 			<Modal 
@@ -31,17 +33,19 @@ function ConfirmationButton({ confirmation, onConfirm,  ...props }) {
 					{...props}
 			>
 					<Modal.Header className="Modal-Boder" closeButton>
-						<Modal.Title>Log out</Modal.Title>
+						<Modal.Title>
+							{title}
+						</Modal.Title>
 					</Modal.Header>
 
 					<Modal.Body>{confirmation}</Modal.Body>
 
 					<Modal.Footer>
 						<Button variant="secundary" className="me-2" onClick={handleCancelClick}>
-						No
+						{intl.formatMessage({ id: 'logout.no'})}
 						</Button>
 						<Button variant="primary" onClick={handleConfirmClick}>
-							Yes
+						{intl.formatMessage({ id: 'logout.yes'})}
 						</Button>
 					</Modal.Footer>
 				</Modal>

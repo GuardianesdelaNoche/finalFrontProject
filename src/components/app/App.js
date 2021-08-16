@@ -1,13 +1,26 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { LoginPage, RegisterPage, PrivateRoute, RememberPassPage, RecoverPassPage } from '../auth';
-
+import { LoginPage, RegisterPage, PrivateRoute } from '../auth';
 import { EventsPage } from '../events';
-import { MemberPage } from '../members';
+import DetailsPage from '../events/EventDetail/DetailsPage';
 import UserDashboard from '../user/dashboard/Userdashboard';
 import NotFoundPage from './NotFoundPage';
+import { RememberPassPage, RecoverPassPage } from '../auth';
+import ListMyEvents from '../user/myEvents/ListMyEvents';
+import NewEventPage from '../events/NewEvent/NewEventPage';
+import { loginWithTokenAction } from '../../store/actions/auth';
+import { useDispatch } from 'react-redux';
+import storage from "../../utils/storage";
 
 function App() {
+  const dispatch = useDispatch();
+  if( storage.get("auth")){
+    const accessToken = storage.get("auth");
+    if(accessToken.token){
+      dispatch(loginWithTokenAction(accessToken.token))
+    }
+  }
+
   return (
     
     <Switch>
@@ -17,23 +30,23 @@ function App() {
       <Route exact path="/rememberPassword/tokenExpired">
         <RememberPassPage tokenExpired />
       </Route>
-
       <Route exact path="/forgotthepassword/:token">
         { routeProps => <RecoverPassPage { ...routeProps} />}
       </Route>
-      <PrivateRoute exact path="/member" component={MemberPage} />
 
-      <Route exact path="/events" component={EventsPage} >
-          {/* <Redirect to={`/events?page=1&limit=10`} /> */}
-        </Route>
-      <Route exact path="/">
-        {/* <Redirect to="/events/page/1/limit/10" /> */}
-                <Redirect to="/events" />
-      </Route>
-      {/* <Route path="/events/page/:page/limit/:limit" component={EventsPage} /> */}
-
+      <PrivateRoute exact path="/event/New" component={NewEventPage} />
+      <Route exact path="/event/:eventId/:eventTitle" component={DetailsPage} />
       <Route exact path="/events" component={EventsPage} />
-      {/* <Route exact path="/user" component={UserDashboard} /> */}
+      <Route exact path="/">
+         <Redirect to="/events" />
+      </Route>
+      <PrivateRoute exact path="/user">
+        {routeProps => <UserDashboard {...routeProps} />}
+      </PrivateRoute>
+      <PrivateRoute exact path="/myEvents" component={ListMyEvents} />
+
+
+
 
       <Route exact path="/register">
         {routeProps => <RegisterPage {...routeProps} />}
@@ -41,6 +54,7 @@ function App() {
       <Route exact path="/404">
         <NotFoundPage />
       </Route>
+
       <Redirect to="/404" />
     </Switch>
     

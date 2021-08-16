@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DatePicker from "react-datepicker";
 
 const colors = {
     edge: "#20d489",
@@ -13,8 +14,6 @@ const Form = styled.form`
     grid-template-columns: 1fr; 
     gap: 0px;
 `;
-
-
 
 const Label = styled.label`
     display: block;
@@ -47,7 +46,7 @@ const InputC = styled.input`
 
     &:focus {
         outline:none;       
-        box-shadow: 0 0 0 .2rem ${colors.focus}; 
+        border: 2px solid ${colors.focus}; 
     }
      
     ${props => props.isValueValid === 'true'  && css `
@@ -75,23 +74,42 @@ const ErrorLegend = styled.p`
 `;
 
 
+
+const DatePickerF = styled(DatePicker)`
+    width: 100%;
+    background: #fff;    
+    height: 40px;
+    line-height:45px;
+    padding:0 40px 0 10px;
+    transition: .3s ease all;
+    border: 3px solid transparent;
+    background:#F5F8FA;
+    border-radius:5px;
+    margin-bottom:10px;
+    &:focus {
+        outline:none;       
+        border: 2px solid ${colors.focus}; 
+    }
+`
+
+
 const ValidationIcon = styled(FontAwesomeIcon)`
     position:absolute;
     right: 10px;
-    bottom: 25px;
+    bottom: 23px;
     z-index: 100;
     font-size: 16px;
     opacity:0;
 
     ${props => props.isvaluevalid === 'false'  && css `
         opacity:1;
-        bottom:42px;
+        bottom: 40px;
         color: ${colors.error}
     `} 
 
     ${props => props.isvaluevalid === 'true'  && css `
         opacity:1;
-        bottom:25px;
+        bottom:23px;
         color: ${colors.success}
     `} 
 `;
@@ -123,10 +141,10 @@ const Button = styled.button `
 const SuccessMessage = styled.p`
     color: #0d5537;
     background-color: #d2f6e7;
-    padding: 20px;
+    padding: 13px;
     font-size: 15px;
     border: 1px solid #bcf2dc;
-    border-radius: .65rem;
+    border-radius: .25rem;
     margin-top: 1.5rem!important;
     margin-bottom: 2.5rem!important;
     p {
@@ -166,4 +184,7 @@ export {Form,
         ContentBottomCenter,
         Button,
         ErrorMessage,
-        SuccessMessage};
+        SuccessMessage,
+        DatePickerF,
+         
+};

@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 import HeaderUser from './HeaderUser';
 import Footer from './Footer';
 
-function UserLayout({ children }) {
+function DataListLayout({ children }) {
 	return (
 		<>		
 		  <div className="d-flex" id="wrapper">
@@ -18,19 +18,17 @@ function UserLayout({ children }) {
 						</div>
 					<Footer />
 					</div>
-					
-				
 		 </div>
 		</>
 	);
 }
 
-UserLayout.propTypes = {
+DataListLayout.propTypes = {
 	children: T.node,
 };
 
-UserLayout.defaultProps = {
+DataListLayout.defaultProps = {
 	children: null,
 };
 
-export default UserLayout;
+export default DataListLayout;

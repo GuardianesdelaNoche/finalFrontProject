@@ -11,6 +11,7 @@ import Spanish from './lang/es.json';
 import English from './lang/en.json';
 
 
+
 const locale = navigator.language;
 let lang;
 
@@ -20,10 +21,13 @@ if(locale.search('es') >= 0) {
   lang = English;
 }
 
+
 //import './index.css';
+
 
 const accessToken = storage.get("auth");
 configureClient({ accessToken });
+
 const history = createBrowserHistory();
 const store = configureStore({
   preloadedState: { auth: !!accessToken  },

@@ -17,7 +17,6 @@ function ListMyEvents() {
  
     const { loading, error } = useSelector(getUi);
 	const eventsOwn = useSelector(getEventsOwnEventsLoaded);
-	console.log(eventsOwn);
 
 	useEffect(()=>{
 		async function executeGetMyEvents (){

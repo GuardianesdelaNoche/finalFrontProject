@@ -113,9 +113,9 @@
     "sidebar.item.event":"My Events",
     "sidebar.item.favorites":"My Favorites",
     "sidebar.item.suscribes":"My Suscribes",
-    "header.popups.title":"My Dashboard",
-    "header.popups.hello":"Hello,",
-    "header.popups.welcome":"Welcome to 4Events",
+    "header.popups.title": "My Dashboard",
+    "header.popups.welcome": "Welcome to 4Events",
+    "header.popups.hello":"Hello",
     "header.popups.icon1":"Home",
     "header.popups.icon2": "My Profile",
     "header.popups.icon3": "New Events"

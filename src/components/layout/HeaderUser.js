@@ -44,20 +44,16 @@ function HeaderUser({ isLogged, userData }) {
 								<div className="d-flex align-items-center bgi-no-repeat rounded-top-user popup-user">
 									<div className="symbol symbol-45px mx-3 py-5">
 										<span className="symbol-label bg-primary align-items-end">
-
 											<img alt="Logo" src={`https://services.4events.net/images/photoUser/${userData.image}`} width="40px" height="40px" className="mh-35px" />
-											
-										
 										</span>
 									</div>
 
 									<div className="">
-										<span className="text-white fs-4">
+											<span className="text-white fs-4">
 											<FormattedMessage
 												id="header.popups.hello"
-												defaultMessage="Hello,"
-											/>
-											{userData.nickname}</span>
+												defaultMessage="Hello"
+											/>,{userData.nickname}</span>
 										<span className="text-white fs-7 d-block mr-4">
 											<FormattedMessage
 												id="header.popups.welcome"

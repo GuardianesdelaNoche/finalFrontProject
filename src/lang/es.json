@@ -115,10 +115,11 @@
     "sidebar.item.event": "Mis Eventos",
     "sidebar.item.favorites": "Mis Favoritos",
     "sidebar.item.suscribes": "Mis Suscritos",
-    "header.popups.hello": "Hola,",
-    "header.popups.welcome": "Bienvenido a 4Events",
+    "header.popups.title": "Mi Perfil",
+    "header.popups.welcome": "Bienvenido a to 4Events",
+    "header.popups.hello": "Hola",
     "header.popups.icon1": "Inicio",
-    "header.popups.icon2": "Mi Perfil",
+    "header.popups.icon2": "Mis Datos",
     "header.popups.icon3": "Nuevo Evento"
 
 }

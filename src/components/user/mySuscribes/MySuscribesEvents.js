@@ -15,7 +15,7 @@ function MySuscribesEvents() {
 	const dispatch = useDispatch();
 	const { loading, error } = useSelector(getUi);
 	const eventsAssistant = useSelector(getEventsAssistantEventsLoaded);
-	console.log(eventsAssistant);
+
 	React.useEffect(() => {
 		dispatch(eventsAssistantLoadAction());
 	},[dispatch]);

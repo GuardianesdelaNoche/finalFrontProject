@@ -54,10 +54,10 @@ function UserDashboard({history}) {
 						<Card>
 							<Card.Body>
 								<Card.Title>					
-                				    <FormattedMessage
+                				  {/*   <FormattedMessage
                         				id="updatemember.title"
                         				defaultMessage="Change my data"
-                    				/>                
+                    				/>   */}              
 								</Card.Title>
 												
 								<RegisterForm onSubmit={handleSubmit} token={token} userData={userData} /> 									

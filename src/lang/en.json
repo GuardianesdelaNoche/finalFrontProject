@@ -108,5 +108,9 @@
     "user.panel.event.favorites.error": "You have no events marked as favourites",
     "user.panel.event.myevents.title": "My Events",
     "user.panel.event.myevents.description": "All the events you have published",
-    "user.panel.event.myevents.error": "You have no events created"
+    "user.panel.event.myevents.error": "You have no events created",
+    "sidebar.item.data":"My Data",
+    "sidebar.item.event":"My Events",
+    "sidebar.item.favorites":"My Favorites",
+    "sidebar.item.suscribes":"My Suscribes"
 }

@@ -13,7 +13,7 @@ function HeaderUser({ isLogged, userData }) {
 	return (
 		<header className="Userheader">
 			
-					<div className="container d-flex align-items-stretch justify-content-between">
+					<div className="container d-flex align-items-stretch justify-content-between mobile-space">
 						<div className="d-flex align-items-center">
 							<h4 className="text-dark">My Dashboard</h4>
 						</div>

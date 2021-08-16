@@ -96,7 +96,6 @@ function EventDetails({ description,
 			try {
 				await addFavorite(token, _id)
 				setFavActive(!isFavActive)
-
 			} catch (error) {
 				setErrorAction(error)
 			}

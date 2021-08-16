@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
-import { resetErrorAction, setLoadingAction, setErrorAction} from '../../../store/actions/ui';
+import { resetErrorAction} from '../../../store/actions/ui';
 import UserLayout from '../../layout/UserLayout';
 
 import { Alert, Spinner } from 'react-bootstrap';
@@ -12,32 +12,6 @@ import { FormattedMessage } from 'react-intl';
 import { getUi } from '../../../store/selectors/ui';
 import { eventsFavoriteLoadAction } from '../../../store/actions/events';
 import { getEventsFavoriteLoaded } from '../../../store/selectors/events';
-import { addFavorite, removeFavorite } from '../../../api/favorite';
-
-
-//Add & Remove Favorites
-
-/*const [isFavActive, setFavActive] = useState(element.isFavorite);
- const handleAddFav = async (token) => {
-	try {
-		await addFavorite(token, _id)
-		setFavActive(!isFavActive)
-
-	} catch (error) {
-		setErrorAction(error)
-	}
-}
-
-const handleRemoveFav = async (token) => {
-	try {
-		await removeFavorite(token, _id)
-		setFavActive(!isFavActive)
-
-	} catch (error) {
-		setErrorAction(error)
-	}
-}
- */
 
 
 
@@ -46,7 +20,7 @@ function MyFavoritesEvents() {
 	const dispatch = useDispatch();
 	const { loading, error } = useSelector(getUi);
 	const eventsFavorite = useSelector(getEventsFavoriteLoaded);
-	console.log(eventsFavorite);
+
 	React.useEffect(() => {
 		dispatch(eventsFavoriteLoadAction());
 	},[dispatch]);
@@ -54,12 +28,15 @@ function MyFavoritesEvents() {
 	const handleResetError = () => {
 		dispatch(resetErrorAction())
 	}
+
+
+
 	return (
 		<div>
 			{loading && <Spinner animation="border" />}
 			<UserLayout>
 				<div className="row g-0 g-xl-5 g-xxl-8">
-					<div className="col-xl-12">
+					<div className="col-xl-12 mobile-content">
 						<Card>
 							<Card.Body>
 
@@ -86,18 +63,20 @@ function MyFavoritesEvents() {
 
 		
 								{eventsFavorite.length ? eventsFavorite.map(element => (
-									<Link to={`/event/${element._id}/${element.title.replace(/\s+/g, '-')}`}>
-									<div className="d-flex mb-7 pt-10" key={element._id}>
+									<Link key={element._id} to={`/event/${element._id}/${element.title.replace(/\s+/g, '-')}`}>
+									<div className="d-flex mb-7 pt-10 mobile-wrap">
 										
 										<div className="symbol symbol-70px symbol-2by3 me-4">
 											<img src={element.photo}  alt="" className="mw-100" />
 										</div>
 
 									
-										<div className="d-flex align-items-center flex-grow-1 mt-n2 mt-lg-n1">
+											<div className="d-flex align-items-center flex-grow-1 mt-n2 mt-lg-n1 mobile-wrap">
 
 											<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-												<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6">{element.title}</a>
+												
+													<span className="text-gray-800 fw-bolder text-hover-primary fs-6  pt-3">{element.title}</span>
+											
 												<span className="text-description fs-7 my-1">{element.description.substring(0, 150)}&nbsp; [...]</span>
 												<span className="text-description fs-7">
 													<FormattedMessage
@@ -111,14 +90,11 @@ function MyFavoritesEvents() {
 
 										
 											<div className="text-end py-lg-0 py-2">
-												
-													
 														<span className="btn btn-icon btn-bg-light">
-															{element.isFavorite === true ? <i className="fas fa-heart favorite" ></i> :
-																<i className="fas fa-heart no-favorite" ></i>
+															{element.isFavorite === true  ? <i className="fas fa-heart favorite" ></i> :
+															<i className="fas fa-heart no-favorite" ></i>
 															}
 														</span>
-												
 											</div>
 										</div>
 									</div>

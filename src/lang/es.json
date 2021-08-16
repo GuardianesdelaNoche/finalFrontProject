@@ -69,8 +69,8 @@
     "popups.remove.reserve.title": "Eliminar Reserva",
     "popups.add.reserve.mesage": "¿Quiere reservar este evento?",
     "popups.remove.reserve.mesage": "¿Quiere cancelar su reserva?",
-    "updatemember.form.button": "Cambiar",
-    "updatemember.title": "Cambiar mis datos",
+    "updatemember.form.button": "Editar",
+    "updatemember.title": "Editar mis datos",
     "listmyevents.title":"Mis eventos",
     "logout.confirmation": "Quieres cerrar sesión?",
     "logout.title": "Cerrar sesión" ,
@@ -110,7 +110,11 @@
     "user.panel.event.favorites.error": "No tienes ningún evento marcado como favorito",
     "user.panel.event.myevents.title": "Mis Eventos",
     "user.panel.event.myevents.description": "Todos los eventos que has publicado",
-    "user.panel.event.myevents.error": "No tienes eventos creados"
+    "user.panel.event.myevents.error": "No tienes eventos creados",
+    "sidebar.item.data": "Mis Datos",
+    "sidebar.item.event": "Mis Eventos",
+    "sidebar.item.favorites": "Mis Favoritos",
+    "sidebar.item.suscribes": "Mis Suscritos"
 
 
 }

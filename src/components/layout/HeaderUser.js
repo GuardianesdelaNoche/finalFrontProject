@@ -4,7 +4,8 @@ import {  NavDropdown  } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getIsLogged } from '../../store/selectors/auth';
 import { getUserData } from '../../store/selectors/auth';
-import Button from '../shared/Button';
+
+import { FormattedMessage } from 'react-intl';
 import AuthButton from '../auth/AuthButton/AuthButton';
 import './UserHeader.css';
 
@@ -15,7 +16,12 @@ function HeaderUser({ isLogged, userData }) {
 			
 					<div className="container d-flex align-items-stretch justify-content-between mobile-space">
 						<div className="d-flex align-items-center">
-							<h4 className="text-dark">My Dashboard</h4>
+							<h4 className="text-dark">
+							<FormattedMessage
+								id="header.popups.title"
+							defaultMessage="My Dashboard"
+							/>
+							</h4>
 						</div>
 						
 						<div className="d-flex align-items-center">
@@ -46,8 +52,18 @@ function HeaderUser({ isLogged, userData }) {
 									</div>
 
 									<div className="">
-										<span className="text-white fs-4">Hello, {userData.nickname}</span>
-										<span className="text-white fs-7 d-block mr-4">Welcome to 4Events</span>
+										<span className="text-white fs-4">
+											<FormattedMessage
+												id="header.popups.hello"
+												defaultMessage="Hello,"
+											/>
+											{userData.nickname}</span>
+										<span className="text-white fs-7 d-block mr-4">
+											<FormattedMessage
+												id="header.popups.welcome"
+												defaultMessage="Welcome to 4Events"
+											/>
+											</span>
 									</div>
 
 								</div>
@@ -61,7 +77,10 @@ function HeaderUser({ isLogged, userData }) {
 										<img src="/img/icon-Home.svg" />
 										
 										<span className="d-block pt-3">
-											Home
+											<FormattedMessage
+												id="header.popups.icon1"
+												defaultMessage="Home"
+											/>
 										</span>
 									</Link>
 								</div>
@@ -73,7 +92,10 @@ function HeaderUser({ isLogged, userData }) {
 									
 										<img src="/img/profile.svg" />
 										<span className="d-block pt-3">
-											My Profile
+											<FormattedMessage
+												id="header.popups.icon2"
+												defaultMessage="My Profile"
+											/>
 										</span>
 									</Link>
 									</div>
@@ -81,7 +103,12 @@ function HeaderUser({ isLogged, userData }) {
 								<div className="border-end  text-center py-10 rounded-0">
 									<Link className="fs-6 d-block user-title-menu" to="/event/New">
 										<img src="/img/icon-Edit.svg" />
-										<span className="d-block pt-3">New Events</span>
+										<span className="d-block pt-3">
+											<FormattedMessage
+												id="header.popups.icon3"
+												defaultMessage="New Events"
+											/>
+											</span>
 										</Link>
 									</div>
 

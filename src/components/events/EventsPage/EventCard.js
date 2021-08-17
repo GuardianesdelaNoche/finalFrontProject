@@ -7,7 +7,7 @@ import { BsCalendar, BsClock } from "react-icons/bs";
 import { RiBookmark3Line, RiHome4Line } from "react-icons/ri";
 import { TiTree } from "react-icons/ti";
 import { FormattedMessage } from "react-intl";
-
+import { GoLocation} from "react-icons/go";
 
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -85,6 +85,11 @@ function EventCard(event) {
             </Card.Subtitle>
             <Card.Subtitle className="fs-6 fw-bolder">
               <BsClock className="me-2"/> {event.duration} h
+            </Card.Subtitle>
+          </div>
+          <div className="d-flex flex-row justify-content-between  time  text-gray-800 ">
+            <Card.Subtitle className="fs-6 fw-bolder">
+              <GoLocation className="me-2"/> {event.city}
             </Card.Subtitle>
           </div>
           <Card.Text className="text-description">

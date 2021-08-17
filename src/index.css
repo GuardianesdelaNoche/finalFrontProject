@@ -448,8 +448,17 @@ color: #a1a5b7;
 }
 
 
+.symbol-label.bg-light-success {
+    background-color: #f1faff!important;
+}
 
+.symbol-label.bg-light-warning{
+    background-color: #fff8dd!important;
+}
 
+.symbol-label.bg-light-danger{
+    background-color:#FCD9E2!important;
+}
 
 .border-end {
     border-right: 1px solid #eff2f5!important;
@@ -462,7 +471,26 @@ a:hover {
 }
 
 
+/* PRogress Bar */
+.bg-success {
+    background-color: #00b2ff!important;
+}
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #20d489;
+    transition: width .6s ease;
+}
 
+/* .bg-avatar{
+    background-image:url('/img/background.svg')
+   
+} */
 /* Sidebar Menu */
 
 .dFnnGi .activeClicked >li {

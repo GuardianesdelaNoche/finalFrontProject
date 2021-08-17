@@ -12,7 +12,7 @@
              return {
                  ...state, 
                  loaded: true,
-                 data: action.payload
+                 data: [...action.payload.data]
              }
          default:
              return state;

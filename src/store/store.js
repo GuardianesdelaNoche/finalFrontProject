@@ -6,7 +6,6 @@ import { uiReducer } from './reducers/uiReducer';
 
 import * as api from '../api';
 import { eventsReducer } from './reducers/eventsReducer';
-import { paginationReducer } from './reducers/paginationReducer';
 import { tagsReducer } from './reducers/tagsReducer';
 
 
@@ -15,7 +14,6 @@ const reducers = combineReducers({
     auth: authReducer,
     ui: uiReducer,
     events: eventsReducer,
-    pagination: paginationReducer,
     tags: tagsReducer
 });
 

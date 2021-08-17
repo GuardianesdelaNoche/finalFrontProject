@@ -20,37 +20,41 @@ function App() {
       dispatch(loginWithTokenAction(accessToken.token))
     }
   }
-  
+
   return (
     
     <Switch>
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/forgotthepassword" component={RememberPassPage} /> 
       <Route exact path="/rememberPassword" component={RememberPassPage} />
       <Route exact path="/rememberPassword/tokenExpired">
         <RememberPassPage tokenExpired />
       </Route>
       <Route exact path="/forgotthepassword/:token">
         { routeProps => <RecoverPassPage { ...routeProps} />}
-      </Route>      
+      </Route>
 
       <PrivateRoute exact path="/event/New" component={NewEventPage} />
       <Route exact path="/event/:eventId/:eventTitle" component={DetailsPage} />
       <Route exact path="/events" component={EventsPage} />
+      <Route exact path="/">
+         <Redirect to="/events" />
+      </Route>
       <PrivateRoute exact path="/user">
         {routeProps => <UserDashboard {...routeProps} />}
-        </PrivateRoute>
+      </PrivateRoute>
       <PrivateRoute exact path="/myEvents" component={ListMyEvents} />
+
+
+
+
       <Route exact path="/register">
         {routeProps => <RegisterPage {...routeProps} />}
       </Route>
       <Route exact path="/404">
         <NotFoundPage />
       </Route>
-      <Route exact path="/">
-        <Redirect to="/events" />
-      </Route>
+
       <Redirect to="/404" />
     </Switch>
     

@@ -8,6 +8,7 @@ import { RiBookmark3Line, RiHome4Line } from "react-icons/ri";
 import { TiTree } from "react-icons/ti";
 import { FormattedMessage } from "react-intl";
 import { GoLocation} from "react-icons/go";
+import { MdFavoriteBorder, MdFavorite} from "react-icons/md";
 
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -56,7 +57,7 @@ function EventCard(event) {
                   onClick={handleAddEventFavs}
                   active={false} //depends fav events list user
                 >
-                  <RiBookmark3Line />
+                  <MdFavorite />
                 </Button>
               ) : (
                 <Button
@@ -64,7 +65,7 @@ function EventCard(event) {
                   // active={false}
                   variant="secondary"
                 >
-                  <RiBookmark3Line />
+                  <MdFavoriteBorder />
                 </Button>
               )}
             </OverlayTrigger>

@@ -76,7 +76,7 @@ function LoginForm({onSubmit}) {
 			{error && (
 				<Alert className="alertLogin" onClick={handleResetError} variant="danger">
 					<p className="mb-0">
-						{error.message}
+						{error.error}
 					</p>
 				</Alert>
 			)}

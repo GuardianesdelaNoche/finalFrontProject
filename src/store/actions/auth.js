@@ -51,9 +51,7 @@ export const loginAction = credentials => {
            
             const logged = await api.login.login(credentials);       
             const userData = await api.user.getUserDataById(logged.token);    
-            const tagsData = await api.tags.getTags();                   
             dispatch(authLoginSuccess(userData.result));
-            dispatch(tagsLoadedSuccess(tagsData.tags))
 
             // Redirect
             const { from } = history.location.state || { from: { pathname: '/' } };

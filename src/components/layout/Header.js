@@ -27,7 +27,7 @@ function Header({ isLogged, userData }) {
 								defaultMessage="New Event"
 								/>
 							</Link>}
-							{isLogged && 
+							
 							<Link to="/event/new">
 							<FormattedMessage
 							id="navbar.item.eng"
@@ -35,8 +35,8 @@ function Header({ isLogged, userData }) {
 							/>
 						</Link>
 							
-							}
-						{isLogged && 
+							
+						 
 							<Link to="/event/new">
 							<FormattedMessage
 							id="navbar.item.eng"
@@ -44,8 +44,7 @@ function Header({ isLogged, userData }) {
 							/>
 						</Link>
 							
-							}
-
+						
 						</Nav>
 						
 						<Nav >

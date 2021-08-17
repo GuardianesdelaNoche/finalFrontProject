@@ -4,7 +4,7 @@ import "./EventCard.css";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BsCalendar, BsClock } from "react-icons/bs";
-import { RiBookmark3Line, RiHome4Line } from "react-icons/ri";
+import { RiHome4Line } from "react-icons/ri";
 import { TiTree } from "react-icons/ti";
 import { FormattedMessage } from "react-intl";
 import { GoLocation} from "react-icons/go";
@@ -21,11 +21,6 @@ function EventCard(event) {
   // const state = useSelector(getIsEventFav(event._id));
   const isLogged = useSelector(getIsLogged);
 
-
-  const handleAddEventFavs = () => {
-    // console.log("add/remove fav -> redux & api");
-
-  };
 
   return (
     <Card className="card-stretch">
@@ -49,21 +44,19 @@ function EventCard(event) {
                 </Tooltip>
               }
             >
-              {isLogged ? (
+              {isLogged && event.isFavorite ? (
                 <Button
                   className="ribbon home"
-                  // className="float-right"
                   variant="secondary"
-                  onClick={handleAddEventFavs}
-                  active={false} //depends fav events list user
+                  disabled
                 >
                   <MdFavorite />
                 </Button>
               ) : (
                 <Button
                   className="ribbon"
-                  // active={false}
                   variant="secondary"
+                  disabled
                 >
                   <MdFavoriteBorder />
                 </Button>

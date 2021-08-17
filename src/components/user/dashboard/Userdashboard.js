@@ -65,7 +65,7 @@ function UserDashboard({history}) {
 								{error && (	
                    					 <Alert onClick={handleResetError} variant="danger">
                         				 <p className="mb-0">
-                            				{error.errors[0].msg}
+                            				{error.error}
                         				 </p>
                     					</Alert>
                 				)}

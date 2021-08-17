@@ -120,6 +120,18 @@
     "header.popups.hello": "Hola",
     "header.popups.icon1": "Inicio",
     "header.popups.icon2": "Mis Datos",
-    "header.popups.icon3": "Nuevo Evento"
+    "header.popups.icon3": "Nuevo Evento",
+    "user.panel.userdashboard.event.title": "Mis Eventos Publicados",
+    "user.panel.userdashboard.event.description": "Eventos publicados",
+    "user.panel.userdashboard.favorites.title": "Mis Eventos Favoritos",
+    "user.panel.userdashboard.favorites.description": "Eventos favoritos",
+    "user.panel.userdashboard.suscribes.title": "Mis Eventos Suscritos",
+    "user.panel.userdashboard.suscribes.descripcion": "Eventos suscritos",
+    "user.panel.userdashboard.profile-details-title": "Detalles del perfil",
+    "user.panel.userdashboard.profile-details-item1": "Nombre completo",
+    "user.panel.userdashboard.profile-details-item2": "Teléfono de contacto",
+    "user.panel.userdashboard.profile-details-item3": "País",
+    "user.panel.userdashboard.profile-details-item4": "Ciudad",
+    "user.panel.userdashboard.profile-details-item5": "Código Postal"
 
 }

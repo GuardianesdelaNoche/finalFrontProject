@@ -118,6 +118,20 @@
     "header.popups.hello":"Hello",
     "header.popups.icon1":"Home",
     "header.popups.icon2": "My Profile",
-    "header.popups.icon3": "New Events"
+    "header.popups.icon3": "New Events",
+    "user.panel.userdashboard.event.title":"My Published Events",
+    "user.panel.userdashboard.event.description":"Published Events",
+    "user.panel.userdashboard.favorites.title":"My Favourite Events",
+    "user.panel.userdashboard.favorites.description":"Favorites Events",
+    "user.panel.userdashboard.suscribes.title":"My Subscribed Events",
+    "user.panel.userdashboard.suscribes.descripcion":"Subscribed Events",
+    "user.panel.userdashboard.profile-details-title":"Profile Details",
+    "user.panel.userdashboard.profile-details-item1":"Full Name",
+    "user.panel.userdashboard.profile-details-item2": "Contact Phone",
+    "user.panel.userdashboard.profile-details-item3": "Country",
+    "user.panel.userdashboard.profile-details-item4": "City",
+    "user.panel.userdashboard.profile-details-item5": "Postal Code"
+
+
 
 }

@@ -644,12 +644,7 @@ a:hover {
     .mobile-wrap{
         flex-wrap: wrap;
     }
-   /*  .mobile-content{
-        width: 100%;
-        padding: 0px!important;
-        padding: 0px!important;
-        margin: 0px;
-    } */
+   
     .mobile-container{
         width: 100%;
         padding-right: 0px;
@@ -681,6 +676,7 @@ a:hover {
         z-index: 1;
     }
 
+   
 
 
 }

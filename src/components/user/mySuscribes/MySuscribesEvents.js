@@ -1,5 +1,6 @@
 import React from 'react';
 import UserLayout from '../../layout/UserLayout';
+import { Link } from 'react-router-dom';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction } from '../../../store/actions/ui';
@@ -54,19 +55,21 @@ function MySuscribesEvents() {
 									</Card.Title>
 
 
-									{/* TODO: Recoger los eventos y crear un map para mostrar listado */}
+								
 								{eventsAssistant.length ? eventsAssistant.map(element => (
+									<Link key={element._id} to={`/event/${element._id}/${element.title.replace(/\s+/g, '-')}`}>
 									<div className="d-flex mb-7 pt-10 mobile-wrap" key={element._id}>
-										{/* Imagen del evento */}
+										
 										<div className="symbol symbol-70px symbol-2by3 me-4">
 											<img src={element.photo} alt="" className="mw-100" />
 										</div>
 
-										{/* titulo de los eventos*/}
+										
 										<div className="d-flex align-items-center flex-grow-1 mt-n2 mt-lg-n1 mobile-wrap">
 
 											<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-												<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6  pt-3">{element.title}</a>
+												
+													<span className="text-gray-800 fw-bolder text-hover-primary fs-6  pt-3">{element.title}</span>
 												<span className="text-description fs-7 my-1">{element.description.substring(0, 150)}&nbsp; [...]</span>
 												<span className="text-description fs-7">
 													<FormattedMessage
@@ -78,7 +81,7 @@ function MySuscribesEvents() {
 												
 											</div>
 
-											{/* info de los eventos*/}
+											
 											<div className="text-end py-lg-0 py-2">
 
 												<span className="btn btn-icon btn-bg-light">
@@ -89,7 +92,9 @@ function MySuscribesEvents() {
 
 											</div>
 										</div>
-									</div>)):<p>
+
+									</div>
+									</Link>)):<p>
 											<FormattedMessage
 												id="user.panel.event.suscribed.error"
 												defaultMessage="You have not yet subscribed to any event"

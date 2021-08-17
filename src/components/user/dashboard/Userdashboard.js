@@ -13,7 +13,6 @@ import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import { getUserData } from '../../../store/selectors/auth';
 import { getEventsFavoriteLoaded, getEventsOwnEventsLoaded, getEventsAssistantEventsLoaded  } from '../../../store/selectors/events';
-
 import  Spinner  from '../../shared/Spinner';
 
 
@@ -26,6 +25,7 @@ function UserDashboard({history}) {
 
 
 	/* TODO: Debería tomar el total de eventos Propios, marcados como Favoritos o  suscritos */
+
 	const eventsFavorite = useSelector(getEventsFavoriteLoaded);
 	const eventsOwn = useSelector(getEventsOwnEventsLoaded);
 	const eventsAssistant = useSelector(getEventsAssistantEventsLoaded);
@@ -62,7 +62,7 @@ function UserDashboard({history}) {
 			<UserLayout>
 		
 				<div className="row g-0 g-xl-5 g-xxl-8 pb-12">
-					<div className="col-xl-4">
+					<div className="col-xl-4 mb-mb-2">
 						<Card>
 							<Card.Body>
 								<div class="d-flex align-items-center">
@@ -72,8 +72,18 @@ function UserDashboard({history}) {
 										</span>
 									</div>
 									<div>
-										<Card.Title>Mis Eventos Publicados</Card.Title>
-										<div class="fs-7 text-muted  mt-1">{eventsOwn.length} Eventos Publicados</div>
+										<Card.Title>
+											<FormattedMessage
+												id="user.panel.userdashboard.event.title"
+												defaultMessage="My Published Events"
+											/>
+										</Card.Title>
+										<div class="fs-7 text-muted  mt-1">{eventsOwn.length} 
+											<FormattedMessage
+												id="user.panel.userdashboard.event.description"
+												defaultMessage="Published Events"
+											/>
+										</div>
 									</div>
 
 									
@@ -81,7 +91,7 @@ function UserDashboard({history}) {
 							</Card.Body>
 						</Card>
 					</div>
-					<div className="col-xl-4">
+					<div className="col-xl-4 mb-mb-2">
 						<Card>
 							<Card.Body>
 								<div class="d-flex align-items-center">
@@ -91,14 +101,26 @@ function UserDashboard({history}) {
 										</span>
 									</div>
 									<div>
-										<Card.Title>Mis Eventos Favoritos</Card.Title>
-										<div class="fs-7 text-muted  mt-1">{eventsFavorite.length} Favorites Events</div>
+										<Card.Title>
+											<FormattedMessage
+												id="user.panel.userdashboard.favorites.title"
+												defaultMessage="My Favourite Events"
+											/>
+											
+										</Card.Title>
+										<div class="fs-7 text-muted  mt-1">{eventsFavorite.length} 
+											<FormattedMessage
+												id="user.panel.userdashboard.favorites.description"
+												defaultMessage="Favorites Events"
+											/>
+										
+										</div>
 									</div>
 								</div>
 							</Card.Body>
 						</Card>
 					</div>
-					<div className="col-xl-4">
+					<div className="col-xl-4 mb-mb-2">
 						<Card>
 							<Card.Body>
 								<div class="d-flex align-items-center">
@@ -108,8 +130,21 @@ function UserDashboard({history}) {
 										</span>
 									</div>
 									<div>
-										<Card.Title>Mis Eventos Suscritos</Card.Title>
-										<div class="fs-7 text-muted  mt-1">{eventsAssistant.length} Favorites Events</div>
+										<Card.Title>
+											
+											<FormattedMessage
+												id="user.panel.userdashboard.suscribes.title"
+												defaultMessage="My Subscribed Events"
+											/>
+											
+										</Card.Title>
+										<div class="fs-7 text-muted  mt-1">{eventsAssistant.length} 
+											<FormattedMessage
+												id="user.panel.userdashboard.suscribes.descripcion"
+												defaultMessage="Subscribed Events"
+											/>
+										
+										</div>
 									</div>
 
 									
@@ -121,7 +156,7 @@ function UserDashboard({history}) {
 			
 
 				<div className="row g-0 g-xl-5 g-xxl-8">	
-					<div className="col-xl-4">
+					<div className="col-xl-4 mb-mb-2">
 						<Card>
 								<Card.Title></Card.Title>
 								<Card.Body>
@@ -143,7 +178,7 @@ function UserDashboard({history}) {
 										<div class="pt-4">
 											<div class="text-center pb-12">
 												<h3 class="fw-bolder">{userData.username} </h3>
-												<span class="fw-bolder fs-6 text-primary px-4 py-2 rounded bg-white bg-opacity-10">{userData.email}</span>
+												<span class="fw-bolder fs-6 text-primary px-4 py-2 rounded">{userData.email}</span>
 											</div>
 										</div>
 									</div>
@@ -152,44 +187,73 @@ function UserDashboard({history}) {
 						</Card>	
 					</div>
 
-					<div className="col-xl-8">
+					<div className="col-xl-8 mb-mb-2">
 						<Card>
 							<Card.Body>
 								<Card.Title>
-									Profile Details
+									<FormattedMessage
+										id="user.panel.userdashboard.profile-details-title"
+										defaultMessage="Profile Details"
+									/>
+
 								</Card.Title>
 								<div className="separator mt-2 pt-2"></div>
 								<div class="row mb-7 pt-4 mb-10">
-									<label class="col-lg-4 text-muted fw-500">Full Name</label>							
+									<label class="col-lg-4 text-muted fw-500">
+										<FormattedMessage
+											id="user.panel.userdashboard.profile-details-item1"
+											defaultMessage="Full Name"
+										/>
+										
+									</label>							
 									<div class="col-lg-8">
 										<span class="fs-6 text-dark fw-500">{userData.username}</span>
 									</div>
 								</div>
 
-
 								<div class="row mb-7">
-									<label class="col-lg-4 text-muted fw-500">Contact Phone </label>
+									<label class="col-lg-4 text-muted fw-500">
+										<FormattedMessage
+											id="user.panel.userdashboard.profile-details-item2"
+											defaultMessage="Contact Phone"
+										/>
+									</label>
 									<div class="col-lg-8">
 										<span class="fs-6 text-dark fw-500">{userData.phone}</span>
 									</div>
 								</div>
 
 								<div class="row mb-7">
-									<label class="col-lg-4 text-muted fw-500">Country</label>
+									<label class="col-lg-4 text-muted fw-500">
+										<FormattedMessage
+											id="user.panel.userdashboard.profile-details-item3"
+											defaultMessage="Country"
+										/>
+									</label>
 									<div class="col-lg-8">
 										<span class="fs-6 text-dark fw-500">{userData.country}</span>
 									</div>
 								</div>
 
 								<div class="row mb-7">
-									<label class="col-lg-4 text-muted fw-500">City</label>
+									<label class="col-lg-4 text-muted fw-500">
+										<FormattedMessage
+											id="user.panel.userdashboard.profile-details-item4"
+											defaultMessage="City"
+										/>
+									</label>
 									<div class="col-lg-8">
 										<span class="fs-6 text-dark fw-500">{userData.city}</span>
 									</div>
 								</div>
 
 								<div class="row mb-7">
-									<label class="col-lg-4 text-muted fw-500">Postal Code</label>
+									<label class="col-lg-4 text-muted fw-500">
+										<FormattedMessage
+											id="user.panel.userdashboard.profile-details-item5"
+											defaultMessage="Postal Code"
+										/>
+									</label>
 									<div class="col-lg-8">
 										<span class="fs-6 text-dark fw-500">{userData.postal_code}</span>
 									</div>
@@ -201,7 +265,7 @@ function UserDashboard({history}) {
 						</Card>
 					</div>
 
-					<div className="col-xl-12">
+					<div className="col-xl-12 mb-mb-2">
 						<Card>
 							<Card.Body>
 								<Card.Title>					
@@ -234,8 +298,7 @@ function UserDashboard({history}) {
 					</div>
 
 				</div>
-									
-
+								
 			</UserLayout>
 		</div>
 	)

@@ -23,11 +23,14 @@ function UserDashboard({history}) {
     const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
 	const userData = useSelector(getUserData);
+
+
+	/* TODO: Debería tomar el total de eventos Propios, marcados como Favoritos o  suscritos */
 	const eventsFavorite = useSelector(getEventsFavoriteLoaded);
 	const eventsOwn = useSelector(getEventsOwnEventsLoaded);
 	const eventsAssistant = useSelector(getEventsAssistantEventsLoaded);
 
-	console.log(eventsOwn.total, 'eventos publicados')
+	console.log(eventsOwn, 'eventos publicados')
 	console.log(eventsFavorite, 'eventos Favoritos')
 
 	const [dataSaved, setDataSaved] = React.useState(false);
@@ -123,25 +126,82 @@ function UserDashboard({history}) {
 								<Card.Title></Card.Title>
 								<Card.Body>
 									<div class="pt-0">
-									
-								
-									<img alt="Logo" src={`https://services.4events.net/images/photoUser/${userData.image}`} width="80px" height="80px" className="mh-35px" />
-									
+
+										<div class="d-flex flex-center position-relative bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-center avatar-background" 
+											style={{ backgroundImage: 'url(' + '/img/background.svg' + ')', backgroundSize: 'auto' }}>
+												<div class="position-absolute mb-7">
+													<div class="symbol symbol-circle symbol-100px overflow-hidden d-flex flex-center z-index-1">
+														<span class="symbol-label align-items-end bg-symbols-avatar">
+														<img alt="Logo" src={`https://services.4events.net/images/photoUser/${userData.image}`} width="80px" height="80px" className="mh-75px"/>
+														</span>
+														
+													</div>
+												</div>
+												
+										</div>
+
 										<div class="pt-4">
 											<div class="text-center pb-12">
-											<h3 class="fw-bolder fs-2 pb-4">{userData.username} </h3>
+												<h3 class="fw-bolder">{userData.username} </h3>
 												<span class="fw-bolder fs-6 text-primary px-4 py-2 rounded bg-white bg-opacity-10">{userData.email}</span>
-											<p>{userData.city}</p>
-											<p>{userData.country}</p>
-											<p>{userData.postal_code}</p>
-											<p>{userData.phone}</p>
 											</div>
 										</div>
 									</div>
+								
 								</Card.Body>
 						</Card>	
 					</div>
+
 					<div className="col-xl-8">
+						<Card>
+							<Card.Body>
+								<Card.Title>
+									Profile Details
+								</Card.Title>
+								<div className="separator mt-2 pt-2"></div>
+								<div class="row mb-7 pt-4 mb-10">
+									<label class="col-lg-4 text-muted fw-500">Full Name</label>							
+									<div class="col-lg-8">
+										<span class="fs-6 text-dark fw-500">{userData.username}</span>
+									</div>
+								</div>
+
+
+								<div class="row mb-7">
+									<label class="col-lg-4 text-muted fw-500">Contact Phone </label>
+									<div class="col-lg-8">
+										<span class="fs-6 text-dark fw-500">{userData.phone}</span>
+									</div>
+								</div>
+
+								<div class="row mb-7">
+									<label class="col-lg-4 text-muted fw-500">Country</label>
+									<div class="col-lg-8">
+										<span class="fs-6 text-dark fw-500">{userData.country}</span>
+									</div>
+								</div>
+
+								<div class="row mb-7">
+									<label class="col-lg-4 text-muted fw-500">City</label>
+									<div class="col-lg-8">
+										<span class="fs-6 text-dark fw-500">{userData.city}</span>
+									</div>
+								</div>
+
+								<div class="row mb-7">
+									<label class="col-lg-4 text-muted fw-500">Postal Code</label>
+									<div class="col-lg-8">
+										<span class="fs-6 text-dark fw-500">{userData.postal_code}</span>
+									</div>
+								</div>
+
+								
+							</Card.Body>
+
+						</Card>
+					</div>
+
+					<div className="col-xl-12">
 						<Card>
 							<Card.Body>
 								<Card.Title>					
@@ -150,8 +210,10 @@ function UserDashboard({history}) {
                         				defaultMessage="Change my data"
                     				/>                
 								</Card.Title>
+							
+								<div className="separator mt-2 pt-2"></div>
 								
-								<RegisterForm onSubmit={handleSubmit} token={token} userData={userData} /> 	 								
+								<RegisterForm onSubmit={handleSubmit} token={token} userData={userData} />
 
 								{error && (	
                    					 <Alert onClick={handleResetError} variant="danger">

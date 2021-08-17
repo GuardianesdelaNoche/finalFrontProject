@@ -83,7 +83,9 @@ button:disabled {
 .fw-bolder {
     font-weight: 600!important;
 }
-
+.fw-500{
+    font-weight: 500;
+}
 
 /* ----Espaces */
 
@@ -471,26 +473,46 @@ a:hover {
 }
 
 
-/* PRogress Bar */
+/* User Dashboard */
 .bg-success {
     background-color: #00b2ff!important;
 }
-.progress-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    background-color: #20d489;
-    transition: width .6s ease;
+
+.avatar-background{
+    height: 18vh;
 }
 
-/* .bg-avatar{
-    background-image:url('/img/background.svg')
-   
-} */
+.symbol.symbol-circle, .symbol.symbol-circle .symbol-label, .symbol.symbol-circle>img {
+    border-radius: 50%;
+}
+.symbol.symbol-100px .symbol-label {
+    width: 100px;
+    height: 100px;
+}
+.symbol-label.bg-symbols-avatar{
+    background-color: #ffc700!important;
+}
+
+.bgi-size-contain {
+    background-size: contain;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+.bgi-size-contain {
+    background-size: contain;
+}
+.bgi-position-x-center {
+    background-position-x: center;
+}
+.bgi-position-y-center {
+    background-position-y: center;
+}
+.position-relative {
+    position: relative!important;
+}
 /* Sidebar Menu */
 
 .dFnnGi .activeClicked >li {

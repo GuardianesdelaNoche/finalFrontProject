@@ -40,8 +40,6 @@ function Header({ isLogged, userData }) {
 		dispatch(updateIntl(locale));
 	}
 
-
-
 	return (
 		<header>
 
@@ -57,16 +55,9 @@ function Header({ isLogged, userData }) {
 								defaultMessage="New Event"
 								/>
 							</Link>}
-							
 						
 							<Link onClick={() => handleChangeLanguage('en-EN')} > <img src="./img/en.png" alt={intl.formatMessage({ id: 'header.menu.eng'})} ></img>  </Link>
 							<Link onClick={() => handleChangeLanguage('es-ES')} > <img src="./img/es.png" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </Link>
-							
-							
-						 
-							
-				
-							
 						
 						</Nav>
 						

@@ -114,6 +114,8 @@
     "newevent.validate.address": "There is something wrong",
     "newevent.validate.country": "There is something wrong",
     "newevent.validate.postal-code": "There is something wrong",
-    "newevent.validate.citiy": "There is something wrong"
+    "newevent.validate.citiy": "There is something wrong",
+    "header.menu.eng": "ENG",
+    "header.menu.esp": "ESP"
 
 }

@@ -9,8 +9,8 @@
     max-height: 50px!important;
 }
 
-img {
+ .imgFlag {
     margin-left: 10px;
     width: 32px;
     height: 20px;
-}
+} 

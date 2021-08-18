@@ -24,7 +24,7 @@ function Header({ isLogged, userData }) {
 	const handleChangeLanguageESP = () => {
 		locale = {
 			locale: "es-ES",
-			massages: Spanish
+			messages: Spanish
 	
 		}
 		dispatch(updateIntl(locale));
@@ -35,7 +35,7 @@ function Header({ isLogged, userData }) {
 	const handleChangeLanguageENG = () => {
 		locale = {
 			locale: "en-En",
-			massages: English
+			messages: English
 	
 		}
 		dispatch(updateIntl(locale));

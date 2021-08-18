@@ -19,28 +19,26 @@ function Header({ isLogged, userData }) {
 	const intl = useIntl();
 	const dispatch = useDispatch();
 
-	let locale;
 
-	const handleChangeLanguageESP = () => {
-		locale = {
-			locale: "es-ES",
-			messages: Spanish
-	
-		}
-		dispatch(updateIntl(locale));
-		console.log("cambiando idioma ESP", locale);
+	const handleChangeLanguage = lang => {
+		let locale; 
+		switch (lang) {
+			case 'es-ES':
+				locale = {
+					locale: "es-ES",
+					messages: Spanish
+				}
+				break;				
+			default:		
+				locale = {
+				locale: "en-EN",
+				messages: English
+				}
+
+		};
 		
-	};
-	
-	const handleChangeLanguageENG = () => {
-		locale = {
-			locale: "en-En",
-			messages: English
-	
-		}
 		dispatch(updateIntl(locale));
-		console.log("cambiando idioma ENG", locale);
-	};
+	}
 
 
 
@@ -60,9 +58,9 @@ function Header({ isLogged, userData }) {
 								/>
 							</Link>}
 							
-							<Link onClick={handleChangeLanguageENG} > ENG </Link>
-							<Link onClick={handleChangeLanguageESP} > ESP </Link>
-							
+						
+							<Link onClick={() => handleChangeLanguage('en-EN')} > <img src="./img/en.png" alt={intl.formatMessage({ id: 'header.menu.eng'})} ></img>  </Link>
+							<Link onClick={() => handleChangeLanguage('es-ES')} > <img src="./img/es.png" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </Link>
 							
 							
 						 

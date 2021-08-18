@@ -116,5 +116,7 @@
     "filtersform.buttonsfilters.remove": "Quitar filtros",
     "filtersform.placeholdersearch": "      Introduce un evento..",
     "filtersform.range.min": "Mínimo",
-    "filtersform.range.max": "Máximo"
+    "filtersform.range.max": "Máximo",
+    "header.menu.eng": "ING",
+    "header.menu.esp": "ESP"
 }

@@ -8,3 +8,9 @@
 .mh-50px{
     max-height: 50px!important;
 }
+
+img {
+    margin-left: 10px;
+    width: 32px;
+    height: 20px;
+}

@@ -56,8 +56,9 @@ function Header({ isLogged, userData }) {
 								/>
 							</Link>}
 						
-							<Link onClick={() => handleChangeLanguage('en-EN')} > <img src="./img/en.png" alt={intl.formatMessage({ id: 'header.menu.eng'})} ></img>  </Link>
-							<Link onClick={() => handleChangeLanguage('es-ES')} > <img src="./img/es.png" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </Link>
+							<Link onClick={() => handleChangeLanguage('en-EN')} > <img src="./img/en.png" className="imgFlag" alt={intl.formatMessage({ id: 'header.menu.eng'})} ></img>  </Link>
+							<Link onClick={() => handleChangeLanguage('es-ES')} > <img src="./img/es.png" className="imgFlag" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </Link>
+						
 						
 						</Nav>
 						

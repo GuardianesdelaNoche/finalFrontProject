@@ -46,6 +46,7 @@
     "eventCard.outdoor": "Outdoor",
     "eventCard.indoor": "Indoor",
     "eventCard.overlay.fav": "Favourite",
+    "eventCard.overlay.nofav": "No Favourite",
     "sorter.itemText.asc": "Most recent",
     "sorter.itemText.des": "Less recent",
     "sorter.ButtonText.order": "Sorter",

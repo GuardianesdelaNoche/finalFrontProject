@@ -101,6 +101,7 @@
     "newevent.validate.postal-code": "Hay algún error",
     "newevent.validate.city": "Hay algún error",
     "eventCard.overlay.fav": "Favorito",
+    "eventCard.overlay.nofav": "No Favorito",
     "sorter.itemText.asc": "Más reciente",
     "sorter.itemText.des": "Menos reciente",
     "sorter.ButtonText.order": "Ordenar",

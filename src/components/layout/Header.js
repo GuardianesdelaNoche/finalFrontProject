@@ -7,11 +7,43 @@ import Button from '../shared/Button';
 import AuthButton from '../auth/AuthButton/AuthButton';
 import { getUserData } from '../../store/selectors/auth';
 import { useIntl } from 'react-intl';
+import { updateIntl } from 'react-intl-redux';
+import Spanish from '../../lang/es.json';
+import English from '../../lang/en.json';
+import { useDispatch } from 'react-redux';
 
 import './Header.css';
 
+
 function Header({ isLogged, userData }) {
 	const intl = useIntl();
+	const dispatch = useDispatch();
+
+	let locale;
+
+	const handleChangeLanguageESP = () => {
+		locale = {
+			locale: "es-ES",
+			massages: Spanish
+	
+		}
+		dispatch(updateIntl(locale));
+		console.log("cambiando idioma ESP", locale);
+		
+	};
+	
+	const handleChangeLanguageENG = () => {
+		locale = {
+			locale: "en-En",
+			massages: English
+	
+		}
+		dispatch(updateIntl(locale));
+		console.log("cambiando idioma ENG", locale);
+	};
+
+
+
 	return (
 		<header>
 
@@ -28,21 +60,14 @@ function Header({ isLogged, userData }) {
 								/>
 							</Link>}
 							
-							<Link to="/event/new">
-							<FormattedMessage
-							id="navbar.item.eng"
-							defaultMessage="ENG"
-							/>
-						</Link>
+							<Link onClick={handleChangeLanguageENG} > ENG </Link>
+							<Link onClick={handleChangeLanguageESP} > ESP </Link>
+							
 							
 							
 						 
-							<Link to="/event/new">
-							<FormattedMessage
-							id="navbar.item.eng"
-							defaultMessage="ESP"
-							/>
-						</Link>
+							
+				
 							
 						
 						</Nav>

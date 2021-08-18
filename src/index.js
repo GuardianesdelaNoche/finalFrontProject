@@ -6,13 +6,16 @@ import Root from './components/root';
 import { configureClient } from "./api/client";
 import { configureStore } from './store/store';
 
-import { IntlProvider } from 'react-intl';
+import { Provider } from 'react-intl-redux';
+
+
 import Spanish from './lang/es.json';
 import English from './lang/en.json';
 
 
 
-const locale = navigator.language;
+//const locale = navigator.language;
+const locale = "es-ES";
 let lang;
 
 if(locale.search('es') >= 0) {
@@ -22,7 +25,10 @@ if(locale.search('es') >= 0) {
 }
 
 
-//import './index.css';
+const localeData = {
+  locale: locale, 
+  messages:  lang
+}
 
 
 const accessToken = storage.get("auth");
@@ -30,16 +36,17 @@ configureClient({ accessToken });
 
 const history = createBrowserHistory();
 const store = configureStore({
-  preloadedState: { auth: !!accessToken  },
-  history
+  preloadedState: { auth: !!accessToken , intl: localeData },
+  history,
+  
 });
 
 
 const render = () => {
   ReactDOM.render(
-    <IntlProvider locale={locale} messages={lang} >
-      <Root store={store} history={history} />
-    </IntlProvider>,
+    <Provider store={store}>     
+      <Root store={store} history={history} />     
+    </Provider>,
     document.getElementById('root'),
   );
 };

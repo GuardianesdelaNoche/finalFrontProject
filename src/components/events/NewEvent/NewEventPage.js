@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { setNewEvent } from '../../../api/events';
 import { getUi } from '../../../store/selectors/ui'; 
-import { Alert, Spinner} from 'react-bootstrap';
+import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import NewEventForm from './NewEventForm';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
+import  Spinner  from '../../shared/Spinner';
 
 import './newEvent.css'
 
@@ -71,7 +72,7 @@ function NewEventPage () {
                 {error && (	
                     <Alert onClick={handleResetError} variant="danger">
                         <p className="mb-0">
-                            {error.errors[0].msg}
+                            {error.error}
                         </p>
                     </Alert>
                 )}

@@ -18,20 +18,20 @@ export const eventsLoadedError = error => ({
     payload: error
 });
 
-export const eventsLoadAction = (page, limit) => {
+export const eventsLoadAction = (page, limit, title, sort, indoor, price, tags) => {
     return async function (dispatch, getState, { api }) {
+      dispatch(eventsLoadedRequest());
           try{
-            const events = await api.events.getEventsPage(page, limit);
+            const events = await api.events.getEventsPage(page, limit, title, sort, indoor, price, tags);
             dispatch(eventsLoadedSuccess(events));
-            // set new total 
           }catch(error) {
-            dispatch(eventsLoadedError(error));
+              dispatch(eventsLoadedError(error));
           }
   }
 };
 
 
-//Event Details Actions 
+//Event Details Actions
 export const eventDetailsRequest = () => ({
   type: types.eventDetailsRequest,
 })
@@ -54,12 +54,12 @@ export const eventDetailsActions = eventId => {
     } catch (error) {
       dispatch(eventDetailsError(error));
     }
-  
+
   }
 }
 
 
-//Delete Event Actions 
+//Delete Event Actions
 
 
 export const eventDeleteRequest = () => ({

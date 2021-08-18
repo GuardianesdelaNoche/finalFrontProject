@@ -3,10 +3,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { authReducer } from './reducers/authReducer';
 import { uiReducer } from './reducers/uiReducer';
+import { intlReducer } from 'react-intl-redux'
 
 import * as api from '../api';
 import { eventsReducer } from './reducers/eventsReducer';
-import { paginationReducer } from './reducers/paginationReducer';
+import { tagsReducer } from './reducers/tagsReducer';
 
 
 
@@ -14,7 +15,8 @@ const reducers = combineReducers({
     auth: authReducer,
     ui: uiReducer,
     events: eventsReducer,
-    pagination: paginationReducer
+    tags: tagsReducer, 
+    intl: intlReducer
 });
 
 

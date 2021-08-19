@@ -9,6 +9,7 @@ import NewEventForm from './NewEventForm';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import  Spinner  from '../../shared/Spinner';
+import { Layout } from '../../layout'
 
 import './newEvent.css'
 
@@ -58,36 +59,39 @@ function NewEventPage () {
     }
 
     return (
-        <div className="main-content">
-            <main className="form-signin">
-                <h1 className="h1 title-signin">
-                    <FormattedMessage
-                        id="newEvent.title"
-                        defaultMessage="New Event"
-                    />
-                </h1>
-                {loading && <Spinner animation="border" />}
-                <NewEventForm onSubmit={handleSubmit} />
+        <Layout>
 
-                {error && (	
-                    <Alert onClick={handleResetError} variant="danger">
-                        <p className="mb-0">
-                            {error.error}
-                        </p>
-                    </Alert>
-                )}
-                {dataSaved && 
-                    <SuccessMessage>
-                        <p className="mb-0">										
-                            {intl.formatMessage({ id: 'register.validate.successmessage'})}
-                        </p>
-                    </SuccessMessage>} 
+            <div className="main-content">
+                <main className="form-signin">
+                    <h1 className="h1 title-signin">
+                        <FormattedMessage
+                            id="newEvent.title"
+                            defaultMessage="New Event"
+                            />
+                    </h1>
+                    {loading && <Spinner animation="border" />}
+                    <NewEventForm onSubmit={handleSubmit} />
 
-                  
-           
-             
-            </main>           
-        </div>
+                    {error && (	
+                        <Alert onClick={handleResetError} variant="danger">
+                            <p className="mb-0">
+                                {error.error}
+                            </p>
+                        </Alert>
+                    )}
+                    {dataSaved && 
+                        <SuccessMessage>
+                            <p className="mb-0">										
+                                {intl.formatMessage({ id: 'register.validate.successmessage'})}
+                            </p>
+                        </SuccessMessage>} 
+
+                    
+            
+                
+                </main>           
+            </div>
+        </Layout>
      
     )
 }

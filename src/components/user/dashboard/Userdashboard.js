@@ -24,12 +24,11 @@ function UserDashboard({history}) {
 	const userData = useSelector(getUserData);
 
 
-	/* TODO: Debería tomar el total de eventos Propios, marcados como Favoritos o  suscritos */
 
-	const eventsFavorite = useSelector(getEventsFavoriteLoaded);
+/* 	const eventsFavorite = useSelector(getEventsFavoriteLoaded);
 	const eventsOwn = useSelector(getEventsOwnEventsLoaded);
 	const eventsAssistant = useSelector(getEventsAssistantEventsLoaded);
-
+ */
 	
 
 	const [dataSaved, setDataSaved] = React.useState(false);

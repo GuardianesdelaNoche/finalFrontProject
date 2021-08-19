@@ -52,7 +52,7 @@ function RegisterPage () {
                 {error && (	
                     <Alert onClick={handleResetError} variant="danger">
                         <p className="mb-0">
-                            {error.msg}
+                            {error.error}
                         </p>
                     </Alert>
                 )}

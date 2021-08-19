@@ -46,6 +46,23 @@
     "eventCard.outdoor": "Outdoor",
     "eventCard.indoor": "Indoor",
     "eventCard.overlay.fav": "Favourite",
+    "eventCard.overlay.nofav": "No Favourite",
+    "sorter.itemText.asc": "Most recent",
+    "sorter.itemText.des": "Less recent",
+    "sorter.ButtonText.order": "Sorter",
+    "filtersform.title.username": "Username",
+    "filtersform.input.username": "Enter an username..",
+    "filtersform.headerfilters.advancedfilters": "Advanced filters",
+    "filtersform.headerfilters.filters": "Filters",
+    "filtersform.filters.price": "Price",
+    "filtersform.filters.type": "Type",
+    "filtersform.filters.tags": "Tags",
+    "filtersform.buttonsfilters.apply": "Apply filters",
+    "filtersform.buttonsfilters.clean": "Clean filters",
+    "filtersform.buttonsfilters.remove": "Remove filters",
+    "filtersform.placeholdersearch": "      Enter an event..",
+    "filtersform.range.min": "Minimum",
+    "filtersform.range.max": "Maximum",    
     "details.event.edit":"Edit",
     "details.event.remove":"Remove",
     "details.event.subtitle":"Details",
@@ -130,8 +147,8 @@
     "user.panel.userdashboard.profile-details-item2": "Contact Phone",
     "user.panel.userdashboard.profile-details-item3": "Country",
     "user.panel.userdashboard.profile-details-item4": "City",
-    "user.panel.userdashboard.profile-details-item5": "Postal Code"
-
-
+    "user.panel.userdashboard.profile-details-item5": "Postal Code",
+    "header.menu.eng": "ENG",
+    "header.menu.esp": "ESP"
 
 }

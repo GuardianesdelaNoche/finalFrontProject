@@ -7,11 +7,39 @@ import Button from '../shared/Button';
 import AuthButton from '../auth/AuthButton/AuthButton';
 import { getUserData } from '../../store/selectors/auth';
 import { useIntl } from 'react-intl';
+import { updateIntl } from 'react-intl-redux';
+import Spanish from '../../lang/es.json';
+import English from '../../lang/en.json';
+import { useDispatch } from 'react-redux';
 
 import './Header.css';
 
+
 function Header({ isLogged, userData }) {
 	const intl = useIntl();
+	const dispatch = useDispatch();
+
+
+	const handleChangeLanguage = lang => {
+		let locale; 
+		switch (lang) {
+			case 'es-ES':
+				locale = {
+					locale: "es-ES",
+					messages: Spanish
+				}
+				break;				
+			default:		
+				locale = {
+				locale: "en-EN",
+				messages: English
+				}
+
+		};
+		
+		dispatch(updateIntl(locale));
+	}
+
 	return (
 		<header>
 
@@ -21,7 +49,17 @@ function Header({ isLogged, userData }) {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
 						<Nav className="me-auto">
-							
+							{isLogged && <Link to="/event/new">
+								<FormattedMessage
+								id="navbar.item.menu"
+								defaultMessage="New Event"
+								/>
+							</Link>}
+						
+							<Link onClick={() => handleChangeLanguage('en-EN')} > <img src="./img/en.png" className="imgFlag" alt={intl.formatMessage({ id: 'header.menu.eng'})} ></img>  </Link>
+							<Link onClick={() => handleChangeLanguage('es-ES')} > <img src="./img/es.png" className="imgFlag" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </Link>
+						
+						
 						</Nav>
 							{isLogged === true  ? 
 								<Nav>								

@@ -36,5 +36,6 @@ export const types = {
     eventsAssistantLoadedRequest: 'EVENTS ASSISTANT Loaded Request',
     eventsAssistantLoadedSuccess: 'EVENTS ASSISTANT Loaded Success',
     eventsAssistantLoadedError: 'EVENTS ASSISTANT Loaded Error',
+    tagsLoadedSuccess: 'TAGS Loaded Sucess'
 
 }

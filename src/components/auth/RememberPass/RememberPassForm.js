@@ -3,8 +3,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Form,ContentBottomCenter, ErrorMessage, SuccessMessage, Button } from '../../shared/elements/formElements';
-import { faExclamationTriangle, faComment } from '@fortawesome/free-solid-svg-icons';
+import { Form,ContentBottomCenter, ErrorMessage, Button } from '../../shared/elements/formElements';
+import { faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
 
 import './RememberPass.css';
 

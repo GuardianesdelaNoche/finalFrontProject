@@ -1,6 +1,3 @@
-
-
-
 .rc-pagination {
   margin: 0;
   padding: 0;
@@ -70,7 +67,7 @@
   border-color: #20d489;
 }
 .rc-pagination-item-active a {
-  color: #20d489;
+  color: #20d489 !important;
 }
 .rc-pagination-item-active:focus,
 .rc-pagination-item-active:hover {
@@ -214,7 +211,7 @@
   height: 24px;
   background-color: transparent;
   border: 0;
-  
+
 }
 .rc-pagination-simple .rc-pagination-prev .rc-pagination-item-link::after,
 .rc-pagination-simple .rc-pagination-next .rc-pagination-item-link::after {

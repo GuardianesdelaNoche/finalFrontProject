@@ -75,7 +75,6 @@ function NewEventForm ({onSubmit}) {
 
 
 	const handleChangeIndoorA = dataIndoor => {
-		console.log(dataIndoor);
 		handleChangeIndoor(dataIndoor.value);
 	} 
 

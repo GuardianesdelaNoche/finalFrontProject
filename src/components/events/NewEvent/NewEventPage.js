@@ -84,10 +84,7 @@ function NewEventPage () {
                             <p className="mb-0">										
                                 {intl.formatMessage({ id: 'register.validate.successmessage'})}
                             </p>
-                        </SuccessMessage>} 
-
-                    
-            
+                        </SuccessMessage>}                   
                 
                 </main>           
             </div>

@@ -117,6 +117,7 @@ const ValidationIcon = styled(FontAwesomeIcon)`
 const ContentBottomCenter = styled.div `
     display:flex;
     justify-content:center;
+    
 
 `;
 

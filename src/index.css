@@ -42,7 +42,10 @@ a, a:hover {
 button:disabled {
     opacity: 0.3
 }
-
+.px-11 {
+    padding-right: 2.75rem!important;
+    padding-left: 2.75rem!important;
+}
 
 /* ----Text */
 

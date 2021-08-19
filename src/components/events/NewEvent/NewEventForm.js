@@ -17,6 +17,7 @@ import es from 'date-fns/locale/es';
 
 import './newEvent.css'
 
+
 function NewEventForm ({onSubmit}) {
     const {
 		formValue: newEventData, 
@@ -111,167 +112,240 @@ function NewEventForm ({onSubmit}) {
 	}
 
     return (
-		<Form  className="form-signin" onSubmit={checkFormData}>
+		<Form className="form-new-event" onSubmit={checkFormData}>
 			<div className="form-container">
-			<Label htmlFor='date' >
-				{intl.formatMessage({ id: 'newevent.formLabel.date'})}		
-			</Label>       
-				<DatePickerF
-					locale={es}	
-					dateFormat="P"
-					name="date"
-					id="date"
-					selected={startDate} 
-					onChange={(date) => {setStartDate(date);handleChangeDate(date)}}		
+				<div class="mb-10">
+					<h3 class="text-dark "><FormattedMessage
+						id="newEvent.title"
+						defaultMessage="New Event"
+					/></h3>
+					<span class="fs-8 text-description">This information will help us tailor your experience.</span>
+				</div>
+
+				{/* Input Title */}
+				<div className="row">
+
+					<div className="col">
+							<Input
+								type="text"
+								label={intl.formatMessage({ id: 'newevent.formLabel.title' })}
+								name="title"
+								id="title"
+								placeholder="title"
+								value={title}
+								onChange={handleChange}
+								errorLegend={intl.formatMessage({ id: 'newevent.validate.title' })}
+								regularExpression={expressions.title}
+								max-length="5"
+								required
+							/>
+					</div>
+				</div>
+
+
+				{/* Input Date */}
+				<div className="row">
+					<div className="col">
+							<Label htmlFor='date' >
+								{intl.formatMessage({ id: 'newevent.formLabel.date' })}
+							</Label>
+							<DatePickerF
+								locale={es}
+								dateFormat="P"
+								name="date"
+								id="date"
+								selected={startDate}
+								onChange={(date) => { setStartDate(date); handleChangeDate(date) }}
+
+							/>
+					</div>
+					<div className="col">
+
+						<Input
+							type="text"
+							label={intl.formatMessage({ id: 'newevent.formLabel.duration' })}
+							name="duration"
+							id="duration"
+							placeholder="14"
+							value={duration}
+							onChange={handleChange}
+							errorLegend={intl.formatMessage({ id: 'newevent.validate.duration' })}
+							regularExpression={expressions.max_places}
+							required
+						/>
+
 						
-				/>
-				<Input
-					type="text"
-					label= {intl.formatMessage({ id: 'newevent.formLabel.title'})}
-					name="title"
-					id="title"
-					placeholder="title"
-					value={title}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'newevent.validate.title'})}
-					regularExpression={expressions.title}
-					max-length="5"
-					required
-				/>
-     
-	 			<Input
-					type="text"
-					label= {intl.formatMessage({ id: 'newevent.formLabel.description'})}
-					name="description"
-					id="description"
-					placeholder="description"
-					value={description}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'newevent.validate.description'})}
-					regularExpression={expressions.description}
-					required
-				/>
+						
+					</div>
+					<div className="col">
+
+						<Input
+							type="text"
+							label={intl.formatMessage({ id: 'newevent.formLabel.max_places' })}
+							name="max_places"
+							id="max_places"
+							placeholder="14"
+							value={max_places}
+							onChange={handleChange}
+							errorLegend={intl.formatMessage({ id: 'newevent.validate.max_places' })}
+							regularExpression={expressions.max_places}
+							required
+						/>
+							
+						
+
+					</div>
+				</div>
 				
-				<Input
-					type="text"
-					label= {intl.formatMessage({ id: 'newevent.formLabel.price'})}
-					name="price"
-					id="price"
-					placeholder="15,50"
-					value={price}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'newevent.validate.price'})}
-					regularExpression={expressions.price}
-					required
-				/>
+				{/* Input Max Places */}
+
+				<div className="row">
+					<div className="col">
+						<Input
+							type="text"
+							label={intl.formatMessage({ id: 'newevent.formLabel.price' })}
+							name="price"
+							id="price"
+							placeholder="15,50"
+							value={price}
+							onChange={handleChange}
+							errorLegend={intl.formatMessage({ id: 'newevent.validate.price' })}
+							regularExpression={expressions.price}
+							required
+						/>
+					</div>
+					<div className="col">
+						<Label htmlFor='indoor' >
+							{intl.formatMessage({ id: 'newevent.formLabel.indoor' })}
+						</Label>
+						<SelectIndoor
+							id="indoor"
+							name="indoor"
+							onChange={handleChangeIndoorA}
+							required
+						/>
+					</div>
+					<div className="col">
+
+						<MultiSelectTags
+							onChange={handleChangeMultiSelect}
+							name="tags"
+							id="tags"
+							label={intl.formatMessage({ id: 'newevent.formLabel.tags' })}
+							required
+						/>
+						
+					</div>
+
+				</div>	
+
+
+				{/* Input Description */}
+				<div className="row">
+					<div className="col">
+						<Input
+							type="text"
+							label={intl.formatMessage({ id: 'newevent.formLabel.description' })}
+							name="description"
+							id="description"
+							placeholder="description"
+							value={description}
+							onChange={handleChange}
+							errorLegend={intl.formatMessage({ id: 'newevent.validate.description' })}
+							regularExpression={expressions.description}
+							required
+						/>
+					</div>
+				</div>
+
+
+				{/* Input Address */}
+					
+				<div className="row">
+
+
+			
+	 			
+					<div className="col">
+						<Input
+							type="text"
+							label={intl.formatMessage({ id: 'newevent.formLabel.address' })}
+							name="address"
+							id="address"
+							placeholder="address"
+							value={address}
+							onChange={handleChange}
+							errorLegend={intl.formatMessage({ id: 'newevent.validate.address' })}
+							regularExpression={expressions.address}
+
+						/>
+					</div>
+					<div className="col">
+						<Input
+							type="text"
+							label={intl.formatMessage({ id: 'newevent.formLabel.city' })}
+							name="city"
+							id="city"
+							placeholder="city"
+							value={city}
+							onChange={handleChange}
+							errorLegend={intl.formatMessage({ id: 'newevent.validate.city' })}
+							regularExpression={expressions.address}
+
+						/>
+					</div>
+					<div className="col">
+						<Input
+							type="text"
+							label={intl.formatMessage({ id: 'newevent.formLabel.postal-code' })}
+							name="postal_code"
+							id="postal_code"
+							placeholder="postal_code"
+							value={postal_code}
+							onChange={handleChange}
+							errorLegend={intl.formatMessage({ id: 'newevent.validate.postal-code' })}
+							regularExpression={expressions.postal_code}
+
+						/>
+					</div>
+					<div className="col">
+						<Input
+							type="text"
+							label={intl.formatMessage({ id: 'newevent.formLabel.country' })}
+							name="country"
+							id="country"
+							placeholder="country"
+							value={country}
+							onChange={handleChange}
+							errorLegend={intl.formatMessage({ id: 'newevent.validate.country' })}
+							regularExpression={expressions.country}
+
+						/>
+					</div>
+				</div>
 				
-				<Input
-					type="text"
-					label= {intl.formatMessage({ id: 'newevent.formLabel.max_places'})}
-					name="max_places"
-					id="max_places"
-					placeholder="14"
-					value={max_places}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'newevent.validate.max_places'})}
-					regularExpression={expressions.max_places}
-					required
-				/>
-				<Input
-					type="text"
-					label= {intl.formatMessage({ id: 'newevent.formLabel.duration'})}
-					name="duration"
-					id="duration"
-					placeholder="14"
-					value={duration}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'newevent.validate.duration'})}
-					regularExpression={expressions.max_places}
-					required
-				/>
+				{/* Input Photo */}
+				<div className="row">
+					<div className="col">
 			
+						<Label htmlFor='photo' >
+							{intl.formatMessage({ id: 'newevent.formLabel.photo'})}		
+						</Label>      
+					
+						<File 
+							name="photo" 
+							id="photo"
+							onFileSelectSuccess={handleChangeFiles} 
+							onFileSelectError={handleError}
+						/>
+
+						
+					</div>
 
 			
+			</div>
 
-				<Input
-					type="text"
-					label= {intl.formatMessage({ id: 'newevent.formLabel.address'})}
-					name="address"
-					id="address"
-					placeholder="address"
-					value={address}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'newevent.validate.address'})}
-					regularExpression={expressions.address}					
-					
-				/>
 
-				<Input
-					type="text"
-					label= {intl.formatMessage({ id: 'newevent.formLabel.city'})}
-					name="city"
-					id="city"
-					placeholder="city"
-					value={city}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'newevent.validate.city'})}
-					regularExpression={expressions.address}					
-					
-				/>
-
-				<Input
-					type="text"
-					label= {intl.formatMessage({ id: 'newevent.formLabel.postal-code'})}
-					name="postal_code"
-					id="postal_code"
-					placeholder="postal_code"
-					value={postal_code}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'newevent.validate.postal-code'})}
-					regularExpression={expressions.postal_code}					
-					
-				/>
-
-				<Input
-					type="text"
-					label= {intl.formatMessage({ id: 'newevent.formLabel.country'})}
-					name="country"
-					id="country"
-					placeholder="country"
-					value={country}
-					onChange={handleChange}
-					errorLegend={intl.formatMessage({ id: 'newevent.validate.country'})}
-					regularExpression={expressions.country}					
-					
-				/>
-
-				<Label htmlFor='photo' >
-					{intl.formatMessage({ id: 'newevent.formLabel.photo'})}		
-				</Label>      
-
-				<File 
-					name="photo" 
-					id="photo"
-					onFileSelectSuccess={handleChangeFiles} 
-					onFileSelectError={handleError}
-				/>
-
-				<Label htmlFor='indoor' >
-					{intl.formatMessage({ id: 'newevent.formLabel.indoor'})}		
-				</Label> 
-				<SelectIndoor 
-					id="indoor"
-					name="indoor"
-					onChange={handleChangeIndoorA}				
-					required
-				/>
-				<MultiSelectTags 
-					onChange={handleChangeMultiSelect}
-					name="tags"
-					id="tags"					
-					label =  {intl.formatMessage({ id: 'newevent.formLabel.tags'})}
-					required
-				/>
 
 			{isFormValid.status === false && <ErrorMessage>
 				<p>
@@ -280,10 +354,11 @@ function NewEventForm ({onSubmit}) {
 				</p>
 			</ErrorMessage>}
 
-			<ContentBottomCenter>
+				<ContentBottomCenter className="pt-4">
 
-			<Button		
-			    type="submit">
+					<Button className="btn btn-primary px-11"
+			    type="submit"
+				>
                     <FormattedMessage
                         id="newEvent.form.button"
                         defaultMessage="Create"

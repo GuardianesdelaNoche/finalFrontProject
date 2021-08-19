@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
+import { Layout } from '../../layout';
 import { setNewEvent } from '../../../api/events';
 import { getUi } from '../../../store/selectors/ui'; 
 import { Alert} from 'react-bootstrap';
@@ -58,14 +59,10 @@ function NewEventPage () {
     }
 
     return (
+        <Layout>
         <div className="main-content">
-            <main className="form-signin">
-                <h1 className="h1 title-signin">
-                    <FormattedMessage
-                        id="newEvent.title"
-                        defaultMessage="New Event"
-                    />
-                </h1>
+            <main className="form-signin new-event">
+                
                 {loading && <Spinner animation="border" />}
                 <NewEventForm onSubmit={handleSubmit} />
 
@@ -88,6 +85,7 @@ function NewEventPage () {
              
             </main>           
         </div>
+        </Layout>
      
     )
 }

@@ -28,6 +28,8 @@
 .form-container{
     margin-bottom: 1.5rem;
     text-align: left;
+    z-index: 1;
+
 }
 
 .form-signin .form-floating:focus-within {

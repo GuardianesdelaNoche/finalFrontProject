@@ -30,8 +30,7 @@ function UserDashboard({history}) {
 	const eventsOwn = useSelector(getEventsOwnEventsLoaded);
 	const eventsAssistant = useSelector(getEventsAssistantEventsLoaded);
 
-	console.log(eventsOwn, 'eventos publicados')
-	console.log(eventsFavorite, 'eventos Favoritos')
+	
 
 	const [dataSaved, setDataSaved] = React.useState(false);
 
@@ -61,7 +60,7 @@ function UserDashboard({history}) {
 			 {loading && <Spinner animation="border" />}
 			<UserLayout>
 		
-				<div className="row g-0 g-xl-5 g-xxl-8 pb-12">
+			{/* 	<div className="row g-0 g-xl-5 g-xxl-8 pb-12">
 					<div className="col-xl-4 mb-mb-2">
 						<Card>
 							<Card.Body>
@@ -152,7 +151,7 @@ function UserDashboard({history}) {
 							</Card.Body>
 						</Card>
 					</div>
-				</div>
+				</div> */}
 			
 
 				<div className="row g-0 g-xl-5 g-xxl-8">	

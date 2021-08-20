@@ -3,6 +3,7 @@ import UserLayout from '../../layout/UserLayout';
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
+import { authLoginSuccess } from '../../../store/actions/auth';
 import { getUi } from '../../../store/selectors/ui'; 
 import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
@@ -40,7 +41,9 @@ function UserDashboard({history}) {
         try {
             dispatch(setLoadingAction);
 			dispatch(resetErrorAction);
-            await setUserData(token.token, registerData)
+            const userData = await setUserData(token.token, registerData);
+			dispatch(authLoginSuccess(userData))
+
 			setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));

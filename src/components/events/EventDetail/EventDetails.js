@@ -74,11 +74,11 @@ function EventDetails({ description,
 			try {
 		
 				swal.fire({
-					title: "Asistir a evento",
-					text: "Estás seguro que deseas asistir a este evento?",
+					title: "Reservar Plaza",
+					text: "¿Estás seguro que deseas asistir a este evento?",
 					icon: "warning",
-					confirmButtonText: "Yes",
-					confirmButtonColor: "green",
+					confirmButtonText: "Si",
+					confirmButtonColor: "#20d489",
 					denyButtonText: "No",
 					showDenyButton: true
 				}).then(async response => {

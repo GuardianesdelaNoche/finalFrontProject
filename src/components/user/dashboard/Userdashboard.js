@@ -73,9 +73,9 @@ function UserDashboard({history}) {
 					<div className="col-xl-4 mb-mb-2">
 						<Card>
 							<Card.Body>
-								<div class="d-flex align-items-center">
-									<div class="symbol symbol-45px me-4">
-										<span class="symbol-label bg-light-success">
+								<div className="d-flex align-items-center">
+									<div className="symbol symbol-45px me-4">
+										<span className="symbol-label bg-light-success">
 											<img src="/img/icon-calendar.svg"/>
 										</span>
 									</div>
@@ -86,7 +86,7 @@ function UserDashboard({history}) {
 												defaultMessage="My Published Events"
 											/>
 										</Card.Title>
-										<div class="fs-7 text-muted  mt-1">{eventsOwnTotal} 
+										<div className="fs-7 text-muted  mt-1">{eventsOwnTotal} 
 											<FormattedMessage
 												id="user.panel.userdashboard.event.description"
 												defaultMessage="Published Events"
@@ -102,9 +102,9 @@ function UserDashboard({history}) {
 					<div className="col-xl-4 mb-mb-2">
 						<Card>
 							<Card.Body>
-								<div class="d-flex align-items-center">
-									<div class="symbol symbol-45px me-4">
-										<span class="symbol-label bg-light-danger">
+								<div className="d-flex align-items-center">
+									<div className="symbol symbol-45px me-4">
+										<span className="symbol-label bg-light-danger">
 											<img src="/img/icon-favorite.svg" />
 										</span>
 									</div>
@@ -116,7 +116,7 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div class="fs-7 text-muted  mt-1">{eventsFavoriteTotal} 
+										<div className="fs-7 text-muted  mt-1">{eventsFavoriteTotal} 
 											<FormattedMessage
 												id="user.panel.userdashboard.favorites.description"
 												defaultMessage="Favorites Events"
@@ -131,9 +131,9 @@ function UserDashboard({history}) {
 					<div className="col-xl-4 mb-mb-2">
 						<Card>
 							<Card.Body>
-								<div class="d-flex align-items-center">
-									<div class="symbol symbol-45px me-4">
-										<span class="symbol-label bg-light-warning">
+								<div className="d-flex align-items-center">
+									<div className="symbol symbol-45px me-4">
+										<span className="symbol-label bg-light-warning">
 											<img src="/img/icon-Bookmark.svg" />
 										</span>
 									</div>
@@ -146,7 +146,7 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div class="fs-7 text-muted  mt-1">{eventsAssistantTotal} 
+										<div className="fs-7 text-muted  mt-1">{eventsAssistantTotal} 
 											<FormattedMessage
 												id="user.panel.userdashboard.suscribes.descripcion"
 												defaultMessage="Subscribed Events"
@@ -168,13 +168,13 @@ function UserDashboard({history}) {
 						<Card>
 								<Card.Title></Card.Title>
 								<Card.Body>
-									<div class="pt-0">
+									<div className="pt-0">
 
-										<div class="d-flex flex-center position-relative bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-center avatar-background" 
+										<div className="d-flex flex-center position-relative bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-center avatar-background" 
 											style={{ backgroundImage: 'url(' + '/img/background.svg' + ')', backgroundSize: 'auto' }}>
-												<div class="position-absolute mb-7">
-													<div class="symbol symbol-circle symbol-100px overflow-hidden d-flex flex-center z-index-1">
-														<span class="symbol-label align-items-end bg-symbols-avatar">
+												<div className="position-absolute mb-7">
+													<div className="symbol symbol-circle symbol-100px overflow-hidden d-flex flex-center z-index-1">
+														<span className="symbol-label align-items-end bg-symbols-avatar">
 														<img alt="Logo" src={`https://services.4events.net/images/photoUser/${userData.image}`} width="80px" height="80px" className="mh-75px"/>
 														</span>
 														
@@ -183,10 +183,10 @@ function UserDashboard({history}) {
 												
 										</div>
 
-										<div class="pt-4">
-											<div class="text-center pb-12">
-												<h3 class="fw-bolder">{userData.username} </h3>
-												<span class="fw-bolder fs-6 text-primary px-4 py-2 rounded">{userData.email}</span>
+										<div className="pt-4">
+											<div className="text-center pb-12">
+												<h3 className="fw-bolder">{userData.username} </h3>
+												<span className="fw-bolder fs-6 text-primary px-4 py-2 rounded">{userData.email}</span>
 											</div>
 										</div>
 									</div>
@@ -206,64 +206,64 @@ function UserDashboard({history}) {
 
 								</Card.Title>
 								<div className="separator mt-2 pt-2"></div>
-								<div class="row mb-7 pt-4 mb-10">
-									<label class="col-lg-4 text-muted fw-500">
+								<div className="row mb-7 pt-4 mb-10">
+									<label className="col-lg-4 text-muted fw-500">
 										<FormattedMessage
 											id="user.panel.userdashboard.profile-details-item1"
 											defaultMessage="Full Name"
 										/>
 										
 									</label>							
-									<div class="col-lg-8">
-										<span class="fs-6 text-dark fw-500">{userData.username}</span>
+									<div className="col-lg-8">
+										<span className="fs-6 text-dark fw-500">{userData.username}</span>
 									</div>
 								</div>
 
-								<div class="row mb-7">
-									<label class="col-lg-4 text-muted fw-500">
+								<div className="row mb-7">
+									<label className="col-lg-4 text-muted fw-500">
 										<FormattedMessage
 											id="user.panel.userdashboard.profile-details-item2"
 											defaultMessage="Contact Phone"
 										/>
 									</label>
-									<div class="col-lg-8">
-										<span class="fs-6 text-dark fw-500">{userData.phone}</span>
+									<div className="col-lg-8">
+										<span className="fs-6 text-dark fw-500">{userData.phone}</span>
 									</div>
 								</div>
 
-								<div class="row mb-7">
-									<label class="col-lg-4 text-muted fw-500">
+								<div className="row mb-7">
+									<label className="col-lg-4 text-muted fw-500">
 										<FormattedMessage
 											id="user.panel.userdashboard.profile-details-item3"
 											defaultMessage="Country"
 										/>
 									</label>
-									<div class="col-lg-8">
-										<span class="fs-6 text-dark fw-500">{userData.country}</span>
+									<div className="col-lg-8">
+										<span className="fs-6 text-dark fw-500">{userData.country}</span>
 									</div>
 								</div>
 
-								<div class="row mb-7">
-									<label class="col-lg-4 text-muted fw-500">
+								<div className="row mb-7">
+									<label className="col-lg-4 text-muted fw-500">
 										<FormattedMessage
 											id="user.panel.userdashboard.profile-details-item4"
 											defaultMessage="City"
 										/>
 									</label>
-									<div class="col-lg-8">
-										<span class="fs-6 text-dark fw-500">{userData.city}</span>
+									<div className="col-lg-8">
+										<span className="fs-6 text-dark fw-500">{userData.city}</span>
 									</div>
 								</div>
 
-								<div class="row mb-7">
-									<label class="col-lg-4 text-muted fw-500">
+								<div className="row mb-7">
+									<label className="col-lg-4 text-muted fw-500">
 										<FormattedMessage
 											id="user.panel.userdashboard.profile-details-item5"
 											defaultMessage="Postal Code"
 										/>
 									</label>
-									<div class="col-lg-8">
-										<span class="fs-6 text-dark fw-500">{userData.postal_code}</span>
+									<div className="col-lg-8">
+										<span className="fs-6 text-dark fw-500">{userData.postal_code}</span>
 									</div>
 								</div>
 

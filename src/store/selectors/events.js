@@ -6,3 +6,11 @@ export const getEventDetail = (state, eventId) => state.events.data.find(event =
 export const getEventsFavoriteLoaded = (state) => state.events.data;
 export const getEventsOwnEventsLoaded = (state) => state.events.data;
 export const getEventsAssistantEventsLoaded = (state) => state.events.data;
+
+/**
+* FRONT JM User Panel Finish
+*/
+export const getEventsOwnTotal = (state) => state.eventsOwn.total;
+export const getEventsFavoriteTotal = (state) => state.eventsFavorite.total;
+export const getEventsAssistantTotal = (state) => state.eventsAssistant.total;
+//=================================================================================

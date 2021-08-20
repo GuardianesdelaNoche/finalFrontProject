@@ -12,7 +12,12 @@ import { setUserData } from '../../../api/user';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import { getUserData } from '../../../store/selectors/auth';
-import { getEventsFavoriteLoaded, getEventsOwnEventsLoaded, getEventsAssistantEventsLoaded  } from '../../../store/selectors/events';
+/**
+* FRONT JM User Panel Finish
+*/
+import { getEventsOwnTotal, getEventsFavoriteTotal, getEventsAssistantTotal } from '../../../store/selectors/events';
+import { eventsFavoriteLoadAction, eventsOwnLoadAction, eventsAssistantLoadAction } from '../../../store/actions/events';
+//============================================================================================================================
 import  Spinner  from '../../shared/Spinner';
 
 
@@ -22,16 +27,21 @@ function UserDashboard({history}) {
     const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
 	const userData = useSelector(getUserData);
-
-
-
-/* 	const eventsFavorite = useSelector(getEventsFavoriteLoaded);
-	const eventsOwn = useSelector(getEventsOwnEventsLoaded);
-	const eventsAssistant = useSelector(getEventsAssistantEventsLoaded);
- */
-	
-
 	const [dataSaved, setDataSaved] = React.useState(false);
+
+	/**
+	 * FRONT JM User Panel Finish
+	 */
+	const eventsOwnTotal = useSelector(getEventsOwnTotal);
+	const eventsFavoriteTotal = useSelector(getEventsFavoriteTotal);
+	const eventsAssistantTotal = useSelector(getEventsAssistantTotal);
+	
+	React.useEffect(() => {
+		dispatch(eventsFavoriteLoadAction());
+		dispatch(eventsAssistantLoadAction());
+		dispatch(eventsOwnLoadAction());
+	},[dispatch]);
+	//===========================================================================
 
 	if (!userData){
 		history.push("/login");
@@ -59,7 +69,7 @@ function UserDashboard({history}) {
 			 {loading && <Spinner animation="border" />}
 			<UserLayout>
 		
-			{/* 	<div className="row g-0 g-xl-5 g-xxl-8 pb-12">
+			{ 	<div className="row g-0 g-xl-5 g-xxl-8 pb-12">
 					<div className="col-xl-4 mb-mb-2">
 						<Card>
 							<Card.Body>
@@ -76,7 +86,7 @@ function UserDashboard({history}) {
 												defaultMessage="My Published Events"
 											/>
 										</Card.Title>
-										<div class="fs-7 text-muted  mt-1">{eventsOwn.length} 
+										<div class="fs-7 text-muted  mt-1">{eventsOwnTotal} 
 											<FormattedMessage
 												id="user.panel.userdashboard.event.description"
 												defaultMessage="Published Events"
@@ -106,7 +116,7 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div class="fs-7 text-muted  mt-1">{eventsFavorite.length} 
+										<div class="fs-7 text-muted  mt-1">{eventsFavoriteTotal} 
 											<FormattedMessage
 												id="user.panel.userdashboard.favorites.description"
 												defaultMessage="Favorites Events"
@@ -136,7 +146,7 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div class="fs-7 text-muted  mt-1">{eventsAssistant.length} 
+										<div class="fs-7 text-muted  mt-1">{eventsAssistantTotal} 
 											<FormattedMessage
 												id="user.panel.userdashboard.suscribes.descripcion"
 												defaultMessage="Subscribed Events"
@@ -150,7 +160,7 @@ function UserDashboard({history}) {
 							</Card.Body>
 						</Card>
 					</div>
-				</div> */}
+				</div> }
 			
 
 				<div className="row g-0 g-xl-5 g-xxl-8">	

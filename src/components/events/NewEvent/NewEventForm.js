@@ -113,17 +113,10 @@ function NewEventForm ({onSubmit}) {
 
     return (
 		<Form className="form-new-event" onSubmit={checkFormData}>
-			<div className="form-container">
-				<div class="mb-10">
-					<h3 class="text-dark "><FormattedMessage
-						id="newEvent.title"
-						defaultMessage="New Event"
-					/></h3>
-					<span class="fs-8 text-description">This information will help us tailor your experience.</span>
-				</div>
+			<div className="pt-10">
 
 				{/* Input Title */}
-				<div className="row">
+				<div className="row mobile-wrap">
 
 					<div className="col">
 							<Input
@@ -144,7 +137,7 @@ function NewEventForm ({onSubmit}) {
 
 
 				{/* Input Date */}
-				<div className="row">
+				<div className="row mobile-wrap">
 					<div className="col">
 							<Label htmlFor='date' >
 								{intl.formatMessage({ id: 'newevent.formLabel.date' })}
@@ -159,7 +152,7 @@ function NewEventForm ({onSubmit}) {
 
 							/>
 					</div>
-					<div className="col">
+					<div className="col ">
 
 						<Input
 							type="text"
@@ -177,7 +170,7 @@ function NewEventForm ({onSubmit}) {
 						
 						
 					</div>
-					<div className="col">
+					<div className="col ">
 
 						<Input
 							type="text"
@@ -199,7 +192,7 @@ function NewEventForm ({onSubmit}) {
 				
 				{/* Input Max Places */}
 
-				<div className="row">
+				<div className="row mobile-wrap">
 					<div className="col">
 						<Input
 							type="text"
@@ -241,7 +234,7 @@ function NewEventForm ({onSubmit}) {
 
 
 				{/* Input Description */}
-				<div className="row">
+				<div className="row mobile-wrap">
 					<div className="col">
 						<Input
 							type="text"
@@ -261,7 +254,7 @@ function NewEventForm ({onSubmit}) {
 
 				{/* Input Address */}
 					
-				<div className="row">
+				<div className="row mobile-wrap">
 
 
 			
@@ -325,7 +318,7 @@ function NewEventForm ({onSubmit}) {
 				</div>
 				
 				{/* Input Photo */}
-				<div className="row">
+				<div className="row mobile-wrap">
 					<div className="col">
 			
 						<Label htmlFor='photo' >
@@ -354,7 +347,7 @@ function NewEventForm ({onSubmit}) {
 				</p>
 			</ErrorMessage>}
 
-				<ContentBottomCenter className="pt-4">
+				<ContentBottomCenter className="pt-4 pb-12">
 
 					<Button className="btn btn-primary px-11"
 			    type="submit"

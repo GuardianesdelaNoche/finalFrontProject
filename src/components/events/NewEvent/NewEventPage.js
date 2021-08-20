@@ -61,29 +61,44 @@ function NewEventPage () {
     return (
         <Layout>
         <div className="main-content">
-            <main className="form-signin new-event">
-                
-                {loading && <Spinner animation="border" />}
-                <NewEventForm onSubmit={handleSubmit} />
+                <div className="container details">
+                     <div className="card card-flush pt-12">
 
-                {error && (	
-                    <Alert onClick={handleResetError} variant="danger">
-                        <p className="mb-0">
-                            {error.error}
-                        </p>
-                    </Alert>
-                )}
-                {dataSaved && 
-                    <SuccessMessage>
-                        <p className="mb-0">										
-                            {intl.formatMessage({ id: 'register.validate.successmessage'})}
-                        </p>
-                    </SuccessMessage>} 
+                        <div className="card card-body">
+                            <div className="form-header ml-3">
+                                <h3 class="text-dark "><FormattedMessage
+                                    id="newEvent.title"
+                                    defaultMessage="New Event"
+                                /></h3>
+                                <span class="fs-8 text-description">
+                                    
+                                    <FormattedMessage
+                                        id="newEvent.description"
+                                        defaultMessage="Publish your new event through this form"
+                                    /></span>
+                            </div>
 
-                  
-           
-             
-            </main>           
+                            {loading && <Spinner animation="border" />}
+                            <NewEventForm onSubmit={handleSubmit} />
+
+                            {error && (	
+                                <Alert onClick={handleResetError} variant="danger">
+                                    <p className="mb-0">
+                                        {error.error}
+                                    </p>
+                                </Alert>
+                            )}
+                            {dataSaved && 
+                                <SuccessMessage>
+                                    <p className="mb-0">										
+                                        {intl.formatMessage({ id: 'register.validate.successmessage'})}
+                                    </p>
+                                </SuccessMessage>} 
+                        </div>
+                    </div>
+                </div>
+
+          
         </div>
         </Layout>
      

@@ -86,6 +86,11 @@ const DatePickerF = styled(DatePicker)`
     background:#F5F8FA;
     border-radius:5px;
     margin-bottom:10px;
+
+
+    
+    
+
     &:focus {
         outline:none;       
         border: 2px solid ${colors.focus}; 

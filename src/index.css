@@ -130,7 +130,6 @@ button:disabled {
 }
 /* Main */
 .container.main {
-    /* max-width: 1140px; */
     max-width: 100%;
     padding: 60px 0px;
 }
@@ -587,6 +586,14 @@ a:hover {
 
 /* Responsive */
 
+
+@media (min-width: 992px){
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+    left: -200px;
+}
+}
+
 @media(max-width:768px){
     .navbar-btn{
         width: 100% !important;
@@ -638,6 +645,12 @@ a:hover {
 
     .modal-dialog {
         margin: 1.5rem;
+    }
+
+    .nav-item.dropdown:hover {
+    background-color: #fff;
+    font-size: .925rem;
+    border-radius: .65rem;
     }
 
     /* User Panel */

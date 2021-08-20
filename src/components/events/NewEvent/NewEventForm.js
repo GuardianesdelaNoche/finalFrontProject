@@ -256,9 +256,6 @@ function NewEventForm ({onSubmit}) {
 					
 				<div className="row mobile-wrap">
 
-
-			
-	 			
 					<div className="col">
 						<Input
 							type="text"

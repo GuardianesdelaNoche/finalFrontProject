@@ -49,7 +49,9 @@ const getNewReq = (queryPath, key, value) => {
   const indoorQuery = queryPath.get("indoor");
   const priceQuery = queryPath.get("price");
   const tagsQuery = queryPath.getAll("tags");
+  const usernameQuery = queryPath.get("username");
 
+  console.log('getNewReq key value',key, value)
   let filters = {};
 
   let paramsQuery = {};
@@ -112,6 +114,17 @@ const getNewReq = (queryPath, key, value) => {
     filters = {
       ...filters,
       tags: tagsQuery,
+    };
+    paramsQuery = {
+      ...paramsQuery,
+      filters: filters,
+    };
+  }
+
+  if(usernameQuery) {
+    filters = {
+      ...filters,
+      username: usernameQuery,
     };
     paramsQuery = {
       ...paramsQuery,
@@ -186,13 +199,16 @@ function EventsPage() {
   const priceQuery = queryPath.get("price") || "0-0";
   const tagsQuery = queryPath.getAll("tags") || [];
   const tagsQueryString = tagsQuery.toString() || "";
+  const usernameQuery = queryPath.get("username") || "";
 
   //initFilters
   const filters = {
     indoor: indoorQuery,
     price: priceQuery,
     tags: tagsQuery,
+    username: usernameQuery
   };
+  console.log('filtersQuery in eventsPage', filters)
 
   const intl = useIntl();
 
@@ -209,7 +225,8 @@ function EventsPage() {
         sortQuery,
         indoorQuery,
         priceQuery,
-        tagsQuery
+        tagsQuery, 
+        usernameQuery
       )
     );
   }, [
@@ -221,6 +238,7 @@ function EventsPage() {
     indoorQuery,
     priceQuery,
     tagsQueryString,
+    usernameQuery
   ]);
 
   React.useEffect(() => {
@@ -256,7 +274,9 @@ function EventsPage() {
 
   const onClickFilters = (event, filters) => {
     event.preventDefault();
+    console.log('filters', filters)
     const reqParams = getNewReq(queryPath, "filters", filters);
+    console.log('reqParams', reqParams)
     dispatch(paginationRedirect(reqParams));
   };
 

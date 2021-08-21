@@ -18,7 +18,7 @@ export const eventsLoadedError = error => ({
     payload: error
 });
 
-export const eventsLoadAction = (page, limit, title, sort, indoor, price, tags) => {
+export const eventsLoadAction = (page, limit, title, sort, indoor, price, tags, username) => {
     return async function (dispatch, getState, { api }) {
       dispatch(eventsLoadedRequest());
           try{

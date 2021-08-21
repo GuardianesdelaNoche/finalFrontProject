@@ -28,9 +28,7 @@ function UserDashboard({history}) {
 	const userData = useSelector(getUserData);
 	const [dataSaved, setDataSaved] = React.useState(false);
 
-	/**
-	 * FRONT JM User Panel Finish
-	 */
+
 	const eventsOwnTotal = useSelector(getEventsOwnTotal);
 	const eventsFavoriteTotal = useSelector(getEventsFavoriteTotal);
 	const eventsAssistantTotal = useSelector(getEventsAssistantTotal);

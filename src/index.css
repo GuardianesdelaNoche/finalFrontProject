@@ -42,7 +42,6 @@ a, a:hover {
 button:disabled {
     opacity: 0.3
 }
-<<<<<<< HEAD
 
 .swal2-styled.swal2-confirm {
     border: 0;
@@ -73,12 +72,6 @@ button:disabled {
     padding: 2rem;
 }
 
-=======
-.px-11 {
-    padding-right: 2.75rem!important;
-    padding-left: 2.75rem!important;
-}
->>>>>>> develop
 
 .swal2-icon.swal2-success .swal2-success-ring {
     position: absolute;
@@ -155,6 +148,9 @@ button:disabled {
 .pb-12 {
     padding-bottom: 3rem!important;
 }
+.ms-2{
+    margin-left: .5rem!important;
+}
 
 /* Navbar */
 .navbar-brand{
@@ -175,6 +171,8 @@ button:disabled {
 .navbar-light .navbar-nav .nav-link:hover {
      color: #20d489 !important;
 }
+
+
 /* Main */
 .container.main {
     max-width: 100%;

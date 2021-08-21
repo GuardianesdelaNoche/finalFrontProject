@@ -50,8 +50,9 @@ function Header({ isLogged, userData }) {
 					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
 						<Nav className="me-auto">
 	
-							<Link onClick={() => handleChangeLanguage('en-EN')} > <img src="/img/en.png" className="imgFlag" alt={intl.formatMessage({ id: 'header.menu.eng'})} ></img>  </Link>
-							<Link onClick={() => handleChangeLanguage('es-ES')} > <img src="/img/es.png" className="imgFlag" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </Link>
+						
+							<Link onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px ms-2"> <img src="/img/English.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </Link>
+							<Link onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px ms-2"> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </Link>
 					
 						</Nav>
 							{isLogged === true  ? 

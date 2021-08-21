@@ -9,8 +9,22 @@
     max-height: 50px!important;
 }
 
- .imgFlag {
-    margin-left: 10px;
-    width: 32px;
+ .symbol{
+     display: inline-block;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 1.15rem;
+ } 
+ 
+ .symbol.symbol-20px>img {
+    width: 20px;
     height: 20px;
-} 
+}
+
+.rounded-1 {
+    border-radius: .275rem!important;
+}
+
+.ms-2{
+    margin-left: .5rem!important;
+}

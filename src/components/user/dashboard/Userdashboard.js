@@ -12,7 +12,11 @@ import { setUserData } from '../../../api/user';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import { getUserData } from '../../../store/selectors/auth';
-import { getEventsFavoriteLoaded, getEventsOwnEventsLoaded, getEventsAssistantEventsLoaded  } from '../../../store/selectors/events';
+
+import { getEventsOwnTotal, getEventsFavoriteTotal, getEventsAssistantTotal } from '../../../store/selectors/events';
+import { eventsFavoriteLoadAction, eventsOwnLoadAction, eventsAssistantLoadAction } from '../../../store/actions/events';
+
+
 import  Spinner  from '../../shared/Spinner';
 
 
@@ -22,16 +26,19 @@ function UserDashboard({history}) {
     const token = storage.get('auth');     
     const { loading, error } = useSelector(getUi);
 	const userData = useSelector(getUserData);
-
-
-
-/* 	const eventsFavorite = useSelector(getEventsFavoriteLoaded);
-	const eventsOwn = useSelector(getEventsOwnEventsLoaded);
-	const eventsAssistant = useSelector(getEventsAssistantEventsLoaded);
- */
-	
-
 	const [dataSaved, setDataSaved] = React.useState(false);
+
+
+	const eventsOwnTotal = useSelector(getEventsOwnTotal);
+	const eventsFavoriteTotal = useSelector(getEventsFavoriteTotal);
+	const eventsAssistantTotal = useSelector(getEventsAssistantTotal);
+	
+	React.useEffect(() => {
+		dispatch(eventsFavoriteLoadAction());
+		dispatch(eventsAssistantLoadAction());
+		dispatch(eventsOwnLoadAction());
+	},[dispatch]);
+
 
 	if (!userData){
 		history.push("/login");
@@ -59,7 +66,7 @@ function UserDashboard({history}) {
 			 {loading && <Spinner animation="border" />}
 			<UserLayout>
 		
-			{/* 	<div className="row g-0 g-xl-5 g-xxl-8 pb-12">
+			{ 	<div className="row g-0 g-xl-5 g-xxl-8 pb-12">
 					<div className="col-xl-4 mb-mb-2">
 						<Card>
 							<Card.Body>
@@ -76,7 +83,11 @@ function UserDashboard({history}) {
 												defaultMessage="My Published Events"
 											/>
 										</Card.Title>
-										<div className="fs-7 text-muted  mt-1">{eventsOwn.length}
+										<div className="fs-7 text-muted mt-1">
+											<span className="me-2">
+												{eventsOwnTotal}
+											</span>
+											
 											<FormattedMessage
 												id="user.panel.userdashboard.event.description"
 												defaultMessage="Published Events"
@@ -106,7 +117,10 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div className="fs-7 text-muted  mt-1">{eventsFavorite.length}
+										<div className="fs-7 text-muted mt-1 ml-2 ">
+											<span className="me-2">
+												{eventsFavoriteTotal}
+											</span>
 											<FormattedMessage
 												id="user.panel.userdashboard.favorites.description"
 												defaultMessage="Favorites Events"
@@ -136,7 +150,10 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div className="fs-7 text-muted  mt-1">{eventsAssistant.length}
+										<div className="fs-7 text-muted mt-1 ml-2 ">
+											<span className="me-2">
+												{eventsAssistantTotal}
+											</span>
 											<FormattedMessage
 												id="user.panel.userdashboard.suscribes.descripcion"
 												defaultMessage="Subscribed Events"
@@ -150,7 +167,7 @@ function UserDashboard({history}) {
 							</Card.Body>
 						</Card>
 					</div>
-				</div> */}
+				</div> }
 			
 
 				<div className="row g-0 g-xl-5 g-xxl-8">	
@@ -158,13 +175,13 @@ function UserDashboard({history}) {
 						<Card>
 								<Card.Title></Card.Title>
 								<Card.Body>
-								<div className="pt-0">
+									<div className="pt-0">
 
-									<div className="d-flex flex-center position-relative bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-center avatar-background"
+										<div className="d-flex flex-center position-relative bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-center avatar-background" 
 											style={{ backgroundImage: 'url(' + '/img/background.svg' + ')', backgroundSize: 'auto' }}>
-										<div className="position-absolute mb-7">
-											<div className="symbol symbol-circle symbol-100px overflow-hidden d-flex flex-center z-index-1">
-												<span className="symbol-label align-items-end bg-symbols-avatar">
+												<div className="position-absolute mb-7">
+													<div className="symbol symbol-circle symbol-100px overflow-hidden d-flex flex-center z-index-1">
+														<span className="symbol-label align-items-end bg-symbols-avatar">
 														<img alt="Logo" src={`https://services.4events.net/images/photoUser/${userData.image}`} width="80px" height="80px" className="mh-75px"/>
 														</span>
 														
@@ -173,10 +190,10 @@ function UserDashboard({history}) {
 												
 										</div>
 
-									<div className="pt-4">
-										<div className="text-center pb-12">
-											<h3 className="fw-bolder">{userData.username} </h3>
-											<span className="fw-bolder fs-6 text-primary px-4 py-2 rounded">{userData.email}</span>
+										<div className="pt-4">
+											<div className="text-center pb-12">
+												<h3 className="fw-bolder">{userData.username} </h3>
+												<span className="fw-bolder fs-6 text-primary px-4 py-2 rounded">{userData.email}</span>
 											</div>
 										</div>
 									</div>

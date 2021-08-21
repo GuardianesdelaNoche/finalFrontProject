@@ -25,17 +25,21 @@ export const types = {
     eventDeleteSuccess: 'EVENT Delete Success',
     eventDeleteError: 'EVENT Delete Error',
 
+    /**
+     * JM FRONT User Panel Finish
+     */
     eventsFavoriteLoadedRequest: 'EVENTS FAVORITE Loaded Request',
     eventsFavoriteLoadedSuccess: 'EVENTS FAVORITE Loaded Success',
     eventsFavoriteLoadedError: 'EVENTS FAVORITE Loaded Error',
 
-    eventsOwnLoadedRequest: 'EVENTS OWN FAVORITE Loaded Request',
-    eventsOwnLoadedSuccess: 'EVENTS OWN FAVORITELoaded Success',
-    eventsOwnLoadedError: 'EVENTS OWN FAVORITE Loaded Error',
+    eventsOwnLoadedRequest: 'EVENTS OWN Loaded Request',
+    eventsOwnLoadedSuccess: 'EVENTS OWN Loaded Success',
+    eventsOwnLoadedError: 'EVENTS OWN Loaded Error',
 
     eventsAssistantLoadedRequest: 'EVENTS ASSISTANT Loaded Request',
     eventsAssistantLoadedSuccess: 'EVENTS ASSISTANT Loaded Success',
     eventsAssistantLoadedError: 'EVENTS ASSISTANT Loaded Error',
+    //==================================================================
     tagsLoadedSuccess: 'TAGS Loaded Sucess'
 
 }

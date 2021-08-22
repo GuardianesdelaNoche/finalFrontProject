@@ -59,7 +59,7 @@ function UserdashboardForm ({onSubmit,  token, userData}) {
     return (
 	
 		<Form onSubmit={checkFormData}>
-			<div className="form-container">
+			<div className="form-container  pt-4 mb-10">
 				<Input
 					type="text"
 					label= {intl.formatMessage({ id: 'register.formLabel.username'})}
@@ -111,7 +111,7 @@ function UserdashboardForm ({onSubmit,  token, userData}) {
 
 			<ContentBottomCenter>
 
-			<Button		
+					<Button 
 			    type="submit">
                     <FormattedMessage
                         id="updatemember.form.button"

@@ -14,7 +14,11 @@ import { Button, ConfirmationButton } from '../../shared';
 
 import { getIsLogged } from "../../../store/selectors/auth";
 import { addFavorite, removeFavorite } from '../../../api/favorite';
-import { addEventAssist, removeEventAssist } from '../../../api/assist'
+import { addEventAssist, removeEventAssist } from '../../../api/assist';
+
+
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import {
 	FacebookShareButton,
@@ -63,16 +67,35 @@ function EventDetails({ description,
 		const [isFavActive, setFavActive] = useState(isFavorite);
 		const [isAssistantActive, setAssistantActive] = useState(isAssistant)
 		
-	
+		const swal = withReactContent(Swal)
+
 		//Add & Remove Assistans
 		const handleAddAssistant = async (token) => {
 			try {
-				dispatch(setLoadingAction());
-				dispatch(resetErrorAction());
-				await addEventAssist(token, _id)
-				setAssistantActive(!isAssistantActive)
-				history.goBack()
-
+		
+				swal.fire({
+					title: "Reservar Plaza",
+					text: "¿Estás seguro que deseas asistir a este evento?",
+					icon: "warning",
+					confirmButtonText: "Si",
+					confirmButtonColor: "#20d489",
+					denyButtonText: "No",
+					showDenyButton: true
+				}).then(async response => {
+					if (response.isConfirmed) {
+						swal.fire({
+							text: "Añadido como asistente correctamente",
+							icon: 'success',
+							showConfirmButton: false
+						})
+						await addEventAssist(token, _id)
+						setAssistantActive(!isAssistantActive)
+						setTimeout(function () {
+							swal.close()
+							history.goBack()
+						}, 1500);
+					}
+				})
 			} catch (error) {
 				setErrorAction(error)
 			}
@@ -80,12 +103,33 @@ function EventDetails({ description,
 
 		const handleRemoveAssistant = async (token) => {
 			try {
-				dispatch(setLoadingAction()); 
-				dispatch(resetErrorAction());
-				await removeEventAssist(token, _id)
-				setAssistantActive(!isAssistantActive)
-				 history.goBack() 
-			} catch (error) {
+
+				swal.fire({
+					title: "Eliminar asistencia",
+					text: "Estás seguro que deseas eliminar tu asistencia?",
+					icon: "warning",
+					confirmButtonText: "Yes",
+					confirmButtonColor: "green",
+					denyButtonText: "No",
+					showDenyButton: true
+				}).then(async response => {
+					if (response.isConfirmed) {
+						swal.fire({
+							text: "Eliminado tu asistencia al avento correctamente",
+							icon: 'success',
+							showConfirmButton: false
+						})
+						dispatch(resetErrorAction());
+						await removeEventAssist(token, _id)
+						setAssistantActive(!isAssistantActive)
+						setTimeout(function () {
+							swal.close()
+							history.goBack()
+						}, 1500);
+					}
+				})
+
+			}  catch (error) {
 				setErrorAction(error)
 			}
 		}
@@ -96,7 +140,6 @@ function EventDetails({ description,
 			try {
 				await addFavorite(token, _id)
 				setFavActive(!isFavActive)
-
 			} catch (error) {
 				setErrorAction(error)
 			}
@@ -137,34 +180,24 @@ function EventDetails({ description,
 							{/* Reservation of Places */}
 							{isLogged && isAssistant ? (
 									<div className="card-toolbar">
-									<Button variant="secundary">
-										<ConfirmationButton
-											title={intl.formatMessage({ id: 'popups.remove.reserve.title' })}
-											confirmation={intl.formatMessage({ id: 'popups.remove.reserve.mesage' })}
-											onConfirm={handleRemoveAssistant}
-										>
-											<FormattedMessage
-												id="details.event.reserved.place"
-												defaultMessage="Reserved Place"
-											/>
-										</ConfirmationButton>
+									<Button variant="secundary" onClick={handleRemoveAssistant}>
+
+										<FormattedMessage
+											id="details.event.reserved.place"
+											defaultMessage="Reserved Place"
+										/>
+										
 											
 										</Button>
 									</div>
 							) : ((isLogged && isAssistant === false && available_places > 0) ? (
 												<div className="card-toolbar mr-2">
-													<Button variant="primary">
-														<ConfirmationButton
-															title={intl.formatMessage({ id: 'popups.add.reserve.title' })}
-															confirmation={intl.formatMessage({ id: 'popups.add.reserve.mesage' })}
-															onConfirm={handleAddAssistant}
-														>	
-															<FormattedMessage
+												<Button variant="primary" onClick={handleAddAssistant}>
+														<FormattedMessage
 															id="details.event.reserve.place"
 															defaultMessage="Reserve a place"
-															/>
-
-														</ConfirmationButton>
+														/>
+														
 													</Button>
 												</div>)
 												

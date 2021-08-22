@@ -56,7 +56,7 @@ function App() {
         {routeProps => <RegisterPage {...routeProps} />}
       </Route>
       <Route exact path="/404">
-        <NotFoundPage message="Sorry about that, but the page you looking for isn´t available" />
+        <NotFoundPage />
       </Route>
 
       <Redirect to="/404" />

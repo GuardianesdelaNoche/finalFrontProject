@@ -17,7 +17,7 @@ import { Layout } from '../layout';
     const userData = useSelector(getUserData);
     const auth = storage.get("auth");
     const userToken = auth.token;
-    const filters = { type: 'messaging', members: { $in: [userData._id] } };
+    const filters = { type: 'messaging', members: { $in: ["60f2c412ccec0cb75da102e7", "60e9ca23b7e92c67b333ef96" ] } };
     const sort = { last_message_at: -1 };
    
     useEffect(() => {
@@ -26,10 +26,7 @@ import { Layout } from '../layout';
         const client = StreamChat.getInstance('dz5f4d5kzrue');
   
         await client.connectUser(
-          {
-            // id: 'round-firefly-5',
-            // name: 'Eva',
-            // image: 'https://getstream.io/random_png/?id=round-firefly-5&name=round',
+          {    
             id: userData._id,
             name: userData.nickname,
             image: userData.image,
@@ -41,18 +38,24 @@ import { Layout } from '../layout';
       };
   
       initChat();
-    }, [userData._id, userData.nickname, userData.image]);
+    }, [userData._id, userData.nickname, userData.image, userToken]);
   
     if (!chatClient) {
       return <Spinner animation="border" />;
     }
 
+    const channel = chatClient.channel('messaging', '4_events', {
+      // add as many custom fields as you'd like
+      image: '/img/logo.png',
+      name: '4 events',
+      members: ["60f2c412ccec0cb75da102e7", "60e9ca23b7e92c67b333ef96" ],
+    });
 
     return (
         <Layout>
         <Chat client={chatClient} theme='messaging light'>
       <ChannelList filters={filters} sort={sort} />
-      <Channel>
+      <Channel channel={channel}>
         <Window>
           <ChannelHeader />
           <MessageList />

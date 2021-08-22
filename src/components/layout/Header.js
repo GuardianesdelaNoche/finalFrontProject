@@ -49,11 +49,10 @@ function Header({ isLogged, userData }) {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
 						<Nav className="me-auto">
-													
+	
 							<Link onClick={() => handleChangeLanguage('en-EN')} > <img src="/img/en.png" className="imgFlag" alt={intl.formatMessage({ id: 'header.menu.eng'})} ></img>  </Link>
 							<Link onClick={() => handleChangeLanguage('es-ES')} > <img src="/img/es.png" className="imgFlag" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </Link>
-						
-						
+					
 						</Nav>
 							{isLogged === true  ? 
 								<Nav>									

@@ -73,7 +73,7 @@ export const eventsOwnLoadedRequest = () => ({
 });
 
 export const eventsOwnLoadedSuccess = (events) => ({
-  type: types.eventsLoadedSuccess,
+  type: types.eventsOwnLoadedSuccess,
   payload: {
     data: events.events,
     total: events.total

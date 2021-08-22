@@ -42,8 +42,55 @@ a, a:hover {
 button:disabled {
     opacity: 0.3
 }
+<<<<<<< HEAD
 
+.swal2-styled.swal2-confirm {
+    border: 0;
+    border-radius: .25em;
+    background: initial;
+    background-color:#20d489!important;
+    border-color: none !important;
+    color: #fff;
+    font-size: 1em;
+}
 
+.swal2-styled.swal2-deny {
+    border: 0;
+    border-radius: .25em;
+    background: initial;
+    background-color: #f5f8fa !important;
+    border-color: #f5f8fa;
+    color: #7e8299 !important;
+    font-size: 1em;
+
+    
+}
+
+.swal2-icon.swal2-warning{
+    display: none !important;
+}
+.swal2-container.swal2-center>.swal2-popup{
+    padding: 2rem;
+}
+
+=======
+.px-11 {
+    padding-right: 2.75rem!important;
+    padding-left: 2.75rem!important;
+}
+>>>>>>> develop
+
+.swal2-icon.swal2-success .swal2-success-ring {
+    position: absolute;
+    z-index: 2;
+    top: -.25em;
+    left: -.25em;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    border: .25em solid rgba(156, 219, 120, 0.3);
+    border-radius: 50%;
+}
 /* ----Text */
 
 
@@ -130,7 +177,6 @@ button:disabled {
 }
 /* Main */
 .container.main {
-    /* max-width: 1140px; */
     max-width: 100%;
     padding: 60px 0px;
 }
@@ -587,6 +633,14 @@ a:hover {
 
 /* Responsive */
 
+
+@media (min-width: 992px){
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+    left: -200px;
+}
+}
+
 @media(max-width:768px){
     .navbar-btn{
         width: 100% !important;
@@ -638,6 +692,12 @@ a:hover {
 
     .modal-dialog {
         margin: 1.5rem;
+    }
+
+    .nav-item.dropdown:hover {
+    background-color: #fff;
+    font-size: .925rem;
+    border-radius: .65rem;
     }
 
     /* User Panel */

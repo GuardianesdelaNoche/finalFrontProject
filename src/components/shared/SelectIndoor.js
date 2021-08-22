@@ -8,13 +8,24 @@ const SelectIndoor = ({onChange, label, isRequired, defaultValue}) => {
          { value: true, label: 'Interior' , name:'indoor'},
          { value: false, label: 'Al aire libre', name:'indoor' },
       ];
+
+      const getDefaultDataValue = (optionsItems, value) => {
+        switch(value) {
+          case true: 
+            return optionsItems[1];
+          case false: 
+            return optionsItems[2];
+          default:
+            return optionsItems[0];
+        }
+      }
     
     return (
         <div className="formField-select">
            <span>{label}</span>        
             <Select
                 name="sale"
-                defaultValue={defaultValue === true ? optionsItems[1]: optionsItems[2] }
+                defaultValue={getDefaultDataValue(optionsItems, defaultValue) }
                 options={optionsItems}
                 onChange={onChange}
                 required={isRequired?'required':''}

@@ -32,6 +32,9 @@ const MultiSelectTags = ({onChange, label, isRequired, defaultValue}) => {
 
     const getDefaultValues = (tags, defaultValue) => {
         const defaultVal = [];
+        if(defaultValue !== undefined){
+
+        
         defaultValue.forEach(dvalue => {
             tags.forEach(tag => {
                 if (dvalue === tag.name) {
@@ -40,7 +43,10 @@ const MultiSelectTags = ({onChange, label, isRequired, defaultValue}) => {
             })
         });
         return getTagsValue(defaultVal);
-
+        } else
+        {
+            return [];
+        }
     }
     
     const tagsArray = useSelector(getTags);

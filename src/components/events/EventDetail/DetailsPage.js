@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction } from "../../../store/actions/ui";
 import  Spinner  from '../../shared/Spinner';
 
-import { Layout } from '../../layout';
-import EventDetails from './EventDetails';
+import { Layout } from '../../layout'
+import EventDetails from './EventDetails'
 
 import { eventDetailsActions, eventDeleteActions } from '../../../store/actions/events';
 

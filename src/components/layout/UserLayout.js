@@ -12,7 +12,7 @@ function UserLayout({ children }) {
 					<div className="container-fluid">
 						<div className="container main">
 						<HeaderUser />
-							<div className="container mobile-container">
+							<div className="container">
 							{children} 
 							</div>
 						</div>

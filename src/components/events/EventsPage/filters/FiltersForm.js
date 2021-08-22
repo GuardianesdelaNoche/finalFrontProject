@@ -281,11 +281,12 @@ export const FiltersForm = ({
             </Button>
           </div>
         </div>
-        {/* <div className="mt-2 shadow-sm bg-light bg-gradient border border-4">
+        <div className="mt-2 shadow-sm bg-light bg-gradient border border-4">
           <div className="mb-1 p-4 bg-white rounded-top shadow-sm">
             <BiSlider></BiSlider>
             <span className="ml-2">{advancedFiltersText}</span>
           </div>
+          {/* <Accordion onSelect={() => setDisabledButtons(!disabledButtons)}> */}
           <Accordion onSelect={handleDisplayFilters}>
             <Card className="mb-1 pl-3 rounded-0 fs-6">
               <Accordion.Toggle
@@ -350,7 +351,7 @@ export const FiltersForm = ({
               />
             </Button>
           </div>
-        </div> */}
+        </div>
       </div>
     </Form>
   );

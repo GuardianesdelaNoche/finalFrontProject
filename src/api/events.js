@@ -1,7 +1,7 @@
 import client from "./client";
 import { configureClient } from './client';
 const eventsPath = "/api/v1/events";
-const apiPath = "/api/v1"
+
 
 const mapEvent = ({ photo, ...event }) => {
   return {
@@ -67,28 +67,6 @@ export const getEventsPage = (
   return client.get(`${request}`).then((eve) => eve);
 };
 
-/** BACK 3008 */
-export const getEventsFavorite = (token) => {
-  //export const getEventsFavorite = () => {
-    configureClient(token);
-    return client.get(`${apiPath}/eventsuser/favoriteevent`);
-  };
-  
-  
-  export const getEventsOwn = (token) => {
-    //export const getEventsFavorite = () => {
-      configureClient(token);
-      return client.get(`${apiPath}/eventsuser/ownevent`);
-  };
-  
-  export const getEventsAssistant = (token) => {
-    //export const getEventsFavorite = () => {
-      configureClient(token);
-      return client.get(`${apiPath}/eventsuser/assistant`);
-  };
-  
-  
-  //===================
 export const setNewEvent = (newEventData) => {
   //configureClient(token);
   const url = `${eventsPath}`;

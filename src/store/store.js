@@ -6,7 +6,7 @@ import { uiReducer } from './reducers/uiReducer';
 import { intlReducer } from 'react-intl-redux'
 
 import * as api from '../api';
-import { eventsReducer, eventsOwnReducer, eventsFavoriteReducer, eventsAssistantReducer } from './reducers/eventsReducer';
+import { eventsReducer } from './reducers/eventsReducer';
 import { tagsReducer } from './reducers/tagsReducer';
 
 
@@ -15,11 +15,6 @@ const reducers = combineReducers({
     auth: authReducer,
     ui: uiReducer,
     events: eventsReducer,
-    //JM FRONT user Panel Finish
-    eventsOwn: eventsOwnReducer,
-    eventsFavorite: eventsFavoriteReducer,
-    eventsAssistant: eventsAssistantReducer,
-    //======================================
     tags: tagsReducer, 
     intl: intlReducer
 });

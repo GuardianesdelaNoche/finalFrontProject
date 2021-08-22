@@ -4,17 +4,13 @@ import { LoginPage, RegisterPage, PrivateRoute } from '../auth';
 import { EventsPage } from '../events';
 import DetailsPage from '../events/EventDetail/DetailsPage';
 import UserDashboard from '../user/dashboard/Userdashboard';
-
+import NotFoundPage from './NotFoundPage';
 import { RememberPassPage, RecoverPassPage } from '../auth';
-import  ListMyEvents  from '../user/myEvents/ListMyEvents';
-import MyFavoritesEvents from '../user/myFavorites/MyFavoritesEvents';
-import MySuscribesEvents from '../user/mySuscribes/MySuscribesEvents';
+import ListMyEvents from '../user/myEvents/ListMyEvents';
+import NewEventPage from '../events/NewEvent/NewEventPage';
 import { loginWithTokenAction } from '../../store/actions/auth';
 import { useDispatch } from 'react-redux';
 import storage from "../../utils/storage";
-import NewEventPage from '../events/NewEvent/NewEventPage';
-import { NotFoundPage } from '../shared';
-
 
 function App() {
   const dispatch = useDispatch();
@@ -48,8 +44,8 @@ function App() {
         {routeProps => <UserDashboard {...routeProps} />}
       </PrivateRoute>
       <PrivateRoute exact path="/myEvents" component={ListMyEvents} />
-      <PrivateRoute exact path="/myFavorites" component={MyFavoritesEvents} />
-      <PrivateRoute exact path="/mySuscribes" component={MySuscribesEvents} />
+
+
 
 
       <Route exact path="/register">

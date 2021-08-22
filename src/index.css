@@ -612,6 +612,9 @@ a:hover {
 .swal2-styled.swal2-default-outline:focus {
     box-shadow: none !important;
 }
+.swal2-styled.swal2-deny:focus {
+    box-shadow: none !important;
+}
 .btn-check:active+.btn.btn-active-primary, 
 .btn-check:checked+.btn.btn-active-primary, 
 .btn.btn-active-primary.active, 

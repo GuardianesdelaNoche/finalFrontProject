@@ -2,11 +2,11 @@ import React from 'react';
 import Select from 'react-select';
 import pT from 'prop-types';
 
-const SelectIndoor = ({onChange, label, isRequired, values}) => {
+const SelectIndoor = ({onChange, label, isRequired, defaultValue}) => {
     const optionsItems = [
-        { value: '', label: '--- Sin valor ---' , name:'indoor'},
-        { value: true, label: 'Interior' , name:'indoor'},
-        { value: false, label: 'Al aire libre', name:'indoor' },
+         { value: '', label: '--- Sin valor ---' , name:'indoor'},
+         { value: true, label: 'Interior' , name:'indoor'},
+         { value: false, label: 'Al aire libre', name:'indoor' },
       ];
     
     return (
@@ -14,7 +14,7 @@ const SelectIndoor = ({onChange, label, isRequired, values}) => {
            <span>{label}</span>        
             <Select
                 name="sale"
-                value={values}
+                defaultValue={defaultValue === true ? optionsItems[1]: optionsItems[2] }
                 options={optionsItems}
                 onChange={onChange}
                 required={isRequired?'required':''}

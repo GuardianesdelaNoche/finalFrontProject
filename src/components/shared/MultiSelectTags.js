@@ -8,7 +8,7 @@ import { getTags } from '../../store/selectors/tags';
 
 
 
-const MultiSelectTags = ({onChange, label, isRequired}) => {
+const MultiSelectTags = ({onChange, label, isRequired, defaultValue}) => {
 
     const [tagsOptions, setTagsOptions] = React.useState({
         value: '',
@@ -29,10 +29,25 @@ const MultiSelectTags = ({onChange, label, isRequired}) => {
             return [];
         }
     }
+
+    const getDefaultValues = (tags, defaultValue) => {
+        const defaultVal = [];
+        defaultValue.forEach(dvalue => {
+            tags.forEach(tag => {
+                if (dvalue === tag.name) {
+                    defaultVal.push(tag);
+                }
+            })
+        });
+        return getTagsValue(defaultVal);
+
+    }
+    
     const tagsArray = useSelector(getTags);
 
 
      React.useEffect (() => {
+
          setTagsOptions(getTagsValue(tagsArray));
      }, [tagsArray]);
 
@@ -49,6 +64,7 @@ const MultiSelectTags = ({onChange, label, isRequired}) => {
             components = {animatedComponents}
             isMulti
             name='tags'
+            defaultValue={getDefaultValues(tagsArray, defaultValue)}
             onChange={onChange}
             options={tagsOptions}
             required={isRequired?true:false}

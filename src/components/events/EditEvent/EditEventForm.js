@@ -40,8 +40,8 @@ function EditEventForm ({onSubmit, eventData}) {
 		country: eventData.country,
 		tags: eventData.tags,
 		date: eventData.date,
-		longitude: eventData.longitude,
-		latitude: eventData.latitude
+		longitude: "-143.4838",
+		latitude: "-30.0519"
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
 	
@@ -50,7 +50,8 @@ function EditEventForm ({onSubmit, eventData}) {
 
 
     const { title, description, price, max_places, duration, address, city, postal_code, country, tags, indoor, photo } = editEventData;   
-	const [startDate, setStartDate] = useState(new Date());
+	
+	const [startDate, setStartDate] = useState(new Date(eventData.date));
 	
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {
@@ -216,7 +217,7 @@ function EditEventForm ({onSubmit, eventData}) {
 						<SelectIndoor
 							id="indoor"
 							name="indoor"
-							value={indoor}
+							defaultValue={indoor}
 							onChange={handleChangeIndoorA}
 							required
 						/>
@@ -227,7 +228,7 @@ function EditEventForm ({onSubmit, eventData}) {
 							onChange={handleChangeMultiSelect}
 							name="tags"
 							id="tags"
-							value={tags}
+							defaultValue={tags}
 							label={intl.formatMessage({ id: 'newevent.formLabel.tags' })}
 							required
 						/>

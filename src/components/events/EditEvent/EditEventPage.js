@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { Layout } from '../../layout';
-import { setNewEvent } from '../../../api/events';
+import { setEditEvent } from '../../../api/events';
 import { getUi } from '../../../store/selectors/ui'; 
 import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
@@ -21,12 +21,12 @@ function EditEventPage ({match}) {
     const [ dataSaved, setDataSaved] = React.useState(false);
     const eventData = useSelector(state => getEventDetail (state, match.params.eventId))
     const intl = useIntl();  
-    const handleSubmit = async (newEventData)=>{
+    const handleSubmit = async (editEventData)=>{
         try {
             dispatch(setLoadingAction());
             dispatch(resetErrorAction());
-            const formData=getFormData(newEventData);
-            await setNewEvent(formData);
+            const formData=getFormData(editEventData);
+            await setEditEvent(formData);
             setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));

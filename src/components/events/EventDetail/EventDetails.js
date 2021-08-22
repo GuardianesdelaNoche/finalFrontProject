@@ -8,7 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import { useIntl } from 'react-intl';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
-import { resetErrorAction, setLoadingAction, setErrorAction } from '../../../store/actions/ui';
+import { resetErrorAction, setErrorAction } from '../../../store/actions/ui';
 import { Button, ConfirmationButton } from '../../shared';
 
 
@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import './eventDetail.css'
 
 import {
 	FacebookShareButton,
@@ -178,20 +179,7 @@ function EventDetails({ description,
 								</span>
 							</div>
 		
-							{isLogged  && isOwner &&(
-									<div className="card-toolbar">
-									<Link variant="secundary" to={`/event/edit/${_id}`}>
-
-										<FormattedMessage
-											id="details.event.edit"
-											defaultMessage="Edit"
-										/>
-										
-											
-										</Link>
-									</div>
-							)}
-
+						
 							{/* Reservation of Places */}
 							{isLogged && isAssistant ? (
 									<div className="card-toolbar">
@@ -270,6 +258,21 @@ function EventDetails({ description,
 								</div>)
 								: ('')
 							}
+
+							{isLogged  && isOwner  ? (
+									<div className="card-toolbar">
+									<Link variant="secundary" className="editLink" to={`/event/edit/${_id}`}>
+
+										<FormattedMessage
+											id="details.event.edit"
+											defaultMessage="Edit"
+										/>									
+											
+										</Link>
+									</div>
+							)
+							: ('')}
+
 
 						</div>
 

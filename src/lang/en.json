@@ -85,7 +85,7 @@
     "popups.remove.reserve.title": "Delete Reserve",
     "popups.add.reserve.mesage": "Want to book this event?",
     "popups.remove.reserve.mesage": "Want to cancel your booking?",
-    "updatemember.form.button": "Update:",
+    "updatemember.form.button": "Update",
     "updatemember.title": "Change my data",
     "logout.confirmation": "Do you want to exit?" ,
     "logout.title": "Log out",
@@ -153,9 +153,15 @@
     "header.menu.esp": "ESP",
     "file.title": "Upload Files:",
     "file.description": "Max file size is 1MB and max number of files is 1",
+<<<<<<< HEAD
     "editEvent.title": "Edit event",
     "editEvent.description": "Change data for your event",
     "newevent.formLabel.newPhoto": "New picture"		
+=======
+    "notfoundpage.title":"404 ERROR",
+    "notfoundpage.description":"Sorry about that, but the page you are looking for isn´t available",
+    "notfoundpage.button":"Go Home"
+>>>>>>> develop
 
 
 }

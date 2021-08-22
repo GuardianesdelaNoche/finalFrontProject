@@ -83,7 +83,7 @@ function UserDashboard({history}) {
 												defaultMessage="My Published Events"
 											/>
 										</Card.Title>
-										<div className="fs-7 text-muted mt-1">
+										<div className="fs-7 text-description">
 											<span className="me-2">
 												{eventsOwnTotal}
 											</span>
@@ -117,7 +117,7 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div className="fs-7 text-muted mt-1 ml-2 ">
+										<div className="fs-7 text-description">
 											<span className="me-2">
 												{eventsFavoriteTotal}
 											</span>
@@ -150,7 +150,7 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div className="fs-7 text-muted mt-1 ml-2 ">
+										<div className="fs-7  text-description">
 											<span className="me-2">
 												{eventsAssistantTotal}
 											</span>

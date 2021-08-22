@@ -155,9 +155,15 @@
     "header.menu.esp": "ESP",
     "file.title": "Subir archivos:",
     "file.description":"El tamaño máximo de los archivos es de 1MB y el número máximo de archivos es de 1",
+<<<<<<< HEAD
     "editEvent.title": "Cambiar evento",
     "editEvent.description": "Actualiza los datos de tu evento",
     "newevent.formLabel.newPhoto": "Nueva imagen"
+=======
+    "notfoundpage.title": "ERROR 404",
+    "notfoundpage.description": "Lo sentimos, pero la página que busca no está disponible",
+    "notfoundpage.button": "Go Home"
+>>>>>>> develop
     
 
 }

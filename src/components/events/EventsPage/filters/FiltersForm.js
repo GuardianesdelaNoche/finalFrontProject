@@ -152,9 +152,9 @@ export const FiltersForm = ({
 
   return (
     <Form>
-      <div className="mt-3 d-flex flex-column shadow-sm">
-        <div className="bg-light bg-gradient border border-4">
-          <div className="mb-1 p-4 bg-white rounded-top">
+      <div className="mt-3 d-flex flex-column">
+        <div>
+          <div className="mb-1 p-4 bg-white">
             <BiSlider></BiSlider>
             <span className="ml-2">{filtersText}</span>
           </div>

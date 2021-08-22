@@ -56,7 +56,7 @@ function Header({ isLogged, userData }) {
 					
 						</Nav>
 							{isLogged === true  ? 
-								<Nav>								
+								<Nav className="user">								
 								<span className="d-flex align-items-center bgi-no-repeat mr-2">
 									<img src="/img/icon-chat.svg" alt="avatar" />
 								</span>

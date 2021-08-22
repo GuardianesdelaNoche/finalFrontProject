@@ -308,8 +308,7 @@ button#btn_enviar{
     }
      
    .form-container{
-
-        width: 60% !important;
+      padding: 0.5rem;
     }
     .mobile-wrap{
         display: block !important;

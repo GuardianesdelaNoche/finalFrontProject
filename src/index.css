@@ -609,7 +609,9 @@ a:hover {
     max-height: 100px;
     background-color: #41058E;
 }
-
+.swal2-styled.swal2-default-outline:focus {
+    box-shadow: none !important;
+}
 .btn-check:active+.btn.btn-active-primary, 
 .btn-check:checked+.btn.btn-active-primary, 
 .btn.btn-active-primary.active, 

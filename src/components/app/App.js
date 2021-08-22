@@ -4,7 +4,7 @@ import { LoginPage, RegisterPage, PrivateRoute } from '../auth';
 import { EventsPage } from '../events';
 import DetailsPage from '../events/EventDetail/DetailsPage';
 import UserDashboard from '../user/dashboard/Userdashboard';
-import NotFoundPage from './NotFoundPage';
+
 import { RememberPassPage, RecoverPassPage } from '../auth';
 import  ListMyEvents  from '../user/myEvents/ListMyEvents';
 import MyFavoritesEvents from '../user/myFavorites/MyFavoritesEvents';
@@ -13,6 +13,7 @@ import { loginWithTokenAction } from '../../store/actions/auth';
 import { useDispatch } from 'react-redux';
 import storage from "../../utils/storage";
 import NewEventPage from '../events/NewEvent/NewEventPage';
+import { NotFoundPage } from '../shared';
 import ChatPage from '../chat/chatPage';
 
 

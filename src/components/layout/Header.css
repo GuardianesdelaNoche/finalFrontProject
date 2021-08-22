@@ -9,8 +9,64 @@
     max-height: 50px!important;
 }
 
- .imgFlag {
-    margin-left: 10px;
-    width: 32px;
+ .symbol{
+     display: inline-block;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 1.15rem;
+ } 
+ 
+ .symbol.symbol-20px>img {
+    width: 20px;
     height: 20px;
-} 
+}
+
+.rounded-1 {
+    border-radius: .275rem!important;
+}
+
+.ms-2{
+    margin-left: .5rem!important;
+}
+
+
+/* Responsive */
+
+
+@media(max-width:768px){
+
+.navbar-nav{
+
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    flex-wrap: nowrap !important;
+    flex-direction: row-reverse !important;
+    padding: 0.5rem 0rem;
+
+}
+
+.navbar-nav.user{
+     flex-direction: row!important;
+      justify-content: flex-end;
+}
+
+
+.symbol.symbol-20px{
+    
+}
+
+.sc-kEqXSa.dLLlaj{
+     width: 100%;
+     margin-top: 0.2rem;
+ }
+
+ .sc-kEqXSa.dCqshn{
+    width: 100%;
+ }
+}
+
+@media(max-width: 1200px){
+   
+  
+}

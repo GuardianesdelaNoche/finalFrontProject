@@ -153,6 +153,9 @@
     "header.menu.esp": "ESP",
     "file.title": "Upload Files:",
     "file.description": "Max file size is 1MB and max number of files is 1",
+    "editEvent.title": "Edit event",
+    "editEvent.description": "Change data for your event",
+    "newevent.formLabel.newPhoto": "New picture",		
     "notfoundpage.title":"404 ERROR",
     "notfoundpage.description":"Sorry about that, but the page you are looking for isn´t available",
     "notfoundpage.button":"Go Home"

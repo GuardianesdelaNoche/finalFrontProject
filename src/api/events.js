@@ -95,8 +95,8 @@ export const setNewEvent = (newEventData) => {
     return client.post(url, newEventData);
 }
 
-export const setEditEvent = (editEventData) => {
+export const setEditEvent = (editEventData, eventId) => {
   //configureClient(token);
-  const url = `${eventsPath}`;
+  const url = `${eventsPath}/${eventId}`;
     return client.put(url, editEventData);
 }

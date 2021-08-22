@@ -26,7 +26,7 @@ function EditEventPage ({match}) {
             dispatch(setLoadingAction());
             dispatch(resetErrorAction());
             const formData=getFormData(editEventData);
-            await setEditEvent(formData);
+            await setEditEvent(formData, match.params.eventId);
             setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));

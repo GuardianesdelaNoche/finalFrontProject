@@ -56,11 +56,12 @@ function Header({ isLogged, userData }) {
 					
 						</Nav>
 							{isLogged === true  ? 
-								<Nav className="user">								
-								<span className="d-flex align-items-center bgi-no-repeat mr-2">
-									<img src="/img/icon-chat.svg" alt="avatar" />
-								</span>
-							
+								<Nav className="user">
+									<span className="d-flex align-items-center bgi-no-repeat mr-2">
+										<Link to="/chat" >
+											<img src="/img/icon-chat.svg" alt="avatar" />
+										</Link>								
+									</span>		
 								<NavDropdown
 									title={
 										<span><img src="/img/profile.svg" alt="avatar"></img></span>

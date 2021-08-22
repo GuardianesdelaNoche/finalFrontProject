@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
+import { Layout } from '../../layout';
 import { setNewEvent } from '../../../api/events';
 import { getUi } from '../../../store/selectors/ui'; 
 import { Alert} from 'react-bootstrap';
@@ -9,7 +10,6 @@ import NewEventForm from './NewEventForm';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import  Spinner  from '../../shared/Spinner';
-import { Layout } from '../../layout'
 
 import './newEvent.css'
 
@@ -60,34 +60,46 @@ function NewEventPage () {
 
     return (
         <Layout>
+        <div className="main-content">
+                <div className="container details">
+                     <div className="card card-flush pt-12">
 
-            <div className="main-content">
-                <main className="form-signin">
-                    <h1 className="h1 title-signin">
-                        <FormattedMessage
-                            id="newEvent.title"
-                            defaultMessage="New Event"
-                            />
-                    </h1>
-                    {loading && <Spinner animation="border" />}
-                    <NewEventForm onSubmit={handleSubmit} />
+                        <div className="card card-body">
+                            <div className="form-header ml-3">
+                                <h3 class="text-dark "><FormattedMessage
+                                    id="newEvent.title"
+                                    defaultMessage="New Event"
+                                /></h3>
+                                <span class="fs-8 text-description">
+                                    
+                                    <FormattedMessage
+                                        id="newEvent.description"
+                                        defaultMessage="Publish your new event through this form"
+                                    /></span>
+                            </div>
 
-                    {error && (	
-                        <Alert onClick={handleResetError} variant="danger">
-                            <p className="mb-0">
-                                {error.error}
-                            </p>
-                        </Alert>
-                    )}
-                    {dataSaved && 
-                        <SuccessMessage>
-                            <p className="mb-0">										
-                                {intl.formatMessage({ id: 'register.validate.successmessage'})}
-                            </p>
-                        </SuccessMessage>}                   
-                
-                </main>           
-            </div>
+                            {loading && <Spinner animation="border" />}
+                            <NewEventForm onSubmit={handleSubmit} />
+
+                            {error && (	
+                                <Alert onClick={handleResetError} variant="danger">
+                                    <p className="mb-0">
+                                        {error.error}
+                                    </p>
+                                </Alert>
+                            )}
+                            {dataSaved && 
+                                <SuccessMessage>
+                                    <p className="mb-0">										
+                                        {intl.formatMessage({ id: 'register.validate.successmessage'})}
+                                    </p>
+                                </SuccessMessage>} 
+                        </div>
+                    </div>
+                </div>
+
+          
+        </div>
         </Layout>
      
     )

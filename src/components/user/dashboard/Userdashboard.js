@@ -12,12 +12,11 @@ import { setUserData } from '../../../api/user';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import { getUserData } from '../../../store/selectors/auth';
-/**
-* FRONT JM User Panel Finish
-*/
+
 import { getEventsOwnTotal, getEventsFavoriteTotal, getEventsAssistantTotal } from '../../../store/selectors/events';
 import { eventsFavoriteLoadAction, eventsOwnLoadAction, eventsAssistantLoadAction } from '../../../store/actions/events';
-//============================================================================================================================
+
+
 import  Spinner  from '../../shared/Spinner';
 
 
@@ -29,9 +28,7 @@ function UserDashboard({history}) {
 	const userData = useSelector(getUserData);
 	const [dataSaved, setDataSaved] = React.useState(false);
 
-	/**
-	 * FRONT JM User Panel Finish
-	 */
+
 	const eventsOwnTotal = useSelector(getEventsOwnTotal);
 	const eventsFavoriteTotal = useSelector(getEventsFavoriteTotal);
 	const eventsAssistantTotal = useSelector(getEventsAssistantTotal);
@@ -41,7 +38,7 @@ function UserDashboard({history}) {
 		dispatch(eventsAssistantLoadAction());
 		dispatch(eventsOwnLoadAction());
 	},[dispatch]);
-	//===========================================================================
+
 
 	if (!userData){
 		history.push("/login");
@@ -86,7 +83,11 @@ function UserDashboard({history}) {
 												defaultMessage="My Published Events"
 											/>
 										</Card.Title>
-										<div className="fs-7 text-muted  mt-1">{eventsOwnTotal} 
+										<div className="fs-7 text-muted mt-1">
+											<span className="me-2">
+												{eventsOwnTotal}
+											</span>
+											
 											<FormattedMessage
 												id="user.panel.userdashboard.event.description"
 												defaultMessage="Published Events"
@@ -116,7 +117,10 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div className="fs-7 text-muted  mt-1">{eventsFavoriteTotal} 
+										<div className="fs-7 text-muted mt-1 ml-2 ">
+											<span className="me-2">
+												{eventsFavoriteTotal}
+											</span>
 											<FormattedMessage
 												id="user.panel.userdashboard.favorites.description"
 												defaultMessage="Favorites Events"
@@ -146,7 +150,10 @@ function UserDashboard({history}) {
 											/>
 											
 										</Card.Title>
-										<div className="fs-7 text-muted  mt-1">{eventsAssistantTotal} 
+										<div className="fs-7 text-muted mt-1 ml-2 ">
+											<span className="me-2">
+												{eventsAssistantTotal}
+											</span>
 											<FormattedMessage
 												id="user.panel.userdashboard.suscribes.descripcion"
 												defaultMessage="Subscribed Events"

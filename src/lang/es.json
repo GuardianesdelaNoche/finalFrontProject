@@ -154,7 +154,10 @@
     "header.menu.eng": "ING",
     "header.menu.esp": "ESP",
     "file.title": "Subir archivos:",
-    "file.description":"El tamaño máximo de los archivos es de 1MB y el número máximo de archivos es de 1"
+    "file.description":"El tamaño máximo de los archivos es de 1MB y el número máximo de archivos es de 1",
+    "editEvent.title": "Cambiar evento",
+    "editEvent.description": "Actualiza los datos de tu evento",
+    "newevent.formLabel.newPhoto": "Nueva imagen"
     
 
 }

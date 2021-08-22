@@ -15,6 +15,7 @@ import { Button, ConfirmationButton } from '../../shared';
 import { getIsLogged } from "../../../store/selectors/auth";
 import { addFavorite, removeFavorite } from '../../../api/favorite';
 import { addEventAssist, removeEventAssist } from '../../../api/assist';
+import { Link } from 'react-router-dom';
 
 
 import Swal from 'sweetalert2';
@@ -65,7 +66,7 @@ function EventDetails({ description,
 		
 		const dispatch = useDispatch();
 		const [isFavActive, setFavActive] = useState(isFavorite);
-		const [isAssistantActive, setAssistantActive] = useState(isAssistant)
+		const [isAssistantActive, setAssistantActive] = useState(isAssistant);
 		
 		const swal = withReactContent(Swal)
 
@@ -177,6 +178,20 @@ function EventDetails({ description,
 								</span>
 							</div>
 		
+							{isLogged  && isOwner &&(
+									<div className="card-toolbar">
+									<Link variant="secundary" to={`/event/edit/${_id}`}>
+
+										<FormattedMessage
+											id="details.event.edit"
+											defaultMessage="Edit"
+										/>
+										
+											
+										</Link>
+									</div>
+							)}
+
 							{/* Reservation of Places */}
 							{isLogged && isAssistant ? (
 									<div className="card-toolbar">

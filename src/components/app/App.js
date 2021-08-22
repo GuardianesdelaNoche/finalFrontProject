@@ -13,6 +13,7 @@ import { loginWithTokenAction } from '../../store/actions/auth';
 import { useDispatch } from 'react-redux';
 import storage from "../../utils/storage";
 import NewEventPage from '../events/NewEvent/NewEventPage';
+import EditEventPage from '../events/EditEvent/EditEventPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
       </Route>
 
       <PrivateRoute exact path="/event/New" component={NewEventPage} />
+      <PrivateRoute exact path="/event/edit/:eventId">
+        {routeProps => <EditEventPage { ...routeProps} /> }  
+      </PrivateRoute> 
       <Route exact path="/event/:eventId/:eventTitle" component={DetailsPage} />
       <Route exact path="/events" component={EventsPage} />
       <Route exact path="/">

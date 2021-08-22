@@ -152,6 +152,10 @@
     "header.menu.eng": "ENG",
     "header.menu.esp": "ESP",
     "file.title": "Upload Files:",
-    "file.description": "Max file size is 1MB and max number of files is 1"
+    "file.description": "Max file size is 1MB and max number of files is 1",
+    "editEvent.title": "Edit event",
+    "editEvent.description": "Change data for your event",
+    "newevent.formLabel.newPhoto": "New picture"		
+
 
 }

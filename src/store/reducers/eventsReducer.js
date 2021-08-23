@@ -10,9 +10,6 @@
  
     switch (action.type) {
         case types.eventsLoadedSuccess:
-        case types.eventsFavoriteLoadedSuccess:
-        case types.eventsOwnLoadedSuccess:
-        case types.eventsAssistantLoadedSuccess:
             return {
                 ...state, 
                 loaded: true,
@@ -30,6 +27,54 @@
                 ...state,
                 loaded: false,
                 data: state.data.filter((event) => event.id !== action.payload.event),
+            }
+        default:
+            return state;
+    }
+}
+
+/**
+* FRONT JM User Panel Finish
+*/
+export const eventsOwnReducer = ( state = initialState, action ) => {
+ 
+    switch (action.type) {
+        case types.eventsOwnLoadedSuccess:
+            return {
+                ...state, 
+                loaded: true,
+                data: [...action.payload.data],
+                total: action.payload.total
+            }
+        default:
+            return state;
+    }
+}
+
+export const eventsFavoriteReducer = ( state = initialState, action ) => {
+ 
+    switch (action.type) {
+        case types.eventsFavoriteLoadedSuccess:
+            return {
+                ...state, 
+                loaded: true,
+                data: [...action.payload.data],
+                total: action.payload.total
+            }
+        default:
+            return state;
+    }
+}
+
+export const eventsAssistantReducer = ( state = initialState, action ) => {
+ 
+    switch (action.type) {
+        case types.eventsAssistantLoadedSuccess:
+            return {
+                ...state, 
+                loaded: true,
+                data: [...action.payload.data],
+                total: action.payload.total
             }
         default:
             return state;

@@ -15,40 +15,43 @@ import "react-datepicker/dist/react-datepicker.css";
 import File from '../../shared/File';
 import es from 'date-fns/locale/es';
 
-import './newEvent.css'
+import './editEvent.css'
 
 
-function NewEventForm ({onSubmit}) {
+function EditEventForm ({onSubmit, eventData}) {
     const {
-		formValue: newEventData, 
+		formValue: editEventData, 
 		handleChange,	
 		handleChangeFile,
 		hadleChangeArray,
 		handleChangeDate,
 		handleChangeIndoor
 	} = useForm({
-        title:"",
-		description:"",
-        price:1,
-		max_places:"",	
-		duration:"",
-		photo:"",
-		indoor:false,
-		address:"",
-		city:"",
-		postal_code:"",
-		country:"",
-		tags:[],
-		date:new Date(),
+        title: eventData.title,
+		description: eventData.description,
+        price: eventData.price,
+		max_places: eventData.max_places,	
+		duration: eventData.duration,
+		photo: eventData.photo,
+		indoor: eventData.indoor,
+		address: eventData.address,
+		city: eventData.city,
+		postal_code: eventData.postal_code,
+		country: eventData.country,
+		tags: eventData.tags,
+		date: eventData.date,
 		longitude: "-143.4838",
 		latitude: "-30.0519"
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
 	
+	
 	const intl = useIntl();
 
-    const { title, description, price, max_places, duration, address, city, postal_code, country } = newEventData;   
-	const [startDate, setStartDate] = useState(new Date());
+
+    const { title, description, price, max_places, duration, address, city, postal_code, country, tags, indoor, photo } = editEventData;   
+	
+	const [startDate, setStartDate] = useState(new Date(eventData.date));
 	
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {
@@ -86,7 +89,7 @@ function NewEventForm ({onSubmit}) {
 		&& isValidValue(expressions.description, description) 
 			) {
 			try {
-				onSubmit(newEventData);	
+				onSubmit(editEventData);	
 				changeIsFormValid({...isFormValid, status:true});
 			} catch (error) {
 				changeIsFormValid({...isFormValid, status:false});
@@ -214,6 +217,7 @@ function NewEventForm ({onSubmit}) {
 						<SelectIndoor
 							id="indoor"
 							name="indoor"
+							defaultValue={indoor}
 							onChange={handleChangeIndoorA}
 							required
 						/>
@@ -224,6 +228,7 @@ function NewEventForm ({onSubmit}) {
 							onChange={handleChangeMultiSelect}
 							name="tags"
 							id="tags"
+							defaultValue={tags}
 							label={intl.formatMessage({ id: 'newevent.formLabel.tags' })}
 							required
 						/>
@@ -314,7 +319,6 @@ function NewEventForm ({onSubmit}) {
 					</div>
 				</div>
 				
-				{/* Input Photo */}
 				<div className="row mobile-wrap">
 					<div className="col">
 			
@@ -322,9 +326,26 @@ function NewEventForm ({onSubmit}) {
 							{intl.formatMessage({ id: 'newevent.formLabel.photo'})}		
 						</Label>      
 					
+						<img src={photo} alt={description} className="imageLoaded"></img>
+
+						
+					</div>
+
+			
+			</div>
+
+				{/* Input Photo */}
+				<div className="row mobile-wrap">
+					<div className="col">
+			
+						<Label htmlFor='photo' >
+							{intl.formatMessage({ id: 'newevent.formLabel.newPhoto'})}		
+						</Label>      
+					
 						<File 
 							name="photo" 
 							id="photo"
+							
 							onFileSelectSuccess={handleChangeFiles} 
 							onFileSelectError={handleError}
 						/>
@@ -361,4 +382,4 @@ function NewEventForm ({onSubmit}) {
 	) 
 }
 
-export default NewEventForm;
+export default EditEventForm;

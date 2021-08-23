@@ -2,29 +2,31 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { Layout } from '../../layout';
-import { setNewEvent } from '../../../api/events';
+import { setEditEvent } from '../../../api/events';
 import { getUi } from '../../../store/selectors/ui'; 
 import { Alert} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-import NewEventForm from './NewEventForm';
+import EditEventForm from './EditEventForm';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import  Spinner  from '../../shared/Spinner';
+import { getEventDetail } from '../../../store/selectors/events';
 
-import './newEvent.css'
+import './editEvent.css';
 
-function NewEventPage () {
+function EditEventPage ({match}) {
 
     const dispatch = useDispatch();
     const { loading, error } = useSelector(getUi);
     const [ dataSaved, setDataSaved] = React.useState(false);
+    const eventData = useSelector(state => getEventDetail (state, match.params.eventId))
     const intl = useIntl();  
-    const handleSubmit = async (newEventData)=>{
+    const handleSubmit = async (editEventData)=>{
         try {
             dispatch(setLoadingAction());
             dispatch(resetErrorAction());
-            const formData=getFormData(newEventData);
-            await setNewEvent(formData);
+            const formData=getFormData(editEventData);
+            await setEditEvent(formData, match.params.eventId);
             setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));
@@ -67,19 +69,19 @@ function NewEventPage () {
                         <div className="card card-body">
                             <div className="form-header ml-3">
                                 <h3 class="text-dark "><FormattedMessage
-                                    id="newEvent.title"
-                                    defaultMessage="New Event"
+                                    id="editEvent.title"
+                                    defaultMessage="Edit Event"
                                 /></h3>
                                 <span class="fs-8 text-description">
                                     
                                     <FormattedMessage
-                                        id="newEvent.description"
-                                        defaultMessage="Publish your new event through this form"
+                                        id="editEvent.description"
+                                        defaultMessage="Change data for your event"
                                     /></span>
                             </div>
 
                             {loading && <Spinner animation="border" />}
-                            <NewEventForm onSubmit={handleSubmit} />
+                            <EditEventForm onSubmit={handleSubmit} eventData={eventData} />
 
                             {error && (	
                                 <Alert onClick={handleResetError} variant="danger">
@@ -105,6 +107,6 @@ function NewEventPage () {
     )
 }
 
-export default NewEventPage;
+export default EditEventPage;
 
 

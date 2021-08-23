@@ -1,8 +1,8 @@
 const composerPathFilters = (filters) => {
   const { indoor, price, tags, username } = filters;
-  if (username) {
-    return `&username=${username}`;
-  } else {
+  // if (username) {
+  //   return `&username=${username}`;
+  // } else {
     let path = "";
     if (indoor) {
       path = path.concat(`&indoor=${indoor}`);
@@ -20,8 +20,11 @@ const composerPathFilters = (filters) => {
         path = path.concat(`&tags=${tag}`);
       });
     }
+    if(username && username !== ""){
+      path = path.concat(`&username=${username}`)
+    }
     return path;
-  }
+  // }
 };
 
 export const paginationRedirect = (req) => {

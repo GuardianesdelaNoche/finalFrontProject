@@ -24,7 +24,7 @@ function ListMyEvents() {
                 dispatch(setLoadingAction);
                 //const myEvents = await getMyEvents(token.token);
                 //handleSetValue(member.result);
-				dispatch(eventsOwnLoadAction());
+				//dispatch(eventsOwnLoadAction());
             } catch (error) {
                 dispatch(setErrorAction(error));
             } finally {
@@ -48,7 +48,7 @@ function ListMyEvents() {
 						<Card>
 							<Card.Body>
 
-								<div class="card-body pt-4">
+								<div className="card-body pt-4">
 
 									<Card.Title className="align-items-center border-0">
 										<div className="align-items-start flex-column">
@@ -81,7 +81,7 @@ function ListMyEvents() {
 											<div className="d-flex align-items-center flex-grow-1 mt-n2 mt-lg-n1">
 
 												<div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-													<a href="#something" className="text-gray-800 fw-bolder text-hover-primary fs-6 pt-3">{element.title}</a>
+													<span className="text-gray-800 fw-bolder text-hover-primary fs-6 pt-3">{element.title}</span>
 													<span className="text-description fs-7 my-1">{element.description}</span>
 													
 													

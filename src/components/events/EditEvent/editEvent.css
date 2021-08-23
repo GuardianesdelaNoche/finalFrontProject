@@ -308,7 +308,8 @@ button#btn_enviar{
     }
      
    .form-container{
-      padding: 0.5rem;
+
+        width: 60% !important;
     }
     .mobile-wrap{
         display: block !important;
@@ -335,4 +336,8 @@ button#btn_enviar{
 
 .react-datepicker-popper {
   z-index: 100 !important;
+}
+
+.imageLoaded {
+    width: 100%;
 }

@@ -306,23 +306,8 @@ button#btn_enviar{
     body{
       padding-top: 10px;
     }
-     
-   .form-container{
-      padding: 0.5rem;
-    }
-    .mobile-wrap{
-        display: block !important;
-    }
-
-    .drOHjW {
-    display: contents !important;
-    grid-template-columns: 1fr;
-    gap: 0px;
-    }
-    .form-header.ml-3{
-    margin-left: 0rem !important;
-    }
-
+   
+ 
   
 }
 
@@ -330,7 +315,9 @@ button#btn_enviar{
    body{
       padding-top: 10px;
     }
-   
+    .form-signin {
+        max-width: 90%;
+    }
 }
 
 .react-datepicker-popper {

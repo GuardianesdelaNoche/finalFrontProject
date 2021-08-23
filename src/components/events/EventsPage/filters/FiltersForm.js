@@ -95,7 +95,9 @@ export const FiltersForm = ({
   };
 
   const onChangeType = (event) => {
+    console.log('onChangeType antes',selectedType)
     setSelectedType(event.target.value);
+    console.log('onChangeType despues',selectedType)
   };
 
   const handleSelectedUsername = (event) => {

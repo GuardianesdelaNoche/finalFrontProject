@@ -123,6 +123,8 @@ button:disabled {
 .fw-bolder {
     font-weight: 600!important;
 }
+
+
 .fw-500{
     font-weight: 500;
 }
@@ -150,6 +152,10 @@ button:disabled {
 }
 .ms-2{
     margin-left: .5rem!important;
+}
+
+.mb-11 {
+    margin-bottom: 2.5rem!important;
 }
 
 /* Navbar */
@@ -692,7 +698,50 @@ a:hover {
 /* Navbar */
 .rounded-circle .text-primary{
     color: #20d489 !important;
-} 
+}
+
+
+
+/* Filter */
+
+.accordion > .card {
+    overflow: hidden;
+    box-shadow: none !important;
+}
+
+.accordion .card-body{
+    padding: 0px !important;
+}
+
+.btn-group-toggle .rounded-pill{
+    color: #7e8299;
+    border-color: #f5f8fa;
+    background-color: #f5f8fa;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem !important;
+}
+
+.btn-group-toggle .rounded-pill:hover{
+    color: #fff !important;
+    border-color: #20d489 !important;
+    background-color: #20d489!important;
+}
+
+.btn-group-toggle .rounded-pill:active{
+    color: #fff !important;
+    border-color: #20d489 !important;
+    background-color: #20d489!important;
+}
+
+
+
+
+
+
+
+
+
+
 /* Responsive */
 
 
@@ -803,6 +852,8 @@ a:hover {
     width: 100%;
    }
 
+   
+  
 
 }
 
@@ -810,5 +861,6 @@ a:hover {
     .col-sm.d-flex{
     margin-bottom: 1rem;
 }
+
   
 }

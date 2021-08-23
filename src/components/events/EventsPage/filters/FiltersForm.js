@@ -154,15 +154,12 @@ export const FiltersForm = ({
     <Form>
       <div className="mt-3 d-flex flex-column">
         <div>
-          <div className="mb-1 p-4 bg-white">
-            <BiSlider></BiSlider>
-            <span className="ml-2">{filtersText}</span>
-          </div>
+          
           <Accordion defaultActiveKey="1">
             <Card className="mb-1 pl-3 rounded-0 fs-6">
               <Accordion.Toggle
                 as={Card.Text}
-                className="fs-6 text-muted m-0 pt-2 pb-2"
+                className="fs-4 text-dark fw-bolder mb-7"
                 eventKey="1"
               >
                 <FormattedMessage
@@ -170,7 +167,7 @@ export const FiltersForm = ({
                   defaultMessage="Filter"
                 />
               </Accordion.Toggle>
-              <Accordion.Collapse eventKey="1">
+              <Accordion.Collapse eventKey="1" className="mb-11">
                 <Card.Body>
                   <FilterRange
                     values={selectedPrice}
@@ -181,8 +178,9 @@ export const FiltersForm = ({
                     labelTextHigh={maxPrice}
                     preTextLow="€"
                     preTextHigh="€"
+                    className="mb-13"
                     classNameFormGroup=""
-                    classNameFormLabel="text-muted font-weight-light"
+                    classNameFormLabel="text-dark fw-bolder fs-6"
                     classNameInputGroup="bg-light rounded-pill"
                     classNameInputGroupText="bg-light rounded-pill border-left-0 border-top-0 border-bottom-0 border-right-1 pl-3"
                     classNameFormControl="bg-light rounded-pill border-0 text-right"
@@ -191,11 +189,11 @@ export const FiltersForm = ({
               </Accordion.Collapse>
             </Card>
           </Accordion>
-          <Accordion defaultActiveKey="3">
+          <Accordion defaultActiveKey="3" className="mb-11">
             <Card className="mb-1 pl-3 rounded-0 fs-6">
               <Accordion.Toggle
                 as={Card.Text}
-                className="fs-6 text-muted m-0 pt-2 pb-2"
+                className="fs-4 text-dark fw-bolder mb-7"
                 eventKey="3"
               >
                 <FormattedMessage
@@ -217,11 +215,11 @@ export const FiltersForm = ({
             </Card>
           </Accordion>
 
-          <Accordion defaultActiveKey="2">
+          <Accordion defaultActiveKey="2" className="mb-11">
             <Card className="mb-1 pl-3 rounded-0 fs-6">
               <Accordion.Toggle
                 as={Card.Text}
-                className="fs-6 text-muted m-0 pt-2 pb-2"
+                className="fs-4 text-dark fw-bolder mb-7"
                 eventKey="2"
               >
                 <FormattedMessage

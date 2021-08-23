@@ -206,7 +206,6 @@ export const FiltersForm = ({
                   <FilterRadioToggleButtons
                     opts={typesActivities}
                     onChange={onChangeType}
-                    classNameGroup="d-flex flex-row flex-wrap justify-content-evenly"
                     classNameOpts="flex-grow-0 m-1 btn-sm rounded-pill"
                     selected={selectedType}
                   />
@@ -242,7 +241,7 @@ export const FiltersForm = ({
           </Accordion>
           <div className="d-flex flex-row justify-content-center pt-2 pb-2 bg-white">
             <Button
-              className="m-1 btn-sm"
+              className="m-1 btn reset px-8"
               variant="primary"
               disabled={disabledButtons}
               onClick={handleCleanFilters}

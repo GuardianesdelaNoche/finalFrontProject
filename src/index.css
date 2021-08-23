@@ -721,20 +721,32 @@ a:hover {
     border-radius: 0.5rem !important;
 }
 
-.btn-group-toggle .rounded-pill:hover{
-    color: #fff !important;
-    border-color: #20d489 !important;
-    background-color: #20d489!important;
-}
-
-.btn-group-toggle .rounded-pill:active{
-    color: #fff !important;
+.rounded-pill.btn.active.btn-primary{
+  color: #fff !important;
     border-color: #20d489 !important;
     background-color: #20d489!important;
 }
 
 
+.rounded-pill.btn.btn-primary:hover{
+    color: #fff !important;
+    border-color: none !important;
+    background-color: #20d489!important;
 
+}
+
+
+.btn.reset{
+    color: #fff;
+    border-color: #20d489;
+    background-color: #20d489;
+}
+
+
+.px-8 {
+    padding-right: 2rem!important;
+    padding-left: 2rem!important;
+}
 
 
 

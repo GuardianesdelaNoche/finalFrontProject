@@ -41,7 +41,8 @@ export const getEventsPage = (
   sort,
   indoor,
   price,
-  tags
+  tags,
+  username
 ) => {
   let request = `${eventsPath}?skip=${
     (currentPage - 1) * limit
@@ -63,6 +64,9 @@ export const getEventsPage = (
   if (tags) {
     const pathTags = composerPathTags(tags);
     request = request.concat(pathTags);
+  }
+  if(username) {
+    request = request.concat(`&userName=${username}`)
   }
   return client.get(`${request}`).then((eve) => eve);
 };
@@ -93,4 +97,10 @@ export const setNewEvent = (newEventData) => {
   //configureClient(token);
   const url = `${eventsPath}`;
     return client.post(url, newEventData);
+}
+
+export const setEditEvent = (editEventData, eventId) => {
+  //configureClient(token);
+  const url = `${eventsPath}/${eventId}`;
+    return client.put(url, editEventData);
 }

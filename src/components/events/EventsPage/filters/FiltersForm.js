@@ -42,12 +42,12 @@ export const FiltersForm = ({
   onRemoveFilters,
   onCleanFilters,
 }) => {
-  const { indoor, price, tags } = initFilters;
+  const { indoor, price, tags, username } = initFilters;
 
   const [selectedTags, setSelectedTags] = useState(tags);
   const [selectedType, setSelectedType] = useState(indoor);
-  const [selectedUsername, setSelectedUsername] = useState("");
-  const [disabledButtons, setDisabledButtons] = useState(false);
+  const [selectedUsername, setSelectedUsername] = useState(username);
+  // const [disabledButtons, setDisabledButtons] = useState(false);
 
   const [low, high] = price.split("-");
   const [selectedPrice, setSelectedPrice] = useState({
@@ -109,12 +109,12 @@ export const FiltersForm = ({
     setSelectedUsername("");
   };
 
-  const handleDisplayFilters = () => {
-    if (!disabledButtons) {
-      handleCleanFilters();
-    }
-    setDisabledButtons(!disabledButtons);
-  };
+  // const handleDisplayFilters = () => {
+  //   if (!disabledButtons) {
+  //     handleCleanFilters();
+  //   }
+  //   setDisabledButtons(!disabledButtons);
+  // };
 
   const handleRemoveFilters = (event) => {
     handleCleanFilters();
@@ -135,6 +135,7 @@ export const FiltersForm = ({
         };
       }
       if (selectedPrice.low >= 0 && selectedPrice.high >= 0) {
+
         requestFilters = {
           ...requestFilters,
           price: selectedPrice,
@@ -145,6 +146,13 @@ export const FiltersForm = ({
           ...requestFilters,
           tags: selectedTags,
         };
+      }
+
+      if(selectedUsername) {
+        requestFilters = {
+          ...requestFilters, 
+          username: selectedUsername
+        }
       }
       onClickFilters(event, requestFilters);
     }
@@ -239,11 +247,37 @@ export const FiltersForm = ({
               </Accordion.Collapse>
             </Card>
           </Accordion>
+
+          <Accordion defaultActiveKey="3">
+            <Card className="mb-1 pl-3 rounded-0 fs-6">
+              <Accordion.Toggle
+                as={Card.Text}
+                className="fs-6 text-muted m-0 pt-2 pb-2"
+                eventKey="3"
+              >
+                <FormattedMessage
+                  id="filtersform.title.username"
+                  defaultMessage="Username"
+                />
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="3">
+                <Card.Body className="ml-0 pl-0">
+                  <FormControl
+                    className="rounded-pill border-0 pl-1"
+                    placeholder={placeholderUsername}
+                    value={selectedUsername}
+                    onChange={handleSelectedUsername}
+                    type="text"
+                  ></FormControl>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
           <div className="d-flex flex-row justify-content-center pt-2 pb-2 bg-white">
             <Button
               className="m-1 btn reset px-8"
               variant="primary"
-              disabled={disabledButtons}
+              // disabled={disabledButtons}
               onClick={handleCleanFilters}
             >
               <FormattedMessage
@@ -257,7 +291,7 @@ export const FiltersForm = ({
               className="m-1 btn-sm"
               variant="primary"
               type="submit"
-              disabled={disabledButtons}
+              // disabled={disabledButtons}
               onClick={handleApplyFilters}
             >
               <FormattedMessage
@@ -268,7 +302,7 @@ export const FiltersForm = ({
             <Button
               className="m-1 btn-sm"
               variant="primary"
-              disabled={disabledButtons}
+              // disabled={disabledButtons}
               onClick={handleRemoveFilters}
             >
               <FormattedMessage

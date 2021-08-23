@@ -42,7 +42,7 @@ function UserDashboard({history}) {
             dispatch(setLoadingAction);
 			dispatch(resetErrorAction);
             const userData = await setUserData(token.token, registerData);
-			dispatch(authLoginSuccess(userData))
+			dispatch(authLoginSuccess(userData.result))
 
 			setDataSaved(true);
         } catch (error) {

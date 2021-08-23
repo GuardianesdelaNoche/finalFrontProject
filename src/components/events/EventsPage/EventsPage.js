@@ -51,7 +51,6 @@ const getNewReq = (queryPath, key, value) => {
   const tagsQuery = queryPath.getAll("tags");
   const usernameQuery = queryPath.get("username");
 
-  console.log('getNewReq key value',key, value)
   let filters = {};
 
   let paramsQuery = {};
@@ -208,7 +207,6 @@ function EventsPage() {
     tags: tagsQuery,
     username: usernameQuery
   };
-  console.log('filtersQuery in eventsPage', filters)
 
   const intl = useIntl();
 
@@ -274,9 +272,7 @@ function EventsPage() {
 
   const onClickFilters = (event, filters) => {
     event.preventDefault();
-    console.log('filters', filters)
     const reqParams = getNewReq(queryPath, "filters", filters);
-    console.log('reqParams', reqParams)
     dispatch(paginationRedirect(reqParams));
   };
 

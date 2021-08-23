@@ -95,9 +95,7 @@ export const FiltersForm = ({
   };
 
   const onChangeType = (event) => {
-    console.log('onChangeType antes',selectedType)
     setSelectedType(event.target.value);
-    console.log('onChangeType despues',selectedType)
   };
 
   const handleSelectedUsername = (event) => {
@@ -131,14 +129,12 @@ export const FiltersForm = ({
     if (onClickFilters && typeof onClickFilters === "function") {
       let requestFilters = {};
       if (selectedType) {
-    console.log('handleApplyFilters type', selectedType)
         requestFilters = {
           ...requestFilters,
           indoor: selectedType,
         };
       }
       if (selectedPrice.low >= 0 && selectedPrice.high >= 0) {
-    console.log('handleApplyFilters price', selectedPrice.low, selectedPrice.high)
 
         requestFilters = {
           ...requestFilters,
@@ -146,7 +142,6 @@ export const FiltersForm = ({
         };
       }
       if (selectedTags.length > 0) {
-    console.log('handleApplyFilters tags', selectedTags)
         requestFilters = {
           ...requestFilters,
           tags: selectedTags,
@@ -154,18 +149,15 @@ export const FiltersForm = ({
       }
 
       if(selectedUsername) {
-    console.log('handleApplyFilters username', selectedUsername)
         requestFilters = {
           ...requestFilters, 
           username: selectedUsername
         }
       }
-      console.log('requestFilters',requestFilters)
       onClickFilters(event, requestFilters);
     }
   };
 
-  console.log('initFilterForm', selectedType, selectedPrice.low, selectedPrice.high, selectedTags, selectedUsername)
   return (
     <Form>
       <div className="mt-3 d-flex flex-column shadow-sm">

@@ -291,15 +291,15 @@ function EventsPage() {
           <div className="container">
       
              
-              <div className="row filter">
-                <div className="col-9">
+            <div className="row filter">
+              <div className="col-md-10">
                     <SearchBar
                       text={titleQuery}
                       onClickSearch={onClickSearch}
                       onClearButton={onClickSearch}
                     />
                 </div>
-                <div className="col-2 modal-filter">
+              <div className="col-md-2 modal-filter">
                     <Button variant="primary" onClick={handleShowModal}>
                       {filtersText}
                     </Button>

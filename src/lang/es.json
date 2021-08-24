@@ -141,7 +141,7 @@
     "filtersform.title.username": "Nombre de usuario",
     "filtersform.input.username": "Introduce usuario...",
     "filtersform.headerfilters.advancedfilters": "Filtros avanzados",
-    "filtersform.headerfilters.filters": "Filtros",
+    "filtersform.headerfilters.filters": "Filtros avanzados",
     "filtersform.filters.price": "Precio",
     "filtersform.filters.type": "Tipo",
     "filtersform.filters.tags": "Etiquetas",

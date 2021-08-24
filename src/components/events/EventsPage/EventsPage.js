@@ -274,6 +274,9 @@ function EventsPage() {
   const onClickFilters = (event, filters) => {
     event.preventDefault();
     const reqParams = getNewReq(queryPath, "filters", filters);
+    if(showModal){
+      handleCloseModal();
+    }
     dispatch(paginationRedirect(reqParams));
   };
 

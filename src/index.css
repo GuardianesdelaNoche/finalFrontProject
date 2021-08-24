@@ -600,7 +600,7 @@ a:hover {
 }
 /* Sidebar Menu */
 
-.dFnnGi .activeClicked >li {
+.activeClicked >li {
     background: transparent !important;
     color: #20d489 !important;
     transition: color .2s ease !important;

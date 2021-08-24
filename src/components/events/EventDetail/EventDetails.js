@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+
 import './eventDetail.css'
 
 import {
@@ -193,7 +194,7 @@ function EventDetails({ description,
 											
 										</Button>
 									</div>
-							) : ((isLogged && isAssistant === false && available_places > 0) ? (
+							) : ((isLogged && isAssistant === false && available_places > 0 ) ? (
 												<div className="card-toolbar mr-2">
 												<Button variant="primary" onClick={handleAddAssistant}>
 														<FormattedMessage
@@ -242,36 +243,37 @@ function EventDetails({ description,
 											)
 									)}
 
-							{isOwner  ?
-								(<div className="card-toolbar">
-									{/* Delete button if you are an owner */}
-									<ConfirmationButton
-										title={intl.formatMessage({ id: 'popups.remove.title' })}
-										confirmation={intl.formatMessage({ id: 'popups.remove.mesage' })}
-										onConfirm={onDelete}
-									>
-										<FormattedMessage
-											id="details.event.remove"
-											defaultMessage="Remove"
-										/>
-									</ConfirmationButton>
-								</div>)
-								: ('')
-							}
-
-							{isLogged  && isOwner  ? (
-									<div className="card-toolbar">
-									<Link variant="secundary" className="editLink" to={`/event/edit/${_id}`}>
+							{isLogged && isOwner ? (
+								<div className="card-toolbar">
+									<Link variant="secondary" className="btn btn-secondary  mr-2" to={`/event/edit/${_id}`}>
 
 										<FormattedMessage
 											id="details.event.edit"
 											defaultMessage="Edit"
-										/>									
-											
-										</Link>
-									</div>
+										/>
+
+									</Link>
+								</div>
 							)
-							: ('')}
+								: ('')}
+
+
+							{isOwner  ?
+								(<div className="card-toolbar">
+									{/* Delete button if you are an owner */}
+
+									<Button onClick={onDelete} className="btn btn-remove">
+										<FormattedMessage
+											id="details.event.remove"
+											defaultMessage="Remove"
+										/>
+									</Button>
+
+								</div>)
+								: ('')
+							}
+
+							
 
 
 						</div>

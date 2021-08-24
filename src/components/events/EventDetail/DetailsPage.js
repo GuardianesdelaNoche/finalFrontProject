@@ -14,6 +14,9 @@ import { getEventDetail} from '../../../store/selectors/events';
 
 import { getUi } from '../../../store/selectors/ui';
 
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 
 
 function DetailsPage() {
@@ -23,15 +26,38 @@ function DetailsPage() {
 	const { loading, error } = useSelector(getUi);
 	const event = useSelector(state => getEventDetail (state, eventId))
 
+	const swal = withReactContent(Swal)
+
 
 	React.useEffect(() => {
 		dispatch(eventDetailsActions(eventId))	
 	}, [dispatch, eventId]);
 
 	
+
 	const handleDelete = () => {
-		dispatch(eventDeleteActions(eventId))
-	};
+		
+			swal.fire({
+				title: "Eliminar evento",
+				text: "¿Estás seguro que deseas eliminar este evento?",
+				icon: "warning",
+				confirmButtonText: "Si",
+				confirmButtonColor: "#20d489",
+				denyButtonText: "No",
+				showDenyButton: true
+			}).then(async response => {
+				if (response.isConfirmed) {
+					swal.fire({
+						text: "Evento eliminado correctamente",
+						icon: 'success',
+						showConfirmButton: false
+					})
+					dispatch(eventDeleteActions(eventId))
+				}
+			})
+			
+		
+	}
 
 	const handleResetError = () => {
 		dispatch(resetErrorAction());

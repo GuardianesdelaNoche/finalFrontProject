@@ -50,7 +50,8 @@
     background-clip: padding-box;
     border: 1px solid #F5F8FA!important;
     border-radius: .25rem;
-    padding: 0!important;    
+    padding: 0!important;
+    padding-left: 1rem !important;       
 }
 
 .form-label{

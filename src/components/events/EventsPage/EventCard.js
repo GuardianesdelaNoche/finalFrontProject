@@ -52,13 +52,15 @@ function EventCard(event) {
               }
             >
               {isLogged && event.isFavorite ? (
-                <div className="ribbon home p-2 bg-light rounded opacity-50">
-                  <MdFavorite />
-                </div>
+
+               <div class="ribbon ribbon-top ribbon-vertical">
+                    <div class="ribbon-label bg-success">
+                      <i class="fas fa-heart fs-2 text-white"></i>
+                    </div>
+              </div>
+
               ) : (
-                <div className="ribbon home p-2 bg-light rounded opacity-50">
-                  <MdFavoriteBorder />
-                </div>
+                 <div></div>
               )}
             </OverlayTrigger>
             <Link

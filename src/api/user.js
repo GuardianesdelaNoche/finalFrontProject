@@ -23,10 +23,5 @@ export const getMyEvents = (token) => {
     return client.get(url);
 }
 
-export const getUsersChat = (token) => {
-    configureClient(token);
-    const url = `${baseURL}/chat`;
-    return client.get(url);
-}
 
 

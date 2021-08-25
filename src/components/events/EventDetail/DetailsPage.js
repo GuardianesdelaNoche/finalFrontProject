@@ -44,7 +44,7 @@ function DetailsPage() {
 				icon: "warning",
 				confirmButtonText: intl.formatMessage({id:"sweetalert2.yes.delete.assist.event"}),
 				confirmButtonColor: "#20d489",
-				denyButtonText: intl.formatMessage({id:"sweetalert2.no.assist.event"}),
+				denyButtonText: intl.formatMessage({id:"sweetalert2.no.delete.assist.event"}),
 				showDenyButton: true
 			}).then(async response => {
 				if (response.isConfirmed) {

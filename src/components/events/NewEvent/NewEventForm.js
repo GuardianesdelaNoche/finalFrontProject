@@ -325,6 +325,7 @@ function NewEventForm ({onSubmit}) {
 						<File 
 							name="photo" 
 							id="photo"
+							className="photo-input"
 							onFileSelectSuccess={handleChangeFiles} 
 							onFileSelectError={handleError}
 						/>

@@ -15,7 +15,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import File from '../../shared/File';
 import es from 'date-fns/locale/es';
 
-import './editEvent.css'
+import '../NewEvent/newEvent.css'
 
 
 function EditEventForm ({onSubmit, eventData}) {
@@ -322,7 +322,7 @@ function EditEventForm ({onSubmit, eventData}) {
 				<div className="row mobile-wrap pb-12">
 					<div className="col">
 			
-						<Label htmlFor='photo'className="pb-4" >
+						<Label htmlFor='photo' className="pb-4" >
 							{intl.formatMessage({ id: 'newevent.formLabel.photo'})}		
 						</Label>      
 					

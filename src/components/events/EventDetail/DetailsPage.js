@@ -49,7 +49,7 @@ function DetailsPage() {
 			}).then(async response => {
 				if (response.isConfirmed) {
 					swal.fire({
-						text: intl.formatMessage({id:"sweetalert2.confirmation.message.assist.event"}),
+						text: intl.formatMessage({id:"sweetalert2.confirmation.message.delete.assist.event"}),
 						icon: 'success',
 						showConfirmButton: false
 					})

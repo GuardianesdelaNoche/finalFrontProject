@@ -180,10 +180,10 @@ function EventDetails({ description,
 								</span>
 							</div>
 		
-						
+						<div className="d-flex mb-button">
 							{/* Reservation of Places */}
 							{isLogged && isAssistant ? (
-									<div className="card-toolbar">
+								<div className="card-toolbar mr-2">
 									<Button variant="secundary" onClick={handleRemoveAssistant}>
 
 										<FormattedMessage
@@ -206,13 +206,13 @@ function EventDetails({ description,
 												</div>)
 												
 									: (isLogged && isAssistant === false && available_places <= 0 ? (
-												<div className="card-toolbar">
-													<span className="tab-panel">
+										<div className="card-toolbar mr-2">
+													<button className="tab-panel">
 														<FormattedMessage
 															id="details.event.capacity"
 															defaultMessage="Full capacity"
 														/>
-													</span>
+													</button>
 												</div>
 												)
 												: (
@@ -274,7 +274,7 @@ function EventDetails({ description,
 							}
 
 							
-
+							</div>
 
 						</div>
 

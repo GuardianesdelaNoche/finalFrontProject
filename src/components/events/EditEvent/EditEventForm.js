@@ -15,7 +15,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import File from '../../shared/File';
 import es from 'date-fns/locale/es';
 
-import './editEvent.css'
+import '../NewEvent/newEvent.css'
 
 
 function EditEventForm ({onSubmit, eventData}) {
@@ -303,7 +303,7 @@ function EditEventForm ({onSubmit, eventData}) {
 
 						/>
 					</div>
-					<div className="col">
+					<div className="col pb-10">
 						<Input
 							type="text"
 							label={intl.formatMessage({ id: 'newevent.formLabel.country' })}
@@ -319,10 +319,10 @@ function EditEventForm ({onSubmit, eventData}) {
 					</div>
 				</div>
 				
-				<div className="row mobile-wrap">
+				<div className="row mobile-wrap pb-12">
 					<div className="col">
 			
-						<Label htmlFor='photo' >
+						<Label htmlFor='photo' className="pb-4" >
 							{intl.formatMessage({ id: 'newevent.formLabel.photo'})}		
 						</Label>      
 					
@@ -338,7 +338,7 @@ function EditEventForm ({onSubmit, eventData}) {
 				<div className="row mobile-wrap">
 					<div className="col">
 			
-						<Label htmlFor='photo' >
+						<Label htmlFor='photo'>
 							{intl.formatMessage({ id: 'newevent.formLabel.newPhoto'})}		
 						</Label>      
 					

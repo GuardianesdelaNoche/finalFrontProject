@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+
 import './eventDetail.css'
 
 import {
@@ -76,17 +77,17 @@ function EventDetails({ description,
 			try {
 		
 				swal.fire({
-					title: "Reservar Plaza",
-					text: "¿Estás seguro que deseas asistir a este evento?",
+					title: intl.formatMessage({id:"sweetalert2.title.assist.event"}),
+					text: intl.formatMessage({id:"sweetalert2.text.assist.event"}),
 					icon: "warning",
-					confirmButtonText: "Si",
+					confirmButtonText: intl.formatMessage({id:"sweetalert2.yes.assist.event"}),
 					confirmButtonColor: "#20d489",
-					denyButtonText: "No",
+					denyButtonText: intl.formatMessage({id:"sweetalert2.no.assist.event"}),
 					showDenyButton: true
 				}).then(async response => {
 					if (response.isConfirmed) {
 						swal.fire({
-							text: "Añadido como asistente correctamente",
+							text: intl.formatMessage({id:"sweetalert2.confirmation.message.assist.event"}),
 							icon: 'success',
 							showConfirmButton: false
 						})
@@ -107,17 +108,17 @@ function EventDetails({ description,
 			try {
 
 				swal.fire({
-					title: "Eliminar asistencia",
-					text: "Estás seguro que deseas eliminar tu asistencia?",
+					title: intl.formatMessage({id:"sweetalert2.title.delete.assist.event"}),
+					text: intl.formatMessage({id:"sweetalert2.text.delete.assist.event"}),
 					icon: "warning",
-					confirmButtonText: "Yes",
+					confirmButtonText: intl.formatMessage({id:"sweetalert2.yes.delete.assist.event"}),
 					confirmButtonColor: "green",
-					denyButtonText: "No",
+					denyButtonText: intl.formatMessage({id:"sweetalert2.no.delete.assist.event"}),
 					showDenyButton: true
 				}).then(async response => {
 					if (response.isConfirmed) {
 						swal.fire({
-							text: "Eliminado tu asistencia al avento correctamente",
+							text:intl.formatMessage({id:"sweetalert2.confirmation.message.delete.assist.event"}),
 							icon: 'success',
 							showConfirmButton: false
 						})
@@ -179,10 +180,10 @@ function EventDetails({ description,
 								</span>
 							</div>
 		
-						
+						<div className="d-flex mb-button">
 							{/* Reservation of Places */}
 							{isLogged && isAssistant ? (
-									<div className="card-toolbar">
+								<div className="card-toolbar mr-2">
 									<Button variant="secundary" onClick={handleRemoveAssistant}>
 
 										<FormattedMessage
@@ -193,7 +194,7 @@ function EventDetails({ description,
 											
 										</Button>
 									</div>
-							) : ((isLogged && isAssistant === false && available_places > 0) ? (
+							) : ((isLogged && isAssistant === false && available_places > 0 ) ? (
 												<div className="card-toolbar mr-2">
 												<Button variant="primary" onClick={handleAddAssistant}>
 														<FormattedMessage
@@ -205,13 +206,13 @@ function EventDetails({ description,
 												</div>)
 												
 									: (isLogged && isAssistant === false && available_places <= 0 ? (
-												<div className="card-toolbar">
-													<span className="tab-panel">
+										<div className="card-toolbar mr-2">
+													<button className="tab-panel">
 														<FormattedMessage
 															id="details.event.capacity"
 															defaultMessage="Full capacity"
 														/>
-													</span>
+													</button>
 												</div>
 												)
 												: (
@@ -242,37 +243,38 @@ function EventDetails({ description,
 											)
 									)}
 
-							{isOwner  ?
-								(<div className="card-toolbar">
-									{/* Delete button if you are an owner */}
-									<ConfirmationButton
-										title={intl.formatMessage({ id: 'popups.remove.title' })}
-										confirmation={intl.formatMessage({ id: 'popups.remove.mesage' })}
-										onConfirm={onDelete}
-									>
-										<FormattedMessage
-											id="details.event.remove"
-											defaultMessage="Remove"
-										/>
-									</ConfirmationButton>
-								</div>)
-								: ('')
-							}
-
-							{isLogged  && isOwner  ? (
-									<div className="card-toolbar">
-									<Link variant="secundary" className="editLink" to={`/event/edit/${_id}`}>
+							{isLogged && isOwner ? (
+								<div className="card-toolbar">
+									<Link variant="secondary" className="btn btn-secondary  mr-2" to={`/event/edit/${_id}`}>
 
 										<FormattedMessage
 											id="details.event.edit"
 											defaultMessage="Edit"
-										/>									
-											
-										</Link>
-									</div>
-							)
-							: ('')}
+										/>
 
+									</Link>
+								</div>
+							)
+								: ('')}
+
+
+							{isOwner  ?
+								(<div className="card-toolbar">
+									{/* Delete button if you are an owner */}
+
+									<Button onClick={onDelete} className="btn btn-remove">
+										<FormattedMessage
+											id="details.event.remove"
+											defaultMessage="Remove"
+										/>
+									</Button>
+
+								</div>)
+								: ('')
+							}
+
+							
+							</div>
 
 						</div>
 

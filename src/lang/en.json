@@ -158,7 +158,19 @@
     "newevent.formLabel.newPhoto": "New picture",		
     "notfoundpage.title":"404 ERROR",
     "notfoundpage.description":"Sorry about that, but the page you are looking for isn´t available",
-    "notfoundpage.button":"Go Home"
+    "notfoundpage.button":"Go Home",
+
+    "sweetalert2.text.assist.event": "Are you sure you want to attend this event?",
+    "sweetalert2.title.assist.event":"Reserve a Place",
+    "sweetalert2.yes.assist.event": "Yes",
+    "sweetalert2.no.assist.event": "No",
+    "sweetalert2.confirmation.message.assist.event": "Added as an assistant correctly",
+
+    "sweetalert2.text.delete.assist.event": "Are you sure you want to remove your attendance?",
+    "sweetalert2.title.delete.assist.event":"Delete assistance",
+    "sweetalert2.yes.delete.assist.event": "Yes",
+    "sweetalert2.no.delete.assist.event": "No",
+    "sweetalert2.confirmation.message.delete.assist.event": "Deleted your attendance to the event correctly"
 
 
 }

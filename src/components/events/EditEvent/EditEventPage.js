@@ -12,7 +12,7 @@ import { useIntl } from 'react-intl';
 import  Spinner  from '../../shared/Spinner';
 import { getEventDetail } from '../../../store/selectors/events';
 
-import './editEvent.css';
+import '../NewEvent/newEvent.css'
 
 function EditEventPage ({match}) {
 

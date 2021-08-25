@@ -50,7 +50,8 @@
     background-clip: padding-box;
     border: 1px solid #F5F8FA!important;
     border-radius: .25rem;
-    padding: 0!important;    
+    padding: 0!important;
+    padding-left: 1rem !important;       
 }
 
 .form-label{
@@ -175,6 +176,12 @@
 
 
 /* Image Input  */
+
+.imageLoaded{
+    width: 100%;
+    height: 50vh;
+    background-size: contain;
+}
 .dropzone.dz-clickable {
     cursor: pointer;
 }
@@ -321,6 +328,16 @@ button#btn_enviar{
     }
     .form-header.ml-3{
     margin-left: 0rem !important;
+    }
+    .imageLoaded{
+    width: 100%;
+    height: auto !important;
+    background-size: contain;
+    }
+
+    .hidden{
+        width: 100%;
+        padding-bottom: 10px;
     }
 
   

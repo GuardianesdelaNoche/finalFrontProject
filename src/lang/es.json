@@ -68,7 +68,7 @@
     "popups.remove.reserve.title": "Eliminar Reserva",
     "popups.add.reserve.mesage": "¿Quiere reservar este evento?",
     "popups.remove.reserve.mesage": "¿Quiere cancelar su reserva?",
-    "updatemember.form.button": "Editar",
+    "updatemember.form.button": "Actualizar",
     "updatemember.title": "Editar mis datos",
     "listmyevents.title":"Mis eventos",
     "logout.confirmation": "Quieres cerrar sesión?",
@@ -141,7 +141,7 @@
     "filtersform.title.username": "Nombre de usuario",
     "filtersform.input.username": "Introduce usuario...",
     "filtersform.headerfilters.advancedfilters": "Filtros avanzados",
-    "filtersform.headerfilters.filters": "Filtros",
+    "filtersform.headerfilters.filters": "Filtros avanzados",
     "filtersform.filters.price": "Precio",
     "filtersform.filters.type": "Tipo",
     "filtersform.filters.tags": "Etiquetas",
@@ -160,7 +160,17 @@
     "newevent.formLabel.newPhoto": "Nueva imagen",
     "notfoundpage.title": "ERROR 404",
     "notfoundpage.description": "Lo sentimos, pero la página que busca no está disponible",
-    "notfoundpage.button": "Go Home"
+    "notfoundpage.button": "Go Home",
     
+    "sweetalert2.text.assist.event": "¿Estás seguro que deseas asistir a este evento?",
+    "sweetalert2.title.assist.event":"Reservar Plaza",
+    "sweetalert2.yes.assist.event": "Si",
+    "sweetalert2.no.assist.event": "No",
+    "sweetalert2.confirmation.message.assist.event": "Añadido como asistente correctamente",
 
+    "sweetalert2.text.delete.assist.event": "¿Estás seguro que deseas eliminar tu asistencia?",
+    "sweetalert2.title.delete.assist.event":"Eliminar asistencia",
+    "sweetalert2.yes.delete.assist.event": "Si",
+    "sweetalert2.no.delete.assist.event": "No",
+    "sweetalert2.confirmation.message.delete.assist.event": "Eliminado tu asistencia al evento correctamente"
 }

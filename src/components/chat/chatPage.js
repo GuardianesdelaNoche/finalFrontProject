@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getUserData } from '../../store/selectors/auth';
 import  Spinner  from '../shared/Spinner';
 import storage from '../../utils/storage';
+import { getUsersChat } from '../../api/chat';
 
 import { Chat, Channel, ChannelHeader, ChannelList, MessageInput, MessageList, Thread, Window } from 'stream-chat-react';
 import { StreamChat } from 'stream-chat';
@@ -13,33 +14,51 @@ import { Layout } from '../layout';
 
  function ChatPage () {
     const [chatClient, setChatClient] = useState(null);
+    const [usersList, setUsersList] = useState([]);
 
+  
     const userData = useSelector(getUserData);
     const auth = storage.get("auth");
     const userToken = auth.token;
-    const filters = { type: 'messaging', members: { $in: ["60f2c412ccec0cb75da102e7", "60e9ca23b7e92c67b333ef96" ] } };
+    const filters = { type: 'messaging', members: { $in: usersList } };
     const sort = { last_message_at: -1 };
-   
+
+    const getList = list => {
+      let listArray = [];
+      if (list !== undefined) {
+        list.result.forEach(element => {
+          listArray.push(element._id);
+        });
+      }
+      
+      return listArray;
+    }
+
     useEffect(() => {
         
-        const initChat = async () => {
-        const client = StreamChat.getInstance('dz5f4d5kzrue');
-  
-        await client.connectUser(
-          {    
-            id: userData._id,
-            name: userData.nickname,
-            image: userData.image,
-          },
-          userToken,
-        );
-  
-        setChatClient(client);
-      };
-  
-      initChat();
-    }, [userData._id, userData.nickname, userData.image, userToken]);
-  
+      const initChat = async () => {
+      const client = StreamChat.getInstance('dz5f4d5kzrue');
+      const accessToken = storage.get("auth");
+      const usersList = await getUsersChat(accessToken);
+
+      setUsersList(getList(usersList));
+
+      await client.connectUser(
+        {    
+          id: userData._id,
+          name: userData.nickname,
+          image: userData.image,
+        },
+        userToken,
+      );
+
+      setChatClient(client);
+    };
+
+    initChat();
+    
+  }, [userData._id, userData.nickname, userData.image, userToken]);
+
     if (!chatClient) {
       return <Spinner animation="border" />;
     }
@@ -48,7 +67,7 @@ import { Layout } from '../layout';
       // add as many custom fields as you'd like
       image: '/img/logo.png',
       name: '4 events',
-      members: ["60f2c412ccec0cb75da102e7", "60e9ca23b7e92c67b333ef96" ],
+      members: usersList,
     });
 
     return (

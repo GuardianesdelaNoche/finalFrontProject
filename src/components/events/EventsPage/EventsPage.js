@@ -49,6 +49,7 @@ const getNewReq = (queryPath, key, value) => {
   const indoorQuery = queryPath.get("indoor");
   const priceQuery = queryPath.get("price");
   const tagsQuery = queryPath.getAll("tags");
+  const usernameQuery = queryPath.get("username");
 
   let filters = {};
 
@@ -119,6 +120,17 @@ const getNewReq = (queryPath, key, value) => {
     };
   }
 
+  if(usernameQuery) {
+    filters = {
+      ...filters,
+      username: usernameQuery,
+    };
+    paramsQuery = {
+      ...paramsQuery,
+      filters: filters,
+    };
+  }
+
   switch (key) {
     case "page":
       paramsQuery = {
@@ -168,6 +180,7 @@ function EventsPage() {
   const { loading, error } = useSelector(getUi);
   const events = useSelector(getEvents);
   const tags = useSelector(getTags);
+
   // vars modify events results
   const totalEvents = useSelector(getEventsTotal);
 
@@ -186,12 +199,14 @@ function EventsPage() {
   const priceQuery = queryPath.get("price") || "0-0";
   const tagsQuery = queryPath.getAll("tags") || [];
   const tagsQueryString = tagsQuery.toString() || "";
+  const usernameQuery = queryPath.get("username") || "";
 
   //initFilters
   const filters = {
     indoor: indoorQuery,
     price: priceQuery,
     tags: tagsQuery,
+    username: usernameQuery
   };
 
   const intl = useIntl();
@@ -209,7 +224,8 @@ function EventsPage() {
         sortQuery,
         indoorQuery,
         priceQuery,
-        tagsQuery
+        tagsQuery, 
+        usernameQuery
       )
     );
   }, [
@@ -221,6 +237,7 @@ function EventsPage() {
     indoorQuery,
     priceQuery,
     tagsQueryString,
+    usernameQuery
   ]);
 
   React.useEffect(() => {
@@ -257,6 +274,9 @@ function EventsPage() {
   const onClickFilters = (event, filters) => {
     event.preventDefault();
     const reqParams = getNewReq(queryPath, "filters", filters);
+    if(showModal){
+      handleCloseModal();
+    }
     dispatch(paginationRedirect(reqParams));
   };
 
@@ -272,30 +292,25 @@ function EventsPage() {
         {!loading && !error && (
           // && events.length > 0
           <div className="container">
-            <div className="row pt-3">
-              <div className="col-md-3 d-none d-md-block">
-                <FiltersForm
-                  defaultTags={tags}
-                  initFilters={filters}
-                  onClickFilters={onClickFilters}
-                  onRemoveFilters={onClickFilters}
-                />{" "}
-              </div>
-              <div className="col-md-9">
-                <div className="pt-3 pl-3 pr-3 row">
-                  <div>
+      
+             
+            <div className="row filter">
+              <div className="col-md-10">
                     <SearchBar
                       text={titleQuery}
                       onClickSearch={onClickSearch}
                       onClearButton={onClickSearch}
                     />
-                  </div>
                 </div>
-                <div className="p-3 pb-4 row">
-                  <div className="pt-3 pb-3 d-md-none">
+              <div className="col-md-2 modal-filter">
                     <Button variant="primary" onClick={handleShowModal}>
                       {filtersText}
                     </Button>
+                </div>
+              </div>
+
+                <div className="p-3 pb-4 row">
+                  <div className="pt-3 pb-3 d-md-none">
 
                     <Modal show={showModal} onHide={handleCloseModal}>
                       <Modal.Header closeButton></Modal.Header>
@@ -307,13 +322,14 @@ function EventsPage() {
                           onRemoveFilters={onClickFilters}
                         />{" "}
                       </Modal.Body>
-                    </Modal>
+                    </Modal> 
                   </div>
                   <div className="d-flex justify-content-between">
                     <Sorter onSelect={onSelectSorter} />
                     <PaginationNavStyle onClick={onClick} limit={limitQuery} />
                   </div>
                 </div>
+                
                 <div className="row">
                   {!loading && !error && events.length > 0 && (
                     <EventsCardsList events={events}></EventsCardsList>
@@ -324,8 +340,8 @@ function EventsPage() {
                     ></EventsCardsEmptyList>
                   )}
                 </div>
-              </div>
-            </div>
+           
+           
             <div className="row">
               <div className="p-3 pb-4 d-flex justify-content-center">
                 <Pagination

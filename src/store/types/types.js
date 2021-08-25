@@ -7,6 +7,7 @@ export const types = {
     eventsLoadedRequest: 'EVENTS Loaded Request',
     eventsLoadedSuccess: 'EVENTS Loaded Success',
     eventsLoadedError: 'EVENTS Loaded Error',
+    eventsLoadedClean: 'EVENTS Loaded Clean',
     
     paginationSetLimit: 'PAGINATION Set Limit',
     paginationSetCurrentPage: 'PAGINATION Set Current Page',

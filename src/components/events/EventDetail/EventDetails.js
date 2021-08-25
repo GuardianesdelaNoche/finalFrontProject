@@ -77,17 +77,17 @@ function EventDetails({ description,
 			try {
 		
 				swal.fire({
-					title: "Reservar Plaza",
-					text: "¿Estás seguro que deseas asistir a este evento?",
+					title: intl.formatMessage({id:"sweetalert2.title.assist.event"}),
+					text: intl.formatMessage({id:"sweetalert2.text.assist.event"}),
 					icon: "warning",
-					confirmButtonText: "Si",
+					confirmButtonText: intl.formatMessage({id:"sweetalert2.yes.assist.event"}),
 					confirmButtonColor: "#20d489",
-					denyButtonText: "No",
+					denyButtonText: intl.formatMessage({id:"sweetalert2.no.assist.event"}),
 					showDenyButton: true
 				}).then(async response => {
 					if (response.isConfirmed) {
 						swal.fire({
-							text: "Añadido como asistente correctamente",
+							text: intl.formatMessage({id:"sweetalert2.confirmation.message.assist.event"}),
 							icon: 'success',
 							showConfirmButton: false
 						})
@@ -108,17 +108,17 @@ function EventDetails({ description,
 			try {
 
 				swal.fire({
-					title: "Eliminar asistencia",
-					text: "Estás seguro que deseas eliminar tu asistencia?",
+					title: intl.formatMessage({id:"sweetalert2.title.delete.assist.event"}),
+					text: intl.formatMessage({id:"sweetalert2.text.delete.assist.event"}),
 					icon: "warning",
-					confirmButtonText: "Yes",
+					confirmButtonText: intl.formatMessage({id:"sweetalert2.yes.delete.assist.event"}),
 					confirmButtonColor: "green",
-					denyButtonText: "No",
+					denyButtonText: intl.formatMessage({id:"sweetalert2.no.delete.assist.event"}),
 					showDenyButton: true
 				}).then(async response => {
 					if (response.isConfirmed) {
 						swal.fire({
-							text: "Eliminado tu asistencia al avento correctamente",
+							text:intl.formatMessage({id:"sweetalert2.confirmation.message.delete.assist.event"}),
 							icon: 'success',
 							showConfirmButton: false
 						})

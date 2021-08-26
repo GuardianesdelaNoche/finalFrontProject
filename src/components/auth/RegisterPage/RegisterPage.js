@@ -69,7 +69,7 @@ function RegisterPage () {
                         id="register.account.message"
                         defaultMessage="Already have an account?"
                     />
-                    <Link to="/login" className="form-label text-primary ml-2">
+                    <Link to="/login" className="form-label text-primary ml-2" onClick={handleResetError}>
                         <FormattedMessage
                             id="register.account.link"
                             defaultMessage="Entrar"

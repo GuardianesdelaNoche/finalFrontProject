@@ -172,5 +172,8 @@
     "sweetalert2.title.delete.assist.event":"Eliminar asistencia",
     "sweetalert2.yes.delete.assist.event": "Si",
     "sweetalert2.no.delete.assist.event": "No",
-    "sweetalert2.confirmation.message.delete.assist.event": "Eliminado tu asistencia al evento correctamente"
+    "sweetalert2.confirmation.message.delete.assist.event": "Eliminado tu asistencia al evento correctamente",
+
+    "eventscardsemptylist.noevents": "No hay eventos disponibles",
+    "eventscardsemptylist.publishevent":"¡Publica tu evento!"
 }

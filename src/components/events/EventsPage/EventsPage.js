@@ -7,7 +7,7 @@ import EventsCardsList from "./EventsCardsList";
 import EventsCardsEmptyList from "./EventsCardsEmptyList";
 import { getUi } from "../../../store/selectors/ui";
 import { useDispatch, useSelector } from "react-redux";
-import { eventsLoadAction } from "../../../store/actions/events";
+import { eventsLoadAction, eventsLoadedCleanAction } from "../../../store/actions/events";
 import { getEvents } from "../../../store/selectors/events";
 import { resetErrorAction } from "../../../store/actions/ui";
 import { PaginationNavStyle } from "../../shared/PaginationNavStyle";
@@ -120,7 +120,7 @@ const getNewReq = (queryPath, key, value) => {
     };
   }
 
-  if(usernameQuery) {
+  if (usernameQuery) {
     filters = {
       ...filters,
       username: usernameQuery,
@@ -206,7 +206,7 @@ function EventsPage() {
     indoor: indoorQuery,
     price: priceQuery,
     tags: tagsQuery,
-    username: usernameQuery
+    username: usernameQuery,
   };
 
   const intl = useIntl();
@@ -224,7 +224,7 @@ function EventsPage() {
         sortQuery,
         indoorQuery,
         priceQuery,
-        tagsQuery, 
+        tagsQuery,
         usernameQuery
       )
     );
@@ -237,7 +237,7 @@ function EventsPage() {
     indoorQuery,
     priceQuery,
     tagsQueryString,
-    usernameQuery
+    usernameQuery,
   ]);
 
   React.useEffect(() => {
@@ -274,17 +274,25 @@ function EventsPage() {
   const onClickFilters = (event, filters) => {
     event.preventDefault();
     const reqParams = getNewReq(queryPath, "filters", filters);
-    if(showModal){
+    if (showModal) {
       handleCloseModal();
     }
     dispatch(paginationRedirect(reqParams));
   };
 
+  if (error) {
+    if(error.error.includes('User')){
+      handleResetError();
+      dispatch(eventsLoadedCleanAction());
+    }
+  }
+
   return (
     <div>
       <Layout>
         {loading && <Spinner animation="border" />}
-        {error && (
+        {/* {error && ( */}
+        {error && !error.error.includes("User") && (
           <Alert onClick={handleResetError} variant="danger">
             <p className="mb-0">{error.message}</p>
           </Alert>
@@ -292,56 +300,50 @@ function EventsPage() {
         {!loading && !error && (
           // && events.length > 0
           <div className="container">
-      
-             
             <div className="row filter">
               <div className="col-md-10">
-                    <SearchBar
-                      text={titleQuery}
-                      onClickSearch={onClickSearch}
-                      onClearButton={onClickSearch}
-                    />
-                </div>
-              <div className="col-md-2 modal-filter">
-                    <Button variant="primary" onClick={handleShowModal}>
-                      {filtersText}
-                    </Button>
-                </div>
+                <SearchBar
+                  text={titleQuery}
+                  onClickSearch={onClickSearch}
+                  onClearButton={onClickSearch}
+                />
               </div>
+              <div className="col-md-2 modal-filter">
+                <Button variant="primary" onClick={handleShowModal}>
+                  {filtersText}
+                </Button>
+              </div>
+            </div>
 
-                <div className="p-3 pb-4 row">
-                  <div className="pt-3 pb-3 d-md-none">
+            <div className="p-3 pb-4 row">
+              <div className="pt-3 pb-3 d-md-none">
+                <Modal show={showModal} onHide={handleCloseModal}>
+                  <Modal.Header closeButton></Modal.Header>
+                  <Modal.Body>
+                    <FiltersForm
+                      defaultTags={tags}
+                      initFilters={filters}
+                      onClickFilters={onClickFilters}
+                      onRemoveFilters={onClickFilters}
+                    />{" "}
+                  </Modal.Body>
+                </Modal>
+              </div>
+              <div className="d-flex justify-content-between">
+                <Sorter onSelect={onSelectSorter} />
+                <PaginationNavStyle onClick={onClick} limit={limitQuery} />
+              </div>
+            </div>
 
-                    <Modal show={showModal} onHide={handleCloseModal}>
-                      <Modal.Header closeButton></Modal.Header>
-                      <Modal.Body>
-                        <FiltersForm
-                          defaultTags={tags}
-                          initFilters={filters}
-                          onClickFilters={onClickFilters}
-                          onRemoveFilters={onClickFilters}
-                        />{" "}
-                      </Modal.Body>
-                    </Modal> 
-                  </div>
-                  <div className="d-flex justify-content-between">
-                    <Sorter onSelect={onSelectSorter} />
-                    <PaginationNavStyle onClick={onClick} limit={limitQuery} />
-                  </div>
-                </div>
-                
-                <div className="row">
-                  {!loading && !error && events.length > 0 && (
-                    <EventsCardsList events={events}></EventsCardsList>
-                  )}
-                  {!loading && !error && events.length === 0 && (
-                    <EventsCardsEmptyList
-                      eventsCount={0}
-                    ></EventsCardsEmptyList>
-                  )}
-                </div>
-           
-           
+            <div className="row">
+              {!loading && !error && events.length > 0 && (
+                <EventsCardsList events={events}></EventsCardsList>
+              )}
+              {!loading && !error && events.length === 0 && (
+                <EventsCardsEmptyList eventsCount={0}></EventsCardsEmptyList>
+              )}
+            </div>
+
             <div className="row">
               <div className="p-3 pb-4 d-flex justify-content-center">
                 <Pagination

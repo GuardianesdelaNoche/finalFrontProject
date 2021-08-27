@@ -28,6 +28,12 @@
                 loaded: false,
                 data: state.data.filter((event) => event.id !== action.payload.event),
             }
+        case types.eventsLoadedClean:
+            return {
+                ...state,
+                loaded: false,
+                data: []
+            }
         default:
             return state;
     }

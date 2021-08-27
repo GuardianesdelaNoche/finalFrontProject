@@ -35,8 +35,8 @@ export const loginWithTokenAction = token => {
             dispatch(authLoginSuccess(userData.result));
 
             // Redirect
-            const { from } = history.location.state || { from: { pathname: '/' } };
-            history.replace(from);
+            //const { from } = history.location.state || { from: { pathname: '/' } };
+            //history.replace(from);
         } catch (error) {
             dispatch(authLoginError(error));
         }

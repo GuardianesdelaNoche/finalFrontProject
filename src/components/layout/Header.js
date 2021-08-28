@@ -49,10 +49,9 @@ function Header({ isLogged, userData }) {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
 						<Nav className="me-auto">
-	
-						
-							<Link onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px ms-2"> <img src="/img/English.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </Link>
-							<Link onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px ms-2"> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </Link>
+							
+							<button onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px "> <img src="/img/English.svg" onClick={() => handleChangeLanguage('en-EN')}  className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </button>
+							<button onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px "> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </button>
 					
 						</Nav>
 							{isLogged === true  ? 
@@ -99,7 +98,7 @@ function Header({ isLogged, userData }) {
 										<div className="border-bottom border-end text-center py-10 btnrounded-0">
 											<Link className="fs-6 d-block user-title-menu" to="/">
 
-												<img src="/img/icon-Home.svg" />
+												<img src="/img/icon-Home.svg" alt="home" />
 
 												<span className="d-block pt-3">
 													<FormattedMessage
@@ -115,7 +114,7 @@ function Header({ isLogged, userData }) {
 
 											<Link className="fs-6 d-block user-title-menu" to="/user">
 
-												<img src="/img/profile.svg" />
+												<img src="/img/profile.svg" alt="profile"/>
 												<span className="d-block pt-3">
 													<FormattedMessage
 														id="header.popups.icon2"
@@ -127,7 +126,7 @@ function Header({ isLogged, userData }) {
 
 										<div className="border-end  text-center py-10 rounded-0">
 											<Link className="fs-6 d-block user-title-menu" to="/event/New">
-												<img src="/img/icon-Edit.svg" />
+												<img src="/img/icon-Edit.svg" alt="edit " />
 												<span className="d-block pt-3">
 													<FormattedMessage
 														id="header.popups.icon3"
@@ -138,10 +137,10 @@ function Header({ isLogged, userData }) {
 										</div>
 
 										<div className="text-center py-10 rounded-0">
-											<Link className="fs-6 d-block user-title-menu">
-												<img src="/img/icon-signout.svg" />
+											<Button className="fs-6 d-block user-title-menu">
+												<img src="/img/icon-signout.svg" alt="signout"/>
 												<span className="d-block pt-3" to="/"><AuthButton className="navbar-btn" /></span>
-											</Link>
+											</Button>
 										</div>
 
 									</div>

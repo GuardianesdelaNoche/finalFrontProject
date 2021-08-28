@@ -86,7 +86,7 @@ function MySuscribesEvents() {
 
 												<span className="btn btn-icon btn-bg-light">
 													{element.isAssistant === true ? <i className="fas fa-bookmark assistant"></i> :
-														<i class="fas fa-bookmark no-assistant"></i>
+														<i className="fas fa-bookmark no-assistant"></i>
 													}
 												</span>
 

@@ -20,12 +20,14 @@ import ChatPage from '../chat/chatPage';
 
 function App() {
    const dispatch = useDispatch();
-   if( storage.get("auth")){
-     const accessToken = storage.get("auth");
-    if(accessToken.token){
-      dispatch(loginWithTokenAction(accessToken.token))
-     }
-   }
+   
+    if( storage.get("auth")){
+      const accessToken = storage.get("auth");
+     if(accessToken.token){
+       dispatch(loginWithTokenAction(accessToken.token));
+ 
+      }
+    }
    
 
   return (
@@ -54,9 +56,7 @@ function App() {
         {routeProps => <ChatPage {...routeProps} />}
       </PrivateRoute> 
 
-      <Route exact path="/">
-         <Redirect to="/events" />
-      </Route>
+      <Route exact path="/" component={EventsPage}/>        
      
       <PrivateRoute exact path="/myEvents" component={ListMyEvents} />
       <PrivateRoute exact path="/myFavorites" component={MyFavoritesEvents} />

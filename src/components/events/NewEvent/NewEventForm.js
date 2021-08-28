@@ -100,13 +100,13 @@ function NewEventForm ({onSubmit}) {
 	}
 
 	const expressions = {
-		title: /^[a-zA-Z0-9_-\s]{1,48}$/,
-		description: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
-		price:/^[0-9]{1,255}$/,
+		title: /^[a-zA-ZÀ-ÿ0-9_-\s]{1,50}$/,
+		description: /^[a-zA-ZÀ-ÿ0-9-_.,\s]{1,255}$/,
+		price:/^[0-9.]{1,255}$/,
 		max_places: /^[0-9]{1,255}$/,
 		city: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
-		address: /^[a-zA-ZÀ-ÿ0-9\s,]{1,255}$/,
-		postal_code:/^[0-9]{1,255}$/,
+		address: /^[a-zA-ZÀ-ÿ0-9,.-_\s]{1,255}$/,
+		postal_code:/^[0-9]{1,5}$/,
 		country: /^[a-zA-ZÀ-ÿ0-9\s,]{1,255}$/,
 		
 	}
@@ -124,7 +124,7 @@ function NewEventForm ({onSubmit}) {
 								label={intl.formatMessage({ id: 'newevent.formLabel.title' })}
 								name="title"
 								id="title"
-								placeholder="title"
+								placeholder={intl.formatMessage({ id: 'newevent.formLabel.placeholderTitle' })}
 								value={title}
 								onChange={handleChange}
 								errorLegend={intl.formatMessage({ id: 'newevent.validate.title' })}
@@ -159,7 +159,7 @@ function NewEventForm ({onSubmit}) {
 							label={intl.formatMessage({ id: 'newevent.formLabel.duration' })}
 							name="duration"
 							id="duration"
-							placeholder="14"
+							placeholder={intl.formatMessage({ id: 'newevent.formLabel.placeholderDuration' })}
 							value={duration}
 							onChange={handleChange}
 							errorLegend={intl.formatMessage({ id: 'newevent.validate.duration' })}
@@ -177,15 +177,13 @@ function NewEventForm ({onSubmit}) {
 							label={intl.formatMessage({ id: 'newevent.formLabel.max_places' })}
 							name="max_places"
 							id="max_places"
-							placeholder="14"
+							placeholder={intl.formatMessage({ id: 'newevent.formLabel.placeholderCapacity' })}
 							value={max_places}
 							onChange={handleChange}
 							errorLegend={intl.formatMessage({ id: 'newevent.validate.max_places' })}
 							regularExpression={expressions.max_places}
 							required
-						/>
-							
-						
+						/>												
 
 					</div>
 				</div>
@@ -199,7 +197,7 @@ function NewEventForm ({onSubmit}) {
 							label={intl.formatMessage({ id: 'newevent.formLabel.price' })}
 							name="price"
 							id="price"
-							placeholder="15,50"
+							placeholder={intl.formatMessage({ id: 'newevent.formLabel.placeholderPrice' })}
 							value={price}
 							onChange={handleChange}
 							errorLegend={intl.formatMessage({ id: 'newevent.validate.price' })}
@@ -241,7 +239,7 @@ function NewEventForm ({onSubmit}) {
 							label={intl.formatMessage({ id: 'newevent.formLabel.description' })}
 							name="description"
 							id="description"
-							placeholder="description"
+							placeholder={intl.formatMessage({ id: 'newevent.formLabel.placeholderDescription' })}
 							value={description}
 							onChange={handleChange}
 							errorLegend={intl.formatMessage({ id: 'newevent.validate.description' })}
@@ -262,7 +260,7 @@ function NewEventForm ({onSubmit}) {
 							label={intl.formatMessage({ id: 'newevent.formLabel.address' })}
 							name="address"
 							id="address"
-							placeholder="address"
+							placeholder={intl.formatMessage({ id: 'newevent.formLabel.placeholderAddress' })}
 							value={address}
 							onChange={handleChange}
 							errorLegend={intl.formatMessage({ id: 'newevent.validate.address' })}
@@ -276,7 +274,7 @@ function NewEventForm ({onSubmit}) {
 							label={intl.formatMessage({ id: 'newevent.formLabel.city' })}
 							name="city"
 							id="city"
-							placeholder="city"
+							placeholder={intl.formatMessage({ id: 'newevent.formLabel.placeholderCity' })}
 							value={city}
 							onChange={handleChange}
 							errorLegend={intl.formatMessage({ id: 'newevent.validate.city' })}
@@ -290,7 +288,7 @@ function NewEventForm ({onSubmit}) {
 							label={intl.formatMessage({ id: 'newevent.formLabel.postal-code' })}
 							name="postal_code"
 							id="postal_code"
-							placeholder="postal_code"
+							placeholder={intl.formatMessage({ id: 'newevent.formLabel.placeholderPostalCode' })}
 							value={postal_code}
 							onChange={handleChange}
 							errorLegend={intl.formatMessage({ id: 'newevent.validate.postal-code' })}
@@ -304,7 +302,7 @@ function NewEventForm ({onSubmit}) {
 							label={intl.formatMessage({ id: 'newevent.formLabel.country' })}
 							name="country"
 							id="country"
-							placeholder="country"
+							placeholder={intl.formatMessage({ id: 'newevent.formLabel.placeholderCountry' })}
 							value={country}
 							onChange={handleChange}
 							errorLegend={intl.formatMessage({ id: 'newevent.validate.country' })}

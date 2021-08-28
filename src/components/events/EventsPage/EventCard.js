@@ -53,9 +53,9 @@ function EventCard(event) {
             >
               {isLogged && event.isFavorite ? (
 
-               <div class="ribbon ribbon-top ribbon-vertical">
-                    <div class="ribbon-label bg-success">
-                      <i class="fas fa-heart fs-2 text-white"></i>
+               <div className="ribbon ribbon-top ribbon-vertical">
+                    <div className="ribbon-label bg-success">
+                      <i className="fas fa-heart fs-2 text-white"></i>
                     </div>
               </div>
 

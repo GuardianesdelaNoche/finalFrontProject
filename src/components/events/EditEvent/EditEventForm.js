@@ -103,13 +103,13 @@ function EditEventForm ({onSubmit, eventData}) {
 	}
 
 	const expressions = {
-		title: /^[a-zA-Z0-9_-\s]{1,48}$/,
-		description: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
-		price:/^[0-9]{1,255}$/,
+		title: /^[a-zA-ZÀ-ÿ0-9_-\s]{1,50}$/,
+		description: /^[a-zA-ZÀ-ÿ0-9-_.,\s]{1,255}$/,
+		price:/^[0-9.]{1,255}$/,
 		max_places: /^[0-9]{1,255}$/,
 		city: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
-		address: /^[a-zA-ZÀ-ÿ0-9\s,]{1,255}$/,
-		postal_code:/^[0-9]{1,255}$/,
+		address: /^[a-zA-ZÀ-ÿ0-9,.-_\s]{1,255}$/,
+		postal_code:/^[0-9]{1,5}$/,
 		country: /^[a-zA-ZÀ-ÿ0-9\s,]{1,255}$/,
 		
 	}

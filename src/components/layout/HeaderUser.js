@@ -28,7 +28,9 @@ function HeaderUser({ isLogged, userData }) {
 
 
 						<span className="mr-2">
+						<Link to="/chat" >
 							<img src="/img/icon-chat.svg" alt="avatar" />
+						</Link>	
 						</span>
 						{isLogged === true ?
 

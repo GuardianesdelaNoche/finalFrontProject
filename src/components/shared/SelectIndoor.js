@@ -1,14 +1,16 @@
 import React from 'react';
 import Select from 'react-select';
 import pT from 'prop-types';
+import { useIntl } from 'react-intl';
 
 const SelectIndoor = ({onChange, label, isRequired, defaultValue}) => {
+  const intl = useIntl();                         
+
     const optionsItems = [
-         { value: '', label: '--- Sin valor ---' , name:'indoor'},
+         { value: '', label: intl.formatMessage({ id: 'selectIndoor.option.noValueSelected' }) , name:'indoor'},
          { value: true, label: 'Interior' , name:'indoor'},
          { value: false, label: 'Al aire libre', name:'indoor' },
       ];
-
       const getDefaultDataValue = (optionsItems, value) => {
         switch(value) {
           case true: 

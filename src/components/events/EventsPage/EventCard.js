@@ -56,7 +56,9 @@ function EventCard(event) {
 
                <div class="ribbon ribbon-top ribbon-vertical">
                     <div class="ribbon-label bg-success">
-                      <i class="fas fa-heart fs-2 text-white"></i>
+                      <MdFavorite 
+                        className="text-white"
+                      />
                     </div>
               </div>
 

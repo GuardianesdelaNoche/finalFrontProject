@@ -172,6 +172,10 @@
     "sweetalert2.no.delete.assist.event": "No",
     "sweetalert2.confirmation.message.delete.assist.event": "Deleted your attendance to the event correctly",
 
+    "sweetalert2.text.delete.assist.removeEvent": "Are you sure you want to remove your event?",
+    "sweetalert2.title.delete.assist.removeEvent":"Delete event",    
+    "sweetalert2.confirmation.message.delete.assist.removeevent": "Your event has been deleted",
+
     "eventscardsemptylist.noevents": "No events available",
     "eventscardsemptylist.publishevent":"Publish your event!",
     "newevent.formLabel.placeholderAddress": "Insert address",

@@ -39,8 +39,8 @@ function DetailsPage() {
 	const handleDelete = () => {
 		
 			swal.fire({
-				title: intl.formatMessage({id:"sweetalert2.title.delete.assist.event"}),
-				text: intl.formatMessage({id:"sweetalert2.text.delete.assist.event"}),
+				title: intl.formatMessage({id:"sweetalert2.title.delete.assist.removeEvent"}),
+				text: intl.formatMessage({id:"sweetalert2.text.delete.assist.removeEvent"}),
 				icon: "warning",
 				confirmButtonText: intl.formatMessage({id:"sweetalert2.yes.delete.assist.event"}),
 				confirmButtonColor: "#20d489",
@@ -49,7 +49,7 @@ function DetailsPage() {
 			}).then(async response => {
 				if (response.isConfirmed) {
 					swal.fire({
-						text: intl.formatMessage({id:"sweetalert2.confirmation.message.delete.assist.event"}),
+						text: intl.formatMessage({id:"sweetalert2.confirmation.message.delete.assist.removeEvent"}),
 						icon: 'success',
 						showConfirmButton: false
 					})

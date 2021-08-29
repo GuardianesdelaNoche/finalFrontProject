@@ -6,6 +6,13 @@ import { useHistory, useLocation } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { useIntl } from "react-intl";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+/* icons */
+import { GoLocation } from "react-icons/go";
+import { BsCalendar, BsClock } from "react-icons/bs";
+import { RiHome4Line } from "react-icons/ri";
+import { TiTree } from "react-icons/ti";
+import { ImLocation2 } from "react-icons/im";
+import { MdFavorite } from "react-icons/md";
 
 import { resetErrorAction, setErrorAction } from "../../../store/actions/ui";
 import { Button, ConfirmationButton } from "../../shared";
@@ -197,58 +204,63 @@ function EventDetails({
 
             <div className="d-flex mb-button">
               {/* Reservation of Places */}
-              {!isOwner && (isLogged && isAssistant ? (
-                <div className="card-toolbar mr-2">
-                  <Button variant="secundary" onClick={handleRemoveAssistant}>
-                    <FormattedMessage
-                      id="details.event.reserved.place"
-                      defaultMessage="Reserved Place"
-                    />
-                  </Button>
-                </div>
-              ) : isLogged && isAssistant === false && available_places > 0 ? (
-                <div className="card-toolbar mr-2">
-                  <Button variant="primary" onClick={handleAddAssistant}>
-                    <FormattedMessage
-                      id="details.event.reserve.place"
-                      defaultMessage="Reserve a place"
-                    />
-                  </Button>
-                </div>
-              ) : isLogged && isAssistant === false && available_places <= 0 ? (
-                <div className="card-toolbar mr-2">
-                  <button className="tab-panel">
-                    <FormattedMessage
-                      id="details.event.capacity"
-                      defaultMessage="Full capacity"
-                    />
-                  </button>
-                </div>
-              ) : (
-                <div className="card-toolbar">
-                  {["top"].map((placement) => (
-                    <OverlayTrigger
-                      key={placement}
-                      placement={placement}
-                      overlay={
-                        <Tooltip id={`tooltip-${placement}`}>
+              {!isOwner &&
+                (isLogged && isAssistant ? (
+                  <div className="card-toolbar mr-2">
+                    <Button variant="secundary" onClick={handleRemoveAssistant}>
+                      <FormattedMessage
+                        id="details.event.reserved.place"
+                        defaultMessage="Reserved Place"
+                      />
+                    </Button>
+                  </div>
+                ) : isLogged &&
+                  isAssistant === false &&
+                  available_places > 0 ? (
+                  <div className="card-toolbar mr-2">
+                    <Button variant="primary" onClick={handleAddAssistant}>
+                      <FormattedMessage
+                        id="details.event.reserve.place"
+                        defaultMessage="Reserve a place"
+                      />
+                    </Button>
+                  </div>
+                ) : isLogged &&
+                  isAssistant === false &&
+                  available_places <= 0 ? (
+                  <div className="card-toolbar mr-2">
+                    <button className="tab-panel">
+                      <FormattedMessage
+                        id="details.event.capacity"
+                        defaultMessage="Full capacity"
+                      />
+                    </button>
+                  </div>
+                ) : (
+                  <div className="card-toolbar">
+                    {["top"].map((placement) => (
+                      <OverlayTrigger
+                        key={placement}
+                        placement={placement}
+                        overlay={
+                          <Tooltip id={`tooltip-${placement}`}>
+                            <FormattedMessage
+                              id="eventCard.overlay.registerLogin"
+                              defaultMessage="Favourite"
+                            />
+                          </Tooltip>
+                        }
+                      >
+                        <span className="tab-panel mr-2">
                           <FormattedMessage
-                            id="eventCard.overlay.registerLogin"
-                            defaultMessage="Favourite"
+                            id="details.event.reserve.place"
+                            defaultMessage="Reserve a place"
                           />
-                        </Tooltip>
-                      }
-                    >
-                      <span className="tab-panel mr-2">
-                        <FormattedMessage
-                          id="details.event.reserve.place"
-                          defaultMessage="Reserve a place"
-                        />
-                      </span>
-                    </OverlayTrigger>
-                  ))}
-                </div>
-              ))}
+                        </span>
+                      </OverlayTrigger>
+                    ))}
+                  </div>
+                ))}
 
               {isLogged && isOwner ? (
                 <div className="card-toolbar">
@@ -317,7 +329,7 @@ function EventDetails({
                 <div className="col-sm-auto d-flex mb-mb-2">
                   <div className="symbol symbol-45px me-2">
                     <span className="symbol-label bg-light align-items-center">
-                      <i className="fas fa-map-marker-alt"></i>
+                      <GoLocation />
                     </span>
                   </div>
 
@@ -338,7 +350,7 @@ function EventDetails({
                 <div className="col-sm d-flex mb-mb-2">
                   <div className="symbol symbol-45px me-2">
                     <span className="symbol-label bg-light align-items-center">
-                      <i className="fas fa-calendar-day mw-75"></i>
+                      <BsCalendar />
                     </span>
                   </div>
 
@@ -357,7 +369,7 @@ function EventDetails({
                 <div className="col-sm d-flex mb-mb-2">
                   <div className="symbol symbol-45px me-2">
                     <span className="symbol-label bg-light align-items-center">
-                      <i className="fas fa-hourglass-half mw-75"></i>
+                      <BsClock />
                     </span>
                   </div>
 
@@ -374,7 +386,7 @@ function EventDetails({
                 <div className="col-sm d-flex mb-mb-2">
                   <div className="symbol symbol-45px me-2">
                     <span className="symbol-label bg-light align-items-center">
-                      <i className="fas fa-home mw-75"></i>
+                      {indoor ? <RiHome4Line /> : <TiTree />}
                     </span>
                   </div>
 
@@ -445,7 +457,7 @@ function EventDetails({
                         }
                       >
                         <span className="btn btn-icon">
-                          <i className="fas fa-map-marker-alt fs-6"></i>
+                          <ImLocation2 />
                         </span>
                       </OverlayTrigger>
                     ))}
@@ -453,15 +465,15 @@ function EventDetails({
 
                   <span className="btn btn-icon">
                     {isFavorite === true || isFavActive ? (
-                      <i
+                      <MdFavorite
                         className="fas fa-heart favorite"
                         onClick={handleRemoveFav}
-                      ></i>
+                      />
                     ) : (
-                      <i
+                      <MdFavorite
                         className="fas fa-heart no-favorite"
                         onClick={handleAddFav}
-                      ></i>
+                      />
                     )}
                   </span>
 

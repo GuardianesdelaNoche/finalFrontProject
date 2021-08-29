@@ -9,6 +9,7 @@ import { TiTree } from "react-icons/ti";
 import { FormattedMessage } from "react-intl";
 import { GoLocation } from "react-icons/go";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { HiUserGroup } from 'react-icons/hi';
 
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -100,7 +101,9 @@ function EventCard(event) {
           <div className="row participant pt-4">
             <div className="col d-flex">
               <span>
-                <i className="fas fa-users mw-75 me-2"></i>
+                <span className="me-2">
+                  <HiUserGroup />
+                </span>
 
                 {event.available_places}
                 <FormattedMessage

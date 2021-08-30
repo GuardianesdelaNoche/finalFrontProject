@@ -50,6 +50,7 @@ const MultiSelectTags = ({onChange, label, isRequired, defaultValue}) => {
     }
     
     const tagsArray = useSelector(getTags);
+    
 
 
      React.useEffect (() => {

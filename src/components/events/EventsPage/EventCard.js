@@ -54,6 +54,7 @@ function EventCard(event) {
             >
               {isLogged && event.isFavorite ? (
 
+
                <div class="ribbon ribbon-top ribbon-vertical">
                     <div class="ribbon-label bg-success">
                       <MdFavorite 

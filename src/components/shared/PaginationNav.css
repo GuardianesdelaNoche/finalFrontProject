@@ -50,7 +50,19 @@
 	transition: color .2s ease,background-color .2s ease !important;
 	color: #20d489!important;
 }
+/* .rc-pagination-item-active {
+  font-weight: 500;
+  background: #fff;
+  border-color: #20d489;
+}
+.rc-pagination-item-active a {
+  color: #20d489 !important;
+} */
+
+
 
 .rc-pagination-item a:hover{
 	color: white !important;
 }
+
+

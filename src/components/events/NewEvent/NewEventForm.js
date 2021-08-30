@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setErrorAction} from '../../../store/actions/ui';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
@@ -43,11 +45,13 @@ function NewEventForm ({onSubmit}) {
 		longitude: "-143.4838",
 		latitude: "-30.0519"
 	});
+	const dispatch = useDispatch();
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
 	
 	const intl = useIntl();
 
-    const { title, description, price, max_places, duration, address, city, postal_code, country } = newEventData;   
+
+    const { title, description, price, max_places, duration, address, city, postal_code, country,photo } = newEventData;   
 	const [startDate, setStartDate] = useState(new Date());
 	
 	const isValidValue = (expression, value) =>{
@@ -83,7 +87,8 @@ function NewEventForm ({onSubmit}) {
 	const checkFormData = (e) => {
 		e.preventDefault();
 		if ( isValidValue(expressions.title, title)
-		&& isValidValue(expressions.description, description) 
+		&& isValidValue(expressions.description, description)
+		&& photo.size < 1024
 			) {
 			try {
 				onSubmit(newEventData);	
@@ -95,8 +100,8 @@ function NewEventForm ({onSubmit}) {
 			changeIsFormValid({...isFormValid, status:false});
 		}	
 	}
-	const handleError = () => {
-
+	const handleError = error => {
+		dispatch(setErrorAction(error));
 	}
 
 	const expressions = {
@@ -146,6 +151,7 @@ function NewEventForm ({onSubmit}) {
 								locale={es}
 								dateFormat="P"
 								name="date"
+								minDate={new Date()}
 								id="date"
 								selected={startDate}
 								onChange={(date) => { setStartDate(date); handleChangeDate(date) }}

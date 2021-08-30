@@ -19,17 +19,23 @@ import ChatPage from '../chat/chatPage';
 
 
 function App() {
-  const dispatch = useDispatch();
-  if( storage.get("auth")){
-    const accessToken = storage.get("auth");
-    if(accessToken.token){
-      dispatch(loginWithTokenAction(accessToken.token))
+   const dispatch = useDispatch();
+   
+    if( storage.get("auth")){
+      const accessToken = storage.get("auth");
+     if(accessToken.token){
+       dispatch(loginWithTokenAction(accessToken.token));
+ 
+      }
     }
-  }
+   
 
   return (
     
     <Switch>
+       <PrivateRoute exact path="/user">
+        {routeProps => <UserDashboard {...routeProps} />}
+      </PrivateRoute>
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/rememberPassword" component={RememberPassPage} />
@@ -46,14 +52,12 @@ function App() {
       </PrivateRoute> 
       <Route exact path="/event/:eventId/:eventTitle" component={DetailsPage} />
       <Route exact path="/events" component={EventsPage} />
-      <PrivateRoute exact path="/chat" component={ChatPage} />
+      <PrivateRoute exact path="/chat">
+        {routeProps => <ChatPage {...routeProps} />}
+      </PrivateRoute> 
 
-      <Route exact path="/">
-         <Redirect to="/events" />
-      </Route>
-      <PrivateRoute exact path="/user">
-        {routeProps => <UserDashboard {...routeProps} />}
-      </PrivateRoute>
+      <Route exact path="/" component={EventsPage}/>        
+     
       <PrivateRoute exact path="/myEvents" component={ListMyEvents} />
       <PrivateRoute exact path="/myFavorites" component={MyFavoritesEvents} />
       <PrivateRoute exact path="/mySuscribes" component={MySuscribesEvents} />

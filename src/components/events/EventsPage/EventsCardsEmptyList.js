@@ -6,7 +6,9 @@ import { Card } from "react-bootstrap";
 
 import { NavLink } from "react-router-dom";
 
-const isExact = match => match?.isExact;
+import { FormattedMessage } from "react-intl";
+
+const isExact = (match) => match?.isExact;
 
 function EventsCardsEmptyList({ eventsCount }) {
   return (
@@ -21,9 +23,23 @@ function EventsCardsEmptyList({ eventsCount }) {
 
     <Card className="text-center">
       <Card.Body>
-        <Card.Text>No hay eventos disponibles</Card.Text>
-        <Card.Title>¡Crea tu evento!</Card.Title>
-        <NavLink to="/events/new" className="menu-item justify-content-center primary" isActive={isExact}>
+        <Card.Text>
+          <FormattedMessage
+            id="eventscardsemptylist.noevents"
+            defaultMessage="No events available"
+          />
+        </Card.Text>
+        <Card.Title>
+          <FormattedMessage
+            id="eventscardsemptylist.publishevent"
+            defaultMessage="Publish your event"
+          />
+        </Card.Title>
+        <NavLink
+          to="/events/new"
+          className="menu-item justify-content-center primary"
+          isActive={isExact}
+        >
           Nuevo evento
         </NavLink>
       </Card.Body>

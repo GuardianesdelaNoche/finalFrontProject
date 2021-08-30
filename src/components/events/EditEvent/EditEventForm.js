@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setErrorAction} from '../../../store/actions/ui';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import Input from '../../shared/components/Input';
@@ -44,6 +46,7 @@ function EditEventForm ({onSubmit, eventData}) {
 		latitude: "-30.0519"
 	});
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
+	const dispatch = useDispatch();
 	
 	
 	const intl = useIntl();
@@ -87,6 +90,7 @@ function EditEventForm ({onSubmit, eventData}) {
 		e.preventDefault();
 		if ( isValidValue(expressions.title, title)
 		&& isValidValue(expressions.description, description) 
+		&& photo.size < 1024
 			) {
 			try {
 				onSubmit(editEventData);	
@@ -98,18 +102,19 @@ function EditEventForm ({onSubmit, eventData}) {
 			changeIsFormValid({...isFormValid, status:false});
 		}	
 	}
-	const handleError = () => {
+	const handleError = error => {
+		dispatch(setErrorAction(error));
 
 	}
 
 	const expressions = {
-		title: /^[a-zA-Z0-9_-\s]{1,48}$/,
-		description: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
-		price:/^[0-9]{1,255}$/,
+		title: /^[a-zA-ZÀ-ÿ0-9_-\s]{1,50}$/,
+		description: /^[a-zA-ZÀ-ÿ0-9-_.,\s]{1,255}$/,
+		price:/^[0-9.]{1,255}$/,
 		max_places: /^[0-9]{1,255}$/,
 		city: /^[a-zA-ZÀ-ÿ0-9\s]{1,255}$/,
-		address: /^[a-zA-ZÀ-ÿ0-9\s,]{1,255}$/,
-		postal_code:/^[0-9]{1,255}$/,
+		address: /^[a-zA-ZÀ-ÿ0-9,.-_\s]{1,255}$/,
+		postal_code:/^[0-9]{1,5}$/,
 		country: /^[a-zA-ZÀ-ÿ0-9\s,]{1,255}$/,
 		
 	}
@@ -148,6 +153,7 @@ function EditEventForm ({onSubmit, eventData}) {
 							<DatePickerF
 								locale={es}
 								dateFormat="P"
+								minDate={new Date()}
 								name="date"
 								id="date"
 								selected={startDate}
@@ -345,6 +351,7 @@ function EditEventForm ({onSubmit, eventData}) {
 						<File 
 							name="photo" 
 							id="photo"
+
 							
 							onFileSelectSuccess={handleChangeFiles} 
 							onFileSelectError={handleError}

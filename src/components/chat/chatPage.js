@@ -12,12 +12,12 @@ import 'stream-chat-react/dist/css/index.css';
 import { Layout } from '../layout';
 
 
- function ChatPage () {
+ function ChatPage ({history}) {
     const [chatClient, setChatClient] = useState(null);
     const [usersList, setUsersList] = useState([]);
-
   
     const userData = useSelector(getUserData);
+
     const auth = storage.get("auth");
     const userToken = auth.token;
     const filters = { type: 'messaging', members: { $in: usersList } };
@@ -37,22 +37,22 @@ import { Layout } from '../layout';
     useEffect(() => {
         
       const initChat = async () => {
-      const client = StreamChat.getInstance('dz5f4d5kzrue');
-      const accessToken = storage.get("auth");
-      const usersList = await getUsersChat(accessToken);
+          const client = StreamChat.getInstance('dz5f4d5kzrue');
+          const accessToken = storage.get("auth");
+          const usersList = await getUsersChat(accessToken);
 
-      setUsersList(getList(usersList));
+          setUsersList(getList(usersList));
 
-      await client.connectUser(
-        {    
-          id: userData._id,
-          name: userData.nickname,
-          image: userData.image,
-        },
-        userToken,
-      );
+          await client.connectUser(
+            {    
+               id: userData._id,               
+               name: userData.nickname,              
+               image: userData.image,
+            },
+            userToken,
+          );
 
-      setChatClient(client);
+          setChatClient(client);
     };
 
     initChat();

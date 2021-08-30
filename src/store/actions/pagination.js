@@ -21,7 +21,7 @@ const composerPathFilters = (filters) => {
       });
     }
     if(username && username !== ""){
-      path = path.concat(`&username=${username}`)
+      path = path.concat(`&username=${username}`);
     }
     return path;
   // }

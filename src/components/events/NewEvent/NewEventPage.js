@@ -66,11 +66,11 @@ function NewEventPage () {
 
                         <div className="card card-body">
                             <div className="form-header ml-3">
-                                <h3 class="text-dark "><FormattedMessage
+                                <h3 className="text-dark "><FormattedMessage
                                     id="newEvent.title"
                                     defaultMessage="New Event"
                                 /></h3>
-                                <span class="fs-8 text-description">
+                                <span className="fs-8 text-description">
                                     
                                     <FormattedMessage
                                         id="newEvent.description"

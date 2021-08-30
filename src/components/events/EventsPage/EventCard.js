@@ -9,6 +9,7 @@ import { TiTree } from "react-icons/ti";
 import { FormattedMessage } from "react-intl";
 import { GoLocation } from "react-icons/go";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { HiUserGroup } from 'react-icons/hi';
 
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -53,9 +54,12 @@ function EventCard(event) {
             >
               {isLogged && event.isFavorite ? (
 
+
                <div class="ribbon ribbon-top ribbon-vertical">
                     <div class="ribbon-label bg-success">
-                      <i class="fas fa-heart fs-2 text-white"></i>
+                      <MdFavorite 
+                        className="text-white"
+                      />
                     </div>
               </div>
 
@@ -100,7 +104,9 @@ function EventCard(event) {
           <div className="row participant pt-4">
             <div className="col d-flex">
               <span>
-                <i className="fas fa-users mw-75 me-2"></i>
+                <span className="me-2">
+                  <HiUserGroup />
+                </span>
 
                 {event.available_places}
                 <FormattedMessage
@@ -138,7 +144,7 @@ function EventCard(event) {
           <div className="separator mt-2 pt-2"></div>
 
           <div className="row">
-            <div className="col d-flex pt-4">
+            <div className="col d-flex pt-4 me-2">
               <div className="symbol tags me-2">
                 <span className="bg-light-primary">
                   {event.tags.map((tag) => `#${tag}`)}
@@ -146,7 +152,7 @@ function EventCard(event) {
               </div>
             </div>
             <div className="col d-flex pt-4 float-right">
-              <div className="bg-light rounded text-gray-600 py-2 px-3">
+              <div className="bg-light rounded price text-gray-600 py-2 px-3">
                 {event.price} €
               </div>
             </div>

@@ -15,6 +15,7 @@ export const authLoginError = error => ({
     payload: error
 });
 
+
 export const authLogout = () => {
     return {
         type: types.authLogout,
@@ -23,7 +24,7 @@ export const authLogout = () => {
 
 export const tagsLoadedSuccess = tagsData => ({
    type: types.tagsLoadedSuccess,
-   payload: [tagsData]
+   payload: {data: tagsData}
 });
 
 export const loginWithTokenAction = token => {
@@ -32,11 +33,13 @@ export const loginWithTokenAction = token => {
         try {      
       
             const userData = await api.user.getUserDataById(token);                       
+            const tags = await api.tags.getTags();
             dispatch(authLoginSuccess(userData.result));
+            dispatch(tagsLoadedSuccess(tags.tags));
 
             // Redirect
-            const { from } = history.location.state || { from: { pathname: '/' } };
-            history.replace(from);
+            //const { from } = history.location.state || { from: { pathname: '/' } };
+            //history.replace(from);
         } catch (error) {
             dispatch(authLoginError(error));
         }
@@ -51,7 +54,9 @@ export const loginAction = credentials => {
            
             const logged = await api.login.login(credentials);       
             const userData = await api.user.getUserDataById(logged.token);    
+            const tags = await api.tags.getTags();
             dispatch(authLoginSuccess(userData.result));
+            dispatch(tagsLoadedSuccess(tags.tags));
 
             // Redirect
             const { from } = history.location.state || { from: { pathname: '/' } };

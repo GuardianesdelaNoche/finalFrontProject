@@ -1,17 +1,23 @@
 import React, { useRef } from 'react';
-import { FormattedMessage } from 'react-intl';
 import pT from 'prop-types';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const File = ({onFileSelectSuccess, onFileSelectError}) => {
    
     const fileRef = useRef();
+    const intl = useIntl();
 
     const handleFileInput = (e) => {                
         const file = e.target.files[0];
-        onFileSelectSuccess(file);
-        // if(file.size > 1024) 
-        //      onFileSelectError ({ error: "El fichero no puede exceder de 1MB"})
-        // else  onFileSelectSuccess (file);        
+        if(file !== undefined){
+        if(file.size > 1024) {
+            
+            onFileSelectError ({ error: intl.formatMessage({ id: 'file.formLabel.error' })})
+        }     
+        else{
+            onFileSelectSuccess(file);            
+        }  
+    }
         
     };
    

@@ -108,15 +108,15 @@
     "newevent.formLabel.postal-code": "Postal Code",
     "newevent.formLabel.country": "Country",
     "newevent.formLabel.indoor": "Event type",
-    "newevent.validate.title":"There is something wrong",
-    "newevent.validate.description": "There is something wrong",
-    "newevent.validate.price": "There is something wrong",
-    "newevent.validate.max_places": "There is something wrong",
-    "newevent.validate.duration": "There is something wrong",
-    "newevent.validate.address": "There is something wrong",
-    "newevent.validate.country": "There is something wrong",
-    "newevent.validate.postal-code": "There is something wrong",
-    "newevent.validate.citiy": "There is something wrong",
+    "newevent.validate.title":"There is something wrong. Max lenght 50",
+    "newevent.validate.description": "There is something wrong. Max lenght 255",
+    "newevent.validate.price": "Check decimal separator is ',' Just numbers allowed",
+    "newevent.validate.max_places": "There is something wrong. Just numbers allowed",
+    "newevent.validate.duration": "There is something wrong. Just numbers allowed",
+    "newevent.validate.address": "There is something wrong. Max lenght 255",
+    "newevent.validate.country": "There is something wrong.  Max lenght 255",
+    "newevent.validate.postal-code": "There is something wrong. Just numbers allowed",
+    "newevent.validate.city": "There is something wrong. Max lenght 255",
     "user.panel.event.suscribed.title": "My Subscribed Events",
     "user.panel.event.suscribed.description": "All events I will attend",
     "user.panel.event.suscribed.createby":"Created by:",
@@ -170,7 +170,26 @@
     "sweetalert2.title.delete.assist.event":"Delete assistance",
     "sweetalert2.yes.delete.assist.event": "Yes",
     "sweetalert2.no.delete.assist.event": "No",
-    "sweetalert2.confirmation.message.delete.assist.event": "Deleted your attendance to the event correctly"
+    "sweetalert2.confirmation.message.delete.assist.event": "Deleted your attendance to the event correctly",
+
+    "sweetalert2.text.delete.assist.removeEvent": "Are you sure you want to remove your event?",
+    "sweetalert2.title.delete.assist.removeEvent":"Delete event",    
+    "sweetalert2.confirmation.message.delete.assist.removeevent": "Your event has been deleted",
+
+    "eventscardsemptylist.noevents": "No events available",
+    "eventscardsemptylist.publishevent":"Publish your event!",
+    "newevent.formLabel.placeholderAddress": "Insert address",
+    "newevent.formLabel.placeholderCity": "Insert city",
+    "newevent.formLabel.placeholderPostalCode": "Insert postal code",
+    "newevent.formLabel.placeholderCountry": "Insert country",
+    "newevent.formLabel.placeholderDescription": "Insert description",
+    "newevent.formLabel.placeholderPrice": "Insert price",
+    "newevent.formLabel.placeholderDuration": "Insert duration in hours",
+    "newevent.formLabel.placeholderCapacity": "Insert capaticy",
+    "newevent.formLabel.placeholderTitle": "Insert title",
+    "selectIndoor.option.noValueSelected": "--- No value selected ---",
+    "file.formLabel.error": "File can´t be loaded. Max file size allowed is 1Mb"
+
 
 
 }

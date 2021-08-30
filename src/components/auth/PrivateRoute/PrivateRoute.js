@@ -1,12 +1,13 @@
 
 import { useSelector } from 'react-redux';
+import { getIsLogged } from '../../../store/selectors/auth';
 import { Redirect, Route, useLocation } from 'react-router-dom';
 
 
 
 const PrivateRoute = props => {
 
-  const isLogged = useSelector(state => state.auth);
+  const isLogged = useSelector(getIsLogged);
   const location = useLocation();
 
   return isLogged ? (
@@ -14,6 +15,6 @@ const PrivateRoute = props => {
   ) : (
     <Redirect to={{ pathname: '/login', state: { from: location } }} />
   );
-};
+ };
 
 export default PrivateRoute;

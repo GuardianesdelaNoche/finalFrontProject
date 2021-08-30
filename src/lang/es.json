@@ -92,15 +92,15 @@
     "newevent.formLabel.postal-code": "Código Postal",
     "newevent.formLabel.country": "País",
     "newevent.formLabel.indoor": "Tipo Evento",
-    "newevent.validate.title":"Hay algún error",
-    "newevent.validate.description": "Hay algún error",
-    "newevent.validate.price": "Hay algún error",
-    "newevent.validate.max_places": "Hay algún error",
-    "newevent.validate.duration": "Hay algún error",
-    "newevent.validate.address": "Hay algún error",
-    "newevent.validate.country": "Hay algún error",
-    "newevent.validate.postal-code": "Hay algún error",
-    "newevent.validate.city": "Hay algún error",
+    "newevent.validate.title":"Hay algún error. Comprueba la longitud max 50 caracteres",
+    "newevent.validate.description": "Hay algún error. Comprueba la longitud max 255 caracteres",
+    "newevent.validate.price": "Hay algún error. El separador de decimales es '.' . Sólo dato numérico",
+    "newevent.validate.max_places": "Hay algún error. Sólo dato numérico",
+    "newevent.validate.duration": "Hay algún error. Sólo dato numérico",
+    "newevent.validate.address": "Hay algún error. Comprueba la longitud max 255 caracteres",
+    "newevent.validate.country": "Hay algún error. Comprueba la longitud max 255 caracteres",
+    "newevent.validate.postal-code": "Hay algún error. Comprueba la longitud max 5 caracteres",
+    "newevent.validate.city": "Hay algún error. Comprueba la longitud max 255 caracteres",
     "user.panel.event.suscribed.title": "Mis Eventos Suscritos",
     "user.panel.event.suscribed.description": "Todos los eventos a los que estoy suscrito",
     "user.panel.event.suscribed.createby": "Creado por:",
@@ -172,5 +172,26 @@
     "sweetalert2.title.delete.assist.event":"Eliminar asistencia",
     "sweetalert2.yes.delete.assist.event": "Si",
     "sweetalert2.no.delete.assist.event": "No",
-    "sweetalert2.confirmation.message.delete.assist.event": "Eliminado tu asistencia al evento correctamente"
+    "sweetalert2.confirmation.message.delete.assist.event": "Eliminado tu asistencia al evento correctamente",
+
+    "sweetalert2.text.delete.assist.removeEvent": "¿Estás seguro que deseas eliminar tu evento?",
+    "sweetalert2.title.delete.assist.removeEvent":"Eliminar evento",    
+    "sweetalert2.confirmation.message.delete.assist.removeEvent": "Tu evento ha sido eliminado!!",
+
+    "eventscardsemptylist.noevents": "No hay eventos disponibles",
+    "eventscardsemptylist.publishevent":"¡Publica tu evento!",
+    "newevent.formLabel.placeholderAddress": "Introduce la dirección",
+    "newevent.formLabel.placeholderCity": "Introduce la ciudad",
+    "newevent.formLabel.placeholderPostalCode": "Introduce el código postal ",
+    "newevent.formLabel.placeholderCountry": "Introduce el país ",
+    "newevent.formLabel.placeholderDescription": "Introduce la descripción ",
+    "newevent.formLabel.placeholderPrice": "Introduce el precio. Separador de decimales es '.'",
+    "newevent.formLabel.placeholderDuration": "Introduce duración en horas",
+    "newevent.formLabel.placeholderCapacity": "Introduce el aforo ",
+    "newevent.formLabel.placeholderTitle": "Introduce el título ",
+    "selectIndoor.option.noValueSelected": "--- Sin valor ---",
+    "file.formLabel.error": "El fichero no puede ser cargado. Tamaño máximo permitido es 1Mb"
+
+
+
 }

@@ -30,6 +30,10 @@ export const eventsLoadAction = (page, limit, title, sort, indoor, price, tags, 
   }
 };
 
+export const eventsLoadedCleanAction = () => ({
+  type: types.eventsLoadedClean
+});
+
 /** BACK 3008 */
 
 // Load Favorites

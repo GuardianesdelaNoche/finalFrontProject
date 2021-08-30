@@ -34,9 +34,14 @@ const localeData = {
 const accessToken = storage.get("auth");
 configureClient({ accessToken });
 
+const authData = {
+  isLogged: !!accessToken,
+  data: []
+}
+
 const history = createBrowserHistory();
 const store = configureStore({
-  preloadedState: { auth: !!accessToken , intl: localeData },
+  preloadedState: { auth:  authData , intl: localeData },
   history,
   
 });

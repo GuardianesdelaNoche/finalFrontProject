@@ -148,6 +148,7 @@ function EditEventForm ({onSubmit, eventData}) {
 							<DatePickerF
 								locale={es}
 								dateFormat="P"
+								minDate={new Date()}
 								name="date"
 								id="date"
 								selected={startDate}

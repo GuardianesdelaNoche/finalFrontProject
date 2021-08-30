@@ -1,16 +1,41 @@
 import { Link } from 'react-router-dom';
 import {  NavDropdown  } from 'react-bootstrap';
-
 import { connect } from 'react-redux';
 import { getIsLogged } from '../../store/selectors/auth';
 import { getUserData } from '../../store/selectors/auth';
-
 import { FormattedMessage } from 'react-intl';
 import AuthButton from '../auth/AuthButton/AuthButton';
+import { useDispatch } from 'react-redux';
+import { useIntl } from 'react-intl';
+import Spanish from '../../lang/es.json';
+import English from '../../lang/en.json';
+import { updateIntl } from 'react-intl-redux';
+import { Nav } from 'react-bootstrap';
 import './UserHeader.css';
 
 
 function HeaderUser({ isLogged, userData }) {
+	const intl = useIntl();
+	const dispatch = useDispatch();
+	const handleChangeLanguage = lang => {
+		let locale; 
+		switch (lang) {
+			case 'es-ES':
+				locale = {
+					locale: "es-ES",
+					messages: Spanish
+				}
+				break;				
+			default:		
+				locale = {
+				locale: "en-EN",
+				messages: English
+				}
+
+		};
+		
+		dispatch(updateIntl(locale));
+	}
 	return (
 		<header className="Userheader">
 			
@@ -24,8 +49,14 @@ function HeaderUser({ isLogged, userData }) {
 							</h4>
 						</div>
 						
-						<div className="d-flex align-items-center">
+						<Nav className="me-auto">
+							
+							<button onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px "> <img src="/img/English.svg" onClick={() => handleChangeLanguage('en-EN')}  className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </button>
+							<button onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px "> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </button>
+					
+						</Nav>
 
+						<div className="d-flex align-items-center">						
 
 						<span className="mr-2">
 						<Link to="/chat" >

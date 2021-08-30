@@ -9,6 +9,7 @@ import { TiTree } from "react-icons/ti";
 import { FormattedMessage } from "react-intl";
 import { GoLocation } from "react-icons/go";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { HiUserGroup } from 'react-icons/hi';
 
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -53,9 +54,12 @@ function EventCard(event) {
             >
               {isLogged && event.isFavorite ? (
 
-               <div className="ribbon ribbon-top ribbon-vertical">
-                    <div className="ribbon-label bg-success">
-                      <i className="fas fa-heart fs-2 text-white"></i>
+
+               <div class="ribbon ribbon-top ribbon-vertical">
+                    <div class="ribbon-label bg-success">
+                      <MdFavorite 
+                        className="text-white"
+                      />
                     </div>
               </div>
 
@@ -100,7 +104,9 @@ function EventCard(event) {
           <div className="row participant pt-4">
             <div className="col d-flex">
               <span>
-                <i className="fas fa-users mw-75 me-2"></i>
+                <span className="me-2">
+                  <HiUserGroup />
+                </span>
 
                 {event.available_places}
                 <FormattedMessage

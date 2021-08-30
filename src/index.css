@@ -411,7 +411,9 @@ border-top-right-radius: .65rem;
     background-size: cover;
     border-radius: .65rem;
     padding: 0.5rem;
+  
 }
+
 
 .icons-footer{
     justify-content: flex-end;
@@ -1031,7 +1033,16 @@ color: #20d489;
     width: 100%;
    }
 
-   
+   .price{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    }
+
+    .symbol.tags{
+        width: 100%;
+    }
   
 
 }

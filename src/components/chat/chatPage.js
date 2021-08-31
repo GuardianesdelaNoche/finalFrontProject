@@ -5,14 +5,14 @@ import  Spinner  from '../shared/Spinner';
 import storage from '../../utils/storage';
 import { getUsersChat } from '../../api/chat';
 
-import { Chat, Channel, ChannelHeader, ChannelList, MessageInput, MessageList, Thread, Window } from 'stream-chat-react';
+import { Chat, Channel, ChannelHeader, ChannelList, MessageInput, MessageList, Thread, useMessageContext, Window } from 'stream-chat-react';
 import { StreamChat } from 'stream-chat';
 import 'stream-chat-react/dist/css/index.css';
 
 import { Layout } from '../layout';
 
 
- function ChatPage ({history}) {
+ function ChatPage ({history, match}) {
     const [chatClient, setChatClient] = useState(null);
     const [usersList, setUsersList] = useState([]);
   
@@ -20,8 +20,10 @@ import { Layout } from '../layout';
 
     const auth = storage.get("auth");
     const userToken = auth.token;
-    const filters = { type: 'messaging', members: { $in: usersList } };
+    const filters = { type: 'messaging',  members: { $in: usersList } };
     const sort = { last_message_at: -1 };
+
+    
 
     const getList = list => {
       let listArray = [];
@@ -37,7 +39,7 @@ import { Layout } from '../layout';
     useEffect(() => {
         
       const initChat = async () => {
-          const client = StreamChat.getInstance('dz5f4d5kzrue');
+          const client = StreamChat.getInstance('dz5f4d5kzrue');          
           const accessToken = storage.get("auth");
           const usersList = await getUsersChat(accessToken);
 
@@ -63,17 +65,16 @@ import { Layout } from '../layout';
       return <Spinner animation="border" />;
     }
 
-    const channel = chatClient.channel('messaging', '4_events', {
-      // add as many custom fields as you'd like
+ 
+    const channel = chatClient.channel('livestream', match.params.eventName, {
       image: '/img/logo.png',
-      name: '4 events',
-      members: usersList,
+      name: match.params.eventName,
     });
 
     return (
         <Layout>
-        <Chat client={chatClient} theme='messaging light'>
-      <ChannelList filters={filters} sort={sort} />
+        <Chat client={chatClient}  theme='messaging light'>
+     
       <Channel channel={channel}>
         <Window>
           <ChannelHeader />

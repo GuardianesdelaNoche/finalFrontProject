@@ -203,6 +203,19 @@ function EventDetails({
             </div>
 
             <div className="d-flex mb-button">
+            <div className="card-toolbar mr-2">
+               {isLogged && <span className="d-flex align-items-center bgi-no-repeat mr-2">
+										<Link to={`/chat/${title.replace(/\s+/g, '-')}`}>
+                    <Button variant="primary" >
+                      <FormattedMessage
+                        id="details.event.chat"
+                        defaultMessage="Chat"
+                      />
+                    </Button>
+										</Link>								
+									</span>		}
+                  
+                  </div>
               {/* Reservation of Places */}
               {!isOwner &&
                 (isLogged && isAssistant ? (

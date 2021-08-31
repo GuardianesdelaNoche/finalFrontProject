@@ -51,17 +51,15 @@ function HeaderUser({ isLogged, userData }) {
 						
 						<Nav className="me-auto">
 							
-							<button onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px "> <img src="/img/English.svg" onClick={() => handleChangeLanguage('en-EN')}  className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </button>
-							<button onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px "> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </button>
+							
 					
 						</Nav>
 
 						<div className="d-flex align-items-center">						
 
 						<span className="mr-2">
-						<Link to="/chat" >
-							<img src="/img/icon-chat.svg" alt="avatar" />
-						</Link>	
+						<button onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px "> <img src="/img/English.svg" onClick={() => handleChangeLanguage('en-EN')}  className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </button>
+							<button onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px "> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </button>
 						</span>
 						{isLogged === true ?
 
@@ -144,7 +142,9 @@ function HeaderUser({ isLogged, userData }) {
 								<div className="text-center py-10 rounded-0">
 									<Link className="fs-6 d-block user-title-menu">
 										<img src="/img/icon-signout.svg" />
-										<span className="d-block pt-3" to="/"><AuthButton className="navbar-btn" /></span>	
+										<span className="d-block pt-3" to="/">
+											<AuthButton className="navbar-btn" />
+										</span>
 									</Link>
 								</div>
 								

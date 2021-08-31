@@ -14,7 +14,7 @@ const File = ({onFileSelectSuccess, onFileSelectError}) => {
         const file = e.target.files[0];
         dispatch(resetErrorAction())
         if(file !== undefined){
-            if(file.size > 1024000) {       
+            if(file.size > 1024000) {      
                 
                 onFileSelectError ({ error: intl.formatMessage({ id: 'file.formLabel.error' })})
             }     

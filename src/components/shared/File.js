@@ -10,11 +10,11 @@ const File = ({onFileSelectSuccess, onFileSelectError}) => {
     const fileRef = useRef();
     const intl = useIntl();
 
-    const handleFileInput = (e) => {                
+    const handleFileInput = (e) => {    
         const file = e.target.files[0];
         dispatch(resetErrorAction())
         if(file !== undefined){
-            if(file.size > 1024000) {      
+            if(file.size > process.env.REACT_APP_1MB_SIZE) {      
                 
                 onFileSelectError ({ error: intl.formatMessage({ id: 'file.formLabel.error' })})
             }     

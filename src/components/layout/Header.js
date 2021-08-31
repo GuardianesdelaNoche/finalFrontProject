@@ -138,10 +138,12 @@ function Header({ isLogged, userData }) {
 										</div>
 
 										<div className="text-center py-10 rounded-0">
-											<Button className="fs-6 d-block user-title-menu">
-												<img src="/img/icon-signout.svg" alt="signout"/>
-												<span className="d-block pt-3" to="/"><AuthButton className="navbar-btn" /></span>
-											</Button>
+											<Link className="fs-6 d-block user-title-menu">
+												<img src="/img/icon-signout.svg" />
+												<span className="d-block pt-3" to="/">
+													<AuthButton className="navbar-btn" />
+												</span>
+											</Link>	
 										</div>
 
 									</div>

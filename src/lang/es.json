@@ -190,7 +190,8 @@
     "newevent.formLabel.placeholderCapacity": "Introduce el aforo ",
     "newevent.formLabel.placeholderTitle": "Introduce el título ",
     "selectIndoor.option.noValueSelected": "--- Sin valor ---",
-    "file.formLabel.error": "El fichero no puede ser cargado. Tamaño máximo permitido es 1Mb"
+    "file.formLabel.error": "El fichero no puede ser cargado. Tamaño máximo permitido es 1Mb",
+    "details.event.chat":"Chat"
 
 
 

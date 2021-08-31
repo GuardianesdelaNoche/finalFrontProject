@@ -188,7 +188,8 @@
     "newevent.formLabel.placeholderCapacity": "Insert capaticy",
     "newevent.formLabel.placeholderTitle": "Insert title",
     "selectIndoor.option.noValueSelected": "--- No value selected ---",
-    "file.formLabel.error": "File can´t be loaded. Max file size allowed is 1Mb"
+    "file.formLabel.error": "File can´t be loaded. Max file size allowed is 1Mb",
+    "details.event.chat":"Chat"
 
 
 

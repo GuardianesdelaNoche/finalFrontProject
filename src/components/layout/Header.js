@@ -50,17 +50,18 @@ function Header({ isLogged, userData }) {
 					<Navbar.Collapse id="responsive-navbar-nav" className="menu">
 						<Nav className="me-auto">
 							
-							<button onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px "> <img src="/img/English.svg" onClick={() => handleChangeLanguage('en-EN')}  className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </button>
-							<button onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px "> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </button>
+							
 					
 						</Nav>
 							{isLogged === true  ? 
 								<Nav className="user">
-									<span className="d-flex align-items-center bgi-no-repeat mr-2">
+									<button onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px "> <img src="/img/English.svg" onClick={() => handleChangeLanguage('en-EN')}  className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </button>
+									<button onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px "> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </button>
+									{/* <span className="d-flex align-items-center bgi-no-repeat mr-2">
 										<Link to="/chat" >
 											<img src="/img/icon-chat.svg" alt="avatar" />
 										</Link>								
-									</span>		
+									</span>		 */}
 								<NavDropdown
 									title={
 										<span><img src="/img/profile.svg" alt="avatar"></img></span>

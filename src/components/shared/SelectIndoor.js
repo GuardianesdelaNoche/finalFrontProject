@@ -38,7 +38,7 @@ const SelectIndoor = ({onChange, label, isRequired, defaultValue}) => {
 
 SelectIndoor.propTypes = {
     onChange: pT.func,
-    label: pT.string.isRequired,   
+    
   }
   
   SelectIndoor.defaultProps = {    

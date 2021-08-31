@@ -52,6 +52,9 @@ function App() {
       </PrivateRoute> 
       <Route exact path="/event/:eventId/:eventTitle" component={DetailsPage} />
       <Route exact path="/events" component={EventsPage} />
+      <PrivateRoute exact path="/chat/:eventName">
+        {routeProps => <ChatPage {...routeProps} />}
+      </PrivateRoute> 
       <PrivateRoute exact path="/chat">
         {routeProps => <ChatPage {...routeProps} />}
       </PrivateRoute> 

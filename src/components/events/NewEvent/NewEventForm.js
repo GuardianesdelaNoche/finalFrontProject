@@ -88,7 +88,7 @@ function NewEventForm ({onSubmit}) {
 		e.preventDefault();
 		if ( isValidValue(expressions.title, title)
 		&& isValidValue(expressions.description, description)
-		&& photo.size < 1024
+		&& photo.size < process.env.ONE_MB_SIZE
 			) {
 			try {
 				onSubmit(newEventData);	

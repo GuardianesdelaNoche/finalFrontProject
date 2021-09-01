@@ -49,6 +49,7 @@
 .navbar-nav.user{
      flex-direction: row!important;
       justify-content: flex-end;
+          flex-wrap: wrap !important;
 }
 
 

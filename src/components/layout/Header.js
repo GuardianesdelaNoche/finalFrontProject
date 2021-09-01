@@ -57,11 +57,7 @@ function Header({ isLogged, userData }) {
 								<Nav className="user">
 									<button onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px "> <img src="/img/English.svg" onClick={() => handleChangeLanguage('en-EN')}  className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </button>
 									<button onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px "> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp'})}></img> </button>
-									{/* <span className="d-flex align-items-center bgi-no-repeat mr-2">
-										<Link to="/chat" >
-											<img src="/img/icon-chat.svg" alt="avatar" />
-										</Link>								
-									</span>		 */}
+									
 								<NavDropdown
 									title={
 										<span><img src="/img/profile.svg" alt="avatar"></img></span>
@@ -153,6 +149,10 @@ function Header({ isLogged, userData }) {
 							</Nav>
 							 : (
 								 <div>
+									
+										<button onClick={() => handleChangeLanguage('en-EN')} className="symbol symbol-20px "> <img src="/img/English.svg" onClick={() => handleChangeLanguage('en-EN')} className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.eng' })} ></img>  </button>
+										<button onClick={() => handleChangeLanguage('es-ES')} className="symbol symbol-20px me-2"> <img src="/img/Spain.svg" className="rounded-1" alt={intl.formatMessage({ id: 'header.menu.esp' })}></img> </button>
+									
 									<Button variant="secundary" className="navbar-btn me-2">
 										<Link to="/register">
 										<FormattedMessage

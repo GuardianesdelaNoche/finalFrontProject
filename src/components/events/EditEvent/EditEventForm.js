@@ -1,5 +1,4 @@
-import React, { useState, useSelector } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { setErrorAction} from '../../../store/actions/ui';
 
@@ -24,7 +23,20 @@ import '../NewEvent/newEvent.css'
 
 function EditEventForm ({onSubmit, data}) {
 	if(data === undefined) {
-		data = {tile:"", description:"", price:0, max_places:"", duration: "", photo:"", indoor:"", address:"", city:"", postal_code:"", country:"", tags:[], date: new Date(), longitude: "-143.4838",
+		data = {tile:"",
+		 description:"",
+		 price:0,
+		 max_places:"",
+		 duration: "",
+		 photo:"",
+		 indoor:"",
+		 address:"",
+		 city:"",
+		 postal_code:"",
+		 country:"",
+		 tags:[],
+		 date: new Date(),
+		 longitude: "-143.4838",		
 		latitude: "-30.0519"  };
 	}
 

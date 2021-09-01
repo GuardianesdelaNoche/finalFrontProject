@@ -63,6 +63,10 @@ function EditEventPage ({history}) {
         dispatch(resetErrorAction())
     }
 
+    if(data === undefined) {
+        return ("");
+    }
+
     return (
         <Layout>
         <div className="main-content">

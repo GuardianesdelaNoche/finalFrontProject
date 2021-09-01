@@ -423,10 +423,6 @@ border-top-right-radius: .65rem;
 }
 
 
-.dropdown-menu.show{
-    padding: 0.2rem !important;
-}
-
 .icons-footer{
     justify-content: flex-end;
  

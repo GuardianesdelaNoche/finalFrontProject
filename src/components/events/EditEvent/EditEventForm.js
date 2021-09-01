@@ -22,50 +22,36 @@ import '../NewEvent/newEvent.css'
 
 
 function EditEventForm ({onSubmit, data}) {
-	if(data === undefined) {
-		data = {tile:"",
-		 description:"",
-		 price:0,
-		 max_places:"",
-		 duration: "",
-		 photo:"",
-		 indoor:"",
-		 address:"",
-		 city:"",
-		 postal_code:"",
-		 country:"",
-		 tags:[],
-		 date: new Date(),
-		 longitude: "-143.4838",		
-		latitude: "-30.0519"  };
-	}
 
 	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
-    const {
-		formValue: editEventData, 
-		handleChange,	
-		handleChangeFile,
-		hadleChangeArray,
-		handleChangeDate,
-		handleChangeIndoor
-	} = useForm({
-        title: data.title,
-		description: data.description,
-        price: data.price,
-		max_places: data.max_places,	
-		duration: data.duration,
-		photo: data.photo,
-		indoor: data.indoor,
-		address: data.address,
-		city: data.city,
-		postal_code: data.postal_code,
-		country: data.country,
-		tags: data.tags,
-		date: data.date,
-		longitude: "-143.4838",
-		latitude: "-30.0519"
-	});
-
+	
+		const {
+			formValue: editEventData, 
+			handleChange,	
+			handleChangeFile,
+			hadleChangeArray,
+			handleChangeDate,
+			handleChangeIndoor
+		} = useForm({
+			title: data.title,
+			description: data.description,
+			price: data.price,
+			max_places: data.max_places,	
+			duration: data.duration,
+			photo: data.photo,
+			indoor: data.indoor,
+			address: data.address,
+			city: data.city,
+			postal_code: data.postal_code,
+			country: data.country,
+			tags: data.tags,
+			date: data.date,
+			longitude: "-143.4838",
+			latitude: "-30.0519"
+		});
+	
+	
+    
 	const dispatch = useDispatch();
 
 	const intl = useIntl();

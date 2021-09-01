@@ -1,4 +1,5 @@
 import { types } from "../types/types";
+import { eventsLoadAction } from "./events";
 
 
 export const authLoginRequest = () => ({
@@ -36,6 +37,7 @@ export const loginWithTokenAction = token => {
             const tags = await api.tags.getTags();
             dispatch(authLoginSuccess(userData.result));
             dispatch(tagsLoadedSuccess(tags.tags));
+            dispatch(eventsLoadAction());
 
             // Redirect
             //const { from } = history.location.state || { from: { pathname: '/' } };

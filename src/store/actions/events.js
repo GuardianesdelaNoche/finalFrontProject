@@ -13,6 +13,15 @@ export const eventsLoadedSuccess = (events) => ({
     }
 });
 
+export const eventLoadedSuccess = (event) => ({
+  type: types.eventsLoadedSuccess,
+  payload: {
+    data: event.event,
+    total: 1
+  }
+});
+
+
 export const eventsLoadedError = error => ({
     type: types.eventsLoadedError,
     payload: error

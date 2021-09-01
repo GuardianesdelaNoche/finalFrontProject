@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useSelector } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setErrorAction} from '../../../store/actions/ui';
 
@@ -11,6 +12,7 @@ import SelectIndoor from '../../shared/SelectIndoor';
 import { Form,ContentBottomCenter, ErrorMessage, Button, DatePickerF, Label } from '../../shared/elements/formElements';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
+
 import MultiSelectTags from '../../shared/MultiSelectTags';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -20,8 +22,13 @@ import es from 'date-fns/locale/es';
 import '../NewEvent/newEvent.css'
 
 
-function EditEventForm ({history, onSubmit, eventData}) {
+function EditEventForm ({onSubmit, data}) {
+	if(data === undefined) {
+		data = {tile:"", description:"", price:0, max_places:"", duration: "", photo:"", indoor:"", address:"", city:"", postal_code:"", country:"", tags:[], date: new Date(), longitude: "-143.4838",
+		latitude: "-30.0519"  };
+	}
 
+	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
     const {
 		formValue: editEventData, 
 		handleChange,	
@@ -30,32 +37,31 @@ function EditEventForm ({history, onSubmit, eventData}) {
 		handleChangeDate,
 		handleChangeIndoor
 	} = useForm({
-        title: eventData.title,
-		description: eventData.description,
-        price: eventData.price,
-		max_places: eventData.max_places,	
-		duration: eventData.duration,
-		photo: eventData.photo,
-		indoor: eventData.indoor,
-		address: eventData.address,
-		city: eventData.city,
-		postal_code: eventData.postal_code,
-		country: eventData.country,
-		tags: eventData.tags,
-		date: eventData.date,
+        title: data.title,
+		description: data.description,
+        price: data.price,
+		max_places: data.max_places,	
+		duration: data.duration,
+		photo: data.photo,
+		indoor: data.indoor,
+		address: data.address,
+		city: data.city,
+		postal_code: data.postal_code,
+		country: data.country,
+		tags: data.tags,
+		date: data.date,
 		longitude: "-143.4838",
 		latitude: "-30.0519"
 	});
-	const [isFormValid , changeIsFormValid] = useState({status:null, errorMessageId: ""});
+
 	const dispatch = useDispatch();
-	
-	
+
 	const intl = useIntl();
 
 
     const { title, description, price, max_places, duration, address, city, postal_code, country, tags, indoor, photo } = editEventData;   
 	
-	const [startDate, setStartDate] = useState(new Date(eventData.date));
+	const [startDate, setStartDate] = useState(new Date(data.date));
 	
 	const isValidValue = (expression, value) =>{
 		if(expression.test(value)) {

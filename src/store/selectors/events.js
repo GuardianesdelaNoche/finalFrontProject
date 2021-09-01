@@ -13,4 +13,4 @@ export const getEventsAssistantEventsLoaded = (state) => state.eventsAssistant.d
 export const getEventsOwnTotal = (state) => state.eventsOwn.total;
 export const getEventsFavoriteTotal = (state) => state.eventsFavorite.total;
 export const getEventsAssistantTotal = (state) => state.eventsAssistant.total;
-//=================================================================================
+//=================================================================================q

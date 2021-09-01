@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetErrorAction,  setLoadingAction, setErrorAction, resetLoadingAction} from '../../../store/actions/ui';
 import { Layout } from '../../layout';
@@ -10,23 +10,26 @@ import EditEventForm from './EditEventForm';
 import { SuccessMessage } from '../../shared/elements/formElements';
 import { useIntl } from 'react-intl';
 import  Spinner  from '../../shared/Spinner';
+import { useParams } from 'react-router-dom';
 import { getEventDetail } from '../../../store/selectors/events';
+
 
 import '../NewEvent/newEvent.css'
 
-function EditEventPage ({match}) {
+function EditEventPage ({history}) {
 
     const dispatch = useDispatch();
     const { loading, error } = useSelector(getUi);
     const [ dataSaved, setDataSaved] = React.useState(false);
-    const eventData = useSelector(state => getEventDetail (state, match.params.eventId))
+    const { eventId } = useParams();
+    const data = useSelector(state => getEventDetail (state, eventId));
     const intl = useIntl();  
     const handleSubmit = async (editEventData)=>{
         try {
             dispatch(setLoadingAction());
             dispatch(resetErrorAction());
             const formData=getFormData(editEventData);
-            await setEditEvent(formData, match.params.eventId);
+            await setEditEvent(formData, eventId);
             setDataSaved(true);
         } catch (error) {
             dispatch(setErrorAction(error));
@@ -81,7 +84,7 @@ function EditEventPage ({match}) {
                             </div>
 
                             {loading && <Spinner animation="border" />}
-                            <EditEventForm onSubmit={handleSubmit} eventData={eventData} />
+                            <EditEventForm onSubmit={handleSubmit} data={data} history={history} />
 
                             {error && (	
                                 <Alert onClick={handleResetError} variant="danger">

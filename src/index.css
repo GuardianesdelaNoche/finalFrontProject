@@ -300,6 +300,10 @@ border-top-right-radius: .65rem;
     background-color: #f5f8fa!important;
 }
 
+.btn.btn-icon{
+    color: #a1a4b7;
+}
+
 .btn.btn-remove{
         color: #fff;
     border-color: #f1416c;
@@ -422,10 +426,6 @@ border-top-right-radius: .65rem;
     display: flex;
 }
 
-
-.dropdown-menu.show{
-    padding: 0.2rem !important;
-}
 
 .icons-footer{
     justify-content: flex-end;

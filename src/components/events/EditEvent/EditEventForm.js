@@ -20,7 +20,8 @@ import es from 'date-fns/locale/es';
 import '../NewEvent/newEvent.css'
 
 
-function EditEventForm ({onSubmit, eventData}) {
+function EditEventForm ({history, onSubmit, eventData}) {
+
     const {
 		formValue: editEventData, 
 		handleChange,	
@@ -89,8 +90,14 @@ function EditEventForm ({onSubmit, eventData}) {
 	const checkFormData = (e) => {
 		e.preventDefault();
 		if ( isValidValue(expressions.title, title)
-		&& isValidValue(expressions.description, description) 
-		&& photo.size < process.env.REACT_APP_1MB_SIZE
+		&& isValidValue(expressions.description, description)
+		&& isValidValue(expressions.price, price)
+		&& isValidValue(expressions.max_places,max_places) 
+		&& isValidValue(expressions.city,city)
+		&& isValidValue(expressions.address, address)
+		&& isValidValue(expressions.postal_code, postal_code)
+		&& isValidValue(expressions.country, country)					
+		&& (photo.size === undefined || photo.size < process.env.REACT_APP_1MB_SIZE)
 			) {
 			try {
 				onSubmit(editEventData);	
